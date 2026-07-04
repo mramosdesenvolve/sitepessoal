@@ -61,8 +61,22 @@ export function RhizomeGraph({
   const containerRef = useRef<HTMLDivElement>(null);
   const fgRef = useRef<any>(null);
   const zoomFitsRef = useRef(0);
+  // true assim que o usuário mexe manualmente no zoom/pan/arrasta um nó —
+  // depois disso, nunca mais reenquadramos automaticamente por cima dele.
+  const userInteractedRef = useRef(false);
+  // enquanto no futuro, ignora o próprio zoomToFit disparado por nós no
+  // onZoom (a animação de 500ms dispara onZoom várias vezes durante a
+  // transição — sem essa janela, a 2ª chamada em diante seria confundida
+  // com interação do usuário e travaria os reenquadramentos seguintes).
+  const programmaticZoomUntilRef = useRef(0);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+  const fitGraph = useCallback(() => {
+    if (userInteractedRef.current || !fgRef.current) return;
+    programmaticZoomUntilRef.current = Date.now() + 650;
+    fgRef.current.zoomToFit(500, 56);
+  }, []);
 
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
   const setSelectedConceptId = useAppStore((s) => s.setSelectedConceptId);
@@ -80,6 +94,17 @@ export function RhizomeGraph({
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  // Rede de segurança: onEngineStop pode disparar antes de a força de
+  // colisão (aplicada de forma assíncrona em handleFgRef) convergir de
+  // verdade, deixando um zoomToFit prematuro — nós ficam sobrepostos até
+  // um reload. cooldownTicks=120 a ~60fps roda por ~2s; reenquadramos
+  // mais uma vez depois disso, quando a física já assentou de verdade.
+  useEffect(() => {
+    if (size.width === 0) return;
+    const timer = window.setTimeout(fitGraph, 2200);
+    return () => window.clearTimeout(timer);
+  }, [size.width, fitGraph]);
 
   // ajuste fino das forças para o layout respirar (menos "bola de pelo");
   // callback ref porque o componente carrega de forma assíncrona (dynamic)
@@ -195,11 +220,22 @@ export function RhizomeGraph({
           onBackgroundClick={() => setSelectedConceptId(null)}
           onEngineStop={() => {
             // enquadra o grafo inteiro nas primeiras estabilizações;
-            // depois deixa o zoom/pan do usuário em paz
+            // depois deixa o zoom/pan do usuário em paz (fitGraph já
+            // verifica userInteractedRef antes de mexer na câmera)
             if (zoomFitsRef.current < 2) {
-              fgRef.current?.zoomToFit(500, 56);
+              fitGraph();
               zoomFitsRef.current += 1;
             }
+          }}
+          onZoom={() => {
+            // ignora os eventos disparados pelo nosso próprio zoomToFit —
+            // só marca como "interação do usuário" fora dessa janela
+            if (Date.now() > programmaticZoomUntilRef.current) {
+              userInteractedRef.current = true;
+            }
+          }}
+          onNodeDrag={() => {
+            userInteractedRef.current = true;
           }}
           cooldownTicks={120}
           d3VelocityDecay={0.3}
