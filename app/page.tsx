@@ -5,14 +5,20 @@ interface HomeProps {
   searchParams: { conceito?: string };
 }
 
+// Os objetos vêm do banco (podem mudar a qualquer momento via /admin) —
+// renderização dinâmica, sem cache estático de página.
+export const dynamic = "force-dynamic";
+
 /**
  * Home: os dados são carregados uma única vez aqui (nível de página) e
- * distribuídos via props — nenhum componente lê os JSON diretamente.
+ * distribuídos via props — nenhum componente lê o banco diretamente.
  */
-export default function Home({ searchParams }: HomeProps) {
-  const concepts = getConcepts();
-  const objects = getObjects();
-  const links = getConceptLinks();
+export default async function Home({ searchParams }: HomeProps) {
+  const [concepts, objects, links] = await Promise.all([
+    getConcepts(),
+    getObjects(),
+    getConceptLinks(),
+  ]);
 
   const initialConceptId = concepts.some((c) => c.id === searchParams.conceito)
     ? searchParams.conceito

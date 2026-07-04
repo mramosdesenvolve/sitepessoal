@@ -18,6 +18,29 @@ export type ObjectStatus =
   | "arquivado"
   | "prototipo";
 
+/** Arrays de valor (não só tipo) para popular <select> no formulário do admin. */
+export const OBJECT_TYPES: ObjectType[] = [
+  "artigo",
+  "paper",
+  "livro",
+  "palestra",
+  "projeto",
+  "curriculo",
+  "ferramenta",
+  "software",
+  "consultoria",
+  "ensaio",
+  "curso",
+  "metodologia",
+];
+
+export const OBJECT_STATUSES: ObjectStatus[] = [
+  "publicado",
+  "em desenvolvimento",
+  "arquivado",
+  "prototipo",
+];
+
 export interface ContentObject {
   id: string;
   title: string;

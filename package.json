@@ -6,12 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:push": "prisma db push",
+    "db:seed": "prisma db seed",
+    "db:studio": "prisma studio"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.mjs"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.3",
     "d3-force": "^3.0.0",
     "framer-motion": "^11.11.0",
     "fuse.js": "^7.0.0",
+    "jose": "^6.2.3",
     "next": "^14.2.15",
     "next-mdx-remote": "^5.0.0",
     "react": "^18.3.1",
@@ -20,12 +28,15 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.4",
+    "@electric-sql/pglite-socket": "^0.2.7",
     "@types/d3-force": "^3.0.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
+    "prisma": "^6.19.3",
     "tailwindcss": "^3.4.13",
     "typescript": "^5"
   }

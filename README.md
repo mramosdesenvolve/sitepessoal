@@ -4,20 +4,45 @@ Site pessoal experimental de Marcos Ramos: não um portfólio convencional, mas 
 
 > "Investigo como cultura, tecnologia e aprendizagem produzem novas formas de imaginar o mundo."
 
-A home é deliberadamente minimalista: **busca + grafo**, nada mais. Clicar em "Marcos Ramos" no cabeçalho leva a [/sobre](app/sobre/page.tsx) (currículo e contato); clicar em um conceito no grafo abre o painel lateral com os objetos daquele conceito; clicar em um objeto leva à página de detalhe dele.
+A home é deliberadamente minimalista: **busca + grafo**, nada mais. Clicar em "Marcos Ramos" no cabeçalho leva a [/sobre](app/sobre/page.tsx) (currículo e contato); clicar em um conceito no grafo abre o painel lateral com os objetos daquele conceito; clicar em um objeto leva à página de detalhe dele. Em [/admin](app/admin/page.tsx), atrás de senha, dá para publicar objetos novos direto no banco — aparecem no grafo na hora, sem rebuild.
 
 ## ⚠️ Sobre os conteúdos
 
-**Todos os conteúdos (artigos, livros, palestras, projetos, cursos, currículo/contato em `/sobre` etc.) são fictícios, porém plausíveis.** Foram criados como placeholder para dar vida ao grafo e serão substituídos gradualmente por conteúdo real. Os links externos apontam para `example.com`.
+**Todos os conteúdos (artigos, livros, palestras, projetos, cursos, currículo/contato em `/sobre` etc.) são fictícios, porém plausíveis.** Foram criados como placeholder para dar vida ao grafo e serão substituídos gradualmente por conteúdo real (via `/admin` ou editando a seed). Os links externos apontam para `example.com`.
 
 ## Rodar localmente
 
-```bash
-npm install
-npm run dev
-```
+1. Instale as dependências:
+   ```bash
+   npm install
+   ```
+2. Configure o `.env` (copie de `.env.example`):
+   ```bash
+   cp .env.example .env
+   ```
+   Preencha `DATABASE_URL` com uma connection string Postgres (ver "Banco de dados" abaixo), e escolha `ADMIN_PASSWORD`/`SESSION_SECRET`.
+3. Crie as tabelas e popule com os objetos fictícios iniciais:
+   ```bash
+   npx prisma migrate deploy
+   npm run db:seed
+   ```
+4. Rode o site:
+   ```bash
+   npm run dev
+   ```
 
-Abra [http://localhost:3000](http://localhost:3000).
+Abra [http://localhost:3000](http://localhost:3000). O painel do administrador fica em `/admin` (pede a senha de `ADMIN_PASSWORD`).
+
+### Banco de dados
+
+Os objetos (artigos, projetos, softwares...) vivem numa tabela Postgres — é nela que `/admin` grava conteúdo novo. Qualquer Postgres serve, via `DATABASE_URL` padrão:
+
+- **[Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres)** — mais simples se o deploy já é na Vercel.
+- **[Supabase](https://supabase.com)** ou **[Neon](https://neon.tech)** — free tier generoso, funciona igual.
+
+Depois de criar o banco, copie a connection string para `DATABASE_URL` no `.env` e rode `npx prisma migrate deploy` (aplica `prisma/migrations/`) seguido de `npm run db:seed`.
+
+Os conceitos (os 19 nós do grafo) continuam num vocabulário fixo em `data/concepts.json` — este projeto ainda não expõe edição de conceitos, só de objetos.
 
 ## Deploy na Vercel
 
@@ -25,17 +50,26 @@ O projeto já é um repositório git local (sem remoto configurado ainda).
 
 1. Crie um repositório vazio no GitHub (ou GitLab/Bitbucket) e aponte o remoto: `git remote add origin <url>` seguido de `git push -u origin main`.
 2. Em [vercel.com/new](https://vercel.com/new), importe o repositório.
-3. A Vercel detecta Next.js automaticamente — nenhuma configuração extra e **nenhuma variável de ambiente** é necessária nesta fase (nenhuma API real é chamada).
+3. Configure as variáveis de ambiente do projeto na Vercel: `DATABASE_URL`, `ADMIN_PASSWORD`, `SESSION_SECRET` (mesmos valores/formato do `.env.example`).
+4. Rode a migração contra o banco de produção uma vez (`npx prisma migrate deploy` com o `DATABASE_URL` de produção no ambiente, ou via `vercel env pull` + o comando local) e a seed se quiser os objetos fictícios iniciais também em produção.
 
 Alternativa via CLI: `npx vercel`.
+
+## Painel do administrador (`/admin`)
+
+- **Login** (`/admin/login`): uma senha só (`ADMIN_PASSWORD`), sem cadastro. Ao acertar, grava um cookie de sessão assinado (JWT via `jose`, 7 dias) — ver `lib/auth.ts`. `middleware.ts` protege `/admin` e subrotas, redirecionando para o login quem não tem sessão válida.
+- **Criar objeto** (`/admin`): formulário para publicar um objeto novo completo — título, tipo, ano, status, destaque, descrições curta/longa, conceitos relacionados (obrigatório ao menos um), objetos relacionados (opcional) e links (um por linha, `Rótulo | https://url`). O id/slug é gerado automaticamente a partir do título. Ao salvar, redireciona para a página do objeto recém-criado — já visível no grafo, na busca, em tudo.
+- Não há edição/remoção pela UI ainda — só criação. Para corrigir ou remover algo, use `npx prisma studio` (abre uma interface visual do banco) ou edite direto via SQL.
 
 ## Arquitetura
 
 - **Next.js 14** (App Router, TypeScript) + **Tailwind CSS** + **Framer Motion**
+- **Prisma** + **Postgres** para os objetos (`prisma/schema.prisma`); conceitos continuam estáticos em JSON
+- **jose** para o cookie de sessão do admin (compatível com Edge Runtime, usado no `middleware.ts`)
 - **react-force-graph-2d** para o grafo de força (home)
 - **Zustand** para estado global leve (conceito selecionado, query de busca, tema)
 - **Fuse.js** para a busca simulada (fuzzy search com peso maior nos conceitos)
-- **MDX** (`next-mdx-remote`) para textos longos; **JSON** para metadados estruturados
+- **MDX** (`next-mdx-remote`) para textos longos opcionais; o texto gravado pelo admin fica direto no banco
 - **Tema claro/escuro** via classe `.dark` em `<html>` + variáveis CSS RGB (ver "Identidade visual" abaixo)
 
 ### Estrutura
@@ -43,9 +77,16 @@ Alternativa via CLI: `npx vercel`.
 ```
 app/
   layout.tsx            # fontes (Fraunces + Inter), header (nome → /sobre, tema), footer
-  page.tsx              # home — carrega os dados e distribui via props
+  page.tsx              # home — carrega os dados e distribui via props (dynamic: dados vêm do banco)
   sobre/page.tsx         # currículo e contato (destino do clique no nome)
-  objeto/[id]/page.tsx  # detalhe de um objeto (renderiza MDX se existir)
+  objeto/[id]/page.tsx  # detalhe de um objeto (renderiza MDX se existir em content/, senão o texto do banco)
+  admin/
+    page.tsx             # painel: formulário de criação + lista de objetos existentes
+    actions.ts           # server actions: createObjectAction, logout
+    login/
+      page.tsx            # formulário de senha
+      actions.ts          # server action: login (verifica senha, grava cookie)
+middleware.ts            # protege /admin e subrotas (exceto /admin/login)
 components/
   RhizomeGraph.tsx      # grafo de força (desktop)
   ConceptNode.tsx       # pintura customizada dos nós no canvas (paletas claro/escuro)
@@ -58,23 +99,33 @@ components/
   RelatedObjects.tsx    # "continua em" no fim do detalhe
   TagSystem.tsx         # chips de tipo/status/conceitos
 data/
-  concepts.json         # 19 conceitos (nós do grafo)
-  objects.json          # ~20 objetos cobrindo os 12 tipos
+  concepts.json         # 19 conceitos (nós do grafo) — vocabulário fixo
+  objects.json          # objetos fictícios iniciais — usados só pela seed (prisma/seed.mjs)
 content/
-  *.mdx                 # textos longos por id de objeto (opcional)
+  *.mdx                 # textos longos por id de objeto (opcional, tem precedência sobre o texto do banco)
 lib/
-  data.ts               # única camada de acesso aos dados
+  data.ts               # única camada de acesso aos dados (Prisma) — getObjects, getConcepts, createObject...
+  prisma.ts             # singleton do Prisma Client
+  auth.ts               # cria/verifica o token de sessão do admin
+  slug.ts               # gera o id do objeto a partir do título
   useSearch.ts          # busca Fuse.js — ver comentário sobre embeddings
+prisma/
+  schema.prisma         # modelo ContentObject (Postgres)
+  migrations/           # histórico de migrações — rodar com `prisma migrate deploy`
+  seed.mjs              # popula a tabela com data/objects.json (`npm run db:seed`)
 store/
   useAppStore.ts        # Zustand (conceito selecionado, busca, tema)
 types/
-  index.ts              # ContentObject, ConceptNode, ObjectType, ...
+  index.ts              # ContentObject, ConceptNode, ObjectType, OBJECT_TYPES, ...
 ```
 
 ### Decisões que valem registrar
 
-- **A fonte de verdade das conexões** é o campo `concepts` de cada objeto em `objects.json`; `lib/data.ts` recomputa os `objectIds` dos conceitos para os dois arquivos nunca dessincronizarem.
-- **As arestas do grafo são derivadas**: dois conceitos se conectam quando compartilham ao menos um objeto (peso = nº de objetos em comum).
+- **Objetos no banco, conceitos em JSON**: só os objetos (artigos, projetos...) viraram dinâmicos/editáveis via `/admin`; os 19 conceitos continuam um vocabulário fixo em `data/concepts.json`. `lib/data.ts` ainda recomputa `objectIds` dos conceitos a partir do banco a cada leitura, então nunca dessincroniza.
+- **Sem `generateStaticParams` em `/objeto/[id]`**: como objetos podem ser criados a qualquer momento via admin, as páginas de objeto e a home são `force-dynamic` — sem isso, um objeto novo só apareceria depois de um rebuild.
+- **Sessão simples**: um `ADMIN_PASSWORD` comparado em tempo constante (`timingSafeEqual`), sem hash — é uma variável de ambiente secreta, não uma senha de usuário guardada em banco, então o modelo de risco é diferente e não justifica bcrypt aqui.
+- **Server Actions puras, sem JS de formulário customizado**: o formulário de criação usa só `<input>`/`<select>`/`<textarea>`/checkboxes nativos — concepts/relatedObjectIds são checkboxes (`formData.getAll`), links é uma textarea com um formato simples (`Rótulo | url` por linha) em vez de uma lista dinâmica com estado React. Menos JS, funciona igual.
+- **Banco local sem Docker**: para desenvolver/testar sem precisar de uma conta Postgres na nuvem, `npx prisma dev` (ver [docs do Prisma](https://www.prisma.io/docs)) sobe um Postgres local de verdade — útil só em dev, nunca use em produção.
 - **Busca real no futuro**: o ponto de substituição por embeddings/busca vetorial está comentado em `lib/useSearch.ts` — a interface do hook não muda.
 - **Busca sem conceito selecionado**: quando não há um conceito ativo, o `SearchResultsPanel` aparece ao lado do grafo (desktop) ou abaixo dos chips (mobile) listando os objetos que bateram com a busca, ranqueados por relevância do Fuse.js (`rankedObjectIds` em `lib/useSearch.ts`). Ao selecionar um conceito, esse painel some e o `ObjectPreviewPanel`/lista do acordeão volta a filtrar dentro do conceito escolhido.
 - **Mobile**: abaixo do breakpoint `md`, o grafo de força é substituído por chips de conceito roláveis + lista (`ConceptAccordion`), mantendo a mesma lógica de filtro.
@@ -99,4 +150,4 @@ Linhas de 1px, sem sombras pesadas, sem gradientes, grid assimétrico com alinha
 
 ## Próximas fases (fora deste escopo)
 
-CMS, busca semântica real (embeddings), animações avançadas, banco de dados. O código atual não antecipa essa infraestrutura além do comentário em `lib/useSearch.ts` — de propósito.
+CMS completo (edição/remoção pela UI, não só criação), busca semântica real (embeddings), animações avançadas, upload de imagens. O código atual não antecipa essa infraestrutura além dos comentários já deixados no código — de propósito.

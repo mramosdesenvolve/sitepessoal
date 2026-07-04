@@ -1,0 +1,34 @@
+// Schema Prisma — Postgres padrão, funciona com qualquer provedor que dê
+// uma connection string (Vercel Postgres, Supabase, Neon, Railway...).
+// Ver README para instruções de setup local e de produção.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// Objetos do ecossistema (artigos, projetos, softwares etc.), criados
+/// pelo admin em /admin ou pela seed inicial (data/objects.json).
+/// Os conceitos (types/ConceptNode) continuam estáticos em
+/// data/concepts.json — este projeto não expõe edição de conceitos ainda.
+model ContentObject {
+  id               String   @id
+  title            String
+  type             String
+  year             Int
+  shortDescription String
+  longDescription  String
+  /// ids de ConceptNode (data/concepts.json) relacionados a este objeto
+  concepts         Json
+  relatedObjectIds Json
+  /// [{ label, url }] ou null
+  links            Json?
+  status           String
+  featured         Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}

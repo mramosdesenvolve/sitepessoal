@@ -2,19 +2,20 @@ import fs from "fs";
 import path from "path";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getConcepts, getObjectById, getObjects } from "@/lib/data";
+import { getConcepts, getObjectById } from "@/lib/data";
 import { ObjectDetailView } from "@/components/ObjectDetailView";
 
 interface PageProps {
   params: { id: string };
 }
 
-export function generateStaticParams() {
-  return getObjects().map((o) => ({ id: o.id }));
-}
+// Objetos vêm do banco e podem ser criados a qualquer momento via /admin —
+// sem generateStaticParams: cada página é renderizada sob demanda, senão
+// um objeto novo só apareceria depois de um rebuild.
+export const dynamic = "force-dynamic";
 
-export function generateMetadata({ params }: PageProps) {
-  const object = getObjectById(params.id);
+export async function generateMetadata({ params }: PageProps) {
+  const object = await getObjectById(params.id);
   if (!object) return {};
   return {
     title: `${object.title} — Marcos Ramos`,
@@ -24,8 +25,8 @@ export function generateMetadata({ params }: PageProps) {
 
 /**
  * Corpo longo do objeto: se existir content/<id>.mdx, ele tem precedência
- * (textos longos vivem em MDX); senão, usamos o longDescription do JSON,
- * quebrado em parágrafos.
+ * (textos longos vivem em MDX); senão, usamos o longDescription gravado
+ * no banco, quebrado em parágrafos.
  */
 function getBody(id: string, longDescription: string): React.ReactNode {
   const mdxPath = path.join(process.cwd(), "content", `${id}.mdx`);
@@ -38,14 +39,14 @@ function getBody(id: string, longDescription: string): React.ReactNode {
     .map((paragraph, i) => <p key={i}>{paragraph}</p>);
 }
 
-export default function ObjectPage({ params }: PageProps) {
-  const object = getObjectById(params.id);
+export default async function ObjectPage({ params }: PageProps) {
+  const object = await getObjectById(params.id);
   if (!object) notFound();
 
-  const concepts = getConcepts();
-  const relatedObjects = object.relatedObjectIds
-    .map((id) => getObjectById(id))
-    .filter((o): o is NonNullable<typeof o> => o !== undefined);
+  const concepts = await getConcepts();
+  const relatedObjects = (
+    await Promise.all(object.relatedObjectIds.map((id) => getObjectById(id)))
+  ).filter((o): o is NonNullable<typeof o> => o !== undefined);
 
   return (
     <main>
