@@ -10,6 +10,7 @@ import { RhizomeGraph } from "./RhizomeGraph";
 import { ObjectPreviewPanel } from "./ObjectPreviewPanel";
 import { SearchResultsPanel } from "./SearchResultsPanel";
 import { ConceptAccordion } from "./ConceptAccordion";
+import { PortraitPhoto } from "./PortraitPhoto";
 
 interface HomeClientProps {
   concepts: ConceptNode[];
@@ -52,14 +53,15 @@ export function HomeClient({
       </div>
 
       <div className="mt-6">
-        {/* desktop: grafo + painel lateral */}
+        {/* desktop: retrato + grafo + painel lateral */}
         <div
           className={`hidden md:grid gap-6 ${
             selectedConceptId || showSearchResults
-              ? "md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
-              : "md:grid-cols-1"
+              ? "md:grid-cols-[auto_minmax(0,3fr)_minmax(0,2fr)]"
+              : "md:grid-cols-[auto_minmax(0,1fr)]"
           }`}
         >
+          <PortraitPhoto />
           <RhizomeGraph
             concepts={concepts}
             links={links}

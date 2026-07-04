@@ -89,6 +89,7 @@ app/
 middleware.ts            # protege /admin e subrotas (exceto /admin/login)
 components/
   RhizomeGraph.tsx      # grafo de força (desktop)
+  PortraitPhoto.tsx     # retrato ao lado do grafo (desktop) — troca claro/escuro
   ConceptNode.tsx       # pintura customizada dos nós no canvas (paletas claro/escuro)
   ObjectPreviewPanel.tsx# painel lateral ao clicar em um nó
   SearchResultsPanel.tsx# resultados da busca sem conceito selecionado
@@ -125,6 +126,7 @@ types/
 - **Sem `generateStaticParams` em `/objeto/[id]`**: como objetos podem ser criados a qualquer momento via admin, as páginas de objeto e a home são `force-dynamic` — sem isso, um objeto novo só apareceria depois de um rebuild.
 - **Sessão simples**: um `ADMIN_PASSWORD` comparado em tempo constante (`timingSafeEqual`), sem hash — é uma variável de ambiente secreta, não uma senha de usuário guardada em banco, então o modelo de risco é diferente e não justifica bcrypt aqui.
 - **Server Actions puras, sem JS de formulário customizado**: o formulário de criação usa só `<input>`/`<select>`/`<textarea>`/checkboxes nativos — concepts/relatedObjectIds são checkboxes (`formData.getAll`), links é uma textarea com um formato simples (`Rótulo | url` por linha) em vez de uma lista dinâmica com estado React. Menos JS, funciona igual.
+- **Retrato em `public/`**: `marcos-{light,dark}.png` são a mesma foto com fundo branco/preto (casando com `bg-paper` de cada tema), redimensionadas para 800px de largura (`sips`) — o arquivo original vinha em 3072×5456, desnecessário para uma coluna de ~192px mesmo em telas retina. `PortraitPhoto.tsx` escolhe a versão certa via `useAppStore(s => s.theme)`.
 - **Banco local sem Docker**: para desenvolver/testar sem precisar de uma conta Postgres na nuvem, `npx prisma dev` (ver [docs do Prisma](https://www.prisma.io/docs)) sobe um Postgres local de verdade — útil só em dev, nunca use em produção.
 - **Busca real no futuro**: o ponto de substituição por embeddings/busca vetorial está comentado em `lib/useSearch.ts` — a interface do hook não muda.
 - **Busca sem conceito selecionado**: quando não há um conceito ativo, o `SearchResultsPanel` aparece ao lado do grafo (desktop) ou abaixo dos chips (mobile) listando os objetos que bateram com a busca, ranqueados por relevância do Fuse.js (`rankedObjectIds` em `lib/useSearch.ts`). Ao selecionar um conceito, esse painel some e o `ObjectPreviewPanel`/lista do acordeão volta a filtrar dentro do conceito escolhido.
