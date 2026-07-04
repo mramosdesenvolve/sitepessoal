@@ -78,19 +78,23 @@ export function RhizomeGraph({
   const fitGraph = useCallback(() => {
     if (userInteractedRef.current || !fgRef.current) return;
     programmaticZoomUntilRef.current = Date.now() + 650;
-    fgRef.current.zoomToFit(500, 56);
+    // padding generoso (não só 56): zoomToFit enquadra pelo raio dos nós,
+    // sem contar a largura do rótulo de texto ao lado — com pouco padding,
+    // rótulos de nós na borda (ex. "tecnologia e imaginação") cortam.
+    fgRef.current.zoomToFit(500, 96);
     // zoomToFit centraliza o conjunto de nós no contêiner inteiro — como o
     // retrato (PortraitPhoto) fica atrás, ancorado à esquerda, sem esse
     // deslocamento o grafo tende a sobrar todo à direita, sem passar por
     // cima da foto. Depois do fit assentar, desloca a câmera um pouco
     // para a direita (o conteúdo aparece deslocado para a esquerda),
-    // avançando sobre a área do retrato.
+    // avançando sobre a área do retrato — moderado, para não ficar
+    // "aberto" demais sobre a foto.
     window.setTimeout(() => {
       if (userInteractedRef.current || !fgRef.current) return;
       const center = fgRef.current.centerAt();
       const k = fgRef.current.zoom();
       programmaticZoomUntilRef.current = Date.now() + 450;
-      fgRef.current.centerAt(center.x + 130 / k, center.y, 400);
+      fgRef.current.centerAt(center.x + 90 / k, center.y, 400);
     }, 520);
   }, []);
 

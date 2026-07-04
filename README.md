@@ -78,7 +78,7 @@ Alternativa via CLI: `npx vercel`.
 app/
   layout.tsx            # fontes (Space Grotesk 700/400), header (nome → /sobre, tema), footer
   page.tsx              # home — carrega os dados e distribui via props (dynamic: dados vêm do banco)
-  sobre/page.tsx         # currículo e contato (destino do clique no nome)
+  sobre/page.tsx         # currículo e contato (destino do clique no nome) — retrato + texto
   objeto/[id]/page.tsx  # detalhe de um objeto (renderiza MDX se existir em content/, senão o texto do banco)
   admin/
     page.tsx             # painel: formulário de criação + lista de objetos existentes
@@ -127,6 +127,7 @@ types/
 - **Sessão simples**: um `ADMIN_PASSWORD` comparado em tempo constante (`timingSafeEqual`), sem hash — é uma variável de ambiente secreta, não uma senha de usuário guardada em banco, então o modelo de risco é diferente e não justifica bcrypt aqui.
 - **Server Actions puras, sem JS de formulário customizado**: o formulário de criação usa só `<input>`/`<select>`/`<textarea>`/checkboxes nativos — concepts/relatedObjectIds são checkboxes (`formData.getAll`), links é uma textarea com um formato simples (`Rótulo | url` por linha) em vez de uma lista dinâmica com estado React. Menos JS, funciona igual.
 - **Retrato atrás do grafo (`marcos-portrait.png`)**: fundo recortado (transparente) a partir de duas fotos enviadas (fundo preto e branco, mesma pose) — como o sujeito não muda entre elas, a diferença pixel a pixel separa sujeito de fundo com bordas limpas (script Python/Pillow, não versionado; ver histórico do commit), sem precisar de matting por ML nem se preocupar com o fundo original não ser 100% uniforme. Um único PNG RGBA funciona nos dois temas — sem transparência, cada tema precisaria da sua própria versão. `PortraitPhoto.tsx` fica em `z-0` dentro do mesmo contêiner do `RhizomeGraph` (que é `z-10` com canvas transparente), então o grafo desenha por cima da foto em vez de cobri-la com um retângulo opaco.
+- **Retrato de `/sobre` (`marcos-bio-portrait.png`)**: sem par preto/branco disponível para a técnica de diferença, então o fundo (um cinza-claro com leve gradiente, não uniforme) foi removido por segmentação (`rembg`/U2Net) — a versão final usada no site, porém, veio de um recorte de maior resolução já pronto, com bordas mais limpas que o processamento local; ambos ficam de fora do controle de versão (só `public/marcos-bio-portrait.png`, o resultado final, é commitado).
 - **Banco local sem Docker**: para desenvolver/testar sem precisar de uma conta Postgres na nuvem, `npx prisma dev` (ver [docs do Prisma](https://www.prisma.io/docs)) sobe um Postgres local de verdade — útil só em dev, nunca use em produção.
 - **Busca real no futuro**: o ponto de substituição por embeddings/busca vetorial está comentado em `lib/useSearch.ts` — a interface do hook não muda.
 - **Busca sem conceito selecionado**: quando não há um conceito ativo, o `SearchResultsPanel` aparece ao lado do grafo (desktop) ou abaixo dos chips (mobile) listando os objetos que bateram com a busca, ranqueados por relevância do Fuse.js (`rankedObjectIds` em `lib/useSearch.ts`). Ao selecionar um conceito, esse painel some e o `ObjectPreviewPanel`/lista do acordeão volta a filtrar dentro do conceito escolhido.
