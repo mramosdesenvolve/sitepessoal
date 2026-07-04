@@ -1,25 +1,26 @@
-"use client";
-
 import Image from "next/image";
-import { useAppStore } from "@/store/useAppStore";
 
 /**
- * Retrato ao lado do grafo na home — duas versões da mesma foto (fundo
- * preto/branco) escolhidas conforme o tema ativo, para o fundo da foto
- * casar com o fundo da página em vez de aparecer como um retângulo solto.
- * Arquivos em public/marcos-{light,dark}.png.
+ * Retrato atrás do grafo na home — ocupa o mesmo contêiner do
+ * RhizomeGraph, mas em camada inferior (z-0, o grafo é z-10 e o canvas
+ * tem fundo transparente), então o grafo desenha por cima sem cortar a
+ * foto: onde não há nó/linha, a foto aparece; onde há, o grafo cobre.
+ * pointer-events-none porque o canvas do grafo, por cima, já responde a
+ * todos os cliques/hover — a foto é só camada visual.
+ *
+ * Fundo recortado (transparente) a partir das duas versões enviadas
+ * (fundo preto/branco): como a pose é idêntica nas duas, a diferença
+ * pixel a pixel entre elas separa sujeito de fundo com bordas limpas,
+ * sem precisar de troca de imagem por tema — ver nota no README.
  */
 export function PortraitPhoto() {
-  const theme = useAppStore((s) => s.theme);
-  const src = theme === "dark" ? "/marcos-dark.png" : "/marcos-light.png";
-
   return (
-    <div className="relative w-40 lg:w-48 h-[480px] md:h-[560px] bg-paper shrink-0">
+    <div className="absolute z-0 left-0 bottom-0 top-0 w-56 sm:w-64 md:w-72 lg:w-80 pointer-events-none">
       <Image
-        src={src}
+        src="/marcos-portrait.png"
         alt="Marcos Ramos"
         fill
-        sizes="(min-width: 1024px) 192px, 160px"
+        sizes="(min-width: 1024px) 320px, 256px"
         className="object-contain object-bottom"
         priority
       />

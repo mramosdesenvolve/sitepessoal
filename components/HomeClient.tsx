@@ -53,20 +53,22 @@ export function HomeClient({
       </div>
 
       <div className="mt-6">
-        {/* desktop: retrato + grafo + painel lateral */}
+        {/* desktop: retrato (atrás) + grafo (na frente) + painel lateral */}
         <div
           className={`hidden md:grid gap-6 ${
             selectedConceptId || showSearchResults
-              ? "md:grid-cols-[auto_minmax(0,3fr)_minmax(0,2fr)]"
-              : "md:grid-cols-[auto_minmax(0,1fr)]"
+              ? "md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
+              : "md:grid-cols-1"
           }`}
         >
-          <PortraitPhoto />
-          <RhizomeGraph
-            concepts={concepts}
-            links={links}
-            matchedObjectIds={matchedObjectIds}
-          />
+          <div className="relative h-[480px] md:h-[560px]">
+            <PortraitPhoto />
+            <RhizomeGraph
+              concepts={concepts}
+              links={links}
+              matchedObjectIds={matchedObjectIds}
+            />
+          </div>
           {selectedConceptId ? (
             <div className="h-[560px]">
               <ObjectPreviewPanel

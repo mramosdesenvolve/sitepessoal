@@ -64,11 +64,14 @@ export function RhizomeGraph({
   // true assim que o usuário mexe manualmente no zoom/pan/arrasta um nó —
   // depois disso, nunca mais reenquadramos automaticamente por cima dele.
   const userInteractedRef = useRef(false);
-  // enquanto no futuro, ignora o próprio zoomToFit disparado por nós no
-  // onZoom (a animação de 500ms dispara onZoom várias vezes durante a
-  // transição — sem essa janela, a 2ª chamada em diante seria confundida
-  // com interação do usuário e travaria os reenquadramentos seguintes).
-  const programmaticZoomUntilRef = useRef(0);
+  // Ignora onZoom disparados por nós programaticamente (zoomToFit anima
+  // por 500ms, cada frame dispara onZoom). Começa em Infinity, não 0: a
+  // própria lib dispara um onZoom inicial no mount, antes do primeiro
+  // fitGraph() rodar — com 0 aqui, esse evento batia a checagem
+  // `Date.now() > programmaticZoomUntilRef.current` e marcava
+  // userInteractedRef como true permanentemente antes mesmo do primeiro
+  // enquadramento automático acontecer.
+  const programmaticZoomUntilRef = useRef(Infinity);
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
@@ -76,6 +79,19 @@ export function RhizomeGraph({
     if (userInteractedRef.current || !fgRef.current) return;
     programmaticZoomUntilRef.current = Date.now() + 650;
     fgRef.current.zoomToFit(500, 56);
+    // zoomToFit centraliza o conjunto de nós no contêiner inteiro — como o
+    // retrato (PortraitPhoto) fica atrás, ancorado à esquerda, sem esse
+    // deslocamento o grafo tende a sobrar todo à direita, sem passar por
+    // cima da foto. Depois do fit assentar, desloca a câmera um pouco
+    // para a direita (o conteúdo aparece deslocado para a esquerda),
+    // avançando sobre a área do retrato.
+    window.setTimeout(() => {
+      if (userInteractedRef.current || !fgRef.current) return;
+      const center = fgRef.current.centerAt();
+      const k = fgRef.current.zoom();
+      programmaticZoomUntilRef.current = Date.now() + 450;
+      fgRef.current.centerAt(center.x + 130 / k, center.y, 400);
+    }, 520);
   }, []);
 
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
@@ -177,7 +193,7 @@ export function RhizomeGraph({
   return (
     <div
       ref={containerRef}
-      className="relative h-[480px] md:h-[560px] w-full"
+      className="relative z-10 h-full w-full"
       aria-label="Grafo de conceitos"
     >
       {size.width > 0 && (
@@ -186,7 +202,10 @@ export function RhizomeGraph({
           width={size.width}
           height={size.height}
           graphData={graphData}
-          backgroundColor={palette.paper}
+          // transparente: o retrato (PortraitPhoto) fica atrás, no mesmo
+          // contêiner — se o canvas pintasse um fundo sólido aqui, cobriria
+          // a foto inteira em vez de deixá-la aparecer por trás do grafo.
+          backgroundColor="rgba(0,0,0,0)"
           nodeCanvasObject={paintNode}
           nodePointerAreaPaint={(
             node: any,
