@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* triplets RGB (sem "rgb()") para suportar o modificador de opacidade
+       do Tailwind — ver tailwind.config.ts */
+    --color-paper: 250 250 246; /* #FAFAF6 — off-white quente */
+    --color-ink: 22 22 15; /* #16160F — quase-preto */
+    --color-accent: 181 101 29; /* #B5651D — ocre/terracota */
+  }
+
+  .dark {
+    --color-paper: 10 10 9; /* #0A0A09 — quase-preto, não #000 puro */
+    --color-ink: 240 238 231; /* #F0EEE7 — quase-branco */
+    --color-accent: 214 138 74; /* #D68A4A — terracota mais claro, contraste no escuro */
+  }
+
+  html {
+    background-color: rgb(var(--color-paper));
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    color: rgb(var(--color-ink));
+    background-color: rgb(var(--color-paper));
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Foco de teclado visível em todos os elementos interativos */
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: rgb(var(--color-accent) / 0.25);
+  }
+}

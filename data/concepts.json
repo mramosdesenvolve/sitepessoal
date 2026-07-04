@@ -1,0 +1,116 @@
+[
+  {
+    "id": "aprendizagem-expandida",
+    "label": "aprendizagem expandida",
+    "description": "Aprendizagem que transborda a escola: acontece em redes, territórios e plataformas.",
+    "objectIds": ["escola-de-escutas", "gramatica-aprendizagens"]
+  },
+  {
+    "id": "curriculo-vivo",
+    "label": "currículo vivo",
+    "description": "Currículo como organismo em revisão permanente, não como documento fixo.",
+    "objectIds": ["curriculo-rizomatico", "curriculo-cultura-digital", "redesenho-instituto", "curso-design-aprendizagem", "estrategia-ia-rede"]
+  },
+  {
+    "id": "formacao-docente",
+    "label": "formação docente",
+    "description": "Professoras e professores como intelectuais públicos e designers de experiência.",
+    "objectIds": ["ia-formacao-docente", "filosofia-educacao-ia", "percursos-abertos"]
+  },
+  {
+    "id": "cultura-brasileira",
+    "label": "cultura brasileira",
+    "description": "O Brasil como laboratório de formas culturais híbridas.",
+    "objectIds": ["tecnologias-imaginario", "machado-algoritmos", "arquivos-do-futuro"]
+  },
+  {
+    "id": "afro-diasporas",
+    "label": "afro-diásporas",
+    "description": "Circuitos afro-diaspóricos de pensamento, estética e tecnologia.",
+    "objectIds": ["jongo-design-sistemas", "casa-atlantica"]
+  },
+  {
+    "id": "literatura",
+    "label": "literatura",
+    "description": "A ficção como instrumento de pesquisa e modo de conhecimento.",
+    "objectIds": ["tecnologias-imaginario", "machado-algoritmos"]
+  },
+  {
+    "id": "musica",
+    "label": "música",
+    "description": "Escuta, ritmo e improvisação como modelos epistemológicos.",
+    "objectIds": ["jongo-design-sistemas", "escuta-como-metodo"]
+  },
+  {
+    "id": "filosofia-da-educacao",
+    "label": "filosofia da educação",
+    "description": "As perguntas fundamentais por trás de qualquer prática pedagógica.",
+    "objectIds": ["curriculo-rizomatico", "escuta-como-metodo", "filosofia-educacao-ia", "assessment-accompaniment", "gramatica-aprendizagens"]
+  },
+  {
+    "id": "inteligencia-artificial",
+    "label": "inteligência artificial",
+    "description": "IA como material de design e questão cultural, não apenas técnica.",
+    "objectIds": ["ia-formacao-docente", "mapa-vivo", "filosofia-educacao-ia", "machado-algoritmos", "estrategia-ia-rede"]
+  },
+  {
+    "id": "design-de-aprendizagem",
+    "label": "design de aprendizagem",
+    "description": "Projetar sistemas, ambientes e percursos onde a aprendizagem acontece.",
+    "objectIds": ["curriculo-rizomatico", "jongo-design-sistemas", "cartas-de-percurso", "mapa-vivo", "curso-design-aprendizagem"]
+  },
+  {
+    "id": "tecnologia-e-imaginacao",
+    "label": "tecnologia e imaginação",
+    "description": "Tecnologias como máquinas de imaginar mundos possíveis.",
+    "objectIds": ["ia-formacao-docente", "tecnologias-imaginario"]
+  },
+  {
+    "id": "infraestruturas-culturais",
+    "label": "infraestruturas culturais",
+    "description": "As estruturas invisíveis que sustentam a produção de cultura.",
+    "objectIds": ["casa-atlantica", "redesenho-instituto", "escola-infraestrutura"]
+  },
+  {
+    "id": "pedagogias-experimentais",
+    "label": "pedagogias experimentais",
+    "description": "Formatos de ensino que ainda não têm nome.",
+    "objectIds": ["cartas-de-percurso", "percursos-abertos", "escola-de-escutas"]
+  },
+  {
+    "id": "memoria-e-arquivo",
+    "label": "memória e arquivo",
+    "description": "O que uma cultura decide guardar — e como o arquivo produz futuro.",
+    "objectIds": ["casa-atlantica", "arquivos-do-futuro"]
+  },
+  {
+    "id": "oralidade",
+    "label": "oralidade",
+    "description": "Saberes que circulam pela voz, pelo corpo e pela conversa.",
+    "objectIds": ["jongo-design-sistemas", "escuta-como-metodo", "escola-de-escutas", "gramatica-aprendizagens"]
+  },
+  {
+    "id": "software-como-cultura",
+    "label": "software como cultura",
+    "description": "Código como artefato cultural, com estética, política e história.",
+    "objectIds": ["curriculo-cultura-digital", "mapa-vivo", "arquivos-do-futuro"]
+  },
+  {
+    "id": "avaliacao-formativa",
+    "label": "avaliação formativa",
+    "description": "Avaliar como quem acompanha um percurso, não como quem julga um produto.",
+    "objectIds": ["cartas-de-percurso", "percursos-abertos", "assessment-accompaniment", "curso-design-aprendizagem"]
+  },
+  {
+    "id": "educacao-publica",
+    "label": "educação pública",
+    "description": "A escola pública como a maior infraestrutura cultural do país.",
+    "objectIds": ["curriculo-cultura-digital", "escola-infraestrutura", "estrategia-ia-rede"]
+  },
+  {
+    "id": "imaginacao-politica",
+    "label": "imaginação política",
+    "description": "A capacidade coletiva de conceber futuros diferentes do presente.",
+    "objectIds": ["tecnologias-imaginario", "escola-infraestrutura"]
+  }
+]
