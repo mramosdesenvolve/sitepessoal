@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { ConceptNode, ContentObject } from "@/types";
 import { useAppStore } from "@/store/useAppStore";
@@ -23,6 +24,7 @@ export function ObjectPreviewPanel({
 }: ObjectPreviewPanelProps) {
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
   const setSelectedConceptId = useAppStore((s) => s.setSelectedConceptId);
+  const headingRef = useRef<HTMLHeadingElement>(null);
 
   const concept = concepts.find((c) => c.id === selectedConceptId);
   const conceptObjects = concept
@@ -31,6 +33,14 @@ export function ObjectPreviewPanel({
         .filter((o) => !matchedObjectIds || matchedObjectIds.has(o.id))
         .sort((a, b) => b.year - a.year)
     : [];
+
+  // Move o foco para o painel assim que um conceito é selecionado — sem
+  // isso, quem navega por teclado (via os botões ocultos do grafo) teria
+  // que tabular por todos os outros conceitos antes de alcançar o painel
+  // que acabou de abrir.
+  useEffect(() => {
+    if (concept) headingRef.current?.focus();
+  }, [concept?.id]);
 
   return (
     <AnimatePresence>
@@ -46,7 +56,13 @@ export function ObjectPreviewPanel({
         >
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="font-serif text-xl">{concept.label}</h2>
+              <h2
+                ref={headingRef}
+                tabIndex={-1}
+                className="font-serif text-xl"
+              >
+                {concept.label}
+              </h2>
               {concept.description && (
                 <p className="mt-1 text-xs text-muted leading-relaxed">
                   {concept.description}

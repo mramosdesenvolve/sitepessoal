@@ -212,6 +212,28 @@ export function RhizomeGraph({
           {concepts.find((c) => c.id === hoveredId)?.description}
         </div>
       )}
+      {/*
+        Os nós do grafo são desenhados em <canvas> — não existe elemento
+        de DOM para focar por teclado. Estes botões dão o mesmo poder de
+        seleção (Tab + Enter) sem poluir o visual: ficam invisíveis até
+        receberem foco, e então aparecem no canto, um de cada vez, como
+        um "skip link" — o rótulo eventualmente visível é sempre o do nó
+        focado no momento.
+      */}
+      {concepts.map((c) => (
+        <button
+          key={c.id}
+          type="button"
+          aria-pressed={selectedConceptId === c.id}
+          title={c.description}
+          onClick={() =>
+            setSelectedConceptId(selectedConceptId === c.id ? null : c.id)
+          }
+          className="absolute w-px h-px -m-px overflow-hidden whitespace-nowrap [clip:rect(0,0,0,0)] focus:w-auto focus:h-auto focus:m-0 focus:overflow-visible focus:whitespace-normal focus:[clip:auto] focus:fixed focus:z-50 focus:top-4 focus:left-4 focus:rounded-full focus:border focus:border-accent focus:bg-paper focus:px-3.5 focus:py-1.5 focus:text-sm focus:text-ink"
+        >
+          {c.label}
+        </button>
+      ))}
     </div>
   );
 }
