@@ -38,26 +38,3 @@ export interface ConceptNode {
   description?: string; // 1 frase, usada em tooltip
   objectIds: string[]; // objetos conectados a este conceito
 }
-
-/** Os três modos de navegação do site — consomem os mesmos dados. */
-export type Mode = "explorar" | "ler" | "construir";
-
-/** Tipos exibidos no modo Ler (leitura editorial). */
-export const READ_TYPES: ObjectType[] = [
-  "artigo",
-  "ensaio",
-  "paper",
-  "livro",
-  "palestra",
-];
-
-/** Tipos exibidos no modo Construir (arquivo de coisas aplicadas). */
-export const BUILD_TYPES: ObjectType[] = [
-  "ferramenta",
-  "software",
-  "curriculo",
-  "metodologia",
-  "consultoria",
-  "projeto",
-  "curso",
-];

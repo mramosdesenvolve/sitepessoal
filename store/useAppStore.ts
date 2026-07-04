@@ -1,7 +1,6 @@
 "use client";
 
 import { create } from "zustand";
-import type { Mode } from "@/types";
 
 export type Theme = "light" | "dark";
 
@@ -10,9 +9,6 @@ export type Theme = "light" | "dark";
  * listas — evita prop drilling entre componentes irmãos.
  */
 interface AppState {
-  mode: Mode;
-  setMode: (mode: Mode) => void;
-
   /** conceito selecionado (clique em nó do grafo ou chip no mobile) */
   selectedConceptId: string | null;
   setSelectedConceptId: (id: string | null) => void;
@@ -31,9 +27,6 @@ interface AppState {
 }
 
 export const useAppStore = create<AppState>((set) => ({
-  mode: "explorar",
-  setMode: (mode) => set({ mode }),
-
   selectedConceptId: null,
   setSelectedConceptId: (selectedConceptId) => set({ selectedConceptId }),
 
