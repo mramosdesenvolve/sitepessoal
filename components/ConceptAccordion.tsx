@@ -5,11 +5,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { ConceptNode, ContentObject } from "@/types";
 import { useAppStore } from "@/store/useAppStore";
 import { MetaChip } from "./TagSystem";
+import { SearchResultsPanel } from "./SearchResultsPanel";
 
 interface ConceptAccordionProps {
   concepts: ConceptNode[];
   objects: ContentObject[];
+  query: string;
   matchedObjectIds: Set<string> | null;
+  /** ids em ordem de relevância — ver lib/useSearch.ts */
+  rankedObjectIds: string[] | null;
 }
 
 /**
@@ -21,7 +25,9 @@ interface ConceptAccordionProps {
 export function ConceptAccordion({
   concepts,
   objects,
+  query,
   matchedObjectIds,
+  rankedObjectIds,
 }: ConceptAccordionProps) {
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
   const setSelectedConceptId = useAppStore((s) => s.setSelectedConceptId);
@@ -110,6 +116,23 @@ export function ConceptAccordion({
               </li>
             )}
           </motion.ul>
+        ) : rankedObjectIds !== null ? (
+          <motion.div
+            key="search-results"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2 }}
+            className="mt-4"
+          >
+            <SearchResultsPanel
+              query={query}
+              objects={objects}
+              concepts={concepts}
+              rankedObjectIds={rankedObjectIds}
+              constrainHeight={false}
+            />
+          </motion.div>
         ) : (
           <motion.p
             key="hint"

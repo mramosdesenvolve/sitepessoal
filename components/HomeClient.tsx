@@ -8,6 +8,7 @@ import { useSearch } from "@/lib/useSearch";
 import { SearchSemanticMock } from "./SearchSemanticMock";
 import { RhizomeGraph } from "./RhizomeGraph";
 import { ObjectPreviewPanel } from "./ObjectPreviewPanel";
+import { SearchResultsPanel } from "./SearchResultsPanel";
 import { ConceptAccordion } from "./ConceptAccordion";
 
 interface HomeClientProps {
@@ -30,7 +31,15 @@ export function HomeClient({
 }: HomeClientProps) {
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
   const setSelectedConceptId = useAppStore((s) => s.setSelectedConceptId);
-  const { matchedObjectIds } = useSearch(objects, concepts);
+  const { query, matchedObjectIds, rankedObjectIds } = useSearch(
+    objects,
+    concepts
+  );
+
+  // busca ativa sem conceito selecionado: sem um conceito para filtrar,
+  // o grafo sozinho só esmaece nós — o painel de resultados é a única
+  // forma de ver os objetos que bateram com a busca.
+  const showSearchResults = !selectedConceptId && rankedObjectIds !== null;
 
   useEffect(() => {
     if (initialConceptId) setSelectedConceptId(initialConceptId);
@@ -46,7 +55,7 @@ export function HomeClient({
         {/* desktop: grafo + painel lateral */}
         <div
           className={`hidden md:grid gap-6 ${
-            selectedConceptId
+            selectedConceptId || showSearchResults
               ? "md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]"
               : "md:grid-cols-1"
           }`}
@@ -56,7 +65,7 @@ export function HomeClient({
             links={links}
             matchedObjectIds={matchedObjectIds}
           />
-          {selectedConceptId && (
+          {selectedConceptId ? (
             <div className="h-[560px]">
               <ObjectPreviewPanel
                 concepts={concepts}
@@ -64,6 +73,17 @@ export function HomeClient({
                 matchedObjectIds={matchedObjectIds}
               />
             </div>
+          ) : (
+            showSearchResults && (
+              <div className="h-[560px]">
+                <SearchResultsPanel
+                  query={query}
+                  objects={objects}
+                  concepts={concepts}
+                  rankedObjectIds={rankedObjectIds ?? []}
+                />
+              </div>
+            )
           )}
         </div>
         {/* mobile: o grafo de força não funciona bem para toque */}
@@ -71,7 +91,9 @@ export function HomeClient({
           <ConceptAccordion
             concepts={concepts}
             objects={objects}
+            query={query}
             matchedObjectIds={matchedObjectIds}
+            rankedObjectIds={rankedObjectIds}
           />
         </div>
       </div>

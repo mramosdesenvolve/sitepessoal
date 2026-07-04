@@ -39,12 +39,18 @@ export function useSearch(objects: ContentObject[], concepts: ConceptNode[]) {
     });
   }, [objects, concepts]);
 
-  /** null = sem busca ativa; Set = ids dos objetos que casam com a query */
-  const matchedObjectIds = useMemo(() => {
+  /** null = sem busca ativa; array = ids em ordem de relevância (Fuse.js) */
+  const rankedObjectIds = useMemo(() => {
     const q = query.trim();
     if (q.length < 2) return null;
-    return new Set(fuse.search(q).map((r) => r.item.id));
+    return fuse.search(q).map((r) => r.item.id);
   }, [fuse, query]);
 
-  return { query, matchedObjectIds };
+  /** mesma informação que rankedObjectIds, como Set — filtragem O(1) */
+  const matchedObjectIds = useMemo(
+    () => (rankedObjectIds ? new Set(rankedObjectIds) : null),
+    [rankedObjectIds]
+  );
+
+  return { query, matchedObjectIds, rankedObjectIds };
 }

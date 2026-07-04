@@ -50,6 +50,7 @@ components/
   RhizomeGraph.tsx      # grafo de força (desktop)
   ConceptNode.tsx       # pintura customizada dos nós no canvas (paletas claro/escuro)
   ObjectPreviewPanel.tsx# painel lateral ao clicar em um nó
+  SearchResultsPanel.tsx# resultados da busca sem conceito selecionado
   ConceptAccordion.tsx  # substituto do grafo no mobile (chips + lista)
   SearchSemanticMock.tsx# campo de busca
   ThemeToggle.tsx       # alterna claro/escuro, persiste em localStorage
@@ -75,7 +76,7 @@ types/
 - **A fonte de verdade das conexões** é o campo `concepts` de cada objeto em `objects.json`; `lib/data.ts` recomputa os `objectIds` dos conceitos para os dois arquivos nunca dessincronizarem.
 - **As arestas do grafo são derivadas**: dois conceitos se conectam quando compartilham ao menos um objeto (peso = nº de objetos em comum).
 - **Busca real no futuro**: o ponto de substituição por embeddings/busca vetorial está comentado em `lib/useSearch.ts` — a interface do hook não muda.
-- **Busca sem conceito selecionado**: hoje, digitar uma query só esmaece os nós não relacionados no grafo — não há uma lista separada de resultados. Ver um objeto que bateu com a busca ainda exige clicar num nó não-esmaecido. É uma lacuna conhecida, não uma decisão definitiva.
+- **Busca sem conceito selecionado**: quando não há um conceito ativo, o `SearchResultsPanel` aparece ao lado do grafo (desktop) ou abaixo dos chips (mobile) listando os objetos que bateram com a busca, ranqueados por relevância do Fuse.js (`rankedObjectIds` em `lib/useSearch.ts`). Ao selecionar um conceito, esse painel some e o `ObjectPreviewPanel`/lista do acordeão volta a filtrar dentro do conceito escolhido.
 - **Mobile**: abaixo do breakpoint `md`, o grafo de força é substituído por chips de conceito roláveis + lista (`ConceptAccordion`), mantendo a mesma lógica de filtro.
 - Se o layout de força ficar genérico, a alternativa prevista é d3-force puro em `<svg>` — os pontos de ajuste estão comentados em `RhizomeGraph.tsx`.
 - **Acessibilidade por teclado**: os nós do grafo são pintados em `<canvas>` e não são focáveis por teclado no desktop; a versão mobile (`ConceptAccordion`) é 100% navegável por teclado.
