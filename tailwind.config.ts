@@ -23,8 +23,12 @@ const config: Config = {
         muted: "rgb(var(--color-ink) / 0.6)",
       },
       fontFamily: {
-        serif: ["var(--font-fraunces)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        // Nomes mantidos por compatibilidade com o resto do código
+        // (font-serif/font-sans já usados em ~10 componentes) — mas as
+        // duas apontam para a mesma família (Space Grotesk, ver
+        // app/layout.tsx), variando só o peso: serif = 700, sans = 400.
+        serif: ["var(--font-display)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       maxWidth: {
         prose: "42rem",

@@ -76,7 +76,7 @@ Alternativa via CLI: `npx vercel`.
 
 ```
 app/
-  layout.tsx            # fontes (Fraunces + Inter), header (nome → /sobre, tema), footer
+  layout.tsx            # fontes (Space Grotesk 700/400), header (nome → /sobre, tema), footer
   page.tsx              # home — carrega os dados e distribui via props (dynamic: dados vêm do banco)
   sobre/page.tsx         # currículo e contato (destino do clique no nome)
   objeto/[id]/page.tsx  # detalhe de um objeto (renderiza MDX se existir em content/, senão o texto do banco)
@@ -143,8 +143,10 @@ Os tokens vivem como variáveis CSS RGB em `app/globals.css` (`--color-paper`, `
 | `paper` | `#FAFAF6` | `#0A0A09` | fundo |
 | `ink` | `#16160F` | `#F0EEE7` | texto principal |
 | `accent` | `#B5651D` | `#D68A4A` | única cor de destaque |
-| serif | Fraunces | | títulos e frases-âncora |
-| sans | Inter | | corpo de texto e UI |
+| `font-serif` (peso 700) | Space Grotesk | | títulos e frases-âncora |
+| `font-sans` (peso 400) | Space Grotesk | | corpo de texto e UI |
+
+A identidade pedia "Neue Augenblick Bold" e "Neue Augenblick" — uma fonte paga/licenciada, sem equivalente gratuito exato. Space Grotesk (Google Fonts) é a grotesca geométrica gratuita mais próxima do mesmo espírito contemporâneo, carregada em `app/layout.tsx` como duas instâncias travadas cada uma num peso único (700 e 400) — assim as classes `font-serif`/`font-sans`, já usadas por todo o código, continuam funcionando sem precisar adicionar `font-bold` em cada título. Se depois vocês conseguirem os arquivos reais da Neue Augenblick, é só trocar esse loader em `app/layout.tsx` por `next/font/local` apontando pros arquivos — nada mais no código muda.
 
 Linhas de 1px, sem sombras pesadas, sem gradientes, grid assimétrico com alinhamento consistente. O `<canvas>` do grafo não lê CSS, então `components/ConceptNode.tsx` mantém as duas paletas em hex puro, escolhidas em `RhizomeGraph.tsx` conforme o tema ativo.
 

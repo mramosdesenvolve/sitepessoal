@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import "./globals.css";
 
-// Serifada editorial para títulos e frases-âncora
-const fraunces = Fraunces({
+// "Neue Augenblick" é uma fonte paga/licenciada, sem alternativa gratuita
+// exata — Space Grotesk é a grotesca geométrica gratuita mais próxima do
+// mesmo espírito contemporâneo. Duas instâncias, cada uma travada num
+// único peso: assim as classes font-serif/font-sans (usadas em todo o
+// código) continuam funcionando sem precisar de font-bold em cada uso —
+// o peso 700 é a única face registrada nessa variável, então é o único
+// que o navegador pode escolher.
+const display = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["opsz"],
+  weight: "700",
+  variable: "--font-display",
 });
 
-// Sans neutra para corpo de texto e UI
-const inter = Inter({
+const body = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: "400",
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
@@ -47,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${fraunces.variable} ${inter.variable}`}
+      className={`${display.variable} ${body.variable}`}
       suppressHydrationWarning
     >
       <head>
