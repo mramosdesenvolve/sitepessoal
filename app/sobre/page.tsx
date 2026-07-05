@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -23,23 +22,7 @@ export default function SobrePage() {
         ← voltar ao grafo
       </Link>
 
-      <div className="mt-8 flex flex-col md:grid md:grid-cols-[auto_minmax(0,5fr)_minmax(0,2fr)] gap-10">
-        {/*
-          Fundo recortado (transparente) — mesmo processo da foto da home:
-          o retrato se adapta a qualquer fundo (claro/escuro) sem precisar
-          de uma versão por tema. Ver README.
-        */}
-        <div className="relative w-40 sm:w-48 md:w-52 aspect-[600/1841] shrink-0 mx-auto md:mx-0">
-          <Image
-            src="/marcos-bio-portrait.png"
-            alt="Marcos Ramos"
-            fill
-            sizes="(min-width: 768px) 208px, 160px"
-            className="object-contain object-top"
-            priority
-          />
-        </div>
-
+      <div className="mt-8 grid gap-10 md:grid-cols-[minmax(0,5fr)_minmax(0,2fr)]">
         <div>
           <h1 className="font-serif text-3xl md:text-4xl leading-tight max-w-2xl">
             Marcos Ramos

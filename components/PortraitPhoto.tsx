@@ -23,6 +23,7 @@ export function PortraitPhoto() {
         sizes="(min-width: 1024px) 320px, 256px"
         className="object-contain object-bottom"
         priority
+        unoptimized
       />
     </div>
   );

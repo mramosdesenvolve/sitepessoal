@@ -64,20 +64,21 @@ export function RhizomeGraph({
   // true assim que o usuário mexe manualmente no zoom/pan/arrasta um nó —
   // depois disso, nunca mais reenquadramos automaticamente por cima dele.
   const userInteractedRef = useRef(false);
-  // Ignora onZoom disparados por nós programaticamente (zoomToFit anima
-  // por 500ms, cada frame dispara onZoom). Começa em Infinity, não 0: a
-  // própria lib dispara um onZoom inicial no mount, antes do primeiro
-  // fitGraph() rodar — com 0 aqui, esse evento batia a checagem
-  // `Date.now() > programmaticZoomUntilRef.current` e marcava
-  // userInteractedRef como true permanentemente antes mesmo do primeiro
-  // enquadramento automático acontecer.
-  const programmaticZoomUntilRef = useRef(Infinity);
+  // Janela única de graça a partir do mount, cobrindo toda a sequência
+  // automática (fits do onEngineStop + a rede de segurança de 2.2s + a
+  // animação do deslocamento de câmera dela). Qualquer onZoom disparado
+  // pela própria lib dentro dessa janela é ignorado — uma janela por
+  // chamada individual (resetada a cada zoomToFit) deixava um intervalo
+  // entre elas onde um onZoom real ou espúrio marcava userInteractedRef
+  // como true cedo demais, cancelando a rede de segurança antes dela
+  // rodar (ela só dispara aos 2.2s, então precisa estar coberta até lá).
+  const mountTimeRef = useRef(Date.now());
+  const AUTO_FIT_GRACE_MS = 3600;
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   const fitGraph = useCallback(() => {
     if (userInteractedRef.current || !fgRef.current) return;
-    programmaticZoomUntilRef.current = Date.now() + 650;
     // padding generoso (não só 56): zoomToFit enquadra pelo raio dos nós,
     // sem contar a largura do rótulo de texto ao lado — com pouco padding,
     // rótulos de nós na borda (ex. "tecnologia e imaginação") cortam.
@@ -93,7 +94,6 @@ export function RhizomeGraph({
       if (userInteractedRef.current || !fgRef.current) return;
       const center = fgRef.current.centerAt();
       const k = fgRef.current.zoom();
-      programmaticZoomUntilRef.current = Date.now() + 450;
       fgRef.current.centerAt(center.x - 110 / k, center.y, 400);
     }, 520);
   }, []);
@@ -251,9 +251,10 @@ export function RhizomeGraph({
             }
           }}
           onZoom={() => {
-            // ignora os eventos disparados pelo nosso próprio zoomToFit —
-            // só marca como "interação do usuário" fora dessa janela
-            if (Date.now() > programmaticZoomUntilRef.current) {
+            // ignora os eventos disparados pela sequência automática (fits
+            // do onEngineStop + rede de segurança) — só conta como
+            // interação do usuário depois que essa janela de graça passa
+            if (Date.now() - mountTimeRef.current > AUTO_FIT_GRACE_MS) {
               userInteractedRef.current = true;
             }
           }}
