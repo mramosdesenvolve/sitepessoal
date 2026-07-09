@@ -21,6 +21,15 @@ const config: Config = {
         "accent-soft": "rgb(var(--color-accent) / 0.1)",
         line: "rgb(var(--color-ink) / 0.12)",
         muted: "rgb(var(--color-ink) / 0.6)",
+        // Identidade "cubista" (retrato → xadrez → rizoma, ver
+        // design_handoff_homepage_acervo/README.md) — cores fixas, sem
+        // variante .dark: essa linguagem visual não tem tema claro/escuro,
+        // ao contrário dos tokens paper/ink/accent acima.
+        "cubist-bg": "#a9a7a2",
+        "cubist-ink": "#22201d",
+        "cubist-muted": "#4a4843",
+        "cubist-accent": "#8c2f1f",
+        "cubist-line": "#8e8b86",
       },
       fontFamily: {
         // Nomes mantidos por compatibilidade com o resto do código
@@ -29,6 +38,8 @@ const config: Config = {
         // app/layout.tsx), variando só o peso: serif = 700, sans = 400.
         serif: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        "cubist-serif": ["var(--font-garamond)", "Georgia", "serif"],
+        "cubist-mono": ["var(--font-plex-mono)", "monospace"],
       },
       maxWidth: {
         prose: "42rem",

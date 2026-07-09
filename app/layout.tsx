@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import Link from "next/link";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import "./globals.css";
 
 // "Neue Augenblick" é uma fonte paga/licenciada, sem alternativa gratuita
@@ -45,6 +43,11 @@ const themeInitScript = `
 })();
 `;
 
+// Layout raiz: só html/body, fontes e o script anti-flash de tema. O
+// cabeçalho/rodapé do site (nome, nav sobre/acervo, toggle de tema) vive
+// em app/(site)/layout.tsx — a home ("/") fica fora desse grupo de rotas
+// de propósito: é uma peça de tela única, sem chrome do site (ver
+// design_handoff_homepage_acervo/README.md).
 export default function RootLayout({
   children,
 }: {
@@ -60,32 +63,7 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="min-h-screen font-sans text-ink bg-paper">
-        <header className="border-b border-line">
-          <div className="mx-auto max-w-6xl px-5 md:px-8 py-4 flex items-center justify-between">
-            <Link
-              href="/sobre"
-              className="font-serif text-lg tracking-tight hover:text-accent transition-colors"
-            >
-              Marcos Ramos
-            </Link>
-            <div className="flex items-center gap-4">
-              <span className="text-xs text-muted hidden sm:block">
-                pesquisa · educação · cultura · tecnologia
-              </span>
-              <ThemeToggle />
-            </div>
-          </div>
-        </header>
         {children}
-        <footer className="border-t border-line mt-16">
-          <div className="mx-auto max-w-6xl px-5 md:px-8 py-6 flex flex-wrap gap-x-8 gap-y-2 items-baseline justify-between text-xs text-muted">
-            <span>© {new Date().getFullYear()} Marcos Ramos</span>
-            <span>
-              versão experimental — conteúdos placeholder, em substituição
-              gradual
-            </span>
-          </div>
-        </footer>
       </body>
     </html>
   );

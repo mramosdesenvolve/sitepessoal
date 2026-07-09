@@ -18,6 +18,8 @@ export interface GraphPalette {
   line: string;
   /** linha entre nós fora da vizinhança/busca ativa — quase invisível */
   lineDim: string;
+  /** font-family dos rótulos no canvas; default Inter se omitido */
+  nodeFont?: string;
 }
 
 /**
@@ -108,7 +110,7 @@ export function drawConceptNode(
 
   // rótulo sempre visível — o grafo é navegação primária, não decoração
   const fontSize = Math.max(11 / globalScale, 2.5);
-  ctx.font = `${fontSize}px Inter, system-ui, sans-serif`;
+  ctx.font = `${fontSize}px ${palette.nodeFont ?? "Inter, system-ui, sans-serif"}`;
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
   ctx.fillStyle = isSelected || isHovered ? palette.accent : palette.ink;

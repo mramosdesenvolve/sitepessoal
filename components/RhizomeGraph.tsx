@@ -11,6 +11,7 @@ import {
   nodeRadius,
   GRAPH_PALETTES,
   type GraphNodeDatum,
+  type GraphPalette,
 } from "./ConceptNode";
 
 // O grafo desenha em <canvas> e depende de window — só carrega no cliente.
@@ -40,6 +41,20 @@ interface RhizomeGraphProps {
   links: ConceptLink[];
   /** null = sem busca ativa; Set = ids de objetos que casam com a busca */
   matchedObjectIds: Set<string> | null;
+  /** sobrepõe a paleta claro/escuro do tema do site — usada na home nova,
+   * que tem identidade visual própria e não segue o ThemeToggle */
+  palette?: GraphPalette;
+  /** padding (px) do zoomToFit — quanto maior, mais "aberto"/afastado o
+   * grafo aparece. Default 96 (valor histórico da home antiga). */
+  zoomPadding?: number;
+  /** deslocamento horizontal (px, em espaço de tela) aplicado após o fit —
+   * herdado da home antiga, onde o retrato ficava ancorado à esquerda e o
+   * grafo precisava se afastar dele. Default 110; passe 0 para centralizar
+   * de verdade (não há mais retrato por baixo no novo layout). */
+  centerOffsetX?: number;
+  /** força de repulsão entre nós — mais negativo = mais espalhado.
+   * Default -260 (valor histórico da home antiga). */
+  chargeStrength?: number;
 }
 
 /**
@@ -57,6 +72,10 @@ export function RhizomeGraph({
   concepts,
   links,
   matchedObjectIds,
+  palette: paletteOverride,
+  zoomPadding = 96,
+  centerOffsetX = 110,
+  chargeStrength = -260,
 }: RhizomeGraphProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const fgRef = useRef<any>(null);
@@ -76,32 +95,42 @@ export function RhizomeGraph({
   const AUTO_FIT_GRACE_MS = 3600;
   const [size, setSize] = useState({ width: 0, height: 0 });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
+  // O grafo só fica visível depois que a sequência automática de
+  // enquadramento (onEngineStop + rede de segurança + o deslocamento de
+  // câmera) já terminou — assim ele aparece direto no lugar final, sem
+  // o usuário ver o "pulo" de um enquadramento para o outro. A física e
+  // os timers de fitGraph continuam rodando normalmente por baixo
+  // (opacity não pausa nada), só a exibição é adiada.
+  const [settled, setSettled] = useState(false);
+  useEffect(() => {
+    const timer = window.setTimeout(() => setSettled(true), AUTO_FIT_GRACE_MS);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   const fitGraph = useCallback(() => {
     if (userInteractedRef.current || !fgRef.current) return;
     // padding generoso (não só 56): zoomToFit enquadra pelo raio dos nós,
     // sem contar a largura do rótulo de texto ao lado — com pouco padding,
     // rótulos de nós na borda (ex. "tecnologia e imaginação") cortam.
-    fgRef.current.zoomToFit(500, 96);
-    // zoomToFit centraliza o conjunto de nós no contêiner inteiro — como o
-    // retrato (PortraitPhoto) fica atrás, ancorado à esquerda, o grafo
-    // tende a espalhar por cima dela. A pedido, o grafo deve ficar mais
-    // ao centro-direita na abertura — ao lado da foto, não sobre ela.
-    // Depois do fit assentar, desloca a câmera para a esquerda (o
-    // conteúdo aparece deslocado para a direita), afastando o grafo da
-    // área do retrato.
+    fgRef.current.zoomToFit(500, zoomPadding);
+    // zoomToFit centraliza o conjunto de nós no contêiner inteiro — na home
+    // antiga, o retrato (PortraitPhoto) ficava atrás, ancorado à esquerda,
+    // e o grafo precisava se afastar dele (centerOffsetX). Se
+    // centerOffsetX for 0 (layout novo, sem retrato por baixo), este passo
+    // é essencialmente um no-op.
+    if (centerOffsetX === 0) return;
     window.setTimeout(() => {
       if (userInteractedRef.current || !fgRef.current) return;
       const center = fgRef.current.centerAt();
       const k = fgRef.current.zoom();
-      fgRef.current.centerAt(center.x - 110 / k, center.y, 400);
+      fgRef.current.centerAt(center.x - centerOffsetX / k, center.y, 400);
     }, 520);
-  }, []);
+  }, [zoomPadding, centerOffsetX]);
 
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
   const setSelectedConceptId = useAppStore((s) => s.setSelectedConceptId);
   const theme = useAppStore((s) => s.theme);
-  const palette = GRAPH_PALETTES[theme];
+  const palette = paletteOverride ?? GRAPH_PALETTES[theme];
 
   // o canvas precisa de dimensões explícitas — medimos o contêiner
   useEffect(() => {
@@ -128,17 +157,20 @@ export function RhizomeGraph({
 
   // ajuste fino das forças para o layout respirar (menos "bola de pelo");
   // callback ref porque o componente carrega de forma assíncrona (dynamic)
-  const handleFgRef = useCallback((fg: any) => {
-    fgRef.current = fg;
-    if (!fg) return;
-    fg.d3Force("charge")?.strength(-260);
-    fg.d3Force("link")?.distance(70);
-    // colisão evita que círculos cubram os rótulos dos vizinhos
-    fg.d3Force(
-      "collide",
-      forceCollide((node: any) => nodeRadius(node.val) + 14)
-    );
-  }, []);
+  const handleFgRef = useCallback(
+    (fg: any) => {
+      fgRef.current = fg;
+      if (!fg) return;
+      fg.d3Force("charge")?.strength(chargeStrength);
+      fg.d3Force("link")?.distance(70);
+      // colisão evita que círculos cubram os rótulos dos vizinhos
+      fg.d3Force(
+        "collide",
+        forceCollide((node: any) => nodeRadius(node.val) + 14)
+      );
+    },
+    [chargeStrength]
+  );
 
   const graphData = useMemo(
     () => ({
@@ -200,6 +232,10 @@ export function RhizomeGraph({
       className="relative z-10 h-full w-full"
       aria-label="Grafo de conceitos"
     >
+      <div
+        className="absolute inset-0 transition-opacity duration-500 ease-out"
+        style={{ opacity: settled ? 1 : 0 }}
+      >
       {size.width > 0 && (
         <ForceGraph2D
           fgRef={handleFgRef}
@@ -268,10 +304,11 @@ export function RhizomeGraph({
       )}
       {/* tooltip do conceito em hover */}
       {hoveredId && (
-        <div className="pointer-events-none absolute bottom-3 left-3 max-w-xs border border-line bg-paper px-3 py-2 text-xs text-muted">
+        <div className="pointer-events-none absolute bottom-3 right-3 max-w-xs border border-line bg-paper px-3 py-2 text-xs text-muted">
           {concepts.find((c) => c.id === hoveredId)?.description}
         </div>
       )}
+      </div>
       {/*
         Os nós do grafo são desenhados em <canvas> — não existe elemento
         de DOM para focar por teclado. Estes botões dão o mesmo poder de

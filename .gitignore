@@ -27,3 +27,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# fontes pessoais brutas (rascunhos/originais) e experimentos de imagem não
+# usados no site — não fazem parte do conteúdo publicado
+/Textos/
+/ciclo_afro.docx
+/marcos-foto-bio.png
+/marcos-foto-bio-night.png
+/marcos-foto-bio-trans.png

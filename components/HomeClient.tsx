@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { ConceptNode, ContentObject } from "@/types";
 import type { ConceptLink } from "@/lib/data";
 import { useAppStore } from "@/store/useAppStore";
@@ -37,6 +37,10 @@ export function HomeClient({
     concepts
   );
 
+  // o grafo só nasce depois que o retrato "chega" (ver PortraitPhoto) —
+  // até lá ele nem existe no DOM, então não há nó focável escondido.
+  const [entranceComplete, setEntranceComplete] = useState(false);
+
   // busca ativa sem conceito selecionado: sem um conceito para filtrar,
   // o grafo sozinho só esmaece nós — o painel de resultados é a única
   // forma de ver os objetos que bateram com a busca.
@@ -62,12 +66,14 @@ export function HomeClient({
           }`}
         >
           <div className="relative h-[480px] md:h-[560px]">
-            <PortraitPhoto />
-            <RhizomeGraph
-              concepts={concepts}
-              links={links}
-              matchedObjectIds={matchedObjectIds}
-            />
+            <PortraitPhoto onEntranceComplete={() => setEntranceComplete(true)} />
+            {entranceComplete && (
+              <RhizomeGraph
+                concepts={concepts}
+                links={links}
+                matchedObjectIds={matchedObjectIds}
+              />
+            )}
           </div>
           {selectedConceptId ? (
             <div className="h-[560px]">

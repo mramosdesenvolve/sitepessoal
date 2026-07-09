@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#e9e6df;font-family:system-ui,sans-serif}
+a{color:inherit}
+a:hover{color:#8c2f1f}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+</style>
+</helmet>
+
+<section class="dv-turn" id="t7">
+<div class="dv-thd"><a class="dv-tid" href="#t7">7</a><span class="dv-tname">Só a cabeça — página na cor do fundo da foto</span></div>
+<div class="dv-opts">
+
+<!-- ============ 7a — SÓ A CABEÇA ============ -->
+<div class="dv-opt" id="7a" data-screen-label="7a Só a cabeça">
+<div class="dv-olabel"><a class="dv-oid" href="#7a">7a</a>A cabeça no centro; o cursor desloca as peças. CLIQUE: o retrato se abre e aparece o Problema 10 de Machado de Assis — jogue 1.Bb5, as pretas respondem, e só o mate certo (2.Rf7# ou 2.Df6#) abre o rizoma. Clique no fundo para voltar.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onScatter }}" onMouseLeave="{{ onScatterLeave }}" onClick="{{ onHeadClick }}" style="position:relative;background:#a9a7a2;color:#22201d;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:36px;right:44px;display:flex;gap:32px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;z-index:8">
+    <a href="#7a" style="text-decoration:none;color:#22201d">acervo</a>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#22201d">contato</a>
+  </div>
+
+  <div data-frag data-rot="-13" style="position:absolute;left:410px;top:90px;width:300px;height:150px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-143px -25px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:1"></div>
+  <div data-frag data-rot="9" style="position:absolute;left:710px;top:90px;width:160px;height:150px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-397px -37px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:1"></div>
+  <div data-frag data-rot="-7" style="position:absolute;left:410px;top:240px;width:110px;height:190px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-112px -167px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:1"></div>
+  <div data-frag data-rot="12" style="position:absolute;left:520px;top:240px;width:170px;height:120px;background-image:url('uploads/IMG_2790.png');background-size:870px 870px;background-position:-247px -255px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:2"></div>
+  <div data-frag data-rot="-16" style="position:absolute;left:690px;top:260px;width:180px;height:130px;background-image:url('uploads/IMG_2790.png');background-size:1075px 1075px;background-position:-546px -326px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:3"></div>
+  <div data-frag data-rot="6" style="position:absolute;left:560px;top:360px;width:140px;height:140px;background-image:url('uploads/IMG_2790.png');background-size:717px 717px;background-position:-294px -273px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:2"></div>
+  <div data-frag data-rot="-10" style="position:absolute;left:700px;top:390px;width:120px;height:160px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-409px -236px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:1"></div>
+  <div data-frag data-rot="14" style="position:absolute;left:540px;top:460px;width:180px;height:110px;background-image:url('uploads/IMG_2790.png');background-size:737px 737px;background-position:-281px -328px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:3"></div>
+  <div data-frag data-rot="-8" style="position:absolute;left:410px;top:430px;width:130px;height:180px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-155px -298px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:1"></div>
+  <div data-frag data-rot="11" style="position:absolute;left:540px;top:570px;width:200px;height:140px;background-image:url('uploads/IMG_2790.png');background-size:614px 614px;background-position:-210px -336px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:2"></div>
+  <div data-frag data-rot="-14" style="position:absolute;left:740px;top:520px;width:130px;height:190px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-372px -322px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .35s ease-out;z-index:1"></div>
+
+  <!-- problema 10 (portão do rizoma) -->
+  <div data-chess ref="{{ chessRef }}" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;transition:opacity .6s ease .3s;z-index:6;display:flex;flex-direction:column;align-items:center;gap:16px;user-select:none">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#22201d;text-align:center">PROBLEMA 10 — POR MACHADO DE ASSIS<br><span style="color:#4a4843">ILUSTRAÇÃO BRASILEIRA, 1877</span></p>
+    <div style="display:grid;grid-template-columns:repeat(8,54px);grid-template-rows:repeat(8,54px);outline:1px solid #55524d">
+      <sc-for list="{{ chessCells }}" as="c" hint-placeholder-count="64">
+        <div onClick="{{ c.onClick }}" style="width:54px;height:54px;display:flex;align-items:center;justify-content:center;font-family:serif;font-size:36px;line-height:1;cursor:pointer;background:{{ c.bg }};color:{{ c.color }};box-shadow:{{ c.ring }};text-shadow:0 0 2px rgba(0,0,0,0.3)">{{ c.glyph }}</div>
+      </sc-for>
+    </div>
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#3a3833;max-width:440px;text-align:center;line-height:1.6">{{ chessMsg }}</p>
+  </div>
+
+  <!-- constelação de temas (nasce no lugar do retrato) -->
+  <div data-web data-rest-stroke="#8e8b86" onMouseOver="{{ onWeb }}" onMouseLeave="{{ onWebReset }}" style="position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .7s ease .25s;z-index:5">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1280 800">
+      <line data-a="edu" data-b="uni" x1="600" y1="170" x2="330" y2="220" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="edu" data-b="esco" x1="600" y1="170" x2="400" y2="380" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="edu" data-b="cul" x1="600" y1="170" x2="760" y2="300" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="edu" data-b="pol" x1="600" y1="170" x2="400" y2="540" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="uni" data-b="esc" x1="330" y1="220" x2="620" y2="420" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="esco" data-b="pol" x1="400" y1="380" x2="400" y2="540" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="mus" data-b="cul" x1="860" y1="180" x2="760" y2="300" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="cul" data-b="esc" x1="760" y1="300" x2="620" y2="420" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="esc" data-b="pol" x1="620" y1="420" x2="400" y2="540" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="esc" data-b="mem" x1="620" y1="420" x2="930" y2="400" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="mus" data-b="mem" x1="860" y1="180" x2="930" y2="400" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="cul" data-b="mem" x1="760" y1="300" x2="930" y2="400" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="pol" data-b="esq" x1="400" y1="540" x2="250" y2="450" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="esco" data-b="esq" x1="400" y1="380" x2="250" y2="450" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="xad" data-b="jaz" x1="880" y1="560" x2="740" y2="610" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="jaz" data-b="esc" x1="740" y1="610" x2="620" y2="420" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+      <line data-a="xad" data-b="pol" x1="880" y1="560" x2="400" y2="540" stroke="#8e8b86" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    </svg>
+    <div data-node="edu" style="position:absolute;left:596px;top:166px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">educação</span></div>
+    <div data-node="uni" style="position:absolute;left:326px;top:216px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">universidades</span></div>
+    <div data-node="esco" style="position:absolute;left:396px;top:376px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">escolas</span></div>
+    <div data-node="mus" style="position:absolute;left:856px;top:176px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">museus</span></div>
+    <div data-node="cul" style="position:absolute;left:756px;top:296px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">cultura</span></div>
+    <div data-node="esc" style="position:absolute;left:616px;top:416px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">escrita</span></div>
+    <div data-node="pol" style="position:absolute;left:396px;top:536px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">política</span></div>
+    <div data-node="mem" style="position:absolute;left:926px;top:396px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">memória</span></div>
+    <div data-node="esq" style="position:absolute;left:246px;top:446px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">esquerda</span></div>
+    <div data-node="xad" style="position:absolute;left:876px;top:556px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">xadrez</span></div>
+    <div data-node="jaz" style="position:absolute;left:736px;top:606px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer"><span style="width:8px;height:8px;background:#22201d;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em">jazz</span></div>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Sugestões: "ajustar os recortes do rosto" · "peças voltam mais devagar" · "as palavras em serifa"</p>
+</section>
+
+<section class="dv-turn" id="t6">
+<div class="dv-thd"><a class="dv-tid" href="#t6">6</a><span class="dv-tname">Retrato composto — aprofundando a referência da colagem de escalas</span></div>
+<div class="dv-opts">
+
+<!-- ============ 6a — RETRATO COMPOSTO ============ -->
+<div class="dv-opt" id="6a" data-screen-label="6a Retrato composto">
+<div class="dv-olabel"><a class="dv-oid" href="#6a">6a</a>Retrato composto — o rosto remontado de recortes em escalas diferentes; passe o mouse para trazer um fragmento à frente; CLIQUE para recompor outro retrato.</div>
+<div class="dv-card" style="width:1280px">
+<div onClick="{{ onRecompose }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:pointer">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;z-index:8">NOME SOBRENOME</div>
+
+  <!-- colagem: recortes do mesmo rosto em escalas distintas -->
+  <div data-alts="635,-143,-25|768,-188,-60|563,-110,-11" style="position:absolute;left:150px;top:100px;width:300px;height:150px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-143px -25px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:1" style-hover="transform:scale(1.05);z-index:6"></div>
+  <div data-alts="635,-397,-37|768,-495,-60|563,-330,-22" style="position:absolute;left:450px;top:100px;width:160px;height:150px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-397px -37px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:1" style-hover="transform:scale(1.05);z-index:6"></div>
+  <div data-alts="635,-112,-167|768,-150,-225|563,-82,-132" style="position:absolute;left:150px;top:250px;width:110px;height:190px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-112px -167px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:1" style-hover="transform:scale(1.05);z-index:6"></div>
+  <div data-alts="870,-247,-255|1075,-315,-331|870,-442,-259" style="position:absolute;left:260px;top:250px;width:170px;height:120px;background-image:url('uploads/IMG_2790.png');background-size:870px 870px;background-position:-247px -255px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:2" style-hover="transform:scale(1.06);z-index:6"></div>
+  <div data-alts="1075,-546,-326|870,-438,-255|1075,-317,-335" style="position:absolute;left:430px;top:270px;width:180px;height:130px;background-image:url('uploads/IMG_2790.png');background-size:1075px 1075px;background-position:-546px -326px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:3" style-hover="transform:scale(1.06);z-index:6"></div>
+  <div data-alts="717,-294,-273|870,-366,-340|614,-240,-222" style="position:absolute;left:300px;top:370px;width:140px;height:140px;background-image:url('uploads/IMG_2790.png');background-size:717px 717px;background-position:-294px -273px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:2" style-hover="transform:scale(1.06);z-index:6"></div>
+  <div data-alts="635,-409,-236|768,-510,-300|563,-352,-198" style="position:absolute;left:440px;top:400px;width:120px;height:160px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-409px -236px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:1" style-hover="transform:scale(1.05);z-index:6"></div>
+  <div data-alts="737,-281,-328|870,-349,-400|614,-216,-264" style="position:absolute;left:280px;top:470px;width:180px;height:110px;background-image:url('uploads/IMG_2790.png');background-size:737px 737px;background-position:-281px -328px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:3" style-hover="transform:scale(1.06);z-index:6"></div>
+  <div data-alts="635,-155,-298|768,-195,-375|563,-127,-253" style="position:absolute;left:150px;top:440px;width:130px;height:180px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-155px -298px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:1" style-hover="transform:scale(1.05);z-index:6"></div>
+  <div data-alts="614,-210,-336|737,-266,-418|512,-160,-270" style="position:absolute;left:280px;top:580px;width:200px;height:140px;background-image:url('uploads/IMG_2790.png');background-size:614px 614px;background-position:-210px -336px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:2" style-hover="transform:scale(1.05);z-index:6"></div>
+  <div data-alts="635,-372,-322|768,-465,-405|563,-319,-275" style="position:absolute;left:480px;top:530px;width:130px;height:190px;background-image:url('uploads/IMG_2790.png');background-size:635px 635px;background-position:-372px -322px;filter:grayscale(1) contrast(1.07);outline:1px solid #f5f2eb;transition:transform .25s ease-out;z-index:1" style-hover="transform:scale(1.05);z-index:6"></div>
+
+  <p style="position:absolute;left:150px;top:742px;margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#6b6459;z-index:8">RETRATO PROVISÓRIO Nº <span data-count>001</span> — CLIQUE PARA RECOMPOR</p>
+
+  <!-- coluna direita: identificação + saída -->
+  <div style="position:absolute;top:106px;left:820px;width:412px;cursor:default">
+    <h1 style="margin:0;font-size:44px;font-weight:400;line-height:1.1">Nome Sobrenome</h1>
+    <p style="margin:22px 0 0;font-size:18px;line-height:1.6;max-width:30ch">Repositório de trabalhos e textos sobre educação e cultura. Uso não comercial.</p>
+    <div style="margin-top:52px;display:flex;flex-direction:column">
+      <a href="#6a" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#161310;padding:13px 0;border-top:1px solid #161310;display:flex;justify-content:space-between"><span>NOTA BIOGRÁFICA</span><span>→</span></a>
+      <a href="#6a" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#161310;padding:13px 0;border-top:1px solid #d8d2c5;display:flex;justify-content:space-between"><span>TRABALHOS</span><span>→</span></a>
+      <a href="#6a" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#161310;padding:13px 0;border-top:1px solid #d8d2c5;display:flex;justify-content:space-between"><span>TEXTOS</span><span>→</span></a>
+      <a href="mailto:nome@dominio.com" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#8c2f1f;padding:13px 0;border-top:1px solid #d8d2c5;border-bottom:1px solid #161310;display:flex;justify-content:space-between"><span>NOME@DOMINIO.COM</span><span>→</span></a>
+    </div>
+    <p style="margin:36px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#6b6459">XADREZ · CHARUTO · JAZZ</p>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Sugestões: "ajustar os recortes do rosto" · "recompor também ao rolar/tempo" · "versão com fichas do acervo entre os recortes"</p>
+</section>
+
+<section class="dv-turn" id="t5">
+<div class="dv-thd"><a class="dv-tid" href="#t5">5</a><span class="dv-tname">Colagem — o retrato como material de trabalho</span></div>
+<div class="dv-opts">
+
+<!-- ============ 5a — RETRATO DESMONTADO ============ -->
+<div class="dv-opt" id="5a" data-screen-label="5a Retrato desmontado">
+<div class="dv-olabel"><a class="dv-oid" href="#5a">5a</a>Retrato desmontado — o rosto em 9 partes deslocadas + 2 repetições; os fragmentos respiram com o cursor.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onDrift }}" onMouseLeave="{{ onDriftLeave }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;z-index:3">NOME SOBRENOME</div>
+
+  <!-- grade 3×3 do retrato, cada parte deslocada -->
+  <div style="position:absolute;left:154px;top:106px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:0px 0px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*8px + -8px), calc(var(--py,0)*6px + -6px)) rotate(-1.5deg);transition:transform .5s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;left:344px;top:106px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:-174px 0px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*-10px + 4px), calc(var(--py,0)*8px + -14px)) rotate(0.8deg);transition:transform .55s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;left:518px;top:106px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:-348px 0px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*12px + 12px), calc(var(--py,0)*-6px + -4px)) rotate(-0.6deg);transition:transform .6s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;left:154px;top:280px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:0px -174px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*-8px + -16px), calc(var(--py,0)*10px + 6px)) rotate(1.2deg);transition:transform .5s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;left:344px;top:280px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:-174px -174px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*6px), calc(var(--py,0)*6px));transition:transform .45s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+  <div style="position:absolute;left:518px;top:280px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:-348px -174px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*14px + 14px), calc(var(--py,0)*-8px + 8px)) rotate(-1.8deg);transition:transform .6s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;left:154px;top:454px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:0px -348px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*-6px + -6px), calc(var(--py,0)*12px + 14px)) rotate(0.6deg);transition:transform .55s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;left:344px;top:454px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:-174px -348px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*8px + 6px), calc(var(--py,0)*8px + 10px)) rotate(-1deg);transition:transform .5s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;left:518px;top:454px;width:174px;height:174px;background-image:url('uploads/IMG_2790.png');background-size:522px 522px;background-position:-348px -348px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*16px + 16px), calc(var(--py,0)*-10px + 18px)) rotate(1.4deg);transition:transform .65s cubic-bezier(.2,.6,.2,1)"></div>
+
+  <!-- repetições -->
+  <div style="position:absolute;left:668px;top:200px;width:190px;height:120px;background-image:url('uploads/IMG_2790.png');background-size:1200px 1200px;background-position:-608px -362px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*-22px), calc(var(--py,0)*16px)) rotate(2deg);transition:transform .4s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+  <div style="position:absolute;left:96px;top:600px;width:200px;height:90px;background-image:url('uploads/IMG_2790.png');background-size:780px 780px;background-position:-281px -340px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*18px), calc(var(--py,0)*-12px)) rotate(-2deg);transition:transform .45s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+
+  <p style="position:absolute;left:154px;top:664px;margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#6b6459">RETRATO DESMONTADO, 2026 — 9 PARTES, 2 REPETIÇÕES</p>
+
+  <!-- coluna direita: identificação + saída -->
+  <div style="position:absolute;top:106px;left:820px;width:412px">
+    <h1 style="margin:0;font-size:44px;font-weight:400;line-height:1.1">Nome Sobrenome</h1>
+    <p style="margin:22px 0 0;font-size:18px;line-height:1.6;max-width:30ch">Repositório de trabalhos e textos sobre educação e cultura. Uso não comercial.</p>
+    <div style="margin-top:52px;display:flex;flex-direction:column">
+      <a href="#5a" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#161310;padding:13px 0;border-top:1px solid #161310;display:flex;justify-content:space-between"><span>NOTA BIOGRÁFICA</span><span>→</span></a>
+      <a href="#5a" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#161310;padding:13px 0;border-top:1px solid #d8d2c5;display:flex;justify-content:space-between"><span>TRABALHOS</span><span>→</span></a>
+      <a href="#5a" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#161310;padding:13px 0;border-top:1px solid #d8d2c5;display:flex;justify-content:space-between"><span>TEXTOS</span><span>→</span></a>
+      <a href="mailto:nome@dominio.com" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-decoration:none;color:#8c2f1f;padding:13px 0;border-top:1px solid #d8d2c5;border-bottom:1px solid #161310;display:flex;justify-content:space-between"><span>NOME@DOMINIO.COM</span><span>→</span></a>
+    </div>
+    <p style="margin:36px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#6b6459">XADREZ · CHARUTO · JAZZ</p>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ 5b — CABEÇA-ARQUIVO ============ -->
+<div class="dv-opt" id="5b" data-screen-label="5b Cabeça-arquivo">
+<div class="dv-olabel"><a class="dv-oid" href="#5b">5b</a>Cabeça-arquivo — o busto embaixo; no lugar do topo da cabeça, fragmentos do retrato misturados às fichas do acervo.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onDrift }}" onMouseLeave="{{ onDriftLeave }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;z-index:3">NOME SOBRENOME — CABEÇA-ARQUIVO</div>
+  <div style="position:absolute;top:40px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459;z-index:3">FIG. 1 — O ACERVO NO LUGAR DA CABEÇA</div>
+
+  <!-- busto (do nariz para baixo) -->
+  <div style="position:absolute;left:450px;top:400px;width:380px;height:330px;background-image:url('uploads/IMG_2790.png');background-size:563px 563px;background-position:-99px -231px;filter:grayscale(1) contrast(1.05)"></div>
+
+  <!-- nuvem: fragmentos do retrato -->
+  <div style="position:absolute;left:430px;top:160px;width:170px;height:90px;background-image:url('uploads/IMG_2790.png');background-size:512px 512px;background-position:-150px -155px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*-24px), calc(var(--py,0)*18px)) rotate(-1.4deg);transition:transform .5s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+  <div style="position:absolute;left:700px;top:118px;width:110px;height:70px;background-image:url('uploads/IMG_2790.png');background-size:1024px 1024px;background-position:-540px -320px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*30px), calc(var(--py,0)*-14px)) rotate(1.8deg);transition:transform .45s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+  <div style="position:absolute;left:552px;top:252px;width:150px;height:80px;background-image:url('uploads/IMG_2790.png');background-size:358px 358px;background-position:-98px -28px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*14px), calc(var(--py,0)*22px)) rotate(0.7deg);transition:transform .55s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+  <div style="position:absolute;left:846px;top:212px;width:130px;height:70px;background-image:url('uploads/IMG_2790.png');background-size:512px 512px;background-position:-185px -230px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*-36px), calc(var(--py,0)*26px)) rotate(-2deg);transition:transform .5s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+  <div style="position:absolute;left:330px;top:262px;width:90px;height:90px;background-image:url('uploads/IMG_2790.png');background-size:614px 614px;background-position:-384px -198px;filter:grayscale(1) contrast(1.06);outline:1px solid #f5f2eb;transform:translate(calc(var(--px,0)*20px), calc(var(--py,0)*-18px)) rotate(1.1deg);transition:transform .6s cubic-bezier(.2,.6,.2,1);z-index:2"></div>
+
+  <!-- nuvem: fichas do acervo -->
+  <div style="position:absolute;left:292px;top:120px;border:1px solid #ddd7c8;background:#f5f2eb;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:#161310;transform:translate(calc(var(--px,0)*36px), calc(var(--py,0)*22px)) rotate(-1deg);transition:transform .5s cubic-bezier(.2,.6,.2,1)">REG. 001 — <span style="font-family:'EB Garamond',Georgia,serif;font-size:13px;font-style:italic">A escola como forma</span>, 2026</div>
+  <div style="position:absolute;left:618px;top:82px;border:1px solid #ddd7c8;background:#f5f2eb;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:#161310;transform:translate(calc(var(--px,0)*-28px), calc(var(--py,0)*30px)) rotate(0.9deg);transition:transform .55s cubic-bezier(.2,.6,.2,1)">REG. 004 — FORMAÇÃO DOCENTE, 2024–25</div>
+  <div style="position:absolute;left:880px;top:130px;border:1px solid #ddd7c8;background:#f5f2eb;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:#161310;transform:translate(calc(var(--px,0)*44px), calc(var(--py,0)*-16px)) rotate(-1.6deg);transition:transform .45s cubic-bezier(.2,.6,.2,1)">REG. 006 — MUSEU DE ARTE, 2023</div>
+  <div style="position:absolute;left:906px;top:316px;border:1px solid #ddd7c8;background:#f5f2eb;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:#161310;transform:translate(calc(var(--px,0)*-40px), calc(var(--py,0)*-24px)) rotate(1.3deg);transition:transform .5s cubic-bezier(.2,.6,.2,1)">S/D — XADREZ, CHARUTO, JAZZ</div>
+  <div style="position:absolute;left:352px;top:366px;border:1px solid #ddd7c8;background:#f5f2eb;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.08em;color:#161310;transform:translate(calc(var(--px,0)*26px), calc(var(--py,0)*34px)) rotate(-0.8deg);transition:transform .6s cubic-bezier(.2,.6,.2,1)">HARVARD / UNIV. NACIONAL DA COLÔMBIA</div>
+  <div style="position:absolute;left:772px;top:330px;border:1px solid #8c2f1f;background:#f5f2eb;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.12em;color:#8c2f1f;transform:translate(calc(var(--px,0)*-20px), calc(var(--py,0)*40px)) rotate(1.7deg);transition:transform .4s cubic-bezier(.2,.6,.2,1)">DE ESQUERDA</div>
+
+  <div style="position:absolute;left:48px;right:48px;bottom:36px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;z-index:3;background:#f5f2eb">
+    <div style="display:flex;gap:28px">
+      <a href="#5b" style="text-decoration:none;color:#161310">NOTA BIOGRÁFICA</a>
+      <a href="#5b" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#5b" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Sugestões: "ajustar os recortes do rosto em <a class="dv-oid" href="#5a">5a</a>" · "no <a class="dv-oid" href="#5b">5b</a>, fichas viram links reais" · "misturar <a class="dv-oid" href="#5a">5a</a> com a censura de <a class="dv-oid" href="#2a">2a</a>"</p>
+</section>
+
+<section class="dv-turn" id="t4">
+<div class="dv-thd"><a class="dv-tid" href="#t4">4</a><span class="dv-tname">Constelação / rizoma — temas, textos e interesses como rede</span></div>
+<div class="dv-opts">
+
+<!-- ============ 4a — CONSTELAÇÃO ============ -->
+<div class="dv-opt" id="4a" data-screen-label="4a Constelação">
+<div class="dv-olabel"><a class="dv-oid" href="#4a">4a</a>Constelação — cada registro e cada tema é um nó; tocar um nó acende sua constelação e apaga o resto. Sem centro.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseOver="{{ onWeb }}" onMouseLeave="{{ onWebReset }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;z-index:2">NOME SOBRENOME — CONSTELAÇÃO</div>
+  <div style="position:absolute;top:40px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459;z-index:2">TOQUE OS PONTOS</div>
+
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1280 800">
+    <line data-a="t1" data-b="edu" x1="180" y1="180" x2="430" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t1" data-b="esc" x1="180" y1="180" x2="620" y2="480" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t1" data-b="pol" x1="180" y1="180" x2="300" y2="560" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t2" data-b="mus" x1="1060" y1="160" x2="850" y2="260" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t2" data-b="esc" x1="1060" y1="160" x2="620" y2="480" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t3" data-b="edu" x1="150" y1="420" x2="430" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t3" data-b="esc" x1="150" y1="420" x2="620" y2="480" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t3" data-b="pol" x1="150" y1="420" x2="300" y2="560" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t4" data-b="esc" x1="760" y1="650" x2="620" y2="480" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w1" data-b="edu" x1="620" y1="150" x2="430" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w2" data-b="mus" x1="950" y1="390" x2="850" y2="260" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w2" data-b="edu" x1="950" y1="390" x2="430" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w3" data-b="edu" x1="380" y1="680" x2="430" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w3" data-b="pol" x1="380" y1="680" x2="300" y2="560" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w4" data-b="esc" x1="800" y1="600" x2="620" y2="480" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w4" data-b="edu" x1="800" y1="600" x2="430" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="lz" data-b="jog" x1="1080" y1="650" x2="1020" y2="560" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="jog" data-b="esc" x1="1020" y1="560" x2="620" y2="480" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+  </svg>
+
+  <!-- temas -->
+  <div data-node="edu" style="position:absolute;left:426px;top:296px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">EDUCAÇÃO</span></div>
+  <div data-node="mus" style="position:absolute;left:846px;top:256px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">MUSEUS</span></div>
+  <div data-node="esc" style="position:absolute;left:616px;top:476px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">ESCRITA</span></div>
+  <div data-node="pol" style="position:absolute;left:296px;top:556px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">POLÍTICA</span></div>
+  <div data-node="jog" style="position:absolute;left:1016px;top:556px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">JOGO / IMPROVISO</span></div>
+
+  <!-- registros -->
+  <div data-node="t1" style="position:absolute;left:176px;top:176px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;font-style:italic;line-height:1.25;max-width:220px">A escola como forma <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-style:normal;color:#6b6459">2026</span></span></div>
+  <div data-node="t2" style="position:absolute;left:1056px;top:156px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;font-style:italic;line-height:1.25;max-width:180px">O museu depois do público <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-style:normal;color:#6b6459">2025</span></span></div>
+  <div data-node="t3" style="position:absolute;left:146px;top:416px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;font-style:italic;line-height:1.25;max-width:220px">Contra a pedagogia da urgência <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-style:normal;color:#6b6459">2025</span></span></div>
+  <div data-node="t4" style="position:absolute;left:756px;top:646px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;font-style:italic;line-height:1.25;max-width:240px">Ler devagar em tempos de plataforma <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-style:normal;color:#6b6459">2024</span></span></div>
+  <div data-node="w1" style="position:absolute;left:616px;top:146px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;line-height:1.25;max-width:220px">Programa de formação docente <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">2024–25</span></span></div>
+  <div data-node="w2" style="position:absolute;left:946px;top:386px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;line-height:1.25;max-width:220px">Plano educativo, museu de arte <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">2023</span></span></div>
+  <div data-node="w3" style="position:absolute;left:376px;top:676px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;line-height:1.25;max-width:280px">Revisão de projeto político-pedagógico <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">2022–23</span></span></div>
+  <div data-node="w4" style="position:absolute;left:796px;top:596px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:19px;line-height:1.25;max-width:180px">Curso de escrita ensaística <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">2021</span></span></div>
+  <div data-node="lz" style="position:absolute;left:1076px;top:646px;display:flex;align-items:flex-start;gap:9px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%;margin-top:6px;flex:none"></span><span style="font-size:18px;font-style:italic;line-height:1.25;max-width:140px">xadrez, charuto, jazz</span></div>
+
+  <div style="position:absolute;left:48px;right:48px;bottom:36px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;z-index:2;background:#f5f2eb">
+    <div style="display:flex;gap:28px">
+      <a href="#4a" style="text-decoration:none;color:#161310">ÍNDICE COMPLETO</a>
+      <a href="#4a" style="text-decoration:none;color:#161310">NOTA</a>
+      <a href="#4a" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#4a" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ 4b — RIZOMA INDEXADO ============ -->
+<div class="dv-opt" id="4b" data-screen-label="4b Rizoma indexado">
+<div class="dv-olabel"><a class="dv-oid" href="#4b">4b</a>Rizoma indexado — índice e mapa acoplados: passar o mouse numa entrada acende seus vínculos no mapa, e vice-versa.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseOver="{{ onWeb }}" onMouseLeave="{{ onWebReset }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;z-index:2">NOME SOBRENOME — REPOSITÓRIO</div>
+  <div style="position:absolute;top:40px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459;z-index:2">ÍNDICE ↔ RIZOMA</div>
+
+  <!-- índice -->
+  <div style="position:absolute;top:110px;left:48px;width:380px;z-index:2;display:flex;flex-direction:column">
+    <div data-node="t1" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">001</span><a href="#4b" style="font-size:17px;font-style:italic;text-decoration:none">A escola como forma</a><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2026</span></div>
+    <div data-node="t2" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">002</span><a href="#4b" style="font-size:17px;font-style:italic;text-decoration:none">O museu depois do público</a><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2025</span></div>
+    <div data-node="t3" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">003</span><a href="#4b" style="font-size:17px;font-style:italic;text-decoration:none">Contra a pedagogia da urgência</a><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2025</span></div>
+    <div data-node="w1" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">004</span><span style="font-size:17px">Programa de formação docente</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2024–25</span></div>
+    <div data-node="t4" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">005</span><a href="#4b" style="font-size:17px;font-style:italic;text-decoration:none">Ler devagar em tempos de plataforma</a><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2024</span></div>
+    <div data-node="w2" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">006</span><span style="font-size:17px">Plano educativo, museu de arte</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2023</span></div>
+    <div data-node="w3" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">007</span><span style="font-size:17px">Revisão de projeto político-pedagógico</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2022–23</span></div>
+    <div data-node="w4" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">008</span><span style="font-size:17px">Curso de escrita ensaística</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2021</span></div>
+    <div data-node="lz" style="display:grid;grid-template-columns:44px 1fr auto;column-gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid #ddd7c8;transition:opacity .2s;cursor:pointer"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">S/D</span><span style="font-size:17px;font-style:italic">xadrez, charuto, jazz</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">—</span></div>
+  </div>
+
+  <!-- rizoma -->
+  <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 1280 800">
+    <line data-a="t1" data-b="edu" x1="560" y1="170" x2="700" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t1" data-b="esc" x1="560" y1="170" x2="830" y2="470" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t1" data-b="pol" x1="560" y1="170" x2="620" y2="560" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t2" data-b="mus" x1="1160" y1="150" x2="1000" y2="240" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t2" data-b="esc" x1="1160" y1="150" x2="830" y2="470" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t3" data-b="edu" x1="520" y1="400" x2="700" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t3" data-b="esc" x1="520" y1="400" x2="830" y2="470" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t3" data-b="pol" x1="520" y1="400" x2="620" y2="560" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="t4" data-b="esc" x1="900" y1="640" x2="830" y2="470" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w1" data-b="edu" x1="840" y1="140" x2="700" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w2" data-b="mus" x1="1080" y1="380" x2="1000" y2="240" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w2" data-b="edu" x1="1080" y1="380" x2="700" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w3" data-b="edu" x1="640" y1="680" x2="700" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w3" data-b="pol" x1="640" y1="680" x2="620" y2="560" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w4" data-b="esc" x1="960" y1="570" x2="830" y2="470" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="w4" data-b="edu" x1="960" y1="570" x2="700" y2="300" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="lz" data-b="jog" x1="1160" y1="650" x2="1120" y2="520" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+    <line data-a="jog" data-b="esc" x1="1120" y1="520" x2="830" y2="470" stroke="#cfc8b8" stroke-width="1" style="transition:stroke .2s,opacity .2s"></line>
+  </svg>
+
+  <!-- nós do mapa: temas com rótulo, registros como pontos numerados -->
+  <div data-node="edu" style="position:absolute;left:696px;top:296px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">EDUCAÇÃO</span></div>
+  <div data-node="mus" style="position:absolute;left:996px;top:236px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">MUSEUS</span></div>
+  <div data-node="esc" style="position:absolute;left:826px;top:466px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">ESCRITA</span></div>
+  <div data-node="pol" style="position:absolute;left:616px;top:556px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">POLÍTICA</span></div>
+  <div data-node="jog" style="position:absolute;left:1116px;top:516px;display:flex;align-items:center;gap:8px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:8px;height:8px;background:#161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em">JOGO / IMPROVISO</span></div>
+
+  <div data-node="t1" style="position:absolute;left:556px;top:166px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">001</span></div>
+  <div data-node="t2" style="position:absolute;left:1156px;top:146px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">002</span></div>
+  <div data-node="t3" style="position:absolute;left:516px;top:396px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">003</span></div>
+  <div data-node="w1" style="position:absolute;left:836px;top:136px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">004</span></div>
+  <div data-node="t4" style="position:absolute;left:896px;top:636px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">005</span></div>
+  <div data-node="w2" style="position:absolute;left:1076px;top:376px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">006</span></div>
+  <div data-node="w3" style="position:absolute;left:636px;top:676px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">007</span></div>
+  <div data-node="w4" style="position:absolute;left:956px;top:566px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">008</span></div>
+  <div data-node="lz" style="position:absolute;left:1156px;top:646px;display:flex;align-items:center;gap:7px;transition:opacity .2s;cursor:pointer;z-index:2"><span style="width:7px;height:7px;border:1.5px solid #161310;border-radius:50%"></span><span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b6459">S/D</span></div>
+
+  <div style="position:absolute;left:48px;right:48px;bottom:36px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;z-index:2;background:#f5f2eb">
+    <div style="display:flex;gap:28px">
+      <a href="#4b" style="text-decoration:none;color:#161310">NOTA BIOGRÁFICA</a>
+      <a href="#4b" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#4b" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Sugestões: "no <a class="dv-oid" href="#4a">4a</a>, nós derivam como em <a class="dv-oid" href="#2c">2c</a>" · "acender também vizinhos de 2º grau" · "levar <a class="dv-oid" href="#4b">4b</a> adiante com conteúdo real"</p>
+</section>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">Repositório não comercial — riffs em <a class="dv-oid" href="#2c">2c</a></span></div>
+<div class="dv-opts">
+
+<!-- ============ 3a — DEPÓSITO ============ -->
+<div class="dv-opt" id="3a" data-screen-label="3a Depósito">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Depósito — o site como acervo: fichas de registro encostadas como objetos guardados; o cursor move o olhar entre elas.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onDrift }}" onMouseLeave="{{ onDriftLeave }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em">NOME SOBRENOME — ACERVO</div>
+  <div style="position:absolute;top:40px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459">DEPÓSITO Nº 1 / ACESSO LIVRE / USO NÃO COMERCIAL</div>
+
+  <div style="position:absolute;top:110px;left:100px;width:290px;transform:rotate(-1.2deg) translate(calc(var(--px,0)*22px), calc(var(--py,0)*14px));transition:transform .5s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">REG. 001 / TEXTO</p>
+    <p style="margin:6px 0 0;font-size:22px;font-style:italic;line-height:1.3"><a href="#3a" style="text-decoration:none">A escola como forma</a></p>
+    <p style="margin:6px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#6b6459">FOLHA DE S.PAULO, 2026</p>
+  </div>
+
+  <div style="position:absolute;top:130px;left:520px;width:300px;transform:rotate(0.8deg) translate(calc(var(--px,0)*-34px), calc(var(--py,0)*26px));transition:transform .55s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">REG. 002 / TRABALHO</p>
+    <p style="margin:6px 0 0;font-size:22px;line-height:1.3">Programa de formação docente</p>
+    <p style="margin:6px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#6b6459">UNIVERSIDADE FEDERAL, 2024–25</p>
+  </div>
+
+  <div style="position:absolute;top:230px;left:920px;width:270px;transform:rotate(-0.6deg) translate(calc(var(--px,0)*40px), calc(var(--py,0)*-18px));transition:transform .6s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">REG. 003 / TEXTO</p>
+    <p style="margin:6px 0 0;font-size:22px;font-style:italic;line-height:1.3"><a href="#3a" style="text-decoration:none">O museu depois do público</a></p>
+    <p style="margin:6px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#6b6459">FOLHA DE S.PAULO, 2025</p>
+  </div>
+
+  <div style="position:absolute;top:310px;left:280px;width:300px;transform:rotate(1.4deg) translate(calc(var(--px,0)*-18px), calc(var(--py,0)*-30px));transition:transform .45s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">REG. 004 / TRABALHO</p>
+    <p style="margin:6px 0 0;font-size:22px;line-height:1.3">Plano educativo, museu de arte</p>
+    <p style="margin:6px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#6b6459">MEDIAÇÃO E PÚBLICOS, 2023</p>
+  </div>
+
+  <div style="position:absolute;top:400px;left:700px;width:300px;transform:rotate(-1.8deg) translate(calc(var(--px,0)*28px), calc(var(--py,0)*36px));transition:transform .5s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">REG. 005 / TRABALHO</p>
+    <p style="margin:6px 0 0;font-size:22px;line-height:1.3">Revisão de projeto político-pedagógico</p>
+    <p style="margin:6px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#6b6459">ESCOLA, 2022–23</p>
+  </div>
+
+  <div style="position:absolute;top:480px;left:120px;width:360px;transform:rotate(0.5deg) translate(calc(var(--px,0)*14px), calc(var(--py,0)*20px));transition:transform .65s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">REG. 000 / NOTA BIOGRÁFICA</p>
+    <p style="margin:6px 0 0;font-size:17px;line-height:1.6">Doutor em Letras. Trabalhador da educação. Passagens por Harvard e pela Universidade Nacional da Colômbia. Articulista da Folha de S.Paulo.</p>
+  </div>
+
+  <div style="position:absolute;top:560px;left:900px;width:260px;transform:rotate(1deg) translate(calc(var(--px,0)*-42px), calc(var(--py,0)*-14px));transition:transform .55s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">REG. 006 / TEXTO</p>
+    <p style="margin:6px 0 0;font-size:22px;font-style:italic;line-height:1.3"><a href="#3a" style="text-decoration:none">Contra a pedagogia da urgência</a></p>
+    <p style="margin:6px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#6b6459">NEWSLETTER, 2025</p>
+  </div>
+
+  <div style="position:absolute;top:650px;left:560px;width:220px;transform:rotate(-0.8deg) translate(calc(var(--px,0)*20px), calc(var(--py,0)*10px));transition:transform .4s cubic-bezier(.2,.6,.2,1)">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">S/D / SEM CATEGORIA</p>
+    <p style="margin:6px 0 0;font-size:19px;font-style:italic">xadrez, charuto, jazz</p>
+  </div>
+
+  <div style="position:absolute;top:150px;left:1130px;transform:translate(calc(var(--px,0)*-52px), calc(var(--py,0)*30px));transition:transform .5s cubic-bezier(.2,.6,.2,1)">
+    <div style="width:46px;height:46px;background:#161310"></div>
+    <p style="margin:8px 0 0;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.1em;color:#6b6459">PEÇA SEM<br>REGISTRO</p>
+  </div>
+
+  <div style="position:absolute;left:48px;right:48px;bottom:36px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em">
+    <div style="display:flex;gap:28px">
+      <a href="#3a" style="text-decoration:none;color:#161310">ÍNDICE COMPLETO</a>
+      <a href="#3a" style="text-decoration:none;color:#161310">NOTA</a>
+      <a href="#3a" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#3a" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ 3b — ESCAVAÇÃO ============ -->
+<div class="dv-opt" id="3b" data-screen-label="3b Escavação">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Escavação — a tela abre quase vazia; os registros ganham corpo por proximidade do cursor. Coordenadas como instrumento.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onDig }}" onMouseLeave="{{ onDigLeave }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em">NOME SOBRENOME — SÍTIO / REPOSITÓRIO</div>
+  <div data-readout style="position:absolute;top:40px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459">X ---- · Y ----</div>
+
+  <div data-prox style="position:absolute;top:150px;left:180px;width:280px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ 001 / TEXTO</p>
+    <p style="margin:5px 0 0;font-size:21px;font-style:italic;line-height:1.3"><a href="#3b" style="text-decoration:none">A escola como forma</a> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">FOLHA, 2026</span></p>
+  </div>
+
+  <div data-prox style="position:absolute;top:120px;left:720px;width:300px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ 002 / TRABALHO</p>
+    <p style="margin:5px 0 0;font-size:21px;line-height:1.3">Programa de formação docente <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2024–25</span></p>
+  </div>
+
+  <div data-prox style="position:absolute;top:290px;left:460px;width:300px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ 000 / NOTA BIOGRÁFICA</p>
+    <p style="margin:5px 0 0;font-size:16px;line-height:1.55">Doutor em Letras. Trabalhador da educação. Harvard; Universidade Nacional da Colômbia. Folha de S.Paulo.</p>
+  </div>
+
+  <div data-prox style="position:absolute;top:300px;left:1000px;width:230px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ 003 / TEXTO</p>
+    <p style="margin:5px 0 0;font-size:21px;font-style:italic;line-height:1.3"><a href="#3b" style="text-decoration:none">O museu depois do público</a> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2025</span></p>
+  </div>
+
+  <div data-prox style="position:absolute;top:440px;left:160px;width:300px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ 004 / TRABALHO</p>
+    <p style="margin:5px 0 0;font-size:21px;line-height:1.3">Plano educativo, museu de arte <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2023</span></p>
+  </div>
+
+  <div data-prox style="position:absolute;top:470px;left:640px;width:320px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ 005 / TRABALHO</p>
+    <p style="margin:5px 0 0;font-size:21px;line-height:1.3">Revisão de projeto político-pedagógico <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2022–23</span></p>
+  </div>
+
+  <div data-prox style="position:absolute;top:590px;left:380px;width:280px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ 006 / TEXTO</p>
+    <p style="margin:5px 0 0;font-size:21px;font-style:italic;line-height:1.3"><a href="#3b" style="text-decoration:none">Contra a pedagogia da urgência</a> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">2025</span></p>
+  </div>
+
+  <div data-prox style="position:absolute;top:620px;left:960px;width:220px;opacity:0.07;transition:opacity .25s">
+    <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6b6459">+ S/D</p>
+    <p style="margin:5px 0 0;font-size:19px;font-style:italic">xadrez, charuto, jazz</p>
+  </div>
+
+  <div style="position:absolute;left:48px;right:48px;bottom:36px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em">
+    <div style="display:flex;gap:28px">
+      <a href="#3b" style="text-decoration:none;color:#161310">ÍNDICE COMPLETO</a>
+      <a href="#3b" style="text-decoration:none;color:#161310">NOTA</a>
+      <a href="#3b" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#3b" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ 3c — CRONOLOGIA-LENTE ============ -->
+<div class="dv-opt" id="3c" data-screen-label="3c Cronologia-lente">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Cronologia-lente — o acervo inteiro plotado num eixo de tempo; o cursor amplia o registro mais próximo, como lupa de leitura.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onLens }}" onMouseLeave="{{ onLensLeave }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em">NOME SOBRENOME — CRONOLOGIA DO ACERVO</div>
+  <div style="position:absolute;top:40px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459">2019 — 2026 / LEIA COM A LUPA</div>
+
+  <div style="position:absolute;top:110px;bottom:110px;left:200px;width:1px;background:#161310"></div>
+
+  <div data-lens style="position:absolute;top:120px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2026</span><a href="#3c" style="font-style:italic;text-decoration:none">A escola como forma</a> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TEXTO, FOLHA</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:190px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2025</span><a href="#3c" style="font-style:italic;text-decoration:none">O museu depois do público</a> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TEXTO, FOLHA</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:260px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2025</span><a href="#3c" style="font-style:italic;text-decoration:none">Contra a pedagogia da urgência</a> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TEXTO, NEWSLETTER</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:330px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2024</span>Programa de formação docente <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TRABALHO, UNIV. FEDERAL</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:400px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2024</span><a href="#3c" style="font-style:italic;text-decoration:none">Ler devagar em tempos de plataforma</a> <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TEXTO, NEWSLETTER</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:470px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2023</span>Plano educativo, museu de arte <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TRABALHO</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:540px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2022</span>Revisão de projeto político-pedagógico <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TRABALHO, ESCOLA</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:610px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2021</span>Curso de escrita ensaística <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ TRABALHO, INST. CULTURAL</span></p>
+  </div>
+  <div data-lens style="position:absolute;top:680px;left:240px;opacity:0.45;transform-origin:left center;transition:transform .25s,opacity .25s">
+    <p style="margin:0;font-size:20px;line-height:1.3"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-right:16px;color:#6b6459">2019</span>Doutorado em Letras <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b6459">/ NOTA BIOGRÁFICA</span></p>
+  </div>
+
+  <div style="position:absolute;left:48px;right:48px;bottom:36px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;background:#f5f2eb">
+    <div style="display:flex;gap:28px">
+      <a href="#3c" style="text-decoration:none;color:#161310">ÍNDICE COMPLETO</a>
+      <a href="#3c" style="text-decoration:none;color:#161310">NOTA</a>
+      <a href="#3c" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#3c" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Sugestões: "no <a class="dv-oid" href="#3b">3b</a>, o que já foi escavado permanece visível" · "misturar <a class="dv-oid" href="#3a">3a</a> com a censura de <a class="dv-oid" href="#2a">2a</a>" · "levar <a class="dv-oid" href="#3c">3c</a> adiante com datas reais"</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Peça interativa em tela cheia — três mecânicas</span></div>
+<div class="dv-opts">
+
+<!-- ============ 2a — APAGAMENTO ============ -->
+<div class="dv-opt" id="2a" data-screen-label="2a Apagamento">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Apagamento — documento censurado; o cursor é luz. O revelado volta em carmim. Passe o mouse sobre o texto.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onReveal }}" onMouseLeave="{{ onRevealLeave }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;padding:56px 64px;box-sizing:border-box;font-family:'EB Garamond',Georgia,serif;cursor:crosshair;overflow:hidden">
+
+  <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459">
+    <span>DOCUMENTO 01 / 01</span>
+    <span>LEIA COM O CURSOR</span>
+  </div>
+
+  <!-- camada base: texto com barras -->
+  <p style="margin:120px 0 0;font-size:30px;line-height:1.75;max-width:34em;font-weight:400">Meu nome é <span style="background:#161310;color:transparent">Nome Sobrenome</span>. Sou doutor em Letras, trabalhador da educação. Ensinei em <span style="background:#161310;color:transparent">Harvard</span> e na <span style="background:#161310;color:transparent">Universidade Nacional da Colômbia</span>. Escrevo na <span style="background:#161310;color:transparent">Folha de S.Paulo</span> sobre o que as instituições preferem não dizer. Trabalho com universidades, escolas e museus — da concepção de um projeto às ferramentas que o fazem existir. Sou de <span style="background:#161310;color:transparent">esquerda</span> e não pretendo suavizar isso. Jogo xadrez, fumo charuto, escuto jazz.</p>
+
+  <!-- camada revelada: idêntica, mascarada pelo cursor -->
+  <div style="position:absolute;inset:0;padding:56px 64px;box-sizing:border-box;background:#f5f2eb;pointer-events:none;-webkit-mask-image:radial-gradient(circle 150px at var(--mx,-500px) var(--my,-500px), black 0 55%, transparent 100%);mask-image:radial-gradient(circle 150px at var(--mx,-500px) var(--my,-500px), black 0 55%, transparent 100%)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459;visibility:hidden">DOCUMENTO 01 / 01</div>
+    <p style="margin:120px 0 0;font-size:30px;line-height:1.75;max-width:34em;font-weight:400">Meu nome é <span style="color:#8c2f1f">Nome Sobrenome</span>. Sou doutor em Letras, trabalhador da educação. Ensinei em <span style="color:#8c2f1f">Harvard</span> e na <span style="color:#8c2f1f">Universidade Nacional da Colômbia</span>. Escrevo na <span style="color:#8c2f1f">Folha de S.Paulo</span> sobre o que as instituições preferem não dizer. Trabalho com universidades, escolas e museus — da concepção de um projeto às ferramentas que o fazem existir. Sou de <span style="color:#8c2f1f">esquerda</span> e não pretendo suavizar isso. Jogo xadrez, fumo charuto, escuto jazz.</p>
+  </div>
+
+  <!-- saída institucional -->
+  <div style="position:absolute;left:64px;right:64px;bottom:40px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em">
+    <div style="display:flex;gap:28px">
+      <a href="#2a" style="text-decoration:none;color:#161310">NOTA BIOGRÁFICA</a>
+      <a href="#2a" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#2a" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ 2b — TABULEIRO ============ -->
+<div class="dv-opt" id="2b" data-screen-label="2b Tabuleiro">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Tabuleiro como partitura — 8×5 casas; o conteúdo só existe onde o cursor pisa. Estrutura fixa, leitura improvisada.</div>
+<div class="dv-card" style="width:1280px">
+<div style="background:#f5f2eb;color:#161310;height:800px;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(5,1fr);font-family:'EB Garamond',Georgia,serif">
+
+  <!-- linha 1 -->
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#161310">NOME<br>SOBRENOME</div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-size:19px;line-height:1.4;color:transparent;transition:color .18s" style-hover="color:#161310">da concepção</div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-size:19px;line-height:1.4;color:transparent;transition:color .18s" style-hover="color:#161310">de um projeto</div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box;font-size:19px;line-height:1.4;color:transparent;transition:color .18s" style-hover="color:#161310">às ferramentas</div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box;font-size:19px;line-height:1.4;color:transparent;transition:color .18s" style-hover="color:#161310">que o fazem existir</div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:transparent;transition:color .18s" style-hover="color:#6b6459">E4 — ABERTURA</div>
+
+  <!-- linha 2 -->
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">doutor em Letras</div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">trabalhador da educação</div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">Harvard · Univ. Nacional da Colômbia</div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">Folha de S.Paulo</div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">de esquerda</div>
+
+  <!-- linha 3 -->
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <a href="#2b" style="background:#ece8db;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:transparent;transition:color .18s;display:block" style-hover="color:#161310">01<br><br>FORMAÇÃO DOCENTE<br>UNIV. FEDERAL, 2024–25</a>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <a href="#2b" style="background:#ece8db;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:transparent;transition:color .18s;display:block" style-hover="color:#161310">02<br><br>PLANO EDUCATIVO<br>MUSEU DE ARTE, 2023</a>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <a href="#2b" style="background:#ece8db;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:transparent;transition:color .18s;display:block" style-hover="color:#161310">03<br><br>PROJETO POLÍTICO-<br>PEDAGÓGICO, 2022–23</a>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <a href="#2b" style="background:#ece8db;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:transparent;transition:color .18s;display:block" style-hover="color:#161310">04<br><br>ESCRITA ENSAÍSTICA<br>INST. CULTURAL, 2021</a>
+
+  <!-- linha 4 -->
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">xadrez</div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">charuto</div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box;font-size:17px;font-style:italic;color:transparent;transition:color .18s" style-hover="color:#161310">jazz</div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box"></div>
+  <a href="#2b" style="background:#f5f2eb;padding:16px;box-sizing:border-box;text-decoration:none;font-size:17px;font-style:italic;color:transparent;transition:color .18s;display:block" style-hover="color:#161310">textos publicados →</a>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:transparent;transition:color .18s" style-hover="color:#6b6459">Bb5 — IMPROVISO</div>
+
+  <!-- linha 5 (saída fixa: sempre visível) -->
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box"></div>
+  <a href="#2b" style="background:#f5f2eb;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#161310;display:block">NOTA<br>BIOGRÁFICA</a>
+  <a href="#2b" style="background:#ece8db;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#161310;display:block">TRABALHOS</a>
+  <a href="#2b" style="background:#f5f2eb;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#161310;display:block">TEXTOS</a>
+  <a href="mailto:nome@dominio.com" style="background:#ece8db;padding:16px;box-sizing:border-box;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#8c2f1f;display:block">CONTATO<br>NOME@DOMINIO.COM</a>
+  <div style="background:#f5f2eb;padding:16px;box-sizing:border-box"></div>
+  <div style="background:#ece8db;padding:16px;box-sizing:border-box;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:#6b6459">2026</div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ 2c — COMPOSIÇÃO ============ -->
+<div class="dv-opt" id="2c" data-screen-label="2c Composição">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Composição generativa — o campo deriva conforme o cursor; cada fragmento tem inércia própria. O quadro reage a quem olha.</div>
+<div class="dv-card" style="width:1280px">
+<div onMouseMove="{{ onDrift }}" onMouseLeave="{{ onDriftLeave }}" style="position:relative;background:#f5f2eb;color:#161310;height:800px;overflow:hidden;font-family:'EB Garamond',Georgia,serif;cursor:crosshair">
+
+  <div style="position:absolute;top:40px;left:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em">NOME SOBRENOME</div>
+  <div style="position:absolute;top:40px;right:48px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#6b6459">COMPOSIÇÃO Nº 1, 2026</div>
+
+  <!-- formas -->
+  <div style="position:absolute;top:110px;left:140px;width:360px;height:360px;border:1.5px solid #161310;border-radius:50%;transform:translate(calc(var(--px,0)*28px), calc(var(--py,0)*18px));transition:transform .4s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;top:500px;left:900px;width:52px;height:52px;background:#161310;transform:translate(calc(var(--px,0)*-46px), calc(var(--py,0)*-30px));transition:transform .5s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;top:560px;left:240px;width:560px;height:1px;background:#161310;transform:translateY(calc(var(--py,0)*40px)) rotate(calc(var(--px,0)*3deg));transition:transform .6s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;top:140px;left:1020px;width:1px;height:420px;background:#161310;transform:translateX(calc(var(--px,0)*-60px));transition:transform .7s cubic-bezier(.2,.6,.2,1)"></div>
+  <div style="position:absolute;top:610px;left:520px;width:11px;height:11px;background:#8c2f1f;border-radius:50%;transform:translate(calc(var(--px,0)*70px), calc(var(--py,0)*-52px));transition:transform .35s cubic-bezier(.2,.6,.2,1)"></div>
+
+  <!-- sentença central -->
+  <h1 style="position:absolute;top:300px;left:180px;margin:0;font-size:52px;font-weight:400;line-height:1.25;letter-spacing:-0.01em;max-width:13em;transform:translate(calc(var(--px,0)*12px), calc(var(--py,0)*8px));transition:transform .45s cubic-bezier(.2,.6,.2,1)">Da concepção de um projeto às ferramentas que o fazem existir.</h1>
+
+  <!-- fragmentos -->
+  <a href="#2c" style="position:absolute;top:150px;left:620px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-decoration:none;color:#161310;transform:translate(calc(var(--px,0)*-24px), calc(var(--py,0)*34px));transition:transform .5s cubic-bezier(.2,.6,.2,1)">01 — FORMAÇÃO DOCENTE</a>
+  <a href="#2c" style="position:absolute;top:210px;left:860px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-decoration:none;color:#161310;transform:translate(calc(var(--px,0)*38px), calc(var(--py,0)*-20px));transition:transform .55s cubic-bezier(.2,.6,.2,1)">02 — PLANO EDUCATIVO</a>
+  <a href="#2c" style="position:absolute;top:540px;left:160px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-decoration:none;color:#161310;transform:translate(calc(var(--px,0)*-34px), calc(var(--py,0)*-26px));transition:transform .5s cubic-bezier(.2,.6,.2,1)">03 — PROJETO POLÍTICO-PEDAGÓGICO</a>
+  <a href="#2c" style="position:absolute;top:600px;left:760px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-decoration:none;color:#161310;transform:translate(calc(var(--px,0)*26px), calc(var(--py,0)*44px));transition:transform .6s cubic-bezier(.2,.6,.2,1)">04 — ESCRITA ENSAÍSTICA</a>
+  <div style="position:absolute;top:660px;left:400px;font-size:19px;font-style:italic;transform:translate(calc(var(--px,0)*50px), calc(var(--py,0)*12px));transition:transform .4s cubic-bezier(.2,.6,.2,1)">xadrez, charuto, jazz</div>
+
+  <!-- saída institucional fixa -->
+  <div style="position:absolute;left:48px;right:48px;bottom:36px;border-top:1px solid #161310;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em">
+    <div style="display:flex;gap:28px">
+      <a href="#2c" style="text-decoration:none;color:#161310">NOTA BIOGRÁFICA</a>
+      <a href="#2c" style="text-decoration:none;color:#161310">TRABALHOS</a>
+      <a href="#2c" style="text-decoration:none;color:#161310">TEXTOS</a>
+    </div>
+    <a href="mailto:nome@dominio.com" style="text-decoration:none;color:#161310">NOME@DOMINIO.COM</a>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Sugestões: "desenvolver <a class="dv-oid" href="#2a">2a</a> com texto real" · "no <a class="dv-oid" href="#2b">2b</a>, casas clicadas ficam reveladas" · "misturar <a class="dv-oid" href="#2a">2a</a> com a saída do <a class="dv-oid" href="#2b">2b</a>"</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Três direções — texto como objeto</span></div>
+<div class="dv-opts">
+
+<!-- ============ 1a — FOLHA DE ROSTO ============ -->
+<div class="dv-opt" id="1a" data-screen-label="1a Folha de rosto">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Folha de rosto — rubrica mono na margem, voz em serifa. Sem cor.</div>
+<div class="dv-card" style="width:1100px">
+<div style="background:#f5f2ea;color:#1b1813;padding:110px 96px 72px;font-family:'EB Garamond',Georgia,serif">
+
+  <div style="display:grid;grid-template-columns:168px 1fr;column-gap:48px;row-gap:0">
+
+    <div style="grid-column:2;padding-bottom:120px">
+      <h1 style="margin:0;font-size:58px;font-weight:400;line-height:1.05;letter-spacing:-0.01em">Nome Sobrenome</h1>
+      <p style="margin:34px 0 0;font-size:21px;line-height:1.55;max-width:36ch;font-weight:400">Concepção e instrumentação de projetos para instituições de educação e cultura.</p>
+      <p style="margin:18px 0 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6b6459">SÃO PAULO&nbsp;&nbsp;·&nbsp;&nbsp;DESDE 2012</p>
+    </div>
+
+    <div style="grid-column:1/-1;border-top:1px solid #1b1813;margin-bottom:56px"></div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b6459;padding-top:6px">NOTA<br>BIOGRÁFICA</div>
+    <div style="padding-bottom:96px">
+      <p style="margin:0;font-size:18px;line-height:1.75;max-width:58ch">Doutor em Letras. Professor, com passagens por Harvard e pela Universidade Nacional da Colômbia. Colunista da <em>Folha de S.Paulo</em> e colaborador de outras publicações. Trabalha com universidades, escolas e museus, da concepção conceitual dos projetos à construção das ferramentas operacionais que sustentam sua implementação.</p>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b6459;padding-top:6px">TRABALHOS<br>01–04</div>
+    <div style="display:flex;flex-direction:column;gap:44px;padding-bottom:96px">
+      <div style="display:grid;grid-template-columns:56px 1fr;column-gap:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1b1813;padding-top:5px">01</div>
+        <div>
+          <h3 style="margin:0;font-size:21px;font-weight:500;line-height:1.3">Programa de formação docente</h3>
+          <p style="margin:8px 0 0;font-size:16px;line-height:1.65;max-width:54ch;color:#3a352d">Desenho pedagógico e ferramentas de acompanhamento para um programa de formação continuada em universidade federal.</p>
+          <p style="margin:10px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.06em;color:#6b6459">UNIVERSIDADE FEDERAL · 2024–2025</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:56px 1fr;column-gap:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1b1813;padding-top:5px">02</div>
+        <div>
+          <h3 style="margin:0;font-size:21px;font-weight:500;line-height:1.3">Plano educativo</h3>
+          <p style="margin:8px 0 0;font-size:16px;line-height:1.65;max-width:54ch;color:#3a352d">Política de públicos e programa de mediação para museu de arte, da formulação conceitual aos instrumentos de trabalho das equipes.</p>
+          <p style="margin:10px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.06em;color:#6b6459">MUSEU DE ARTE · 2023</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:56px 1fr;column-gap:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1b1813;padding-top:5px">03</div>
+        <div>
+          <h3 style="margin:0;font-size:21px;font-weight:500;line-height:1.3">Revisão de projeto político-pedagógico</h3>
+          <p style="margin:8px 0 0;font-size:16px;line-height:1.65;max-width:54ch;color:#3a352d">Condução do processo de revisão com corpo docente e gestão, e redação do documento final.</p>
+          <p style="margin:10px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.06em;color:#6b6459">ESCOLA · 2022–2023</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:56px 1fr;column-gap:24px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1b1813;padding-top:5px">04</div>
+        <div>
+          <h3 style="margin:0;font-size:21px;font-weight:500;line-height:1.3">Curso de escrita ensaística</h3>
+          <p style="margin:8px 0 0;font-size:16px;line-height:1.65;max-width:54ch;color:#3a352d">Concepção e docência de curso de escrita para instituição cultural.</p>
+          <p style="margin:10px 0 0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.06em;color:#6b6459">INSTITUIÇÃO CULTURAL · 2021</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b6459;padding-top:6px">TEXTOS</div>
+    <div style="display:flex;flex-direction:column;padding-bottom:96px;max-width:640px">
+      <div style="display:grid;grid-template-columns:64px 1fr auto;column-gap:20px;align-items:baseline;padding:12px 0;border-bottom:1px solid #d8d2c5">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b6459">2026</span>
+        <a href="#1a" style="font-size:17px;font-style:italic;text-decoration:none;border-bottom:1px solid #b5ad9d">A escola como forma</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6b6459">FOLHA DE S.PAULO</span>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1fr auto;column-gap:20px;align-items:baseline;padding:12px 0;border-bottom:1px solid #d8d2c5">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b6459">2025</span>
+        <a href="#1a" style="font-size:17px;font-style:italic;text-decoration:none;border-bottom:1px solid #b5ad9d">Contra a pedagogia da urgência</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6b6459">NEWSLETTER</span>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1fr auto;column-gap:20px;align-items:baseline;padding:12px 0;border-bottom:1px solid #d8d2c5">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b6459">2025</span>
+        <a href="#1a" style="font-size:17px;font-style:italic;text-decoration:none;border-bottom:1px solid #b5ad9d">O museu depois do público</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6b6459">FOLHA DE S.PAULO</span>
+      </div>
+      <div style="display:grid;grid-template-columns:64px 1fr auto;column-gap:20px;align-items:baseline;padding:12px 0;border-bottom:1px solid #d8d2c5">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b6459">2024</span>
+        <a href="#1a" style="font-size:17px;font-style:italic;text-decoration:none;border-bottom:1px solid #b5ad9d">Ler devagar em tempos de plataforma</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6b6459">NEWSLETTER</span>
+      </div>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.14em;color:#6b6459;padding-top:6px">CONTATO</div>
+    <div style="padding-bottom:110px">
+      <a href="mailto:nome@dominio.com" style="font-size:21px;text-decoration:none;border-bottom:1px solid #1b1813">nome@dominio.com</a>
+    </div>
+
+    <div style="grid-column:1/-1;border-top:1px solid #d8d2c5;padding-top:16px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#6b6459">
+      <span>NOME SOBRENOME — 2026</span>
+      <span>FORA DO EXPEDIENTE: XADREZ, CHARUTO, JAZZ</span>
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ============ 1b — ÍNDICE ============ -->
+<div class="dv-opt" id="1b" data-screen-label="1b Índice">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Índice — o sumário é a página. Filetes, tabulação, coluna esquerda vazia. Acento no e-mail.</div>
+<div class="dv-card" style="width:1100px">
+<div style="background:#f4f1e9;color:#181510;padding:88px 84px 64px;font-family:'Spectral',Georgia,serif">
+
+  <div style="display:grid;grid-template-columns:300px 1fr;column-gap:56px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.16em;color:#736c5e;padding-top:14px">ÍNDICE<br>ED. 2026</div>
+    <div style="padding-bottom:88px">
+      <h1 style="margin:0;font-size:46px;font-weight:400;line-height:1.1">Nome Sobrenome</h1>
+      <p style="margin:20px 0 0;font-size:18px;font-weight:300;line-height:1.6;max-width:42ch">Concepção e instrumentação de projetos para instituições de educação e cultura — universidades, escolas, museus.</p>
+    </div>
+  </div>
+
+  <!-- 01 nota -->
+  <div style="display:grid;grid-template-columns:300px 1fr;column-gap:56px;border-top:1px solid #181510;padding:26px 0 64px">
+    <div style="display:flex;gap:18px;align-items:baseline">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">01</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#736c5e">NOTA BIOGRÁFICA</span>
+    </div>
+    <p style="margin:0;font-size:17px;font-weight:300;line-height:1.75;max-width:56ch">Doutor em Letras. Professor, com passagens por Harvard e pela Universidade Nacional da Colômbia. Colunista da <em>Folha de S.Paulo</em> e colaborador de outras publicações. Trabalha da concepção conceitual dos projetos à construção das ferramentas operacionais que sustentam sua implementação.</p>
+  </div>
+
+  <!-- 02 trabalhos -->
+  <div style="display:grid;grid-template-columns:300px 1fr;column-gap:56px;border-top:1px solid #181510;padding:26px 0 64px">
+    <div style="display:flex;gap:18px;align-items:baseline">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">02</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#736c5e">TRABALHOS</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:52px 1fr auto;column-gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid #d6d0c1">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">02.1</span>
+        <div>
+          <span style="font-size:19px;font-weight:400">Programa de formação docente</span>
+          <p style="margin:5px 0 0;font-size:14.5px;font-weight:300;line-height:1.6;color:#453f34;max-width:48ch">Desenho pedagógico e ferramentas de acompanhamento, universidade federal.</p>
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">2024–25</span>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr auto;column-gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid #d6d0c1">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">02.2</span>
+        <div>
+          <span style="font-size:19px;font-weight:400">Plano educativo</span>
+          <p style="margin:5px 0 0;font-size:14.5px;font-weight:300;line-height:1.6;color:#453f34;max-width:48ch">Política de públicos e programa de mediação, museu de arte.</p>
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">2023</span>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr auto;column-gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid #d6d0c1">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">02.3</span>
+        <div>
+          <span style="font-size:19px;font-weight:400">Revisão de projeto político-pedagógico</span>
+          <p style="margin:5px 0 0;font-size:14.5px;font-weight:300;line-height:1.6;color:#453f34;max-width:48ch">Condução do processo com corpo docente e gestão; redação do documento final.</p>
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">2022–23</span>
+      </div>
+      <div style="display:grid;grid-template-columns:52px 1fr auto;column-gap:20px;align-items:baseline;padding:14px 0;border-bottom:1px solid #d6d0c1">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">02.4</span>
+        <div>
+          <span style="font-size:19px;font-weight:400">Curso de escrita ensaística</span>
+          <p style="margin:5px 0 0;font-size:14.5px;font-weight:300;line-height:1.6;color:#453f34;max-width:48ch">Concepção e docência, instituição cultural.</p>
+        </div>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#736c5e">2021</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 textos -->
+  <div style="display:grid;grid-template-columns:300px 1fr;column-gap:56px;border-top:1px solid #181510;padding:26px 0 64px">
+    <div style="display:flex;gap:18px;align-items:baseline">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">03</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#736c5e">TEXTOS</span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:1fr auto;column-gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid #d6d0c1">
+        <a href="#1b" style="font-size:17px;font-style:italic;font-weight:300;text-decoration:none">A escola como forma</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#736c5e">FOLHA DE S.PAULO · 2026</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;column-gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid #d6d0c1">
+        <a href="#1b" style="font-size:17px;font-style:italic;font-weight:300;text-decoration:none">Contra a pedagogia da urgência</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#736c5e">NEWSLETTER · 2025</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;column-gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid #d6d0c1">
+        <a href="#1b" style="font-size:17px;font-style:italic;font-weight:300;text-decoration:none">O museu depois do público</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#736c5e">FOLHA DE S.PAULO · 2025</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;column-gap:20px;align-items:baseline;padding:11px 0;border-bottom:1px solid #d6d0c1">
+        <a href="#1b" style="font-size:17px;font-style:italic;font-weight:300;text-decoration:none">Ler devagar em tempos de plataforma</a>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#736c5e">NEWSLETTER · 2024</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 contato -->
+  <div style="display:grid;grid-template-columns:300px 1fr;column-gap:56px;border-top:1px solid #181510;padding:26px 0 96px">
+    <div style="display:flex;gap:18px;align-items:baseline">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px">04</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#736c5e">CONTATO</span>
+    </div>
+    <div>
+      <a href="mailto:nome@dominio.com" style="font-size:24px;font-weight:400;color:#8c2f1f;text-decoration:none;border-bottom:1px solid #8c2f1f">nome@dominio.com</a>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid #d6d0c1;padding-top:14px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#736c5e">
+    <span>NOME SOBRENOME — 2026</span>
+    <span>XADREZ · CHARUTO · JAZZ</span>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- ============ 1c — SENTENÇA ============ -->
+<div class="dv-opt" id="1c" data-screen-label="1c Sentença">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Sentença — a frase é o objeto, em escala monumental; o resto é rodapé. Acento: o ponto final.</div>
+<div class="dv-card" style="width:1100px">
+<div style="background:#f5f2eb;color:#161310;padding:64px 76px 56px;font-family:'Newsreader',Georgia,serif">
+
+  <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#161310">
+    <span>NOME SOBRENOME</span>
+    <span>EDUCAÇÃO / CULTURA</span>
+  </div>
+
+  <h1 style="margin:140px 0 0;font-size:72px;font-weight:300;line-height:1.18;letter-spacing:-0.015em;max-width:15em">Da concepção de um projeto às ferramentas que o fazem existir<span style="color:#8c2f1f">.</span></h1>
+
+  <p style="margin:56px 0 180px;font-family:'Space Mono',monospace;font-size:12px;line-height:1.8;color:#5f584c;max-width:62ch">Consultoria para universidades, escolas e museus. Doutor em Letras; professor com passagens por Harvard e pela Universidade Nacional da Colômbia; colunista da Folha de S.Paulo.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;column-gap:72px;border-top:1px solid #161310;padding-top:28px">
+
+    <div>
+      <p style="margin:0 0 22px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.16em;color:#5f584c">TRABALHOS</p>
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <p style="margin:0;font-size:17px;line-height:1.55"><span style="font-family:'Space Mono',monospace;font-size:11px;margin-right:14px">01</span>Programa de formação docente — desenho pedagógico e ferramentas de acompanhamento. <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">UNIV. FEDERAL, 2024–25</span></p>
+        <p style="margin:0;font-size:17px;line-height:1.55"><span style="font-family:'Space Mono',monospace;font-size:11px;margin-right:14px">02</span>Plano educativo — política de públicos e mediação. <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">MUSEU DE ARTE, 2023</span></p>
+        <p style="margin:0;font-size:17px;line-height:1.55"><span style="font-family:'Space Mono',monospace;font-size:11px;margin-right:14px">03</span>Revisão de projeto político-pedagógico — processo e documento final. <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">ESCOLA, 2022–23</span></p>
+        <p style="margin:0;font-size:17px;line-height:1.55"><span style="font-family:'Space Mono',monospace;font-size:11px;margin-right:14px">04</span>Curso de escrita ensaística — concepção e docência. <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">INST. CULTURAL, 2021</span></p>
+      </div>
+    </div>
+
+    <div>
+      <p style="margin:0 0 22px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.16em;color:#5f584c">TEXTOS</p>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <p style="margin:0;font-size:17px;line-height:1.5"><a href="#1c" style="font-style:italic;text-decoration:none;border-bottom:1px solid #c4bcab">A escola como forma</a> <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">— FOLHA, 2026</span></p>
+        <p style="margin:0;font-size:17px;line-height:1.5"><a href="#1c" style="font-style:italic;text-decoration:none;border-bottom:1px solid #c4bcab">Contra a pedagogia da urgência</a> <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">— NEWSLETTER, 2025</span></p>
+        <p style="margin:0;font-size:17px;line-height:1.5"><a href="#1c" style="font-style:italic;text-decoration:none;border-bottom:1px solid #c4bcab">O museu depois do público</a> <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">— FOLHA, 2025</span></p>
+        <p style="margin:0;font-size:17px;line-height:1.5"><a href="#1c" style="font-style:italic;text-decoration:none;border-bottom:1px solid #c4bcab">Ler devagar em tempos de plataforma</a> <span style="font-family:'Space Mono',monospace;font-size:10.5px;color:#5f584c">— NEWSLETTER, 2024</span></p>
+      </div>
+      <p style="margin:40px 0 0;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.16em;color:#5f584c">CONTATO</p>
+      <p style="margin:12px 0 0"><a href="mailto:nome@dominio.com" style="font-size:19px;text-decoration:none;border-bottom:1px solid #161310">nome@dominio.com</a></p>
+    </div>
+
+  </div>
+
+  <div style="margin-top:96px;border-top:1px solid #d9d3c4;padding-top:14px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#5f584c">
+    <span>NOME SOBRENOME — 2026</span>
+    <span>XADREZ · CHARUTO · JAZZ</span>
+  </div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Sugestões: "aprofundar <a class="dv-oid" href="#1a">1a</a> com o nome real" · "combinar a abertura de <a class="dv-oid" href="#1c">1c</a> com o índice de <a class="dv-oid" href="#1b">1b</a>" · "novas direções"</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    sel: null,
+    solved: false,
+    stage: 1,
+    mateWith: null,
+    msg: 'as brancas jogam e dão mate em dois lances. jogue os dois lances das brancas para abrir o rizoma.',
+    pieces: { e8: 'wB', g8: 'wK', h8: 'wQ', h7: 'wN', b6: 'wP', c5: 'wP', d4: 'wP', f4: 'wP', e7: 'bK', b2: 'bN', b7: 'bP', e6: 'bP', d5: 'bP', f5: 'bP' }
+  };
+
+  cellClick(sq) {
+    const st = this.state;
+    if (st.solved) return;
+    const pc = st.pieces[sq];
+    if (st.sel) {
+      if (sq === st.sel) { this.setState({ sel: null }); return; }
+      const from = st.sel, moving = st.pieces[from];
+      if (st.stage === 1 && moving === 'wB' && sq === 'b5') {
+        const p = Object.assign({}, st.pieces);
+        delete p.e8; p.b5 = 'wB';
+        this.setState({ pieces: p, sel: null, msg: '1.Bb5! — zugzwang. as pretas pensam…' });
+        setTimeout(() => {
+          const replies = [
+            { from: 'e7', to: 'd8', pc: 'bK', txt: '1…Rd8', mate: 'K' },
+            { from: 'e6', to: 'e5', pc: 'bP', txt: '1…e5', mate: 'Q' },
+            { from: 'b2', to: 'a4', pc: 'bN', txt: '1…Ca4', mate: 'Q' },
+            { from: 'b2', to: 'c4', pc: 'bN', txt: '1…Cc4', mate: 'Q' },
+            { from: 'b2', to: 'd3', pc: 'bN', txt: '1…Cd3', mate: 'Q' },
+            { from: 'b2', to: 'd1', pc: 'bN', txt: '1…Cd1', mate: 'Q' }
+          ];
+          const rep = replies[Math.floor(Math.random() * replies.length)];
+          const p2 = Object.assign({}, this.state.pieces);
+          delete p2[rep.from]; p2[rep.to] = rep.pc;
+          this.setState({ pieces: p2, stage: 2, mateWith: rep.mate, msg: rep.txt + ' — agora dê o mate.' });
+        }, 1000);
+        return;
+      }
+      if (st.stage === 2 && ((st.mateWith === 'K' && moving === 'wK' && sq === 'f7') || (st.mateWith === 'Q' && moving === 'wQ' && sq === 'f6'))) {
+        const p = Object.assign({}, st.pieces);
+        delete p[from]; p[sq] = moving;
+        const mateTxt = st.mateWith === 'K' ? '2.Rf7# — mate por descoberta: a dama de h8 varre a oitava fila.' : '2.Df6# — mate.';
+        this.setState({ pieces: p, sel: null, solved: true, msg: mateTxt + ' o rizoma se abre.' });
+        setTimeout(() => {
+          const ch = this._chessEl;
+          if (!ch) return;
+          ch.style.opacity = '0'; ch.style.pointerEvents = 'none';
+          const root = ch.parentElement;
+          const web = root && root.querySelector('[data-web]');
+          if (web) { web.style.opacity = '1'; web.style.pointerEvents = 'auto'; }
+        }, 1600);
+        return;
+      }
+      if (pc && pc[0] === 'w') { this.setState({ sel: sq }); return; }
+      this.setState({ sel: null, msg: st.stage === 2 ? 'não é mate. procure o lance que não deixa nenhuma saída.' : 'não é o lance-chave. procure o lance quieto que deixa as pretas sem defesa.' });
+      return;
+    }
+    if (pc && pc[0] === 'w') { this.setState({ sel: sq, msg: 'peça escolhida. agora a casa de destino.' }); }
+    else { this.setState({ msg: 'as brancas jogam — escolha uma peça branca.' }); }
+  }
+
+  renderVals() {
+    const GL = { K: '♚', Q: '♛', B: '♝', N: '♞', P: '♟' };
+    const FILES = 'abcdefgh';
+    const chessCells = [];
+    for (let r = 8; r >= 1; r--) {
+      for (let f = 0; f < 8; f++) {
+        const sq = FILES[f] + r;
+        const dark = (f + r) % 2 === 1;
+        const pc = this.state.pieces[sq];
+        chessCells.push({
+          key: sq,
+          bg: dark ? '#918e88' : '#bab7b1',
+          color: pc && pc[0] === 'w' ? '#f6f3ec' : '#1d1b18',
+          glyph: pc ? GL[pc[1]] : '',
+          ring: this.state.sel === sq ? 'inset 0 0 0 2px #8c2f1f' : 'none',
+          onClick: () => this.cellClick(sq)
+        });
+      }
+    }
+    const track = (e) => {
+      const el = e.currentTarget;
+      const r = el.getBoundingClientRect();
+      const s = r.width ? el.offsetWidth / r.width : 1;
+      el.style.setProperty('--mx', ((e.clientX - r.left) * s) + 'px');
+      el.style.setProperty('--my', ((e.clientY - r.top) * s) + 'px');
+    };
+    const drift = (e) => {
+      const el = e.currentTarget;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--px', (((e.clientX - r.left) / r.width) * 2 - 1).toFixed(3));
+      el.style.setProperty('--py', (((e.clientY - r.top) / r.height) * 2 - 1).toFixed(3));
+    };
+    return {
+      chessCells: chessCells,
+      chessMsg: this.state.msg,
+      chessRef: (el) => { this._chessEl = el; },
+      onReveal: track,
+      onRevealLeave: (e) => {
+        e.currentTarget.style.setProperty('--mx', '-500px');
+        e.currentTarget.style.setProperty('--my', '-500px');
+      },
+      onDrift: drift,
+      onHeadClick: (e) => {
+        if (e.target.closest && e.target.closest('a')) return;
+        const el = e.currentTarget;
+        const open = el.getAttribute('data-open') === '1';
+        if (open && e.target.closest && e.target.closest('[data-node]')) return;
+        if (e.target.closest && e.target.closest('[data-chess]')) return;
+        const frags = el.querySelectorAll('[data-frag]');
+        const web = el.querySelector('[data-web]');
+        const chess = el.querySelector('[data-chess]');
+        if (!open) {
+          el.setAttribute('data-open', '1');
+          frags.forEach((it) => {
+            const cx = it.offsetLeft + it.offsetWidth / 2 - 640;
+            const cy = it.offsetTop + it.offsetHeight / 2 - 400;
+            const d = Math.hypot(cx, cy) || 1;
+            const rot = (parseFloat(it.getAttribute('data-rot')) || 0) * 1.6;
+            it.style.transition = 'transform .8s cubic-bezier(.4,0,.7,1), opacity .7s ease .1s';
+            it.style.transform = 'translate(' + ((cx / d) * 980).toFixed(0) + 'px,' + ((cy / d) * 980).toFixed(0) + 'px) rotate(' + rot + 'deg)';
+            it.style.opacity = '0';
+          });
+          if (this.state.solved) {
+            if (web) { web.style.opacity = '1'; web.style.pointerEvents = 'auto'; }
+          } else if (chess) {
+            chess.style.opacity = '1'; chess.style.pointerEvents = 'auto';
+          }
+        } else {
+          el.removeAttribute('data-open');
+          frags.forEach((it) => {
+            it.style.transition = 'transform .7s cubic-bezier(.2,.6,.2,1), opacity .5s ease .15s';
+            it.style.transform = 'none';
+            it.style.opacity = '1';
+            setTimeout(() => { it.style.transition = 'transform .35s ease-out'; }, 750);
+          });
+          if (web) { web.style.opacity = '0'; web.style.pointerEvents = 'none'; }
+          if (chess) { chess.style.opacity = '0'; chess.style.pointerEvents = 'none'; }
+        }
+      },
+      onScatter: (e) => {
+        const el = e.currentTarget;
+        if (el.getAttribute('data-open') === '1') return;
+        const r = el.getBoundingClientRect();
+        const s = r.width ? el.offsetWidth / r.width : 1;
+        const x = (e.clientX - r.left) * s, y = (e.clientY - r.top) * s;
+        el.querySelectorAll('[data-frag]').forEach((it) => {
+          const cx = it.offsetLeft + it.offsetWidth / 2, cy = it.offsetTop + it.offsetHeight / 2;
+          const vx = cx - x, vy = cy - y;
+          const d = Math.hypot(vx, vy) || 1;
+          const k = Math.max(0, 1 - d / 320);
+          const f = k * k;
+          const tx = (vx / d) * 95 * f, ty = (vy / d) * 95 * f;
+          const rot = ((parseFloat(it.getAttribute('data-rot')) || 0) / 10) * f * 2.5;
+          it.style.transform = 'translate(' + tx.toFixed(1) + 'px,' + ty.toFixed(1) + 'px) rotate(' + rot.toFixed(2) + 'deg)';
+        });
+      },
+      onScatterLeave: (e) => {
+        e.currentTarget.querySelectorAll('[data-frag]').forEach((it) => { it.style.transform = 'none'; });
+      },
+      onRecompose: (e) => {
+        if (e.target.closest && e.target.closest('a')) return;
+        const el = e.currentTarget;
+        el.querySelectorAll('[data-alts]').forEach((it) => {
+          const alts = it.getAttribute('data-alts').split('|');
+          const pick = alts[Math.floor(Math.random() * alts.length)].split(',');
+          it.style.backgroundSize = pick[0] + 'px ' + pick[0] + 'px';
+          it.style.backgroundPosition = pick[1] + 'px ' + pick[2] + 'px';
+        });
+        const c = el.querySelector('[data-count]');
+        if (c) c.textContent = String((parseInt(c.textContent, 10) || 1) + 1).padStart(3, '0');
+      },
+      onWeb: (e) => {
+        const root = e.currentTarget;
+        const rest = root.getAttribute('data-rest-stroke') || '#cfc8b8';
+        const n = e.target.closest && e.target.closest('[data-node]');
+        const lines = root.querySelectorAll('line[data-a]');
+        const nodes = root.querySelectorAll('[data-node]');
+        if (!n) {
+          lines.forEach((L) => { L.style.stroke = rest; L.style.opacity = '1'; });
+          nodes.forEach((nd) => { nd.style.opacity = '1'; });
+          return;
+        }
+        const id = n.getAttribute('data-node');
+        const connected = new Set([id]);
+        lines.forEach((L) => {
+          const a = L.getAttribute('data-a'), b = L.getAttribute('data-b');
+          const hit = a === id || b === id;
+          if (hit) { connected.add(a); connected.add(b); }
+          L.style.stroke = hit ? '#8c2f1f' : rest;
+          L.style.opacity = hit ? '1' : '0.2';
+        });
+        nodes.forEach((nd) => {
+          nd.style.opacity = connected.has(nd.getAttribute('data-node')) ? '1' : '0.22';
+        });
+      },
+      onWebReset: (e) => {
+        const root = e.currentTarget;
+        const rest = root.getAttribute('data-rest-stroke') || '#cfc8b8';
+        root.querySelectorAll('line[data-a]').forEach((L) => { L.style.stroke = rest; L.style.opacity = '1'; });
+        root.querySelectorAll('[data-node]').forEach((nd) => { nd.style.opacity = '1'; });
+      },
+      onDig: (e) => {
+        const el = e.currentTarget;
+        const r = el.getBoundingClientRect();
+        const s = r.width ? el.offsetWidth / r.width : 1;
+        const x = (e.clientX - r.left) * s, y = (e.clientY - r.top) * s;
+        el.querySelectorAll('[data-prox]').forEach((it) => {
+          const d = Math.hypot(x - (it.offsetLeft + it.offsetWidth / 2), y - (it.offsetTop + it.offsetHeight / 2));
+          it.style.opacity = Math.max(0.07, 1 - d / 320).toFixed(3);
+        });
+        const ro = el.querySelector('[data-readout]');
+        if (ro) ro.textContent = 'X ' + String(Math.round(x)).padStart(4, '0') + ' · Y ' + String(Math.round(y)).padStart(4, '0');
+      },
+      onDigLeave: (e) => {
+        const el = e.currentTarget;
+        el.querySelectorAll('[data-prox]').forEach((it) => { it.style.opacity = '0.07'; });
+        const ro = el.querySelector('[data-readout]');
+        if (ro) ro.textContent = 'X ---- · Y ----';
+      },
+      onLens: (e) => {
+        const el = e.currentTarget;
+        const r = el.getBoundingClientRect();
+        const s = r.width ? el.offsetWidth / r.width : 1;
+        const x = (e.clientX - r.left) * s, y = (e.clientY - r.top) * s;
+        el.querySelectorAll('[data-lens]').forEach((it) => {
+          const d = Math.hypot(x - (it.offsetLeft + 40), y - (it.offsetTop + it.offsetHeight / 2));
+          const k = Math.max(0, 1 - d / 260);
+          it.style.transform = 'scale(' + (1 + 1.1 * k * k).toFixed(3) + ')';
+          it.style.opacity = (0.45 + 0.55 * k).toFixed(3);
+          it.style.zIndex = k > 0.4 ? '3' : '1';
+        });
+      },
+      onLensLeave: (e) => {
+        e.currentTarget.querySelectorAll('[data-lens]').forEach((it) => {
+          it.style.transform = 'scale(1)';
+          it.style.opacity = '0.45';
+          it.style.zIndex = '1';
+        });
+      },
+      onDriftLeave: (e) => {
+        e.currentTarget.style.setProperty('--px', '0');
+        e.currentTarget.style.setProperty('--py', '0');
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

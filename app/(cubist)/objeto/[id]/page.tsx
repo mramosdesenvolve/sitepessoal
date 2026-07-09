@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getConcepts, getObjectById } from "@/lib/data";
 import { ObjectDetailView } from "@/components/ObjectDetailView";
+import { CubistCornerNav } from "@/components/CubistCornerNav";
 
 interface PageProps {
   params: { id: string };
@@ -49,13 +50,16 @@ export default async function ObjectPage({ params }: PageProps) {
   ).filter((o): o is NonNullable<typeof o> => o !== undefined);
 
   return (
-    <main>
-      <ObjectDetailView
-        object={object}
-        concepts={concepts}
-        relatedObjects={relatedObjects}
-        body={getBody(object.id, object.longDescription)}
-      />
-    </main>
+    <>
+      <CubistCornerNav />
+      <main>
+        <ObjectDetailView
+          object={object}
+          concepts={concepts}
+          relatedObjects={relatedObjects}
+          body={getBody(object.id, object.longDescription)}
+        />
+      </main>
+    </>
   );
 }

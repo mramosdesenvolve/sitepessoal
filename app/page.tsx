@@ -1,37 +1,27 @@
-import { getConcepts, getObjects, getConceptLinks } from "@/lib/data";
-import { HomeClient } from "@/components/HomeClient";
+import type { Metadata } from "next";
+import { CubistPortraitHome } from "@/components/homepage/CubistPortraitHome";
+import { getConcepts, getConceptLinks, getObjects } from "@/lib/data";
 
-interface HomeProps {
-  searchParams: { conceito?: string };
-}
+export const metadata: Metadata = {
+  title: "Marcos Ramos",
+  description:
+    "Investigo como cultura, tecnologia e aprendizagem produzem novas formas de imaginar o mundo.",
+};
 
-// Os objetos vêm do banco (podem mudar a qualquer momento via /admin) —
-// renderização dinâmica, sem cache estático de página.
+// objetos vêm do banco e podem ser criados a qualquer momento via /admin —
+// o rizoma do ato 3 usa os mesmos dados de /acervo
 export const dynamic = "force-dynamic";
 
-/**
- * Home: os dados são carregados uma única vez aqui (nível de página) e
- * distribuídos via props — nenhum componente lê o banco diretamente.
- */
-export default async function Home({ searchParams }: HomeProps) {
-  const [concepts, objects, links] = await Promise.all([
+// Peça de tela única (ver design_handoff_homepage_acervo/README.md, opção
+// 7a) — sem header/footer do site, por isso fica fora do grupo de rotas
+// (site).
+export default async function Home() {
+  const [concepts, links, objects] = await Promise.all([
     getConcepts(),
-    getObjects(),
     getConceptLinks(),
+    getObjects(),
   ]);
-
-  const initialConceptId = concepts.some((c) => c.id === searchParams.conceito)
-    ? searchParams.conceito
-    : undefined;
-
   return (
-    <main>
-      <HomeClient
-        concepts={concepts}
-        objects={objects}
-        links={links}
-        initialConceptId={initialConceptId}
-      />
-    </main>
+    <CubistPortraitHome concepts={concepts} links={links} objects={objects} />
   );
 }

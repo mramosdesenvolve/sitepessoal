@@ -3,114 +3,132 @@
     "id": "aprendizagem-expandida",
     "label": "aprendizagem expandida",
     "description": "Aprendizagem que transborda a escola: acontece em redes, territórios e plataformas.",
-    "objectIds": ["escola-de-escutas", "gramatica-aprendizagens"]
-  },
-  {
-    "id": "curriculo-vivo",
-    "label": "currículo vivo",
-    "description": "Currículo como organismo em revisão permanente, não como documento fixo.",
-    "objectIds": ["curriculo-rizomatico", "curriculo-cultura-digital", "redesenho-instituto", "curso-design-aprendizagem", "estrategia-ia-rede"]
+    "objectIds": []
   },
   {
     "id": "formacao-docente",
     "label": "formação docente",
     "description": "Professoras e professores como intelectuais públicos e designers de experiência.",
-    "objectIds": ["ia-formacao-docente", "filosofia-educacao-ia", "percursos-abertos"]
+    "objectIds": []
   },
   {
     "id": "cultura-brasileira",
     "label": "cultura brasileira",
     "description": "O Brasil como laboratório de formas culturais híbridas.",
-    "objectIds": ["tecnologias-imaginario", "machado-algoritmos", "arquivos-do-futuro"]
+    "objectIds": []
   },
   {
     "id": "afro-diasporas",
     "label": "afro-diásporas",
     "description": "Circuitos afro-diaspóricos de pensamento, estética e tecnologia.",
-    "objectIds": ["jongo-design-sistemas", "casa-atlantica"]
+    "objectIds": []
   },
   {
     "id": "literatura",
     "label": "literatura",
     "description": "A ficção como instrumento de pesquisa e modo de conhecimento.",
-    "objectIds": ["tecnologias-imaginario", "machado-algoritmos"]
+    "objectIds": []
   },
   {
     "id": "musica",
     "label": "música",
     "description": "Escuta, ritmo e improvisação como modelos epistemológicos.",
-    "objectIds": ["jongo-design-sistemas", "escuta-como-metodo"]
+    "objectIds": []
   },
   {
     "id": "filosofia-da-educacao",
     "label": "filosofia da educação",
     "description": "As perguntas fundamentais por trás de qualquer prática pedagógica.",
-    "objectIds": ["curriculo-rizomatico", "escuta-como-metodo", "filosofia-educacao-ia", "assessment-accompaniment", "gramatica-aprendizagens"]
+    "objectIds": []
   },
   {
     "id": "inteligencia-artificial",
     "label": "inteligência artificial",
     "description": "IA como material de design e questão cultural, não apenas técnica.",
-    "objectIds": ["ia-formacao-docente", "mapa-vivo", "filosofia-educacao-ia", "machado-algoritmos", "estrategia-ia-rede"]
-  },
-  {
-    "id": "design-de-aprendizagem",
-    "label": "design de aprendizagem",
-    "description": "Projetar sistemas, ambientes e percursos onde a aprendizagem acontece.",
-    "objectIds": ["curriculo-rizomatico", "jongo-design-sistemas", "cartas-de-percurso", "mapa-vivo", "curso-design-aprendizagem"]
+    "objectIds": []
   },
   {
     "id": "tecnologia-e-imaginacao",
     "label": "tecnologia e imaginação",
     "description": "Tecnologias como máquinas de imaginar mundos possíveis.",
-    "objectIds": ["ia-formacao-docente", "tecnologias-imaginario"]
+    "objectIds": []
   },
   {
     "id": "infraestruturas-culturais",
     "label": "infraestruturas culturais",
     "description": "As estruturas invisíveis que sustentam a produção de cultura.",
-    "objectIds": ["casa-atlantica", "redesenho-instituto", "escola-infraestrutura"]
+    "objectIds": []
   },
   {
     "id": "pedagogias-experimentais",
     "label": "pedagogias experimentais",
     "description": "Formatos de ensino que ainda não têm nome.",
-    "objectIds": ["cartas-de-percurso", "percursos-abertos", "escola-de-escutas"]
+    "objectIds": []
   },
   {
     "id": "memoria-e-arquivo",
     "label": "memória e arquivo",
     "description": "O que uma cultura decide guardar — e como o arquivo produz futuro.",
-    "objectIds": ["casa-atlantica", "arquivos-do-futuro"]
+    "objectIds": []
   },
   {
     "id": "oralidade",
     "label": "oralidade",
     "description": "Saberes que circulam pela voz, pelo corpo e pela conversa.",
-    "objectIds": ["jongo-design-sistemas", "escuta-como-metodo", "escola-de-escutas", "gramatica-aprendizagens"]
-  },
-  {
-    "id": "software-como-cultura",
-    "label": "software como cultura",
-    "description": "Código como artefato cultural, com estética, política e história.",
-    "objectIds": ["curriculo-cultura-digital", "mapa-vivo", "arquivos-do-futuro"]
-  },
-  {
-    "id": "avaliacao-formativa",
-    "label": "avaliação formativa",
-    "description": "Avaliar como quem acompanha um percurso, não como quem julga um produto.",
-    "objectIds": ["cartas-de-percurso", "percursos-abertos", "assessment-accompaniment", "curso-design-aprendizagem"]
+    "objectIds": []
   },
   {
     "id": "educacao-publica",
     "label": "educação pública",
     "description": "A escola pública como a maior infraestrutura cultural do país.",
-    "objectIds": ["curriculo-cultura-digital", "escola-infraestrutura", "estrategia-ia-rede"]
+    "objectIds": []
   },
   {
     "id": "imaginacao-politica",
     "label": "imaginação política",
     "description": "A capacidade coletiva de conceber futuros diferentes do presente.",
-    "objectIds": ["tecnologias-imaginario", "escola-infraestrutura"]
+    "objectIds": []
+  },
+  {
+    "id": "samba-e-carnaval",
+    "label": "samba e carnaval",
+    "description": "O carnaval de avenida e o samba-enredo como invenções culturais afro-brasileiras.",
+    "objectIds": []
+  },
+  {
+    "id": "critica-literaria",
+    "label": "crítica literária",
+    "description": "A leitura crítica como prática de interpretação e disputa de sentido sobre obras e autores.",
+    "objectIds": []
+  },
+  {
+    "id": "religiosidade-afro-brasileira",
+    "label": "religiosidade afro-brasileira",
+    "description": "Candomblé, umbanda e os cultos aos orixás e inquices como sistemas de pensamento.",
+    "objectIds": []
+  },
+  {
+    "id": "politica-brasileira-contemporanea",
+    "label": "política brasileira contemporânea",
+    "description": "Disputas de poder, democracia e liberdade no Brasil recente.",
+    "objectIds": []
+  },
+  {
+    "id": "raca-e-identidade-negra",
+    "label": "raça e identidade negra",
+    "description": "Racismo, escravidão e os símbolos de luta por igualdade racial no Brasil.",
+    "objectIds": []
+  },
+  {
+    "id": "diplomacia-cultural",
+    "label": "diplomacia cultural",
+    "description": "A projeção internacional da língua e da cultura brasileiras como política de Estado.",
+    "objectIds": []
+  },
+  {
+    "id": "crise-climatica",
+    "label": "crise climática",
+    "description": "O Antropoceno, o aquecimento global e a dificuldade de perceber catástrofes de escala planetária.",
+    "objectIds": []
   }
 ]

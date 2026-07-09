@@ -3,6 +3,7 @@ export type ObjectType =
   | "paper"
   | "livro"
   | "palestra"
+  | "podcast"
   | "projeto"
   | "curriculo"
   | "ferramenta"
@@ -24,6 +25,7 @@ export const OBJECT_TYPES: ObjectType[] = [
   "paper",
   "livro",
   "palestra",
+  "podcast",
   "projeto",
   "curriculo",
   "ferramenta",

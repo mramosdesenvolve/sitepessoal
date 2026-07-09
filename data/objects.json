@@ -1,250 +1,1783 @@
 [
   {
-    "id": "ia-formacao-docente",
-    "title": "IA generativa na formação docente: entre o pânico e o encantamento",
+    "id": "casa-da-agua-antonio-olinto",
+    "title": "A Casa da Água, de Antônio Olinto",
     "type": "artigo",
-    "year": 2024,
-    "shortDescription": "Como formar professores para um mundo em que a máquina também escreve — sem tecnofobia nem deslumbramento.",
-    "longDescription": "O artigo mapeia as reações do campo educacional brasileiro à chegada da IA generativa e propõe um terceiro caminho entre a proibição e a adoção acrítica: tratar a IA como objeto de estudo cultural dentro da própria formação docente. A partir de oficinas realizadas com professores de redes públicas, o texto descreve práticas em que a máquina é usada como interlocutora imperfeita — um dispositivo para tornar visíveis as escolhas de linguagem, autoria e avaliação que a docência sempre envolveu.",
-    "concepts": ["inteligencia-artificial", "formacao-docente", "tecnologia-e-imaginacao"],
-    "relatedObjectIds": ["filosofia-educacao-ia", "estrategia-ia-rede", "mapa-vivo"],
-    "links": [{ "label": "Ler no periódico (placeholder)", "url": "https://example.com/ia-formacao-docente" }],
+    "year": 2017,
+    "shortDescription": "Crítica literária sobre o romance de Antônio Olinto e a diáspora dos agudás entre a Bahia e o Golfo do Benin.",
+    "longDescription": "Crítica literária sobre *A Casa da Água*, de Antônio Olinto, romance que narra a travessia dos agudás — ex-escravizados que retornaram à África e recriaram, na costa do Benin, uma cultura híbrida afro-brasileira.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "afro-diasporas",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "falar-da-escravidao-e-falar-do-presente"
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "curriculo-rizomatico",
-    "title": "Rhizomatic curriculum design: notas para uma teoria do currículo em rede",
-    "type": "paper",
+    "id": "caixa-preta-samba-enredo",
+    "title": "A caixa preta do samba enredo",
+    "type": "artigo",
     "year": 2023,
-    "shortDescription": "Paper que propõe pensar o currículo como grafo de conceitos conectados, não como sequência linear de conteúdos.",
-    "longDescription": "Apresentado em congresso internacional de currículo, o paper articula Deleuze e Guattari com a literatura de learning design para propor um modelo formal de currículo-rizoma: conceitos como nós, práticas como arestas, percursos como caminhadas possíveis no grafo. O texto discute implicações para avaliação, progressão e autonomia docente, e apresenta um protótipo de notação para descrever currículos dessa forma — notação que mais tarde deu origem ao software Mapa Vivo.",
-    "concepts": ["curriculo-vivo", "design-de-aprendizagem", "filosofia-da-educacao"],
-    "relatedObjectIds": ["mapa-vivo", "curso-design-aprendizagem", "curriculo-cultura-digital"],
-    "links": [{ "label": "PDF (placeholder)", "url": "https://example.com/rhizomatic-curriculum" }],
+    "shortDescription": "Sobre a mercantilização e a opacidade dos critérios de julgamento do samba-enredo nos concursos de carnaval.",
+    "longDescription": "Ensaio sobre como o samba-enredo, invenção cultural afro-brasileira nascida nos morros e terreiros, foi progressivamente capturado por uma lógica de mercado e por critérios de julgamento pouco transparentes nas disputas das escolas de samba.",
+    "concepts": [
+      "samba-e-carnaval",
+      "cultura-brasileira",
+      "musica"
+    ],
+    "relatedObjectIds": [
+      "bezerra-da-silva-embaixador-do-morro"
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "tecnologias-imaginario",
-    "title": "Tecnologias do Imaginário Brasileiro",
-    "type": "livro",
-    "year": 2022,
-    "shortDescription": "Livro-ensaio sobre como o Brasil inventou tecnologias de imaginação — do romance-folhetim ao streaming de funk.",
-    "longDescription": "O livro percorre cinco 'tecnologias do imaginário' que o Brasil desenvolveu ou reinventou: o folhetim, o rádio, a telenovela, o videofunk e as plataformas de mensagem. Em cada capítulo, um objeto técnico é lido como infraestrutura de imaginação coletiva — um dispositivo que ensina um país a se narrar. O argumento central: toda tecnologia de comunicação é também uma pedagogia, e entender essas pedagogias é condição para disputar o que a IA fará com o imaginário brasileiro.",
-    "concepts": ["cultura-brasileira", "tecnologia-e-imaginacao", "imaginacao-politica", "literatura"],
-    "relatedObjectIds": ["machado-algoritmos", "arquivos-do-futuro", "ia-formacao-docente"],
-    "links": [{ "label": "Editora (placeholder)", "url": "https://example.com/tecnologias-imaginario" }],
-    "status": "publicado",
-    "featured": true
-  },
-  {
-    "id": "jongo-design-sistemas",
-    "title": "O que o jongo ensina sobre design de sistemas",
-    "type": "palestra",
-    "year": 2023,
-    "shortDescription": "Palestra sobre roda, ponto e improviso como princípios de arquitetura de sistemas de aprendizagem.",
-    "longDescription": "A partir da estrutura do jongo — a roda que distribui protagonismo, o ponto que condensa conhecimento em forma memorizável, o improviso que atualiza a tradição —, a palestra extrai três princípios para o design de sistemas de aprendizagem contemporâneos: circularidade em vez de hierarquia, compressão poética em vez de apostila, e variação em vez de padronização. Apresentada originalmente em conferência de design, depois adaptada para formações docentes.",
-    "concepts": ["oralidade", "afro-diasporas", "musica", "design-de-aprendizagem"],
-    "relatedObjectIds": ["escuta-como-metodo", "casa-atlantica", "escola-de-escutas"],
-    "links": [{ "label": "Vídeo (placeholder)", "url": "https://example.com/jongo-design" }],
-    "status": "publicado",
-    "featured": true
-  },
-  {
-    "id": "casa-atlantica",
-    "title": "Casa Atlântica — plataforma de memória afro-diaspórica",
-    "type": "projeto",
-    "year": 2024,
-    "shortDescription": "Infraestrutura digital colaborativa para acervos de comunidades afro-brasileiras, em codesign com mestres e griôs.",
-    "longDescription": "Projeto de infraestrutura cultural que desenvolve, junto a comunidades de terreiro, jongueiros e mestres de cultura popular, uma plataforma de arquivo vivo: áudio, vídeo e narrativa oral organizados não por taxonomias de museu, mas pelas categorias das próprias comunidades. O desafio técnico-político central é construir protocolos de consentimento e circulação — nem tudo que é guardado deve ser público, e a plataforma trata o segredo como recurso de design, não como falha.",
-    "concepts": ["afro-diasporas", "memoria-e-arquivo", "infraestruturas-culturais"],
-    "relatedObjectIds": ["arquivos-do-futuro", "jongo-design-sistemas", "escola-infraestrutura"],
-    "links": [{ "label": "Site do projeto (placeholder)", "url": "https://example.com/casa-atlantica" }],
-    "status": "em desenvolvimento",
-    "featured": true
-  },
-  {
-    "id": "curriculo-cultura-digital",
-    "title": "Currículo de Cultura Digital para redes públicas",
-    "type": "curriculo",
-    "year": 2023,
-    "shortDescription": "Matriz curricular de cultura digital do 6º ao 9º ano, construída com professores de três redes municipais.",
-    "longDescription": "Currículo que trata a cultura digital não como disciplina de informática, mas como campo de leitura de mundo: algoritmos, dados, plataformas e IA aparecem como objetos culturais a serem interpretados, criticados e reprogramados. A matriz é organizada como rede de conceitos com percursos sugeridos (não obrigatórios), e cada conceito vem acompanhado de práticas de referência testadas em sala. Adotado como documento orientador por três redes municipais.",
-    "concepts": ["curriculo-vivo", "educacao-publica", "software-como-cultura"],
-    "relatedObjectIds": ["curriculo-rizomatico", "estrategia-ia-rede", "escola-infraestrutura"],
+    "id": "bezerra-da-silva-embaixador-do-morro",
+    "title": "Bezerra da Silva, embaixador do morro",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "Tributo poético a Bezerra da Silva, cronista da malandragem e do partido-alto carioca, tecido em referências afro-religiosas.",
+    "longDescription": "Tributo poético ao sambista e partideiro Bezerra da Silva, narrador da malandragem e cronista dos morros cariocas, cuja obra é lida aqui através das lentes de Exu, Xangô e do panteão dos orixás.",
+    "concepts": [
+      "musica",
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "oralidade"
+    ],
+    "relatedObjectIds": [
+      "caixa-preta-samba-enredo",
+      "iemanja-avant-garde"
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "cartas-de-percurso",
-    "title": "Cartas de Percurso",
-    "type": "ferramenta",
-    "year": 2022,
-    "shortDescription": "Baralho físico de 52 cartas para projetar experiências de aprendizagem em equipe — cada carta é uma decisão de design.",
-    "longDescription": "Ferramenta analógica de design instrucional: um baralho em que cada carta nomeia uma decisão de design de experiência de aprendizagem (ritmo, agrupamento, evidência, abertura, risco...). Equipes pedagógicas usam o baralho para tornar explícitas escolhas que costumam ficar implícitas no planejamento. Usado em formações docentes e em processos de consultoria; a versão 2 incorporou cartas de avaliação formativa criadas pelos próprios usuários.",
-    "concepts": ["design-de-aprendizagem", "pedagogias-experimentais", "avaliacao-formativa"],
-    "relatedObjectIds": ["percursos-abertos", "curso-design-aprendizagem", "redesenho-instituto"],
+    "id": "iemanja-avant-garde",
+    "title": "Iemanjá, vanguarda",
+    "type": "artigo",
+    "year": 2014,
+    "shortDescription": "Candomblé, o oriki como gênero poético iorubá e sua inesperada proximidade com as vanguardas estéticas do século XX.",
+    "longDescription": "Ensaio sobre o candomblé, a figura de Iemanjá e o oriki — gênero poético oral iorubá — que, na leitura do autor, antecipa procedimentos que só seriam reconhecidos como vanguarda estética no século XX: justaposição, não-linearidade, método ideogrâmico.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "oralidade",
+      "literatura",
+      "afro-diasporas"
+    ],
+    "relatedObjectIds": [
+      "bezerra-da-silva-embaixador-do-morro"
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "mapa-vivo",
-    "title": "Mapa Vivo",
-    "type": "software",
-    "year": 2024,
-    "shortDescription": "Software open source para educadores desenharem currículos como grafos navegáveis de conceitos.",
-    "longDescription": "Protótipo de software que implementa a notação proposta no paper sobre currículo rizomático: educadores criam nós (conceitos), conectam práticas e recursos, e alunos navegam o grafo escolhendo percursos. Inclui um experimento de sugestão de conexões por embeddings — a máquina propõe arestas, o educador decide. O código é aberto e o projeto funciona também como campo de pesquisa sobre software como cultura: cada decisão de interface carrega uma teoria de currículo.",
-    "concepts": ["software-como-cultura", "inteligencia-artificial", "design-de-aprendizagem"],
-    "relatedObjectIds": ["curriculo-rizomatico", "ia-formacao-docente", "cartas-de-percurso"],
-    "links": [{ "label": "Repositório (placeholder)", "url": "https://example.com/mapa-vivo" }],
-    "status": "prototipo",
-    "featured": true
-  },
-  {
-    "id": "redesenho-instituto",
-    "title": "Redesenho curricular para instituto cultural",
-    "type": "consultoria",
-    "year": 2023,
-    "shortDescription": "Consultoria de 8 meses para reestruturar os programas formativos de um instituto cultural de grande porte.",
-    "longDescription": "Processo de consultoria que reorganizou o portfólio formativo de um instituto cultural — cursos, residências e programas públicos — em torno de uma rede de conceitos comum, substituindo a antiga divisão por linguagens artísticas. O trabalho envolveu escuta de educadores, prototipagem de percursos com público real e a criação de um documento curricular vivo, revisado semestralmente. Caso usado desde então como referência metodológica em outras consultorias.",
-    "concepts": ["infraestruturas-culturais", "curriculo-vivo", "design-de-aprendizagem"],
-    "relatedObjectIds": ["cartas-de-percurso", "curriculo-cultura-digital", "percursos-abertos"],
-    "status": "arquivado",
-    "featured": false
-  },
-  {
-    "id": "escuta-como-metodo",
-    "title": "Escuta como método",
-    "type": "ensaio",
-    "year": 2021,
-    "shortDescription": "Ensaio sobre o que a música e a oralidade ensinam à pesquisa em educação: escutar antes de medir.",
-    "longDescription": "O ensaio parte de uma pergunta simples — por que a pesquisa educacional observa tanto e escuta tão pouco? — e desenvolve a escuta como método rigoroso: escuta musical (atenção ao ritmo e ao timbre das salas de aula), escuta oral (a conversa como instrumento de produção de dados) e escuta filosófica (suspender a pergunta para ouvir a resposta que não foi pedida). Texto adotado em disciplinas de metodologia de pesquisa em três programas de pós-graduação.",
-    "concepts": ["musica", "oralidade", "filosofia-da-educacao"],
-    "relatedObjectIds": ["jongo-design-sistemas", "gramatica-aprendizagens", "escola-de-escutas"],
+    "id": "falar-da-escravidao-e-falar-do-presente",
+    "title": "Falar da escravidão é falar do presente",
+    "type": "artigo",
+    "year": 2019,
+    "shortDescription": "Resenha crítica do primeiro volume da trilogia de Laurentino Gomes sobre a história da escravidão no Brasil.",
+    "longDescription": "Resenha crítica do primeiro volume da nova trilogia de Laurentino Gomes sobre a escravidão, discutindo seu rigor bibliográfico e argumentando que refletir sobre a escravidão é indissociável de refletir sobre o presente — e sobre os símbolos de luta por igualdade racial que dela emergem, como Zumbi dos Palmares.",
+    "concepts": [
+      "raca-e-identidade-negra",
+      "critica-literaria",
+      "cultura-brasileira",
+      "afro-diasporas"
+    ],
+    "relatedObjectIds": [
+      "casa-da-agua-antonio-olinto"
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "filosofia-educacao-ia",
-    "title": "Filosofia da Educação para tempos de IA",
-    "type": "curso",
-    "year": 2024,
-    "shortDescription": "Curso de extensão (40h) que revisita as perguntas clássicas da filosofia da educação diante da IA generativa.",
-    "longDescription": "Curso de extensão que reorganiza o cânone da filosofia da educação em torno de perguntas reativadas pela IA: o que é aprender, se a máquina 'aprende'? O que é autoria, se o texto é coproduzido? O que é avaliação, se a resposta certa é commodity? Cada módulo emparelha um texto clássico com um experimento prático com ferramentas de IA. Oferecido para professores da educação básica e do ensino superior, com duas turmas concluídas.",
-    "concepts": ["filosofia-da-educacao", "inteligencia-artificial", "formacao-docente"],
-    "relatedObjectIds": ["ia-formacao-docente", "assessment-accompaniment", "curso-design-aprendizagem"],
-    "status": "publicado",
-    "featured": false
-  },
-  {
-    "id": "percursos-abertos",
-    "title": "Percursos Abertos — avaliação por narrativas",
-    "type": "metodologia",
-    "year": 2022,
-    "shortDescription": "Metodologia de avaliação formativa em que estudantes documentam e narram o próprio percurso de aprendizagem.",
-    "longDescription": "Metodologia que substitui provas pontuais por narrativas de percurso: estudantes mantêm um diário de evidências (textos, áudios, protótipos) e, em ciclos, constroem uma narrativa avaliativa em conversa com o docente. A metodologia define protocolos concretos — o que conta como evidência, como conduzir a conversa avaliativa, como traduzir narrativas em registros institucionais — para que a abertura não vire imprecisão. Testada em escolas básicas e em cursos livres.",
-    "concepts": ["avaliacao-formativa", "pedagogias-experimentais", "formacao-docente"],
-    "relatedObjectIds": ["assessment-accompaniment", "cartas-de-percurso", "escola-de-escutas"],
-    "status": "publicado",
-    "featured": false
-  },
-  {
-    "id": "escola-infraestrutura",
-    "title": "A escola como infraestrutura cultural",
+    "id": "paradoxo-liberdade-neoliberal",
+    "title": "O paradoxo da liberdade neoliberal",
     "type": "artigo",
     "year": 2020,
-    "shortDescription": "Artigo que propõe ler a escola pública brasileira como a maior rede de infraestrutura cultural do país.",
-    "longDescription": "O artigo inverte a pergunta habitual ('como levar cultura à escola?') e mostra que a escola pública já é infraestrutura cultural: o maior circuito de bibliotecas, quadras, cozinhas e auditórios do território nacional. A partir de dados de distribuição de equipamentos, o texto propõe políticas que assumam essa condição — abrir a escola aos circuitos culturais do território em vez de importar eventos pontuais. Publicado em dossiê sobre políticas culturais.",
-    "concepts": ["educacao-publica", "infraestruturas-culturais", "imaginacao-politica"],
-    "relatedObjectIds": ["casa-atlantica", "curriculo-cultura-digital", "tecnologias-imaginario"],
+    "shortDescription": "Ensaio sobre a gramática da liberdade no neoliberalismo e sua afinidade com o governo Bolsonaro.",
+    "longDescription": "Ensaio de filosofia política sobre como o neoliberalismo, ao fundar uma gramática da liberdade centrada na propriedade de si, produz uma engenharia social compatível com o autoritarismo — discutindo Mises, Hayek, Rüstow e a aliança entre o governo Bolsonaro e a agenda de Guedes.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "machado-algoritmos",
-    "title": "Machado, leitor de algoritmos",
+    "id": "esquerda-explicada-aos-nossos-pais",
+    "title": "A esquerda explicada aos nossos pais",
+    "type": "artigo",
+    "year": 2016,
+    "shortDescription": "Uma carta aberta, em tom de conversa de almoço em família, sobre por que a distinção entre esquerda e direita continua relevante.",
+    "longDescription": "Ensaio em forma de carta aos pais, argumentando que a distinção entre esquerda e direita permanece decisiva: está no grau de disposição para enfrentar a desigualdade social, o papel do Estado e a crítica à meritocracia como explicação suficiente para o sucesso individual.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "paradoxo-liberdade-neoliberal"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "forca-de-rosa-grande-sertao-veredas",
+    "title": "A força de Rosa: 60 anos de Grande Sertão: veredas",
+    "type": "artigo",
+    "year": 2016,
+    "shortDescription": "Ensaio sobre a grandeza de Grande Sertão: veredas, de Guimarães Rosa, seis décadas após sua publicação.",
+    "longDescription": "Ensaio de crítica literária sobre *Grande Sertão: veredas*, lendo o romance de Guimarães Rosa ao lado de Shakespeare, Dante e Euclides da Cunha, e argumentando que sua grandeza está em unir o alto e o baixo, o vulgar e o sublime, em uma linguagem que é o próprio sertão.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "casa-da-agua-antonio-olinto"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "a-guisa-de-um-manifesto",
+    "title": "À guisa de um Manifesto",
     "type": "ensaio",
-    "year": 2023,
-    "shortDescription": "Ensaio especulativo: o que a ironia machadiana ensina sobre ler textos gerados por máquinas.",
-    "longDescription": "Exercício de crítica especulativa que imagina Machado de Assis diante de um modelo de linguagem. O ensaio usa a ironia machadiana — o narrador que não merece confiança, o elogio que corrói — como tecnologia de leitura para textos gerados por IA: como detectar o que o texto não sabe que está dizendo? A hipótese: a tradição literária brasileira já treinou leitores para a desconfiança produtiva que a IA agora exige de todos.",
-    "concepts": ["literatura", "cultura-brasileira", "inteligencia-artificial"],
-    "relatedObjectIds": ["tecnologias-imaginario", "ia-formacao-docente", "arquivos-do-futuro"],
+    "year": 2018,
+    "shortDescription": "Um manifesto poético sobre a urgência da linguagem, do gesto poético como contravenção e do Poeta como figura de invenção.",
+    "longDescription": "Manifesto em prosa poética que convoca a urgência de uma linguagem que rompa com a repetição e o hábito, defendendo o gesto poético como forma de contravenção política e o Poeta como figura fundadora de mundos.",
+    "concepts": [
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "iemanja-avant-garde"
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "arquivos-do-futuro",
-    "title": "Arquivos do futuro: o que guardaremos da cultura digital brasileira?",
+    "id": "insurreicao-do-rap-e-funk",
+    "title": "A insurreição do rap e funk",
+    "type": "artigo",
+    "year": 2023,
+    "shortDescription": "Do fonógrafo de Frederico Figner ao streaming: como o neoliberalismo capturou o mercado musical brasileiro e por que rap e funk resistem.",
+    "longDescription": "Ensaio que traça uma genealogia do mercado musical brasileiro, da fundação da Casa Edison por Frederico Figner até a era do streaming, mostrando como artistas afrodescendentes fundaram a música popular brasileira em meio à exclusão racial — e como hoje o rap e o funk tensionam a ideologia do 'empreendedorismo de si' imposta pelo neoliberalismo à classe artística.",
+    "concepts": [
+      "musica",
+      "afro-diasporas",
+      "politica-brasileira-contemporanea",
+      "tecnologia-e-imaginacao"
+    ],
+    "relatedObjectIds": [
+      "paradoxo-liberdade-neoliberal",
+      "caixa-preta-samba-enredo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "a-voz-dos-terreiros",
+    "title": "A voz dos terreiros",
+    "type": "artigo",
+    "year": 2022,
+    "shortDescription": "Uma crônica sobre o Bembé do Mercado, em Santo Amaro da Purificação, e a Bahia como território de memória afro-religiosa.",
+    "longDescription": "Crônica-ensaio sobre o Bembé do Mercado, festa religiosa, artística e política das comunidades de matriz africana em Santo Amaro da Purificação (BA), que reúne mais de quarenta terreiros. Percorre a história do tráfico atlântico, a noção de axé e ancestralidade, e a dimensão política contemporânea do ritual, entre o machado de Xangô e os nomes de Marielle Franco e Dandara.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "oralidade",
+      "memoria-e-arquivo",
+      "raca-e-identidade-negra",
+      "infraestruturas-culturais"
+    ],
+    "relatedObjectIds": [
+      "iemanja-avant-garde",
+      "bezerra-da-silva-embaixador-do-morro"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "album-de-iara-ferreira",
+    "title": "Álbum de Iara Ferreira discute a superação da cultura branca e masculina",
+    "type": "artigo",
+    "year": 2023,
+    "shortDescription": "Crítica do álbum VERDEAMARELA, de Iara Ferreira, e sua imaginação política em torno de identidade nacional, raça e gênero.",
+    "longDescription": "Crítica do álbum de estreia de Iara Ferreira, *VERDEAMARELA*, que reelabora o tema da identidade brasileira a partir de uma perspectiva que rejeita a conciliação construída sob os termos da branquitude, dialogando com cosmovisões indígenas e afro-brasileiras (Xangô, Katendê) e revisitando topos da canção popular sob uma ótica crítica de gênero.",
+    "concepts": [
+      "musica",
+      "cultura-brasileira",
+      "raca-e-identidade-negra",
+      "religiosidade-afro-brasileira",
+      "imaginacao-politica"
+    ],
+    "relatedObjectIds": [
+      "caixa-preta-samba-enredo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "antonio-vieira-e-os-movimentos-identitarios",
+    "title": "António Vieira e os movimentos identitários",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Sobre um protesto de estudantes de História contra quadros do padre Antônio Vieira e os limites da estratégia do \"no platform\".",
+    "longDescription": "Ensaio sobre um episódio na Ufes em que estudantes de História cobriram quadros do padre Antônio Vieira em protesto contra seu papel na colonização. Discute a legitimidade das demandas dos movimentos identitários por reconhecimento e poder, mas questiona a eficácia de estratégias punitivistas como o \"no platform\", defendendo a leitura crítica de Vieira em sala de aula.",
+    "concepts": [
+      "politica-brasileira-contemporanea",
+      "raca-e-identidade-negra",
+      "critica-literaria"
+    ],
+    "relatedObjectIds": [
+      "falar-da-escravidao-e-falar-do-presente"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "caio-f-incontestavel",
+    "title": "Caio F. incontestável",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "Vinte anos após sua morte, um ensaio sobre a atualidade da obra de Caio Fernando Abreu e seus personagens urbanos.",
+    "longDescription": "Ensaio sobre a obra de Caio Fernando Abreu, vinte anos após sua morte, argumentando que sua ficção sobre personagens urbanos que trocaram os grilhões da tradição por uma liberdade sem certezas — e pela melancolia e fragilidade dos laços afetivos — permanece extraordinariamente atual.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "forca-de-rosa-grande-sertao-veredas"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "carnaval-e-financiamento-publico",
+    "title": "Carnaval e financiamento público",
+    "type": "artigo",
+    "year": 2019,
+    "shortDescription": "Sobre o debate acerca do financiamento público das escolas de samba e a lógica necroestatal que reduz o carnaval ao turismo.",
+    "longDescription": "Ensaio sobre um debate na Câmara Municipal a respeito do financiamento público das escolas de samba, argumentando que reduzir seu valor ao apelo turístico e à lucratividade é sintoma de uma lógica necroestatal de extermínio da cultura negra — e que o financiamento não é concessão, mas obrigação constitucional.",
+    "concepts": [
+      "samba-e-carnaval",
+      "politica-brasileira-contemporanea",
+      "raca-e-identidade-negra",
+      "religiosidade-afro-brasileira"
+    ],
+    "relatedObjectIds": [
+      "caixa-preta-samba-enredo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "daqui-pra-frente-o-que-esta-em-jogo",
+    "title": "Daqui pra frente, o que está em jogo",
+    "type": "artigo",
+    "year": 2020,
+    "shortDescription": "Sobre o pacto de conciliação pós-redemocratização, as manifestações de 2013 e o que vem depois de seu esgotamento.",
+    "longDescription": "Ensaio de filosofia política sobre a singularidade da saída brasileira da ditadura militar — sem expurgos ou retratações — e como o pacto de conciliação resultante entrou em crise nas manifestações de 2013, abrindo caminho tanto para um projeto democrático radical quanto para o aprofundamento violento da agenda neoliberal.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "paradoxo-liberdade-neoliberal",
+      "esquerda-explicada-aos-nossos-pais"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "desmonte-de-programa-de-diplomacia-cultural",
+    "title": "Desmonte de programa de diplomacia cultural abala difusão da língua portuguesa",
+    "type": "artigo",
+    "year": 2025,
+    "shortDescription": "Como o Programa Leitorado Guimarães Rosa, criado em 1953, vem sendo silenciosamente esvaziado por cortes e omissão administrativa.",
+    "longDescription": "Reportagem-ensaio sobre o encolhimento silencioso do Programa Leitorado Guimarães Rosa, uma das políticas de diplomacia cultural mais antigas do Brasil, e o contraste com o investimento crescente de países como China, Alemanha e Espanha em suas próprias redes de projeção cultural no exterior.",
+    "concepts": [
+      "diplomacia-cultural",
+      "politica-brasileira-contemporanea",
+      "cultura-brasileira",
+      "infraestruturas-culturais"
+    ],
+    "relatedObjectIds": [],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "dona-julia-e-o-academico-consorte",
+    "title": "Dona Júlia e o acadêmico consorte",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "Sobre o apagamento de Júlia Lopes de Almeida, excluída da fundação da Academia Brasileira de Letras por ser mulher.",
+    "longDescription": "Ensaio sobre Júlia Lopes de Almeida, escritora que integrava a lista dos quarenta fundadores da Academia Brasileira de Letras até ser substituída por seu próprio marido, Filinto de Almeida, por não haver regulamentação para a participação de mulheres — e sobre seu apagamento subsequente da historiografia literária brasileira.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "caio-f-incontestavel"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "drummond-e-o-desenvolvimentismo",
+    "title": "Drummond e o desenvolvimentismo",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Sobre o poema de Drummond contra a destruição do Salto de Sete Quedas pela hidrelétrica de Itaipu, e a política desenvolvimentista.",
+    "longDescription": "Ensaio sobre o poema \"Adeus a Sete Quedas\", de Carlos Drummond de Andrade, escrito contra a destruição do Salto de Sete Quedas pelo lago de Itaipu — usado como ponto de partida para uma crítica ao consenso desenvolvimentista que atravessa, à esquerda e à direita, o espectro político-eleitoral brasileiro.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "forca-de-rosa-grande-sertao-veredas"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "e-preciso-que-o-canto-nao-cesse-nunca",
+    "title": "É preciso que o canto não cesse nunca",
+    "type": "ensaio",
+    "year": 2017,
+    "shortDescription": "Um ensaio sobre a natureza irredutível do poema, com Octavio Paz, Heidegger, Gadamer e Ferreira Gullar.",
+    "longDescription": "Ensaio sobre a natureza do poema como entidade singular e irredutível, em diálogo com Octavio Paz, Martin Heidegger, Paul Valéry, Hans-Georg Gadamer e Ferreira Gullar, sobre a pergunta que atravessa a modernidade: ainda há uma tarefa para o poeta?",
+    "concepts": [
+      "critica-literaria",
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "a-guisa-de-um-manifesto"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "escola-exclusao-e-exterminio",
+    "title": "Escola, exclusão e extermínio",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "Sobre como a precarização da formação docente, sobretudo via EAD privado, perpetua o ciclo de exclusão da escola pública.",
+    "longDescription": "Ensaio sobre como a escola pública brasileira se tornou parte de um ciclo de exclusão que atinge tanto alunos quanto professores, examinando dados sobre a expansão do Ensino a Distância privado na formação docente e argumentando que nem a universidade pública rompe esse ciclo.",
+    "concepts": [
+      "educacao-publica",
+      "formacao-docente",
+      "raca-e-identidade-negra"
+    ],
+    "relatedObjectIds": [],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "etica-e-educacao",
+    "title": "Ética e educação",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Um ensaio sobre Sócrates, Platão e a impossibilidade de ensinar a Ética como uma técnica.",
+    "longDescription": "Ensaio de filosofia da educação sobre a relação entre Ética e formação, partindo de Sócrates e Platão para argumentar que a Ética não é uma ciência que se ensina, mas o terreno que sustenta toda a vida — e perguntando que projeto de país orienta, hoje, a educação brasileira.",
+    "concepts": [
+      "filosofia-da-educacao",
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "escola-exclusao-e-exterminio"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "futebol-copa-e-nelson-rodrigues",
+    "title": "Futebol, Copa e Nelson Rodrigues",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Sobre o futebol como fenômeno político emancipatório, contra a tentativa da direita de se apropriar da seleção.",
+    "longDescription": "Ensaio sobre o futebol como fenômeno civilizatório e político, em diálogo com Nelson Rodrigues, Norbert Elias, Tostão e José Miguel Wisnik, argumentando contra a leitura que via o esporte como mero \"ópio do povo\" e contra a apropriação da camisa da seleção pela direita conservadora.",
+    "concepts": [
+      "cultura-brasileira",
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "o-cenario-das-eleicoes"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "o-cenario-das-eleicoes",
+    "title": "O cenário das eleições",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Uma análise de conjuntura da corrida presidencial de 2018 e das ambivalências da Operação Lava Jato.",
+    "longDescription": "Análise de conjuntura da eleição presidencial de 2018 — Bolsonaro, Marina Silva, Ciro Gomes, Boulos e Lula — argumentando que a prisão do ex-presidente e as ambivalências punitivistas da Lava Jato desequilibraram o jogo democrático, e que os dois caminhos que se apresentam ao país são o medo conservador ou uma democracia popular.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "futebol-copa-e-nelson-rodrigues",
+      "daqui-pra-frente-o-que-esta-em-jogo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "gal-costa-y-la-fundacion",
+    "title": "Gal Costa y la fundación de lo que todavía no se nombra",
+    "type": "artigo",
+    "year": 2022,
+    "shortDescription": "Um ensaio em espanhol sobre Gal Costa, o Tropicalismo e a estética da conciliação na música popular brasileira.",
+    "longDescription": "Ensaio publicado em espanhol logo após a morte de Gal Costa, reconstruindo desde os encontros de amizade que fundaram o Tropicalismo (Caetano, Gil, João Gilberto) até o papel único de Gal como única presença feminina do movimento, a erotização de sua imagem sob a ditadura, e como o legado antropofágico do Tropicalismo se tornou, paradoxalmente, a estética conciliadora da Nova República — até ser tensionado de novo pelo álbum *Recanto* (2011).",
+    "concepts": [
+      "musica",
+      "cultura-brasileira",
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "caixa-preta-samba-enredo",
+      "album-de-iara-ferreira"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "grao-territorio-percussivo",
+    "title": "Grão: Território Percussivo",
+    "type": "artigo",
+    "year": 2021,
+    "shortDescription": "Sobre o álbum de estreia do músico Léo de Paula e a devolução da dimensão inventiva da música afro-brasileira, para além do rótulo de \"tradição\".",
+    "longDescription": "Crítica do álbum *Grão — Território Percussivo*, de Léo de Paula, publicada no Dia da Consciência Negra, argumentando que a historiografia confinou a música afro-brasileira ao registro do \"folclórico\" e da \"tradição\", apagando sua dimensão inventiva e disruptiva — a mesma que animou a Turma do Estácio e que o álbum de Léo de Paula recupera.",
+    "concepts": [
+      "musica",
+      "afro-diasporas",
+      "raca-e-identidade-negra",
+      "religiosidade-afro-brasileira",
+      "memoria-e-arquivo"
+    ],
+    "relatedObjectIds": [
+      "caixa-preta-samba-enredo",
+      "a-voz-dos-terreiros"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "liberdade-liberdade-abolicao-nos-periodicos-capixabas",
+    "title": "Liberdade, liberdade: sobre a abolição da escravatura nos periódicos capixabas",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "Uma pesquisa de arquivo sobre como os jornais capixabas do século XIX discutiram o fim do trabalho escravo e sua substituição por imigrantes.",
+    "longDescription": "Ensaio de pesquisa de arquivo sobre a cobertura do jornal *O Cachoeirano* (1881) ao debate sobre o fim da escravidão no Espírito Santo, mostrando como a defesa da abolição gradual estava entrelaçada a um projeto de substituição da mão de obra escrava por imigrantes europeus — e como o povo negro alforriado foi deixado sem terra e sem trabalho.",
+    "concepts": [
+      "raca-e-identidade-negra",
+      "memoria-e-arquivo",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "falar-da-escravidao-e-falar-do-presente"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "milagre-novo-album-do-orizzonti",
+    "title": "Milagre, novo álbum do Orizzonti",
+    "type": "artigo",
+    "year": 2021,
+    "shortDescription": "Sobre o álbum-tributo a Milton Nascimento do grupo instrumental capixaba Orizzonti, aberto por uma participação do maestro Letieres Leite.",
+    "longDescription": "Crítica do álbum *Milagre*, do grupo instrumental capixaba Orizzonti, tributo a Milton Nascimento aberto por uma participação do maestro baiano Letieres Leite, refletindo sobre o efeito transcendental da voz de Milton e sobre uma noção de liberdade — a liberdade dos despossuídos — que atravessa sua obra.",
+    "concepts": [
+      "musica",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "grao-territorio-percussivo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "nocao-de-liberdade-tornou-se-um-modo-de-conformacao",
+    "title": "Noção de liberdade tornou-se um modo de conformação",
+    "type": "ensaio",
+    "year": 2020,
+    "shortDescription": "Sobre como a liberdade fundada na propriedade de si se tornou a única gramática da democracia, inclusive para seus opositores.",
+    "longDescription": "Ensaio de filosofia política que traça a genealogia da liberdade como propriedade de si, dos Levellers ingleses e John Locke até Milton Friedman e Hayek, argumentando que essa noção de liberdade se tornou uma metafísica hegemônica que captura até os movimentos que se opõem ao neoliberalismo.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "paradoxo-liberdade-neoliberal"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "o-estado-a-democracia-e-a-disputa-em-torno-da-liberdade",
+    "title": "O Estado, a Democracia e a disputa em torno da liberdade",
+    "type": "ensaio",
+    "year": 2020,
+    "shortDescription": "Contra a tese de que Bolsonaro seria um mal necessário para o avanço de uma agenda liberal.",
+    "longDescription": "Ensaio que desmonta a tese de que Bolsonaro seria um custo aceitável para o aprofundamento de uma agenda liberal, argumentando que o fascismo bolsonarista é antes uma exigência do projeto neoliberal, fundado em uma noção de liberdade como propriedade de si que hoje se choca com o Estado democrático.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "paradoxo-liberdade-neoliberal",
+      "nocao-de-liberdade-tornou-se-um-modo-de-conformacao"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "o-levante-de-junho-de-2013-e-a-espera-de-godot",
+    "title": "O levante de junho de 2013 e a espera de Godot",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Sobre o conceito de \"pemedebismo\", de Marcos Nobre, e como o lulismo se revelou parte do mesmo arranjo oligárquico, não sua oposição.",
+    "longDescription": "Ensaio sobre as manifestações de junho de 2013 à luz do conceito de \"pemedebismo\" (Marcos Nobre), argumentando que o lulismo, apesar dos ganhos sociais e da popularidade de Lula, era parte do mesmo arranjo político de oligarquias — e que a renovação da esquerda prometida após 2013 nunca chegou.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "o-cenario-das-eleicoes",
+      "daqui-pra-frente-o-que-esta-em-jogo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "o-carnaval-capixaba-e-as-super-escolas-de-samba-sa",
+    "title": "O carnaval capixaba e as \"Super Escolas de Samba SA\"",
+    "type": "artigo",
+    "year": 2022,
+    "shortDescription": "Sobre a mercantilização crescente do carnaval capixaba e o samba como modelo de fazer política, não apenas festa.",
+    "longDescription": "Ensaio que recupera sambas críticos à industrialização do carnaval (Beto Sem Braço e Aluízio Machado, Beth Carvalho, Elton Medeiros) para argumentar que as escolas de samba são, antes de tudo, um modelo negro de fazer política fundado na organização territorial e comunitária — e que a contratação crescente de celebridades pelo carnaval capixaba aprofunda o desquite entre as escolas e seus territórios.",
+    "concepts": [
+      "samba-e-carnaval",
+      "raca-e-identidade-negra",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "caixa-preta-samba-enredo",
+      "carnaval-e-financiamento-publico"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "o-eterno-sorriso-negro-de-dona-ivone-lara",
+    "title": "O eterno sorriso negro de Dona Ivone Lara",
+    "type": "artigo",
+    "year": 2022,
+    "shortDescription": "Sobre Dona Ivone Lara, autora do primeiro samba-enredo assinado por uma mulher no grupo especial do carnaval carioca.",
+    "longDescription": "Perfil de Dona Ivone Lara por ocasião do centenário de seu nascimento, reconstruindo a história de *Cinco bailes da história do Rio* (1965) — primeiro samba-enredo de uma escola do grupo especial assinado por uma mulher — e as estratégias de silenciamento e resistência que marcaram sua trajetória.",
+    "concepts": [
+      "samba-e-carnaval",
+      "raca-e-identidade-negra",
+      "musica",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "o-carnaval-capixaba-e-as-super-escolas-de-samba-sa"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "o-potencial-renovador-da-escola",
+    "title": "O potencial renovador da escola",
+    "type": "artigo",
+    "year": 2015,
+    "shortDescription": "Sobre a Fundação Casa Grande, o CPCD de Tião Rocha e o eros pedagógico como antídoto para uma escola adoecida.",
+    "longDescription": "Ensaio sobre educação não institucionalizada a partir de dois encontros formativos do autor — com Alemberg Quindins, da Fundação Casa Grande (Ceará), e com o antropólogo Tião Rocha, do CPCD —, defendendo um currículo voltado às artes e à filosofia como caminho para recuperar o eros pedagógico perdido na escola contemporânea.",
+    "concepts": [
+      "educacao-publica",
+      "pedagogias-experimentais",
+      "filosofia-da-educacao",
+      "aprendizagem-expandida"
+    ],
+    "relatedObjectIds": [
+      "escola-exclusao-e-exterminio",
+      "etica-e-educacao"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "os-mil-alertas-para-a-crise-climatica",
+    "title": "Os mil alertas para a crise climática",
+    "type": "artigo",
+    "year": 2022,
+    "shortDescription": "Sobre o Antropoceno, o negacionismo climático e o colóquio \"Os Mil Nomes de Gaia\", de Bruno Latour e Déborah Danowski.",
+    "longDescription": "Ensaio sobre a dificuldade humana de perceber catástrofes de escala planetária — os \"fenômenos supraliminares\" de Günther Anders —, partindo do filme *Don't Look Up* e de uma entrevista real que o ecoa, para revisitar o colóquio \"Os Mil Nomes de Gaia: do Antropoceno à Idade da Terra\" (2014) e seus livros recém-publicados.",
+    "concepts": [
+      "crise-climatica",
+      "politica-brasileira-contemporanea",
+      "imaginacao-politica"
+    ],
+    "relatedObjectIds": [],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "paradoxos-do-lulismo",
+    "title": "Paradoxos do Lulismo",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Uma avaliação ambivalente do lulismo: ascensão social real, mas também conciliação com o grande capital.",
+    "longDescription": "Ensaio que pondera os paradoxos do lulismo — a inegável ascensão social das classes populares e o reconhecimento de que a desigualdade não é acaso histórico, mas também a conciliação com o grande capital financeiro e a fragilidade intelectual de parte da esquerda universitária que exige adesão como requisito democrático.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "o-levante-de-junho-de-2013-e-a-espera-de-godot"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "pioneiro-fantastico",
+    "title": "Pioneiro fantástico",
+    "type": "artigo",
+    "year": 2016,
+    "shortDescription": "Sobre Murilo Rubião, autor solitário que antecipou o realismo mágico latino-americano à margem dos grupos literários de sua época.",
+    "longDescription": "Ensaio biográfico e crítico sobre Murilo Rubião por ocasião de seu centenário, reconstruindo como o autor mineiro, à margem tanto do romance regionalista quanto da literatura introspectiva de sua geração, escreveu apenas 33 contos ao longo da vida — revisados obsessivamente — e antecipou o realismo mágico do Boom latino-americano.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "caio-f-incontestavel",
+      "forca-de-rosa-grande-sertao-veredas"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "por-que-a-democracia-necessita-das-humanidades",
+    "title": "Por que a democracia necessita das humanidades",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "A partir de Martha Nussbaum, sobre a substituição de uma educação para a democracia por uma educação para o lucro.",
+    "longDescription": "Ensaio sobre o livro *Sem fins lucrativos*, de Martha Nussbaum, argumentando que a substituição global de uma educação para a democracia por uma educação para o lucro esvazia justamente as competências humanísticas — argumentação, empatia, pensamento crítico — de que a democracia depende.",
+    "concepts": [
+      "filosofia-da-educacao",
+      "educacao-publica",
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "etica-e-educacao",
+      "escola-exclusao-e-exterminio"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "quando-a-palavra-principia",
+    "title": "Quando a palavra principia",
+    "type": "ensaio",
+    "year": 2018,
+    "shortDescription": "A partir de Ítalo Calvino, sobre a intolerância como recusa da palavra do outro e sobre o que pode um poema.",
+    "longDescription": "Ensaio breve sobre a intolerância como \"cadaverização do mundo\" (Ítalo Calvino) e sobre a pergunta que atravessa Hölderlin e Wilberth Salgueiro — o que pode um poema contra o mal do mundo —, argumentando que o poema é sempre um retorno à palavra inaugural.",
+    "concepts": [
+      "literatura",
+      "critica-literaria"
+    ],
+    "relatedObjectIds": [
+      "e-preciso-que-o-canto-nao-cesse-nunca"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "quando-o-carnaval-passar",
+    "title": "Quando o carnaval passar",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "Uma crônica afetiva sobre os sambistas, músicos e amigos de uma comunidade de samba capixaba, para além da festa do carnaval.",
+    "longDescription": "Crônica afetiva que nomeia, um a um, os sambistas, percussionistas, cronistas e amigos de uma comunidade de samba capixaba — uma declaração de amor ao cotidiano que sustenta o carnaval muito depois de a festa acabar.",
+    "concepts": [
+      "samba-e-carnaval",
+      "musica",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "bezerra-da-silva-embaixador-do-morro"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "quem-fala-grosso",
+    "title": "Quem fala grosso...",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Sobre o medo como combustível político por trás do apoio popular à intervenção federal no Rio de Janeiro em 2018.",
+    "longDescription": "Ensaio sobre a intervenção federal na segurança pública do Rio de Janeiro em 2018, argumentando que o apoio popular à medida é movido pelo medo, não por convicção ideológica, e antecipando o surgimento de um candidato presidencial que capitalizaria esse mesmo discurso de \"lei e ordem\".",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "o-cenario-das-eleicoes"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "samba-de-afetos",
+    "title": "Samba de afetos",
+    "type": "artigo",
+    "year": 2017,
+    "shortDescription": "Uma resenha-poema sobre \"Uma história do samba\", de Lira Neto, e um adeus a Mãe Beata de Iemanjá.",
+    "longDescription": "Resenha em prosa poética de *Uma história do samba*, de Lira Neto, evocando o panteão de sambistas, tias baianas e orixás que fundaram o samba como um \"Brasil profundo\" — e dedicada à memória de Mãe Beata de Iemanjá.",
+    "concepts": [
+      "samba-e-carnaval",
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "musica"
+    ],
+    "relatedObjectIds": [
+      "samba-teu-nome-e-uma-reza",
+      "caixa-preta-samba-enredo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "samba-teu-nome-e-uma-reza",
+    "title": "Samba, teu nome é uma reza",
+    "type": "artigo",
+    "year": 2020,
+    "shortDescription": "Uma breve história do carnaval e da origem afro-brasileira do samba, e sobre os sambas-enredo que elegeram Marielle Franco como símbolo.",
+    "longDescription": "Ensaio sobre a origem do carnaval e a matriz bantu do samba, argumentando que as escolas de samba são um modo de permanência, resistência e civilização — e destacando como o carnaval de 2019 e 2020 elegeu Marielle Franco e outros símbolos políticos explícitos.",
+    "concepts": [
+      "samba-e-carnaval",
+      "afro-diasporas",
+      "raca-e-identidade-negra",
+      "religiosidade-afro-brasileira"
+    ],
+    "relatedObjectIds": [
+      "samba-de-afetos",
+      "caixa-preta-samba-enredo"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "sem-disfarces",
+    "title": "Sem disfarces",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Sobre o fracasso da Nova República em promover uma real transição democrática ou reduzir a desigualdade social.",
+    "longDescription": "Ensaio sobre o fracasso da Nova República como projeto de conciliação — sem punição a torturadores, sem retratação das Forças Armadas e sem redução real da desigualdade —, argumentando que o fim do lulismo deixou o país em um vácuo diante de dois projetos antagônicos de nação.",
+    "concepts": [
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "o-levante-de-junho-de-2013-e-a-espera-de-godot",
+      "gal-costa-y-la-fundacion"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "uma-legiao-de-mario-de-andrade",
+    "title": "Uma legião de Mário de Andrade",
+    "type": "artigo",
+    "year": 2015,
+    "shortDescription": "Sobre a dualidade constitutiva de Mário de Andrade e seu projeto, nunca plenamente concretizado, de abrasileiramento da arte.",
+    "longDescription": "Ensaio sobre Mário de Andrade a partir do livro *Eu sou trezentos*, de Eduardo Jardim, percorrendo sua formação múltipla — contista, etnólogo, crítico —, sua amizade com Anita Malfatti e seu projeto modernista de introduzir o Brasil no concerto internacional das nações, projeto que a literatura, ao contrário da música e das artes visuais, ainda não realizou plenamente.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "pioneiro-fantastico",
+      "forca-de-rosa-grande-sertao-veredas"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "versos-e-versoes-de-exu",
+    "title": "Versos e Versões de Exu",
+    "type": "artigo",
+    "year": 2023,
+    "shortDescription": "Resenha de \"Tradução-Exu\", de Guilherme Gontijo Flores e André Capilé, sobre Exu como metáfora de uma teoria da tradução.",
+    "longDescription": "Resenha de \"Tradução-Exu [ensaio de tempestades a caminho]\" e \"Uma A Outra Tempestade\", de Guilherme Gontijo Flores e André Capilé, que propõem Exu como metáfora conceitual para uma teoria da tradução que recusa tanto a equivalência que apaga corpos e territorialidades quanto o parricídio da transcriação haroldiana.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "critica-literaria",
+      "literatura",
+      "afro-diasporas"
+    ],
+    "relatedObjectIds": [
+      "bezerra-da-silva-embaixador-do-morro",
+      "a-voz-dos-terreiros"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "viva-cosme-damiao-e-doum",
+    "title": "Viva Cosme, Damião e Doum",
+    "type": "artigo",
+    "year": 2020,
+    "shortDescription": "Sobre a origem afro-católica da festa de Cosme e Damião e a inclusão de Doum, o irmão caçula, ligado a Exu.",
+    "longDescription": "Ensaio sobre como a religiosidade africana, sobretudo iorubana, transformou a festa católica de São Cosme e São Damião no Brasil, incluindo no panteão a figura de Doum — irmão caçula dos gêmeos, associado a Exu por sua traquinagem — e a mitologia iorubana dos gêmeos que afugentaram a Morte.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "iemanja-avant-garde",
+      "versos-e-versoes-de-exu"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "vou-aprender-a-ler-para-ensinar-meus-camaradas",
+    "title": "Vou aprender a ler para ensinar meus camaradas",
+    "type": "artigo",
+    "year": 2018,
+    "shortDescription": "Uma crônica sobre o Recôncavo da Bahia como o \"umbigo do Brasil\" às vésperas do Bembé do Mercado.",
+    "longDescription": "Crônica sobre o Recôncavo da Bahia — Cachoeira, Iguape, Santo Amaro — como território de uma cultura afro-brasileira que \"abraça e negocia, ao invés de violentar\", sincretizando Iansã e Santa Bárbara, Oxum e Nossa Senhora da Ajuda, às vésperas da grande festa do povo do Recôncavo.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "musica",
+      "raca-e-identidade-negra"
+    ],
+    "relatedObjectIds": [
+      "a-voz-dos-terreiros"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "xande-canta-caetano-que-cita-machado",
+    "title": "Xande canta Caetano que cita Machado",
+    "type": "artigo",
+    "year": 2023,
+    "shortDescription": "Sobre o álbum de Xande de Pilares em tributo a Caetano Veloso, o recalque machadiano e a democracia racial como sublimação.",
+    "longDescription": "Ensaio sobre o álbum \"Xande canta Caetano\", lendo-o à luz dos contos de Machado de Assis sobre música (\"Um Homem Célebre\", \"O Machete\") e do conceito de recalque de José Miguel Wisnik, para argumentar que o encontro entre Caetano Veloso, Xande de Pilares e Pretinho da Serrinha reorienta a dinâmica de recalque e sublimação racial que a democracia racial historicamente operou na música popular brasileira.",
+    "concepts": [
+      "musica",
+      "raca-e-identidade-negra",
+      "critica-literaria",
+      "literatura",
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "album-de-iara-ferreira",
+      "gal-costa-y-la-fundacion"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "entre-raca-y-ritmo-maxixe-machado",
+    "title": "Entre raza y ritmo: la represión del maxixe en Machado de Assis",
+    "type": "paper",
+    "year": 2025,
+    "shortDescription": "Paper acadêmico (em espanhol) sobre recalque e sublimação racial em \"Um Homem Célebre\", de Machado de Assis.",
+    "longDescription": "Artigo publicado na *Nueva Revista de Literaturas Populares* (n. 4, nov. 2025, pp. 145-167) que analisa como o conto \"Um Homem Célebre\", de Machado de Assis, antecipa os conflitos raciais entre cultura erudita e popular no Brasil do século XIX. A partir dos conceitos psicanalíticos de recalque (Verdrängung) e sublimação (Sublimierung), lidos a partir de José Miguel Wisnik, o artigo interpreta a trajetória do compositor Pestana como metáfora do retorno do recalcado: a musicalidade afro-brasileira reprimida, porém constitutiva da música popular brasileira, na transição histórica da polca ao maxixe. Versão em espanhol do argumento também publicado em português (ver \"Machado de Assis e a questão racial\"). O PDF original está disponível para download.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "musica",
+      "raca-e-identidade-negra",
+      "afro-diasporas"
+    ],
+    "relatedObjectIds": [
+      "xande-canta-caetano-que-cita-machado",
+      "machado-de-assis-e-a-questao-racial"
+    ],
+    "links": [
+      {
+        "label": "PDF original",
+        "url": "/documentos/entre-raca-y-ritmo-maxixe-machado.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "machado-de-assis-e-a-questao-racial",
+    "title": "Machado de Assis e a questão racial: a formação da música popular brasileira e o recalque do maxixe em \"Um Homem Célebre\"",
+    "type": "paper",
+    "year": 2025,
+    "shortDescription": "Versão em português do paper sobre recalque, sublimação e a questão racial no conto \"Um Homem Célebre\", de Machado de Assis.",
+    "longDescription": "Artigo publicado na *Revista História em Curso* (v. 7, n. 11, dez. 2025, PUC Minas) — versão em português do argumento também publicado em espanhol na *Nueva Revista de Literaturas Populares*. Interpreta o compositor Pestana, personagem de \"Um Homem Célebre\", como metáfora do retorno do recalcado: a musicalidade afro-brasileira reprimida, mas essencial na formação da música popular, na transição da polca ao maxixe como processo de crioulização cultural. Conclui que Machado antecipa debates sobre repressão e reinvenção da presença afrodescendente que seguem estruturando as disputas em torno da identidade nacional no Brasil contemporâneo. O PDF original está disponível para download.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "musica",
+      "raca-e-identidade-negra",
+      "afro-diasporas"
+    ],
+    "relatedObjectIds": [
+      "xande-canta-caetano-que-cita-machado",
+      "entre-raca-y-ritmo-maxixe-machado"
+    ],
+    "links": [
+      {
+        "label": "PDF original",
+        "url": "/documentos/machado-de-assis-e-a-questao-racial.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "encruzilhada-indeterminacao-e-sentido",
+    "title": "Encruzilhada, indeterminação e sentido: insumos para uma Teoria Literária a partir da concepção de Exu como operador teórico",
+    "type": "paper",
+    "year": 2025,
+    "shortDescription": "Paper (com Moises Nascimento) que propõe Exu, orixá da encruzilhada, como operador teórico para repensar autoria, tempo e narrativa.",
+    "longDescription": "Artigo escrito em coautoria com Moises Nascimento, publicado na *Revista Diadorim* (UNIRIO), que propõe fundamentos para uma teoria literária a partir da filosofia nagô de Muniz Sodré (*Pensar Nagô*, 2017), elegendo Exu — orixá da encruzilhada, da ambiguidade e da comunicação — como operador teórico capaz de desestabilizar categorias centrais da crítica ocidental como autoria, tempo e narrativa. Argumenta que a encruzilhada exuística não é apenas metáfora, mas método crítico: no lugar da hermenêutica da estabilidade, propõe uma leitura fundada na indeterminação, na oralidade e na performance ritual, entendendo a crítica como prática de escuta encarnada. O PDF original está disponível para download.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "oralidade"
+    ],
+    "relatedObjectIds": [
+      "versos-e-versoes-de-exu"
+    ],
+    "links": [
+      {
+        "label": "PDF original",
+        "url": "/documentos/encruzilhada-indeterminacao-e-sentido.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "modernismos-pacto-social-estetica-irreconciliacao",
+    "title": "Modernismos, pacto social e estética da irreconciliação na obra de Jorge Ben Jor",
+    "type": "paper",
+    "year": 2025,
+    "shortDescription": "Paper sobre como Jorge Ben Jor rompe com a estética conciliatória da Bossa Nova e do Tropicalismo ao colocar o conflito racial no centro da canção.",
+    "longDescription": "Artigo publicado na revista *Cerrados* (v. 34, n. 67, abr. 2025) que analisa a obra de Jorge Ben Jor como contraponto à estética conciliatória predominante no cancioneiro popular brasileiro do século XX. Argumenta que os modernismos tardios — Bossa Nova e Tropicalismo — consolidaram uma gramática estética voltada à neutralização de tensões raciais e culturais em prol de uma identidade nacional idealizada, enquanto Jorge Ben Jor (em canções como \"Mas Que Nada\" e \"Zumbi\") resgata um protagonismo afro-diaspórico que recoloca o conflito no centro da proposta estética. Cunha o termo Estética da Irreconciliação para nomear essa alternativa às gramáticas normativas da canção brasileira, que amplia os horizontes da imaginação política. O PDF original está disponível para download.",
+    "concepts": [
+      "musica",
+      "cultura-brasileira",
+      "raca-e-identidade-negra",
+      "politica-brasileira-contemporanea",
+      "imaginacao-politica"
+    ],
+    "relatedObjectIds": [
+      "gal-costa-y-la-fundacion",
+      "xande-canta-caetano-que-cita-machado",
+      "o-pacto-na-mira-do-ofa"
+    ],
+    "links": [
+      {
+        "label": "PDF original",
+        "url": "/documentos/modernismos-pacto-social-estetica-irreconciliacao.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "estetica-prospectiva-tragico-colonial",
+    "title": "Estética prospectiva, trágico colonial e imaginación política: aproximaciones iniciales entre Um defeito de cor y Changó, el gran putas",
+    "type": "paper",
+    "year": 2025,
+    "shortDescription": "Paper comparativo entre Ana Maria Gonçalves e Manuel Zapata Olivella sobre literatura afrodiaspórica como contradispositivo à história ocidental.",
+    "longDescription": "Artigo publicado na revista *KIPUS* (Universidad Andina Simón Bolívar, n. 58, jul.-dez. 2025) que compara *Um defeito de cor*, de Ana Maria Gonçalves, e *Changó, el gran putas*, de Manuel Zapata Olivella, como narrativas afrodiaspóricas que desestabilizam a história ocidental e confrontam o \"trágico colonial\". Em diálogo com Saidiya Hartman, Walter Mignolo e Achille Mbembe, argumenta que ambas as obras operam como contradispositivos que reconfiguram a memória histórica a partir de vozes marginalizadas — fabulação crítica, mitopoética e espiritualidade como ferramentas de resistência —, propondo o conceito de \"estética prospectiva\" para nomear a projeção de futuros alternativos a partir da reescrita do passado. O PDF original está disponível para download.",
+    "concepts": [
+      "literatura",
+      "afro-diasporas",
+      "raca-e-identidade-negra",
+      "critica-literaria",
+      "imaginacao-politica"
+    ],
+    "relatedObjectIds": [
+      "falar-da-escravidao-e-falar-do-presente",
+      "casa-da-agua-antonio-olinto"
+    ],
+    "links": [
+      {
+        "label": "PDF original",
+        "url": "/documentos/estetica-prospectiva-tragico-colonial.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "poeticas-da-diaspora-africana-no-brasil",
+    "title": "Poéticas da diáspora africana no Brasil: notas e perspectivas de pesquisa",
+    "type": "palestra",
+    "year": 2026,
+    "shortDescription": "Capítulo/palestra sobre candomblé, o mito de Omolu e a crise democrática brasileira, no livro coletivo Mojubá (Buenos Aires).",
+    "longDescription": "Capítulo derivado de uma fala em mesa-redonda, publicado no livro coletivo *Mojubá: conversaciones con mestras, mestres y referentes de artes afrobrasileñas en Buenos Aires* (org. Berenice Corti, GEMAA/Instituto de Investigación en Etnomusicología, Buenos Aires, 2026). Parte de uma reflexão sobre a violência do governo Bolsonaro e a fragilidade da democracia brasileira revelada desde 2013, o texto se volta para a própria formação do autor num terreiro de candomblé e para o mito de Omolu — a divindade da doença e da cura, cujo corpo coberto de palha da costa condensa uma ambivalência entre ferida e potência — como chave de leitura política para pensar fragilidade, cuidado e resistência. O PDF original do livro está disponível para download.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "politica-brasileira-contemporanea",
+      "raca-e-identidade-negra"
+    ],
+    "relatedObjectIds": [
+      "a-voz-dos-terreiros",
+      "iemanja-avant-garde"
+    ],
+    "links": [
+      {
+        "label": "PDF original (livro completo)",
+        "url": "/documentos/mojuba-conversaciones-artes-afrobrasilenas.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "anatomia-da-elipse-freyre-guimaraes-rosa",
+    "title": "Anatomia da Elipse: a presença de Gilberto Freyre na obra de João Guimarães Rosa",
+    "type": "paper",
+    "year": 2016,
+    "shortDescription": "Dissertação de mestrado (UFES) sobre a arquitetura freyreana da Casa-Grande em Grande Sertão: veredas.",
+    "longDescription": "Dissertação de Mestrado em Letras (UFES, 2016, orientação de Jorge Nascimento) que investiga os paradoxos do nacionalismo literário a partir do confronto entre *Casa-Grande & Senzala* (Gilberto Freyre, 1933) e *Grande Sertão: veredas* (João Guimarães Rosa, 1956). Pergunta em que medida a obra de Rosa lida com a questão romântica de uma identidade literária nacional, e em que medida se pode perceber, no romance, uma \"arquitetura freyreana\" da identidade brasileira — a Casa-Grande como reguladora das relações de poder no sertão. O PDF original está disponível para download.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "forca-de-rosa-grande-sertao-veredas"
+    ],
+    "links": [
+      {
+        "label": "PDF original (dissertação)",
+        "url": "/documentos/anatomia-da-elipse-freyre-guimaraes-rosa.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "o-pacto-na-mira-do-ofa",
+    "title": "O Pacto na Mira do Ofá: Estética Radical Negra, Imaginação Política e Colapso da Canção",
+    "type": "paper",
+    "year": 2024,
+    "shortDescription": "Tese de doutorado (UFES) sobre como a canção popular brasileira sustentou — e como uma estética radical negra expôs os limites de — o pacto conciliador do país.",
+    "longDescription": "Tese de Doutorado em Letras (UFES, 2024, orientação de Viviana Mónica Vermes, defendida em 29/11/2024 perante banca que incluiu Berenice Corti). Postula que a proposição estética expressa pela canção popular brasileira ultrapassa a expressão artística, tornando-se veículo para a emergência de novas realidades sociais e políticas. Analisa, por um lado, como a dimensão estética da canção sempre esteve no centro da formulação de um país construído sob o signo da conciliação; por outro, como os limites dessa conciliação foram expostos por uma estética radical e violenta cuja matriz criativa se situa nas culturas afro-diaspóricas. Dialoga com Cedric Robinson, Fred Moten, Guthrie P. Ramsey, Robin D. G. Kelley, Amiri Baraka, Mark Fisher, Hakim Bey, José Miguel Wisnik, Beatriz Nascimento, Vladimir Safatle, Abdias do Nascimento e Nego Bispo. É a matriz teórica por trás de vários ensaios do autor sobre música popular brasileira. O PDF original está disponível para download.",
+    "concepts": [
+      "musica",
+      "raca-e-identidade-negra",
+      "afro-diasporas",
+      "politica-brasileira-contemporanea",
+      "imaginacao-politica",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "gal-costa-y-la-fundacion",
+      "xande-canta-caetano-que-cita-machado",
+      "album-de-iara-ferreira",
+      "modernismos-pacto-social-estetica-irreconciliacao"
+    ],
+    "links": [
+      {
+        "label": "PDF original (tese)",
+        "url": "/documentos/o-pacto-na-mira-do-ofa.pdf"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "del-que-al-como-lectura-critica-de-la-forma",
+    "title": "Del qué al cómo: para una lectura crítica de la forma literaria",
+    "type": "metodologia",
+    "year": 2025,
+    "shortDescription": "Material didático (em espanhol) sobre a diferença entre parafrasear o tema de um texto e analisar como ele produz sentido.",
+    "longDescription": "Texto didático que ensina a distinguir afirmações temáticas (\"o autor critica a elite\") de interpretação crítica genuína, argumentando que a literatura é, antes de tudo, forma — e que a boa crítica investiga como o texto produz seus efeitos, não apenas o que ele diz.",
+    "concepts": [
+      "critica-literaria",
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "la-iniciacion-de-la-mirada-critica"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "critica-literaria-y-hospitalidad-del-pensamiento",
+    "title": "Crítica literaria y hospitalidad del pensamiento",
+    "type": "metodologia",
+    "year": 2025,
+    "shortDescription": "Material didático (em espanhol) que defende o vocabulário técnico da crítica literária como gesto de hospitalidade, não de exclusão.",
+    "longDescription": "Texto didático que argumenta, via analogia com a crítica gastronômica, que a linguagem técnica da crítica literária não exclui o leitor — cria condições compartilháveis de compreensão —, enquanto a subjetividade não elaborada (o \"eu senti\") permanece um idioma privado, intraduzível.",
+    "concepts": [
+      "critica-literaria",
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "del-que-al-como-lectura-critica-de-la-forma"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "critica-literaria-en-tiempos-de-inteligencia-artificial",
+    "title": "Crítica literaria en tiempos de inteligencia artificial",
+    "type": "metodologia",
+    "year": 2025,
+    "shortDescription": "Material didático (em espanhol) sobre o que se perde quando se delega a interpretação literária a modelos de IA generativa.",
+    "longDescription": "Texto didático sobre os riscos de delegar a crítica literária a sistemas de IA generativa, argumentando que a interpretação é sempre situada — fruto de um sujeito específico em diálogo com uma tradição — e que a automação da crítica empobrece a experiência de leitura, de escrita e de formação intelectual, além de reproduzir desigualdades epistêmicas dos corpora que treinam esses modelos.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "inteligencia-artificial"
+    ],
+    "relatedObjectIds": [
+      "forca-de-rosa-grande-sertao-veredas"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "el-comentario-critico-y-la-cadena-del-pensamiento",
+    "title": "El comentario crítico y la cadena del pensamiento",
+    "type": "metodologia",
+    "year": 2025,
+    "shortDescription": "Material didático (em espanhol) em defesa da escrita acadêmica densa, contra a demanda por visibilidade imediata.",
+    "longDescription": "Texto didático que defende o valor da escrita crítica universitária mesmo quando não \"viraliza\", argumentando que ela participa de uma cadeia mais ampla de produção e difusão do conhecimento — e que ceder à lógica da visibilidade imediata esvazia de sentido toda uma tradição de pensamento pausado.",
+    "concepts": [
+      "critica-literaria",
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "critica-literaria-y-hospitalidad-del-pensamiento"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "la-iniciacion-de-la-mirada-critica",
+    "title": "La Iniciación de la Mirada",
+    "type": "metodologia",
+    "year": 2025,
+    "shortDescription": "Aula inaugural (em espanhol) sobre a superação do \"eu senti\" e a construção de uma tese interpretativa em crítica literária.",
+    "longDescription": "Aula inaugural dirigida a estudantes, ensinando os fundamentos do comentário crítico: a superação da subjetividade ingênua, a distinção entre autor/narrador/personagem, o vocabulário técnico como ferramenta de precisão, e a construção de uma tese interpretativa defensável — exemplificada com Machado de Assis e García Márquez.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "formacao-docente"
+    ],
+    "relatedObjectIds": [
+      "del-que-al-como-lectura-critica-de-la-forma"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "el-gesto-comparativo-como-metodo-de-critica",
+    "title": "El gesto comparativo como método de crítica literaria (y de vida)",
+    "type": "metodologia",
+    "year": 2025,
+    "shortDescription": "Material didático (em espanhol) que apresenta seis dimensões do método comparativo em literatura, de Dom Casmurro a Ponciá Vicêncio.",
+    "longDescription": "Texto didático que apresenta seis dimensões do gesto comparativo em literatura — o roce entre obras, a contra-leitura, a ironia como articulação entre textos, a intertextualidade crítica, a revelação de estruturas de poder e a sensibilidade às entrelinhas —, exemplificadas por pares como Dom Casmurro/O Primo Basílio, O Cortiço/Cidade de Deus e a comparação entre Rita Baiana (Aluísio Azevedo) e Ponciá Vicêncio (Conceição Evaristo) como instrumento de justiça interpretativa.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "raca-e-identidade-negra"
+    ],
+    "relatedObjectIds": [
+      "la-iniciacion-de-la-mirada-critica"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "podcast-leny-andrade",
+    "title": "Podcast Especial: As marcas deixadas por Leny Andrade",
+    "type": "podcast",
+    "year": 2024,
+    "shortDescription": "Podcast (Rádio Batuta) sobre o estilo e o legado de Leny Andrade, com depoimentos de quem trabalhou com ela ou foi por ela influenciado.",
+    "longDescription": "Programa especial produzido para a Rádio Batuta (Instituto Moreira Salles) sobre Leny Andrade, morta aos 80 anos em 2023. Reúne depoimentos de Gilson Peranzzetta, Eliana Peranzzetta, Vanessa Moreno, Nina Wirtti, Nelson Faria, Ilessi e Fabiana Cozza — esta última com o comentário de que Leny \"empreteceu\" a bossa nova. Uma homenagem à intérprete conhecida por sua capacidade de improvisar, mas que não se restringia a isso.",
+    "concepts": [
+      "musica",
+      "cultura-brasileira",
+      "raca-e-identidade-negra"
+    ],
+    "relatedObjectIds": [],
+    "links": [
+      {
+        "label": "Ouvir na Rádio Batuta",
+        "url": "https://radiobatuta.ims.com.br/especiais/as-marcas-deixadas-por-leny-andrade"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "podcast-zaira-de-oliveira",
+    "title": "Podcast Especial: Zaíra de Oliveira",
+    "type": "podcast",
+    "year": 2023,
+    "shortDescription": "Podcast (Rádio Batuta/IMS) sobre a cantora Zaíra de Oliveira, professora de Dona Ivone Lara, barrada de uma bolsa na Europa por racismo.",
+    "longDescription": "Programa especial sobre Zaíra de Oliveira (1900-1951), que terminou 1921 com as melhores notas do Instituto Nacional de Música, mas não recebeu a bolsa de estudos na Europa a que teria direito — já à época se comentava o porquê: racismo. Cantora negra de formação clássica que passou a gravar temas de matriz africana, interpretou Pixinguinha, João da Baiana e Donga (com quem se casou), e foi professora de Dona Ivone Lara. Com depoimentos de Fabiana Cozza, Rafael Galante, Marcelo Bonavides e Julia Félix.",
+    "concepts": [
+      "musica",
+      "raca-e-identidade-negra",
+      "afro-diasporas",
+      "memoria-e-arquivo"
+    ],
+    "relatedObjectIds": [
+      "o-eterno-sorriso-negro-de-dona-ivone-lara"
+    ],
+    "links": [
+      {
+        "label": "Ouvir na Rádio Batuta",
+        "url": "https://radiobatuta.ims.com.br/especiais/a-historia-de-zaira-de-oliveira"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "podcast-estados-alterados",
+    "title": "Estados alterados (Rádio Novelo)",
+    "type": "podcast",
+    "year": 2023,
+    "shortDescription": "Participação no podcast da Rádio Novelo sobre Mãe Cacilda de Assis, incorporada por um Exu ao vivo na TV brasileira em plena ditadura militar, em 1971.",
+    "longDescription": "Episódio da Rádio Novelo sobre um episódio real de 1971: no mesmo dia, em plena ditadura militar, uma mãe de santo — Cacilda de Assis — participou ao vivo dos dois principais programas da TV aberta brasileira. Incorporada por um Exu, ela transformou o palco dos programas do Chacrinha (TV Globo) e do Flávio Cavalcanti (TV Tupi) em extensões do seu terreiro; parte da plateia e dos funcionários entrou em transe, ao vivo em rede nacional. O episódio mudou para sempre a história de Mãe Cacilda e da TV brasileira.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "politica-brasileira-contemporanea",
+      "memoria-e-arquivo"
+    ],
+    "relatedObjectIds": [
+      "a-voz-dos-terreiros"
+    ],
+    "links": [
+      {
+        "label": "Ouvir na Rádio Novelo",
+        "url": "https://radionovelo.com.br/originais/apresenta/estados-alterados/"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "podcast-elomar",
+    "title": "Podcast Especial: Elomar Figueira Melo",
+    "type": "podcast",
+    "year": 2023,
+    "shortDescription": "Podcast (Rádio Batuta/IMS) sobre Elomar, o \"sertanez\" que abriu mão do sucesso para se dedicar a uma obra original e à margem.",
+    "longDescription": "Programa especial sobre Elomar Figueira Melo, nascido em Vitória da Conquista, que se considerava baiano até se voltar, na juventude, para as tradições do sertão e se tornar \"sertanez\" — termo que ele mesmo cunhou. A opção lhe rendeu admiração profunda de outros músicos, mas o manteve afastado do sucesso comercial. Segundo seu filho João Omar, Elomar não está ligado a gêneros específicos: faz \"música elomariana\". Panorama de sua vida e obra aos 85 anos, com depoimentos que avaliam a singularidade de seu trabalho.",
+    "concepts": [
+      "musica",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "podcast-sergio-sampaio",
+      "podcast-roque-ferreira"
+    ],
+    "links": [
+      {
+        "label": "Ouvir na Rádio Batuta",
+        "url": "https://radiobatuta.ims.com.br/especiais/elomar-menestrel-dos-sertoes"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "podcast-sergio-sampaio",
+    "title": "Sérgio Sampaio: Tem que acontecer",
+    "type": "podcast",
+    "year": 2022,
+    "shortDescription": "Podcast (Rádio Batuta/IMS) sobre o capixaba Sérgio Sampaio, de \"Eu Quero É Botar Meu Bloco na Rua\" à fama de maldito.",
+    "longDescription": "Programa sobre Sérgio Sampaio (1947-1994), que aos 20 anos saiu de Cachoeiro de Itapemirim (ES) para o Rio de Janeiro, viveu em péssimas condições e, com um empurrão de Raul Seixas, gravou em 1972 \"Eu Quero É Botar Meu Bloco na Rua\". Fez um disco importante em 1976 (*Tem que Acontecer*), mas viu a carreira perder força e ganhou fama de maldito, morrendo aos 47 anos. Com depoimentos de Zeca Baleiro e do amigo João Moraes, que narra ter ficado mais de um ano com os restos mortais de Sampaio.",
+    "concepts": [
+      "musica",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "podcast-roque-ferreira",
+      "podcast-elomar"
+    ],
+    "links": [
+      {
+        "label": "Ouvir na Rádio Batuta",
+        "url": "https://radiobatuta.ims.com.br/especiais/sergio-sampaio-tem-que-acontecer"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "podcast-roque-ferreira",
+    "title": "O Brasil de Roque Ferreira",
+    "type": "podcast",
+    "year": 2022,
+    "shortDescription": "Podcast (Rádio Batuta/IMS) sobre Roque Ferreira, compositor recluso em Salvador cuja obra dialoga com o candomblé e o Recôncavo.",
+    "longDescription": "Programa sobre Roque Ferreira, compositor nascido em 1947 em Nazaré das Farinhas, no Recôncavo baiano, gravado por intérpretes como Maria Bethânia, Mônica Salmaso, Mariene de Castro, Fabiana Cozza e Roberta Sá, mas ainda pouco conhecido do grande público. Vive recluso em Salvador, dedicado a composições e pesquisas sobre o candomblé, tema central de várias de suas canções. Com depoimentos do próprio Roque, de Mariene de Castro, Fabiana Cozza e seu parceiro Jota Velloso, encerrando com \"Samba pras Moças\" (sucesso de Zeca Pagodinho em 1995).",
+    "concepts": [
+      "musica",
+      "religiosidade-afro-brasileira",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "podcast-sergio-sampaio",
+      "vou-aprender-a-ler-para-ensinar-meus-camaradas"
+    ],
+    "links": [
+      {
+        "label": "Ouvir na Rádio Batuta",
+        "url": "https://radiobatuta.ims.com.br/especiais/o-brasil-de-roque-ferreira"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "palestra-paradojas-antropofagia",
+    "title": "Reflexiones sobre las paradojas de la Antropofagia",
+    "type": "palestra",
+    "year": 2024,
+    "shortDescription": "Palestra na Universidad Nacional de Colombia sobre os paradoxos da Antropofagia de Oswald de Andrade.",
+    "longDescription": "Palestra apresentada na Universidad Nacional de Colombia sobre as tensões e paradoxos do conceito de Antropofagia, de Oswald de Andrade, como matriz do modernismo brasileiro.",
+    "concepts": [
+      "literatura",
+      "critica-literaria",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "uma-legiao-de-mario-de-andrade"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/USH_kZA4v9k"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "mesa-redonda-perspectivas-en-la-encrucijada",
+    "title": "Primeras Jornadas GEMAA — Mesa Redonda \"Perspectivas en la Encrucijada\"",
+    "type": "palestra",
+    "year": 2024,
+    "shortDescription": "Mesa-redonda no GEMAA (Buenos Aires) sobre a encruzilhada como perspectiva teórica, com encerramento de Fabiana Cozza.",
+    "longDescription": "Participação na mesa-redonda \"Perspectivas en la Encrucijada\", nas Primeras Jornadas do GEMAA (Grupo de Estudios de Música Popular, Buenos Aires), com encerramento musical de Fabiana Cozza.",
+    "concepts": [
+      "musica",
+      "religiosidade-afro-brasileira",
+      "critica-literaria"
+    ],
+    "relatedObjectIds": [
+      "versos-e-versoes-de-exu",
+      "encruzilhada-indeterminacao-e-sentido"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/H3nSdb-daNs"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "ensino-de-literatura-como-ato-politico",
+    "title": "Ensino de Literatura como Ato Político e Reflexão Encarnada",
+    "type": "palestra",
+    "year": 2024,
+    "shortDescription": "Palestra sobre o ensino de literatura como ato político e como reflexão encarnada, não apenas técnica.",
+    "longDescription": "Palestra sobre o ensino de literatura entendido como ato político e como reflexão encarnada — isto é, corporificada na experiência do leitor —, e não apenas como transmissão técnica de conteúdos.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "filosofia-da-educacao",
+      "formacao-docente"
+    ],
+    "relatedObjectIds": [
+      "la-iniciacion-de-la-mirada-critica",
+      "critica-literaria-en-tiempos-de-inteligencia-artificial"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/FHyUotsykiI"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "a-travessia-dos-tambores",
+    "title": "A Travessia dos Tambores: do Recôncavo Baiano ao Rio de la Plata",
+    "type": "palestra",
+    "year": 2024,
+    "shortDescription": "Palestra na UBA sobre a travessia atlântica dos tambores afro-brasileiros, do Recôncavo baiano ao Rio de la Plata.",
+    "longDescription": "Palestra apresentada na Universidad de Buenos Aires (UBA) sobre a circulação e travessia de ritmos e tambores de matriz africana, do Recôncavo baiano até o Rio de la Plata, na fronteira entre Argentina e Uruguai.",
+    "concepts": [
+      "musica",
+      "afro-diasporas",
+      "religiosidade-afro-brasileira"
+    ],
+    "relatedObjectIds": [
+      "a-voz-dos-terreiros",
+      "vou-aprender-a-ler-para-ensinar-meus-camaradas"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/ARhaInUZ0bs"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "charla-religioes-afro-brasileiras-e-a-cancao",
+    "title": "Charla: Religiões Afro-Brasileiras e a Canção Popular Nacional",
+    "type": "palestra",
+    "year": 2023,
+    "shortDescription": "Palestra sobre a presença das religiões afro-brasileiras na formação da canção popular brasileira.",
+    "longDescription": "Palestra sobre como as religiões afro-brasileiras — candomblé, umbanda, os cultos aos orixás — atravessam e estruturam a formação da canção popular brasileira.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "musica"
+    ],
+    "relatedObjectIds": [
+      "podcast-roque-ferreira",
+      "samba-teu-nome-e-uma-reza"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/nQpzy1YL_WA"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "centenario-de-joao-cabral-de-melo-neto",
+    "title": "Centenário de João Cabral de Melo Neto",
+    "type": "palestra",
+    "year": 2020,
+    "shortDescription": "Palestra sobre a obra de João Cabral de Melo Neto por ocasião do centenário do poeta.",
+    "longDescription": "Palestra sobre a obra do poeta pernambucano João Cabral de Melo Neto, apresentada por ocasião do centenário de seu nascimento.",
+    "concepts": [
+      "literatura",
+      "critica-literaria"
+    ],
+    "relatedObjectIds": [
+      "aporias-em-drummond"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/MzYfWhqDCNQ"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "brasil-en-la-encrucijada-y-un-pade-para-exu",
+    "title": "Brasil en la Encrucijada y un Padê para Exú: Notas sobre la Canción Popular Brasileña",
+    "type": "palestra",
+    "year": 2023,
+    "shortDescription": "Palestra na UBA sobre a crise política brasileira lida a partir de Exu e da canção popular.",
+    "longDescription": "Palestra apresentada na Universidad de Buenos Aires (UBA), propondo Exu e o pedido ritual de licença (padê) como chave de leitura para a crise política brasileira e para a canção popular nacional.",
+    "concepts": [
+      "musica",
+      "religiosidade-afro-brasileira",
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "versos-e-versoes-de-exu",
+      "mesa-redonda-perspectivas-en-la-encrucijada"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/hYObXpbDHjQ"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "outras-pucangas-roque-ferreira-2",
+    "title": "Outras Puçangas: Diálogos sobre a obra de Roque Ferreira (2)",
     "type": "palestra",
     "year": 2022,
-    "shortDescription": "Palestra sobre preservação da cultura digital brasileira — memes, funk, lives — antes que as plataformas a apaguem.",
-    "longDescription": "A palestra argumenta que a cultura digital brasileira — dos memes ao videofunk, dos fóruns às lives — é produzida em infraestruturas que não têm compromisso com sua preservação. Discute experiências internacionais de arquivamento da web, os limites jurídicos e técnicos no Brasil, e propõe um programa mínimo: o que uma política pública de memória digital precisaria decidir guardar. Encerrou seminário nacional de preservação digital.",
-    "concepts": ["memoria-e-arquivo", "cultura-brasileira", "software-como-cultura"],
-    "relatedObjectIds": ["casa-atlantica", "tecnologias-imaginario", "machado-algoritmos"],
-    "links": [{ "label": "Slides (placeholder)", "url": "https://example.com/arquivos-do-futuro" }],
+    "shortDescription": "Segunda conversa da série \"Outras Puçangas\" sobre a obra do compositor Roque Ferreira.",
+    "longDescription": "Segunda parte de uma conversa sobre a obra do compositor baiano Roque Ferreira, na série \"Outras Puçangas\".",
+    "concepts": [
+      "musica",
+      "religiosidade-afro-brasileira"
+    ],
+    "relatedObjectIds": [
+      "outras-pucangas-roque-ferreira-1",
+      "podcast-roque-ferreira"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/_MsVUxZVFnY"
+      }
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "escola-de-escutas",
-    "title": "Escola de Escutas — laboratório itinerante",
-    "type": "projeto",
-    "year": 2021,
-    "shortDescription": "Laboratório itinerante de pedagogias experimentais baseadas em escuta, realizado em cinco territórios.",
-    "longDescription": "Projeto que percorreu cinco territórios — periferias urbanas, comunidade quilombola, zona rural — montando laboratórios temporários de pedagogia da escuta: oficinas em que moradores e educadores locais criavam, juntos, formatos de ensino a partir dos saberes orais do lugar. O projeto foi arquivado ao fim do financiamento, mas seus protocolos de oficina alimentaram a metodologia Percursos Abertos e seguem em uso por coletivos locais.",
-    "concepts": ["pedagogias-experimentais", "oralidade", "aprendizagem-expandida"],
-    "relatedObjectIds": ["escuta-como-metodo", "percursos-abertos", "jongo-design-sistemas"],
-    "status": "arquivado",
-    "featured": false
-  },
-  {
-    "id": "assessment-accompaniment",
-    "title": "Assessment as accompaniment: a formative turn",
-    "type": "paper",
-    "year": 2021,
-    "shortDescription": "Paper em inglês que teoriza a avaliação como acompanhamento de percurso, base conceitual dos Percursos Abertos.",
-    "longDescription": "Publicado em periódico internacional de avaliação educacional, o paper propõe deslocar a avaliação do paradigma do julgamento (medir um produto contra um padrão) para o do acompanhamento (caminhar junto a um percurso e documentá-lo). Revisita a literatura de formative assessment e a cruza com a filosofia do cuidado, derivando critérios de validade específicos para avaliações narrativas — o fundamento conceitual do que viria a ser a metodologia Percursos Abertos.",
-    "concepts": ["avaliacao-formativa", "filosofia-da-educacao"],
-    "relatedObjectIds": ["percursos-abertos", "curriculo-rizomatico", "filosofia-educacao-ia"],
-    "links": [{ "label": "DOI (placeholder)", "url": "https://example.com/assessment-accompaniment" }],
+    "id": "outras-pucangas-roque-ferreira-1",
+    "title": "Outras Puçangas: Diálogos sobre a obra de Roque Ferreira",
+    "type": "palestra",
+    "year": 2022,
+    "shortDescription": "Primeira conversa da série \"Outras Puçangas\" sobre a obra do compositor Roque Ferreira.",
+    "longDescription": "Primeira parte de uma conversa sobre a obra do compositor baiano Roque Ferreira, na série \"Outras Puçangas\".",
+    "concepts": [
+      "musica",
+      "religiosidade-afro-brasileira"
+    ],
+    "relatedObjectIds": [
+      "outras-pucangas-roque-ferreira-2",
+      "podcast-roque-ferreira"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/d4EgRcI3Pf0"
+      }
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "gramatica-aprendizagens",
-    "title": "Pequena Gramática das Aprendizagens Invisíveis",
+    "id": "aporias-em-drummond",
+    "title": "Aporias em Drummond",
+    "type": "palestra",
+    "year": 2021,
+    "shortDescription": "Palestra no Dia da Língua Portuguesa sobre as aporias (impasses) na obra de Carlos Drummond de Andrade.",
+    "longDescription": "Palestra apresentada no Dia da Língua Portuguesa sobre as aporias — impasses e contradições produtivas — na obra de Carlos Drummond de Andrade.",
+    "concepts": [
+      "literatura",
+      "critica-literaria"
+    ],
+    "relatedObjectIds": [
+      "drummond-e-o-desenvolvimentismo",
+      "centenario-de-joao-cabral-de-melo-neto"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/d3q96LYVT8E"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "livro-teorias-da-cancao",
+    "title": "Teorias da Canção: Percursos, Fundamentos e Metodologias — uma introdução",
     "type": "livro",
-    "year": 2019,
-    "shortDescription": "Livro sobre tudo o que se aprende fora do registro escolar: na cozinha, na roda, no jogo, na conversa.",
-    "longDescription": "O livro cataloga e analisa 'aprendizagens invisíveis' — as que acontecem sem currículo, sem prova e sem certificado: aprender a sambar, a rezar, a cozinhar, a jogar, a conversar. Cada capítulo descreve a gramática implícita de uma dessas aprendizagens (quem ensina, como se corrige, o que conta como domínio) e pergunta o que a escola poderia aprender com elas. Primeiro livro do autor, origem de boa parte da agenda de pesquisa posterior.",
-    "concepts": ["aprendizagem-expandida", "oralidade", "filosofia-da-educacao"],
-    "relatedObjectIds": ["escuta-como-metodo", "escola-de-escutas", "jongo-design-sistemas"],
+    "year": 2025,
+    "shortDescription": "Livro que introduz as principais teorias da canção popular brasileira, de Mário de Andrade a Luiz Tatit.",
+    "longDescription": "Livro (Vitória: Cousa, 2025) que resulta do curso \"Literatura e Música\", oferecido em 2023 no Departamento de Literatura da Universidad Nacional de Colombia. Introduz estudantes interessados em canção popular brasileira às principais teorias que estruturam esse campo, selecionando obras fundamentais de Mário de Andrade, José Ramos Tinhorão, Augusto de Campos, José Miguel Wisnik, Luiz Tatit e Charles Perrone, e comentando seus problemas centrais, conceitos, metodologias e limitações.",
+    "concepts": [
+      "musica",
+      "critica-literaria"
+    ],
+    "relatedObjectIds": [
+      "o-pacto-na-mira-do-ofa",
+      "modernismos-pacto-social-estetica-irreconciliacao"
+    ],
     "status": "publicado",
     "featured": false
   },
   {
-    "id": "curso-design-aprendizagem",
-    "title": "Design de Sistemas de Aprendizagem",
-    "type": "curso",
-    "year": 2023,
-    "shortDescription": "Curso de formação (60h) em design de sistemas de aprendizagem: do diagnóstico ao protótipo curricular.",
-    "longDescription": "Curso de formação para educadores, gestores e designers que ensina a projetar sistemas de aprendizagem completos: diagnóstico de contexto, rede de conceitos, desenho de percursos, prototipagem e avaliação formativa. Usa as Cartas de Percurso como ferramenta central e o Mapa Vivo como ambiente de prototipagem. A avaliação final é um protótipo curricular real, apresentado a uma banca de pares.",
-    "concepts": ["design-de-aprendizagem", "curriculo-vivo", "avaliacao-formativa"],
-    "relatedObjectIds": ["cartas-de-percurso", "mapa-vivo", "curriculo-rizomatico"],
-    "status": "publicado",
-    "featured": false
-  },
-  {
-    "id": "estrategia-ia-rede",
-    "title": "Estratégia de IA para rede pública de ensino",
-    "type": "consultoria",
+    "id": "livro-dioses-que-danzan",
+    "title": "Dioses que danzan: cuentos tradicionales de los Orishas",
+    "type": "livro",
     "year": 2024,
-    "shortDescription": "Consultoria em andamento: política de uso de IA generativa para uma rede municipal, construída com os professores.",
-    "longDescription": "Consultoria em andamento junto a uma rede municipal de ensino para construir sua política de IA generativa — não como lista de proibições, mas como estratégia pedagógica: quais usos a rede quer induzir, quais quer evitar, e que formação isso exige. O processo combina grupos de trabalho com professores, pilotos em escolas voluntárias e revisão do currículo de cultura digital. O documento final será público, sob licença aberta.",
-    "concepts": ["inteligencia-artificial", "educacao-publica", "curriculo-vivo"],
-    "relatedObjectIds": ["ia-formacao-docente", "curriculo-cultura-digital", "filosofia-educacao-ia"],
-    "status": "em desenvolvimento",
+    "shortDescription": "Compilação e primeira tradução ao espanhol de contos tradicionais dos orixás iorubás.",
+    "longDescription": "Livro (Vitória: Cousa, 2024) que reúne narrativas tradicionais dos orixás, compiladas e traduzidas ao espanhol pela primeira vez. Essas histórias, transmitidas de geração em geração, preservam a sabedoria ancestral, os valores morais e as leis espirituais da cultura iorubá, e mantêm viva a essência das comunidades afro-diaspóricas. Dedicado a praticantes das religiões afro-diaspóricas, pesquisadores e interessados na espiritualidade e no legado civilizatório dos povos africanos.",
+    "concepts": [
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "oralidade",
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "iemanja-avant-garde",
+      "versos-e-versoes-de-exu"
+    ],
+    "status": "publicado",
     "featured": false
+  },
+  {
+    "id": "livro-balaio-de-gato",
+    "title": "Balaio de Gato",
+    "type": "livro",
+    "year": 2022,
+    "shortDescription": "Coletânea de artigos publicados em jornais e revistas ao longo dos anos.",
+    "longDescription": "Livro (Vitória: Editora Cousa, 2022) que reúne artigos publicados pelo autor em jornais e revistas — crítica literária, musical e ensaios sobre cultura brasileira — organizados em coletânea.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "livro-anatomia-da-elipse-ensaios",
+    "title": "Anatomia da Elipse: Escritos sobre Nacionalismo, Raça e Patriarcado",
+    "type": "livro",
+    "year": 2017,
+    "shortDescription": "Coletânea de ensaios sobre nacionalismo, raça e patriarcado, retomando o título de sua dissertação de mestrado.",
+    "longDescription": "Livro de ensaios (Vitória: Editora Cousa, 2017) que retoma o título de sua dissertação de mestrado de 2016 (\"Anatomia da Elipse: a presença de Gilberto Freyre na obra de João Guimarães Rosa\") para reunir escritos sobre nacionalismo, raça e patriarcado no Brasil.",
+    "concepts": [
+      "raca-e-identidade-negra",
+      "critica-literaria",
+      "politica-brasileira-contemporanea"
+    ],
+    "relatedObjectIds": [
+      "anatomia-da-elipse-freyre-guimaraes-rosa"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "livro-o-piano-a-imagem-do-deserto",
+    "title": "O piano à imagem do deserto",
+    "type": "livro",
+    "year": 2014,
+    "shortDescription": "Romance publicado pela Editora Cousa.",
+    "longDescription": "Romance (Vitória: Editora Cousa, 2014).",
+    "concepts": [
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "livro-um-corpo-que-se-escreve-pedra"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "livro-um-corpo-que-se-escreve-pedra",
+    "title": "Um corpo que se escreve Pedra",
+    "type": "livro",
+    "year": 2012,
+    "shortDescription": "Livro de poesia publicado pela Editora Cousa.",
+    "longDescription": "Livro de poesia (Vitória: Editora Cousa, 2012).",
+    "concepts": [
+      "literatura"
+    ],
+    "relatedObjectIds": [
+      "livro-o-piano-a-imagem-do-deserto"
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
+    "id": "ciclo-afro",
+    "title": "Ciclo Afro",
+    "type": "projeto",
+    "year": 2024,
+    "shortDescription": "Iniciativa de Marcos Ramos, como organizador e curador, que articula ministérios, prefeituras, universidades e instituições culturais em torno da literatura, música e espiritualidade das diásporas africanas — já em três edições, no Brasil e na Colômbia.",
+    "longDescription": "Ciclo Afro é uma iniciativa idealizada, organizada e curada por Marcos Ramos, que articula parceiros nacionais e internacionais — ministérios do Governo Federal brasileiro, prefeituras, universidades e instituições culturais do terceiro setor — em torno da literatura, da música, da oralidade e da espiritualidade das diásporas africanas. Já teve três edições: a primeira, registrada em vídeo; a segunda, realizada na Universidade Federal do Recôncavo da Bahia (UFRB), em Cachoeira; e a terceira, em 2024, na Feira Internacional do Livro de Bogotá (FILBo), ano em que o Brasil foi país convidado de honra da feira, com apoio do Itamaraty, da Embaixada do Brasil na Colômbia e da Universidad Nacional de Colombia. Ao longo das edições, o projeto reuniu artistas, intelectuais, líderes espirituais e comunidades em torno de um projeto antirracista e pan-africano, afirmando a ancestralidade negra como eixo de imaginários políticos e estéticos contemporâneos. A terceira edição recebeu cobertura de veículos como France24, El País, El Tiempo, Alma Preta, TintaTic e PublishNews — ver links.",
+    "concepts": [
+      "afro-diasporas",
+      "religiosidade-afro-brasileira",
+      "raca-e-identidade-negra",
+      "literatura",
+      "imaginacao-politica",
+      "diplomacia-cultural",
+      "musica",
+      "oralidade"
+    ],
+    "relatedObjectIds": [
+      "poeticas-da-diaspora-africana-no-brasil",
+      "desmonte-de-programa-de-diplomacia-cultural",
+      "livro-dioses-que-danzan"
+    ],
+    "links": [
+      {
+        "label": "Assista à 1ª edição (playlist no YouTube)",
+        "url": "https://www.youtube.com/playlist?list=PL-pdtH2qCDp5d94DXE50AFkf-mxFOzIBe"
+      },
+      {
+        "label": "Assista à 2ª edição — UFRB, Cachoeira (playlist no YouTube)",
+        "url": "https://www.youtube.com/watch?v=ui8MkIMO90E&list=PLeY6y68kYHIOlRlpDU2FqphvcdrfdVUyh"
+      },
+      {
+        "label": "Assista à 3ª edição — FILBo, Bogotá (playlist no YouTube)",
+        "url": "https://www.youtube.com/watch?v=H2NFbOXgpzg&list=PLvenD6AexfVcczRfXCk3RlWSU3XryngMp"
+      },
+      {
+        "label": "France24: \"El apasionante Ciclo Afro vuelve a los pasillos de la FILBo\"",
+        "url": "https://www.france24.com/es/programas/cultura/20240429-el-apasionante-ciclo-afro-vuelve-a-los-pasillos-de-la-feria-internacional-del-libro-de-bogot%C3%A1"
+      },
+      {
+        "label": "El País: galeria da abertura da FILBo 2024",
+        "url": "https://elpais.com/america-colombia/2024-04-18/el-inicio-de-la-filbo-en-imagenes.html"
+      },
+      {
+        "label": "Alma Preta: \"Ciclo Afro aproxima educação, literatura e música na FILBo\"",
+        "url": "https://almapreta.com.br/sessao/africa-diaspora/ciclo-afro-aproxima-educacao-literatura-e-musica-na-feira-do-livro-de-bogota/"
+      },
+      {
+        "label": "Alma Preta: \"Novos fazeres artísticos em debate no terceiro dia do Ciclo Afro\"",
+        "url": "https://almapreta.com.br/sessao/africa-diaspora/no-3o-dia-do-encontro-ciclo-afro-em-bogota-debate-novos-fazeres-artisticos/"
+      },
+      {
+        "label": "Alma Preta: \"Música, religião e ancestralidade no segundo dia do Ciclo Afro\"",
+        "url": "https://almapreta.com.br/sessao/africa-diaspora/musica-religiao-e-ancestralidade-sao-destaque-do-2o-dia-do-ciclo-afro-na-feira-do-livro-de-bogota/"
+      },
+      {
+        "label": "Alma Preta: \"Ciclo Afro na FILBo 2024 é destaque\"",
+        "url": "https://almapreta.com.br/sessao/africa-diaspora/conexao-negra-brasil-colombia-ciclo-afro-tem-inicio-na-feira-do-livro-de-bogota/"
+      },
+      {
+        "label": "TintaTic: programação de abertura da FILBo 2024",
+        "url": "https://tintatic.com/se-acerca-la-apertura-de-la-filbo-2024/"
+      },
+      {
+        "label": "El Tiempo: Brasil como país convidado na FILBo 2024",
+        "url": "https://www.eltiempo.com/cultura/gente/feria-internacional-del-libro-de-bogota-filbo-2024-brasil-como-pais-invitado-3325246"
+      },
+      {
+        "label": "Site da FILBo: programação oficial 2024",
+        "url": "https://camlibro.com.co/la-filbo-anuncia-su-programacion-para-la-edicion-2024-con-brasil-como-pais-invitado-de-honor/"
+      },
+      {
+        "label": "PublishNews: terceira edição do Ciclo Afro na FILBo",
+        "url": "https://www.publishnews.com.br/materias/2024/04/25/terceiro-ciclo-afro-acontece-essa-semana-na-filbo"
+      }
+    ],
+    "status": "publicado",
+    "featured": true
   }
 ]
