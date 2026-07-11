@@ -9,12 +9,42 @@
     --color-paper: 250 250 246; /* #FAFAF6 — off-white quente */
     --color-ink: 22 22 15; /* #16160F — quase-preto */
     --color-accent: 181 101 29; /* #B5651D — ocre/terracota */
+
+    /* Identidade "terminal" (editor de código) — ver design_handoff/README
+       se existir, ou o histórico de conversa: paleta de syntax highlight
+       em vez do clichê verde-neon de hacker de filme. Segue a mesma
+       convenção .dark acima (claro é o :root, escuro sobrescreve). */
+    --term-bg: 246 244 238; /* #f6f4ee */
+    --term-elevated: 255 255 255;
+    --term-inset: 236 233 224; /* #ece9e0 */
+    --term-ink: 31 36 48; /* #1f2430 */
+    --term-muted: 138 143 152; /* #8a8f98 */
+    --term-muted-2: 184 188 196; /* #b8bcc4 */
+    --term-accent: 168 100 28; /* #a8641c — âmbar */
+    --term-accent-dim: 201 138 68; /* #c98a44 */
+    --term-accent2: 47 143 122; /* #2f8f7a — verde-azulado */
+    --term-accent2-dim: 92 171 153; /* #5cab99 */
+    --term-line: 225 221 210; /* #e1ddd2 */
+    --term-danger: 184 73 62; /* #b8493e */
   }
 
   .dark {
     --color-paper: 10 10 9; /* #0A0A09 — quase-preto, não #000 puro */
     --color-ink: 240 238 231; /* #F0EEE7 — quase-branco */
     --color-accent: 214 138 74; /* #D68A4A — terracota mais claro, contraste no escuro */
+
+    --term-bg: 13 15 20; /* #0d0f14 */
+    --term-elevated: 21 24 34; /* #151822 */
+    --term-inset: 16 18 26; /* #10121a */
+    --term-ink: 223 226 232; /* #dfe2e8 */
+    --term-muted: 91 100 114; /* #5b6472 */
+    --term-muted-2: 61 67 81; /* #3d4351 */
+    --term-accent: 227 164 88; /* #e3a458 */
+    --term-accent-dim: 156 116 68; /* #9c7444 */
+    --term-accent2: 111 211 184; /* #6fd3b8 */
+    --term-accent2-dim: 74 143 124; /* #4a8f7c */
+    --term-line: 35 39 51; /* #232733 */
+    --term-danger: 217 112 102; /* #d97066 */
   }
 
   html {
@@ -42,4 +72,45 @@
   ::selection {
     background-color: rgb(var(--color-accent) / 0.25);
   }
+}
+
+/* Identidade "terminal" — cursor piscando e sequência de boot da home.
+   Fora do @layer base porque são keyframes/classes de uso pontual, não
+   tokens do sistema. */
+@keyframes term-blink {
+  50% { opacity: 0; }
+}
+.term-cursor {
+  animation: term-blink 1.1s step-end infinite;
+}
+
+@keyframes term-boot-line {
+  to { opacity: 1; }
+}
+.term-boot-line {
+  opacity: 0;
+  animation: term-boot-line 0.25s forwards;
+}
+
+@keyframes term-boot-hide {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+.term-boot-hide {
+  animation: term-boot-hide 0.35s ease forwards;
+  animation-delay: 1.45s;
+}
+
+@keyframes term-fade-in {
+  to { opacity: 1; }
+}
+.term-fade-in {
+  opacity: 0;
+  animation: term-fade-in 0.5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .term-cursor { animation: none; }
+  .term-boot-line, .term-boot-hide, .term-fade-in { animation: none !important; opacity: 1 !important; }
+  .term-boot-hide { display: none !important; }
 }

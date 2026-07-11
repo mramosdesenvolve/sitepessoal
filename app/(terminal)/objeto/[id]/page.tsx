@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getConcepts, getObjectById } from "@/lib/data";
 import { ObjectDetailView } from "@/components/ObjectDetailView";
-import { CubistCornerNav } from "@/components/CubistCornerNav";
 
 interface PageProps {
   params: { id: string };
@@ -26,18 +25,25 @@ export async function generateMetadata({ params }: PageProps) {
 
 /**
  * Corpo longo do objeto: se existir content/<id>.mdx, ele tem precedência
- * (textos longos vivem em MDX); senão, usamos o longDescription gravado
- * no banco, quebrado em parágrafos.
+ * (textos longos vivem em MDX, passam pelo parser); senão, usamos o
+ * longDescription gravado no banco, quebrado em parágrafos direto (texto
+ * livre do admin não é MDX válido garantido, não passa pelo parser).
  */
-function getBody(id: string, longDescription: string): React.ReactNode {
+function readRawBody(id: string, longDescription: string): { raw: string; isMdx: boolean } {
   const mdxPath = path.join(process.cwd(), "content", `${id}.mdx`);
   if (fs.existsSync(mdxPath)) {
-    const source = fs.readFileSync(mdxPath, "utf-8");
-    return <MDXRemote source={source} />;
+    return { raw: fs.readFileSync(mdxPath, "utf-8"), isMdx: true };
   }
-  return longDescription
-    .split("\n\n")
-    .map((paragraph, i) => <p key={i}>{paragraph}</p>);
+  return { raw: longDescription, isMdx: false };
+}
+
+function getBody(raw: string, isMdx: boolean): React.ReactNode {
+  if (isMdx) return <MDXRemote source={raw} />;
+  return raw.split("\n\n").map((paragraph, i) => <p key={i}>{paragraph}</p>);
+}
+
+function countWords(text: string): number {
+  return text.trim().split(/\s+/).filter(Boolean).length;
 }
 
 export default async function ObjectPage({ params }: PageProps) {
@@ -49,17 +55,15 @@ export default async function ObjectPage({ params }: PageProps) {
     await Promise.all(object.relatedObjectIds.map((id) => getObjectById(id)))
   ).filter((o): o is NonNullable<typeof o> => o !== undefined);
 
+  const { raw, isMdx } = readRawBody(object.id, object.longDescription);
+
   return (
-    <>
-      <CubistCornerNav />
-      <main>
-        <ObjectDetailView
-          object={object}
-          concepts={concepts}
-          relatedObjects={relatedObjects}
-          body={getBody(object.id, object.longDescription)}
-        />
-      </main>
-    </>
+    <ObjectDetailView
+      object={object}
+      concepts={concepts}
+      relatedObjects={relatedObjects}
+      body={getBody(raw, isMdx)}
+      wordCount={countWords(raw)}
+    />
   );
 }
