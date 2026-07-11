@@ -39,14 +39,25 @@ export default async function GrafoPage() {
         </span>
       </div>
 
-      <div className="sm:hidden px-4 py-2 bg-term-inset border-b border-term-line text-[11px] text-term-muted">
-        // grafo funciona melhor com mouse —{" "}
-        <a href="/acervo" className="text-term-accent2 no-underline border-b border-term-accent2-dim">
-          use a lista no celular
+      {/* mobile: o grafo de força não funciona bem ao toque (rótulos
+          sobrepostos, nós pequenos demais para tocar) — em vez de
+          renderizar o canvas quebrado, mostramos só o convite para a
+          lista, que é a experiência real do /acervo em telas pequenas. */}
+      <div className="sm:hidden flex-1 flex flex-col items-center justify-center gap-4 px-8 text-center">
+        <p className="text-term-muted text-[13px] max-w-[38ch]">
+          // grafo funciona melhor com mouse — use a lista no celular
+        </p>
+        <a
+          href="/acervo"
+          className="border border-term-accent2-dim bg-term-accent2/10 text-term-accent2 px-5 py-2 text-sm no-underline hover:bg-term-accent2/20 transition-colors"
+        >
+          ver acervo como lista →
         </a>
       </div>
 
-      <TermAcervoGraph concepts={concepts} links={links} objects={objects} />
+      <div className="hidden sm:flex flex-1 min-h-0">
+        <TermAcervoGraph concepts={concepts} links={links} objects={objects} />
+      </div>
 
       <div className="hidden md:block border-t border-term-line bg-term-elevated px-[18px] py-3 shrink-0">
         <p className="text-[13px] m-0">

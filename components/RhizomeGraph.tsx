@@ -55,6 +55,9 @@ interface RhizomeGraphProps {
   /** força de repulsão entre nós — mais negativo = mais espalhado.
    * Default -260 (valor histórico da home antiga). */
   chargeStrength?: number;
+  /** distância de repouso dos links — quanto maior, mais os nós
+   * conectados se afastam uns dos outros. Default 70. */
+  linkDistance?: number;
 }
 
 /**
@@ -76,6 +79,7 @@ export function RhizomeGraph({
   zoomPadding = 96,
   centerOffsetX = 110,
   chargeStrength = -260,
+  linkDistance = 70,
 }: RhizomeGraphProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const fgRef = useRef<any>(null);
@@ -162,14 +166,14 @@ export function RhizomeGraph({
       fgRef.current = fg;
       if (!fg) return;
       fg.d3Force("charge")?.strength(chargeStrength);
-      fg.d3Force("link")?.distance(70);
+      fg.d3Force("link")?.distance(linkDistance);
       // colisão evita que círculos cubram os rótulos dos vizinhos
       fg.d3Force(
         "collide",
         forceCollide((node: any) => nodeRadius(node.val) + 14)
       );
     },
-    [chargeStrength]
+    [chargeStrength, linkDistance]
   );
 
   const graphData = useMemo(

@@ -17,6 +17,7 @@ interface AcervoClientProps {
  */
 export function AcervoClient({ objects, concepts }: AcervoClientProps) {
   const [activeType, setActiveType] = useState<ObjectType | "todos">("todos");
+  const [query, setQuery] = useState("");
   const conceptLabel = new Map(concepts.map((c) => [c.id, c.label]));
 
   const countByType = useMemo(() => {
@@ -33,11 +34,40 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
     [countByType]
   );
 
-  const filtered =
+  const byType =
     activeType === "todos" ? objects : objects.filter((o) => o.type === activeType);
+
+  const normalizedQuery = query.trim().toLowerCase();
+  const filtered =
+    normalizedQuery === ""
+      ? byType
+      : byType.filter((o) => {
+          const haystack = [
+            o.title,
+            o.shortDescription,
+            ...o.concepts.map((cid) => conceptLabel.get(cid) ?? cid),
+          ]
+            .join(" ")
+            .toLowerCase();
+          return haystack.includes(normalizedQuery);
+        });
 
   return (
     <div className="font-term-mono">
+      <label className="relative block mb-5">
+        <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-term-muted-2 text-xs">
+          $
+        </span>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="grep -i 'termo, autor, conceito...'"
+          aria-label="Buscar no acervo"
+          className="w-full border border-term-line bg-term-bg pl-7 pr-3 py-2 text-sm text-term-ink placeholder:text-term-muted focus:border-term-accent2 focus:outline-none"
+        />
+      </label>
+
       <div
         className="flex flex-wrap gap-2"
         role="group"

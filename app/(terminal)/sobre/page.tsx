@@ -4,7 +4,7 @@ import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/Ter
 export const metadata: Metadata = {
   title: "Marcos Ramos — currículo e contato",
   description:
-    "Nota biográfica, formação e contato de Marcos Ramos — escritor, crítico literário e musical, e consultor em desenvolvimento institucional e tecnológico.",
+    "Nota biográfica, formação e contato de Marcos Ramos — professor, pesquisador e consultor em educação e tecnologia.",
 };
 
 /**
@@ -25,28 +25,34 @@ export default function SobrePage() {
             <div className="pl-4">
               <span className="text-term-accent2-dim">papel</span>:{" "}
               <span className="text-term-accent">
-                &quot;crítico literário e musical&quot;
+                &quot;Professor, pesquisador&quot;
               </span>{" "}
-              | <span className="text-term-accent">&quot;consultor institucional e tecnológico&quot;</span>,
+              |{" "}
+              <span className="text-term-accent">
+                &quot;Consultor em Educação e Tecnologia&quot;
+              </span>{" "}
+              | <span className="text-term-accent">&quot;Desenvolvedor&quot;</span>,
             </div>
             <div className="pl-4">
               <span className="text-term-accent2-dim">formação</span>: [
-              <span className="text-term-accent">&quot;Harvard&quot;</span>,{" "}
-              <span className="text-term-accent">&quot;Dr. UFES 2024&quot;</span>,{" "}
-              <span className="text-term-accent">&quot;Msc. UFES 2016&quot;</span>],
+              <span className="text-term-accent">
+                &quot;Dr. em Letras (UFES)&quot;
+              </span>
+              ,{" "}
+              <span className="text-term-accent">
+                &quot;Estudos Afro-Latino-Americanos (Harvard)&quot;
+              </span>
+              ],
             </div>
             <div className="pl-4">
-              <span className="text-term-accent2-dim">contato</span>:{" "}
+              <span className="text-term-accent2-dim">contato</span>: [
               <a
-                href="mailto:marcosramosjunior@gmail.com"
+                href="mailto:marcosramos.email@gmail.com"
                 className="text-term-accent hover:text-term-accent2"
               >
-                &quot;marcosramosjunior@gmail.com&quot;
+                &quot;marcosramos.email@gmail.com&quot;
               </a>
-              ,
-            </div>
-            <div className="pl-4">
-              <span className="text-term-accent2-dim">perfis</span>: [
+              ,{" "}
               <a
                 href="https://orcid.org/0000-0003-3485-8462"
                 target="_blank"
@@ -54,6 +60,24 @@ export default function SobrePage() {
                 className="text-term-accent hover:text-term-accent2"
               >
                 &quot;ORCID↗&quot;
+              </a>
+              ,{" "}
+              <a
+                href="https://independent.academia.edu/MarcosRamos443"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-term-accent hover:text-term-accent2"
+              >
+                &quot;Academia.edu↗&quot;
+              </a>
+              ,{" "}
+              <a
+                href="http://lattes.cnpq.br/6494749060939079"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-term-accent hover:text-term-accent2"
+              >
+                &quot;Lattes↗&quot;
               </a>
               ]
             </div>
@@ -66,44 +90,37 @@ export default function SobrePage() {
 
           <div className="font-term-serif text-[17px] leading-[1.75] text-term-ink max-w-[66ch]">
             <p className="mb-[1.5em]">
-              Escritor, pesquisador e crítico literário e musical — e, em
-              paralelo, consultor em desenvolvimento institucional e
-              tecnológico para instituições de ensino e cultura. Transito
-              entre a pesquisa sobre literatura, música popular brasileira e
-              culturas afro-diaspóricas, e o desenho de processos e soluções
-              tecnológicas que sustentam essas mesmas instituições.
+              Doutor em Letras, certificado em Estudos Afro-Latino-Americanos
+              pela Universidade de Harvard, sou professor e pesquisador. Meus
+              temas principais são literatura, educação e tecnologia. Atuo na
+              pós-graduação com pesquisa e orientação de teses, e
+              concomitantemente, no desenvolvimento de projetos e
+              consultorias para instituições públicas, privadas e do
+              terceiro setor.
             </p>
 
             <h2 className="font-term-mono font-semibold text-[13px] tracking-wide uppercase text-term-accent2 mt-[2.6em] mb-[1em] before:content-['##_'] before:text-term-muted-2">
               trajetória
             </h2>
             <p className="mb-[1.5em]">
-              Minha formação atravessa a crítica literária e os estudos de
-              música popular brasileira, com foco em autores como Machado de
-              Assis, Guimarães Rosa e Gilberto Freyre, e em compositores que
-              vão do Recôncavo baiano ao Rio de Janeiro. Minha tese de
-              doutorado, <em>O Pacto na Mira do Ofá</em>, investiga como a
-              canção popular brasileira sustentou — e como uma estética
-              radical negra expôs os limites de — o pacto conciliador do
-              país.
+              Minha formação atravessa os estudos literários e as ciências
+              humanas e sociais. Minha tese de doutorado,{" "}
+              <em>O Pacto na Mira do Ofá</em>, investiga os temas como
+              pensamento social brasileiro, tradição radical negra,
+              imaginação radical, música e literatura.
             </p>
             <p className="mb-[1.5em]">
               Fui professor visitante no Departamento de Literatura da
               Universidad Nacional de Colombia entre 2022 e 2025, e professor
-              convidado em instituições como a Universidad de La Habana, a
-              Universidad Andina Simón Bolívar e a Universidade Eduardo
-              Mondlane (Moçambique). Organizo e curo o Ciclo Afro, iniciativa
-              já em três edições — na Feira Internacional do Livro de Bogotá
-              (FILBo), na Universidade Federal do Recôncavo da Bahia (UFRB) e
-              em sua edição inicial —, articulando ministérios, prefeituras,
-              universidades e instituições culturais em torno da literatura,
-              da música e da espiritualidade das diásporas africanas.
-            </p>
-            <p className="mb-[1.5em]">
-              Como colaborador, publico crítica literária e musical em
-              veículos como o Jornal A Gazeta, a Folha de São Paulo e a
-              Revista Quatrocincoum, e apresento podcasts para a Rádio Batuta
-              (Instituto Moreira Salles) sobre música popular brasileira.
+              convidado em instituições como a Universidad de La Habana
+              (Cuba), a Universidad Andina Simón Bolívar (Equador) e a
+              Universidade Eduardo Mondlane (Moçambique). Organizo e curo o
+              Ciclo Afro, iniciativa já em três edições — na Feira
+              Internacional do Livro de Bogotá (FILBo), na Universidade
+              Federal do Recôncavo da Bahia (UFRB) e em sua edição inicial —,
+              articulando ministérios, prefeituras, universidades e
+              instituições culturais em torno das artes e epistemologias das
+              diásporas africanas.
             </p>
             <p className="mb-[1.5em]">
               Em paralelo a essa trajetória, atuo também na gestão, no
@@ -111,9 +128,7 @@ export default function SobrePage() {
               de ensino e cultura: apoio processos de desenvolvimento
               institucional e o desenho de soluções — aplicações e softwares
               — voltadas a esse setor. São duas inscrições profundas e
-              simultâneas: uma na pesquisa cultural, literária e
-              educacional; outra na gestão e na tecnologia a serviço do
-              desenvolvimento institucional.
+              simultâneas: uma na pesquisa; outra na gestão e na tecnologia.
             </p>
 
             <h2 className="font-term-mono font-semibold text-[13px] tracking-wide uppercase text-term-accent2 mt-[2.6em] mb-[1em] before:content-['##_'] before:text-term-muted-2">

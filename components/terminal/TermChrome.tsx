@@ -44,7 +44,7 @@ const TABS: { key: TermTabKey; label: string; ext: string; href: string }[] = [
   { key: "sobre", label: "sobre", ext: ".md", href: "/sobre" },
   { key: "acervo", label: "acervo", ext: ".ts", href: "/acervo" },
   { key: "grafo", label: "grafo", ext: ".ts", href: "/grafo" },
-  { key: "contato", label: "contato", ext: ".sh", href: "mailto:marcosramosjunior@gmail.com" },
+  { key: "contato", label: "contato", ext: ".sh", href: "/contato" },
 ];
 
 export function TermTabs({ active }: { active: TermTabKey | null }) {

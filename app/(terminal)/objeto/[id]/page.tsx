@@ -20,6 +20,20 @@ export async function generateMetadata({ params }: PageProps) {
   return {
     title: `${object.title} — Marcos Ramos`,
     description: object.shortDescription,
+    // compartilhamento deliberadamente sem imagem — só título, resumo
+    // e autor (ver ShareButton, que monta o mesmo texto pro Web Share API)
+    openGraph: {
+      title: object.title,
+      description: object.shortDescription,
+      type: "article",
+      authors: ["Marcos Ramos"],
+      images: [],
+    },
+    twitter: {
+      card: "summary",
+      title: object.title,
+      description: object.shortDescription,
+    },
   };
 }
 

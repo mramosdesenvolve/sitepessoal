@@ -1,5 +1,6 @@
 import type { ConceptNode, ContentObject } from "@/types";
 import { RelatedObjects } from "./RelatedObjects";
+import { ShareButton } from "./ShareButton";
 import { TermTitlebar, TermTabs, TermBreadcrumb, TermStatusbar } from "./terminal/TermChrome";
 
 interface ObjectDetailViewProps {
@@ -88,9 +89,13 @@ export function ObjectDetailView({
           <h1 className="font-term-serif italic font-normal text-[clamp(26px,4vw,38px)] leading-tight text-term-ink m-0 mb-[3vh] text-balance">
             {object.title}
           </h1>
-          <p className="font-term-mono text-[12.5px] text-term-muted m-0 mb-[4vh]">
+          <p className="font-term-mono text-[12.5px] text-term-muted m-0 mb-[2.4vh]">
             // {object.shortDescription}
           </p>
+
+          <div className="mb-[4vh]">
+            <ShareButton title={object.title} summary={object.shortDescription} />
+          </div>
 
           <div className="font-term-serif text-[17px] leading-[1.75] text-term-ink max-w-[66ch] [&_p]:mb-[1.5em] [&_h2]:font-term-mono [&_h2]:font-semibold [&_h2]:text-[13px] [&_h2]:tracking-wide [&_h2]:uppercase [&_h2]:text-term-accent2 [&_h2]:mt-[2.6em] [&_h2]:mb-[1em] [&_blockquote]:my-[1.8em] [&_blockquote]:pl-[1.1em] [&_blockquote]:border-l-2 [&_blockquote]:border-term-accent-dim [&_blockquote]:italic [&_blockquote]:text-term-muted [&_em]:text-term-ink [&_strong]:font-bold [&_strong]:text-term-ink [&_a]:text-term-accent [&_a]:decoration-term-accent-dim [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:space-y-2 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2">
             {body}

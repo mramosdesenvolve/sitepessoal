@@ -45,8 +45,9 @@ export function TermAcervoGraph({
           matchedObjectIds={null}
           palette={termPalette}
           centerOffsetX={0}
-          zoomPadding={170}
-          chargeStrength={-420}
+          zoomPadding={40}
+          chargeStrength={-900}
+          linkDistance={130}
         />
       </div>
       {selectedConceptId && (

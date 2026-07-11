@@ -4,7 +4,7 @@ import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/Ter
 export const metadata: Metadata = {
   title: "Marcos Ramos",
   description:
-    "Investigo como cultura, tecnologia e aprendizagem produzem novas formas de imaginar o mundo.",
+    "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
 };
 
 const BOOT_LINES = [
@@ -67,7 +67,7 @@ export default function Home() {
 
             <p className="text-term-muted text-[clamp(13px,1.6vw,16px)] mt-0 mb-[3.4vh] max-w-[62ch]">
               <span className="text-term-muted-2">&gt;</span> Investigo como
-              cultura, tecnologia e aprendizagem produzem{" "}
+              a educação e a tecnologia podem produzir{" "}
               <b className="text-term-ink font-medium">
                 novas formas de imaginar o mundo
               </b>
@@ -78,21 +78,39 @@ export default function Home() {
               <span className="text-term-accent2-dim">papel</span>
               <span className="text-term-muted-2">:</span>{" "}
               <span className="text-term-accent">
-                &quot;crítico literário e musical&quot;
+                &quot;Professor, pesquisador&quot;
               </span>{" "}
               <span className="text-term-muted-2">|</span>{" "}
               <span className="text-term-accent">
-                &quot;consultor institucional e tecnológico&quot;
-              </span>
+                &quot;Consultor em Educação e Tecnologia&quot;
+              </span>{" "}
+              <span className="text-term-muted-2">|</span>{" "}
+              <span className="text-term-accent">&quot;Desenvolvedor&quot;</span>
             </p>
-            <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 mb-[1.1vh] text-term-ink">
-              <span className="text-term-accent2-dim">projeto_atual</span>
-              <span className="text-term-muted-2">:</span>{" "}
-              <span className="text-term-accent">&quot;Ciclo Afro&quot;</span>{" "}
-              <span className="text-term-muted">
-                // Bogotá · Salvador · Recôncavo
-              </span>
-            </p>
+            <div className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 mb-[1.1vh] text-term-ink">
+              <span className="text-term-accent2-dim">projetos_atuais</span>
+              <span className="text-term-muted-2">:</span>
+              <ul className="mt-0.5 pl-4 space-y-0.5">
+                <li>
+                  <span className="text-term-muted-2">- </span>
+                  <span className="text-term-accent">
+                    &quot;Implementação do ETIM - Senac RJ&quot;
+                  </span>
+                </li>
+                <li>
+                  <span className="text-term-muted-2">- </span>
+                  <span className="text-term-accent">
+                    &quot;Consultoria e Desenvolvimento na Rede Cruzada&quot;
+                  </span>
+                </li>
+                <li>
+                  <span className="text-term-muted-2">- </span>
+                  <span className="text-term-accent">
+                    &quot;Pesquisa e orientação de projetos na UNAL (Bogotá)&quot;
+                  </span>
+                </li>
+              </ul>
+            </div>
 
             <p className="text-[clamp(12px,1.3vw,13.5px)] text-term-muted mt-[3vh]">
               // clique numa aba acima, ou use o terminal abaixo ↓
@@ -139,7 +157,7 @@ export default function Home() {
               <span className="text-term-muted-2">#</span>sobre
             </a>
             <a
-              href="mailto:marcosramosjunior@gmail.com"
+              href="/contato"
               className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
             >
               <span className="text-term-muted-2">#</span>contato
