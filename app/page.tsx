@@ -75,6 +75,17 @@ export default function Home() {
             </p>
 
             <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 mb-[1.1vh] text-term-ink">
+              <span className="text-term-accent2-dim">formação</span>
+              <span className="text-term-muted-2">:</span>{" "}
+              <span className="text-term-accent">
+                &quot;Dr. em Letras (UFES)&quot;
+              </span>{" "}
+              <span className="text-term-muted-2">|</span>{" "}
+              <span className="text-term-accent">
+                &quot;Estudos Afro-Latino-Americanos (Harvard)&quot;
+              </span>
+            </p>
+            <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 mb-[1.1vh] text-term-ink">
               <span className="text-term-accent2-dim">papel</span>
               <span className="text-term-muted-2">:</span>{" "}
               <span className="text-term-accent">
