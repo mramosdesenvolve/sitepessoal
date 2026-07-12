@@ -19,6 +19,17 @@ async function main() {
   // compatibilidade do driver com bancos Postgres específicos ao repetir
   // upserts em sequência dentro do mesmo processo.
   const ids = objects.map((o) => o.id);
+
+  // preserva o createdAt original de cada objeto antes de recriar — sem
+  // isso, todo deploy reseta createdAt pra "agora" pros 86 objetos
+  // nativos, e eles passam a "ganhar" de qualquer post sincronizado do
+  // Substack na ordenação por mais recente de getMostRecentObject().
+  const existing = await prisma.contentObject.findMany({
+    where: { id: { in: ids } },
+    select: { id: true, createdAt: true },
+  });
+  const existingCreatedAt = new Map(existing.map((r) => [r.id, r.createdAt]));
+
   await prisma.contentObject.deleteMany({ where: { id: { in: ids } } });
   await prisma.contentObject.createMany({
     data: objects.map((o) => ({
@@ -33,6 +44,7 @@ async function main() {
       links: o.links ?? undefined,
       status: o.status,
       featured: o.featured,
+      createdAt: existingCreatedAt.get(o.id) ?? undefined,
     })),
   });
   console.log(`Seed concluída: ${objects.length} objetos.`);
