@@ -30,7 +30,7 @@ export default async function Home() {
   const recent = await getMostRecentObject();
 
   return (
-    <div className="fixed inset-0 overflow-y-auto md:overflow-hidden bg-term-bg text-term-ink font-term-mono text-sm">
+    <div className="relative h-screen flex flex-col bg-term-bg text-term-ink font-term-mono text-sm">
       <div
         className="term-boot-hide absolute inset-0 z-50 bg-term-bg px-[8vw] py-[10vh] text-[13px] text-term-muted"
         aria-hidden="true"
@@ -53,20 +53,23 @@ export default async function Home() {
         ))}
       </div>
 
-      <div className="term-fade-in min-h-full md:h-full flex flex-col">
+      <div className="term-fade-in h-full flex flex-col">
         <TermTitlebar path="sobre.md" />
         <TermTabs active="sobre" />
 
-        <div className="flex md:flex-1 md:min-h-0 bg-term-inset">
-          <div className="hidden md:block shrink-0 pt-[6vh] pl-[22px] pr-[14px] text-right text-[12.5px] text-term-muted-2 border-r border-term-line select-none">
-            {Array.from({ length: 8 }, (_, i) => (
-              <div key={i} className="h-[3.4vh] min-h-[24px]">
-                {i + 1}
-              </div>
-            ))}
-          </div>
+        {/* única região com scroll — mesmo padrão de /sobre, /grafo etc.:
+            cabeçalho/abas/status bar ficam fixos, só o conteúdo rola */}
+        <div className="flex-1 overflow-y-auto bg-term-inset">
+          <div className="flex min-h-full">
+            <div className="hidden md:block shrink-0 pt-[6vh] pl-[22px] pr-[14px] text-right text-[12.5px] text-term-muted-2 border-r border-term-line select-none">
+              {Array.from({ length: 8 }, (_, i) => (
+                <div key={i} className="h-[3.4vh] min-h-[24px]">
+                  {i + 1}
+                </div>
+              ))}
+            </div>
 
-          <div className="flex-1 min-w-0 pt-[6vh] px-[5vw] pb-[4vh] overflow-visible md:overflow-hidden">
+            <div className="flex-1 min-w-0 pt-[6vh] px-[5vw] pb-[6vh]">
             <h1 className="text-[clamp(20px,2.6vw,32px)] font-bold leading-tight tracking-tight m-0 mb-1 text-balance">
               <span className="text-term-accent2"># </span>Marcos Ramos
             </h1>
@@ -194,6 +197,7 @@ export default async function Home() {
               />
             ))}
           </div>
+        </div>
         </div>
 
         <div className="hidden md:block border-t border-term-line bg-term-elevated px-[18px] py-3 shrink-0">
