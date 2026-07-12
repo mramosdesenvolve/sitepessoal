@@ -5,8 +5,9 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import conceptsJson from "@/data/concepts.json";
 import { ADMIN_SESSION_COOKIE } from "@/lib/auth";
-import { createObject, getObjects } from "@/lib/data";
+import { createObject, getObjects, upsertSyncedObject } from "@/lib/data";
 import { slugify } from "@/lib/slug";
+import { fetchSubstackArtigos } from "@/lib/substack";
 import { OBJECT_STATUSES, OBJECT_TYPES, type ConceptNode } from "@/types";
 
 export async function logout() {
@@ -90,4 +91,25 @@ export async function createObjectAction(formData: FormData) {
 
   revalidatePath("/");
   redirect(`/objeto/${id}`);
+}
+
+/** Puxa a seção "Artigos" do Substack e grava/atualiza cada post como
+ * objeto do database — ver lib/substack.ts. Erro de rede/parsing não
+ * deve travar o /admin: mostra a mensagem e segue a vida. */
+export async function syncSubstackAction() {
+  let count = 0;
+  try {
+    const artigos = await fetchSubstackArtigos();
+    for (const artigo of artigos) {
+      await upsertSyncedObject(artigo);
+      count += 1;
+    }
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "erro desconhecido";
+    redirect(`/admin?error=${encodeURIComponent(`sync do Substack falhou: ${message}`)}`);
+  }
+
+  revalidatePath("/");
+  revalidatePath("/database");
+  redirect(`/admin?synced=${count}`);
 }

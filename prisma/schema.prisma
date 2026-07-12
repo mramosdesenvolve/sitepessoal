@@ -29,6 +29,12 @@ model ContentObject {
   links            Json?
   status           String
   featured         Boolean  @default(false)
+  /// URL de origem quando o objeto vem de uma fonte externa sincronizada
+  /// (ex. um artigo importado do Substack) — presente só nesses casos
+  sourceUrl        String?
+  /// nome da fonte externa, ex. "Substack" — usado para o aviso "publicado
+  /// no {sourceName}" perto da descrição
+  sourceName       String?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }

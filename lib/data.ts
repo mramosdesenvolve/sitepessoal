@@ -26,6 +26,8 @@ function toContentObject(row: {
   status: string;
   featured: boolean;
   createdAt: Date;
+  sourceUrl: string | null;
+  sourceName: string | null;
 }): ContentObject {
   return {
     id: row.id,
@@ -40,6 +42,8 @@ function toContentObject(row: {
     status: row.status as ContentObject["status"],
     featured: row.featured,
     createdAt: row.createdAt,
+    sourceUrl: row.sourceUrl ?? undefined,
+    sourceName: row.sourceName ?? undefined,
   };
 }
 
@@ -144,6 +148,54 @@ export async function createObject(
       links: input.links.length > 0 ? input.links : undefined,
       status: input.status,
       featured: input.featured,
+    },
+  });
+}
+
+export interface SyncedObjectInput {
+  id: string;
+  title: string;
+  type: string;
+  year: number;
+  shortDescription: string;
+  longDescription: string;
+  links: { label: string; url: string }[];
+  sourceUrl: string;
+  sourceName: string;
+}
+
+/** Cria ou atualiza um objeto vindo de uma sincronização externa (ex.
+ * Substack) — usado pela rotina de sync, roda em loop e precisa ser
+ * idempotente (rodar de novo não deve duplicar nem falhar). Não mexe em
+ * `concepts`/`featured`/`status` de objetos já existentes — só o admin
+ * decide isso pelo /admin, a sincronização não sobrescreve curadoria manual. */
+export async function upsertSyncedObject(
+  input: SyncedObjectInput
+): Promise<void> {
+  await prisma.contentObject.upsert({
+    where: { id: input.id },
+    create: {
+      id: input.id,
+      title: input.title,
+      type: input.type,
+      year: input.year,
+      shortDescription: input.shortDescription,
+      longDescription: input.longDescription,
+      concepts: [],
+      relatedObjectIds: [],
+      links: input.links.length > 0 ? input.links : undefined,
+      status: "publicado",
+      featured: false,
+      sourceUrl: input.sourceUrl,
+      sourceName: input.sourceName,
+    },
+    update: {
+      title: input.title,
+      shortDescription: input.shortDescription,
+      longDescription: input.longDescription,
+      links: input.links.length > 0 ? input.links : undefined,
+      sourceUrl: input.sourceUrl,
+      sourceName: input.sourceName,
     },
   });
 }

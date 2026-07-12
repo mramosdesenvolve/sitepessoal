@@ -91,6 +91,19 @@ export function ObjectDetailView({
           </h1>
           <p className="font-term-mono text-[12.5px] text-term-muted m-0 mb-[2.4vh]">
             // {object.shortDescription}
+            {object.sourceUrl && object.sourceName && (
+              <>
+                {" — publicado no "}
+                <a
+                  href={object.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-term-muted hover:text-term-accent2 underline decoration-term-line"
+                >
+                  {object.sourceName}↗
+                </a>
+              </>
+            )}
           </p>
 
           <div className="mb-[4vh]">

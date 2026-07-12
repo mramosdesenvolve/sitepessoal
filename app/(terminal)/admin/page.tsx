@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getConcepts, getObjects } from "@/lib/data";
 import { OBJECT_STATUSES, OBJECT_TYPES } from "@/types";
-import { createObjectAction, logout } from "./actions";
+import { createObjectAction, logout, syncSubstackAction } from "./actions";
 import { TermTitlebar, TermStatusbar } from "@/components/terminal/TermChrome";
 
 export const metadata = {
@@ -17,7 +17,7 @@ const labelClass = "block text-xs text-term-accent2-dim mb-1.5";
 export default async function AdminPage({
   searchParams,
 }: {
-  searchParams: { error?: string };
+  searchParams: { error?: string; synced?: string };
 }) {
   const [concepts, objects] = await Promise.all([getConcepts(), getObjects()]);
 
@@ -55,6 +55,38 @@ export default async function AdminPage({
               // Error: corrija antes de salvar — {searchParams.error}
             </p>
           )}
+
+          {searchParams.synced !== undefined && (
+            <p className="mt-6 border border-term-accent2-dim px-4 py-3 text-xs text-term-accent2">
+              // sincronizado: {searchParams.synced} artigo
+              {searchParams.synced === "1" ? "" : "s"} do Substack
+            </p>
+          )}
+
+          <section className="mt-8 border-t border-dashed border-term-line pt-6">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <h2 className="text-xs text-term-muted mb-1">
+                  // fontes externas
+                </h2>
+                <p className="text-sm text-term-ink">
+                  Sincronizar seção &quot;Artigos&quot; do Substack
+                </p>
+                <p className="mt-1 text-xs text-term-muted">
+                  puxa só o que estiver na seção Artigos — o resto do
+                  Substack fica de fora
+                </p>
+              </div>
+              <form action={syncSubstackAction}>
+                <button
+                  type="submit"
+                  className="border border-term-accent-dim bg-term-accent/10 text-term-accent px-4 py-2 text-xs whitespace-nowrap hover:bg-term-accent/20 transition-colors"
+                >
+                  $ sincronizar substack
+                </button>
+              </form>
+            </div>
+          </section>
 
           <form
             action={createObjectAction}
@@ -228,6 +260,7 @@ export default async function AdminPage({
                   </Link>
                   <span className="text-xs text-term-muted">
                     {o.type} · {o.year}
+                    {o.sourceName && ` · via ${o.sourceName}`}
                   </span>
                 </li>
               ))}

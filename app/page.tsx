@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
 };
 
-// publicação_recente puxa do banco — pode mudar a qualquer momento via /admin
+// última_publicação puxa do banco — pode mudar a qualquer momento via /admin
 export const dynamic = "force-dynamic";
 
 const BOOT_LINES = [
@@ -147,7 +147,7 @@ export default async function Home() {
               <div className="mt-[2.4vh] mb-[1.1vh]">
                 <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 text-term-ink">
                   <span className="text-term-accent2-dim">
-                    publicação_recente
+                    última_publicação
                   </span>
                   <span className="text-term-muted-2">:</span>{" "}
                   <a
@@ -162,6 +162,19 @@ export default async function Home() {
                 </p>
                 <p className="text-[clamp(11.5px,1.3vw,13px)] m-0 mt-0.5 text-term-muted max-w-[58ch]">
                   {recent.shortDescription}
+                  {recent.sourceUrl && recent.sourceName && (
+                    <>
+                      {" — publicado no "}
+                      <a
+                        href={recent.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-term-muted hover:text-term-accent2 underline decoration-term-line"
+                      >
+                        {recent.sourceName}↗
+                      </a>
+                    </>
+                  )}
                 </p>
               </div>
             )}

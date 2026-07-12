@@ -119,6 +119,12 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
               </h2>
               <p className="mt-1 text-sm text-term-muted leading-relaxed max-w-prose">
                 {o.shortDescription}
+                {o.sourceName && (
+                  <span className="text-term-muted-2">
+                    {" "}
+                    — publicado no {o.sourceName}↗
+                  </span>
+                )}
               </p>
               {o.concepts.length > 0 && (
                 <p className="mt-1.5 text-[11px] text-term-accent/80">

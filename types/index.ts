@@ -56,6 +56,11 @@ export interface ContentObject {
   status: ObjectStatus;
   featured: boolean;
   createdAt: Date;
+  /** presente quando o objeto foi sincronizado de uma fonte externa
+   * (ex. Substack) — usado pro link "ler no {sourceName}" e pelo aviso
+   * "publicado no {sourceName}" perto da descrição */
+  sourceUrl?: string;
+  sourceName?: string;
 }
 
 export interface ConceptNode {
