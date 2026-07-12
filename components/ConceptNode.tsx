@@ -66,9 +66,47 @@ export interface NodePaintState {
   palette: GraphPalette;
 }
 
-export function nodeRadius(val: number) {
-  // raio proporcional ao nº de objetos conectados, com piso legível
-  return 3.5 + val * 1.6;
+// Largura média de um caractere monoespaçado, em frações do font-size —
+// usado para estimar o tamanho do "chip" sem precisar de canvas (física e
+// hit-area rodam sem ctx disponível). Fontes monoespaçadas reais variam
+// pouco disso, então a aproximação não desalinha visualmente.
+const CHAR_WIDTH_EM = 0.6;
+
+function chipFontSize(val: number) {
+  // tamanho proporcional ao nº de objetos conectados, com piso legível
+  return 10 + Math.min(val, 8) * 0.8;
+}
+
+/** Dimensões aproximadas do chip `[rótulo]`, em unidades de mundo (sem
+ * depender de zoom) — usado pela força de colisão e pela hit-area. */
+export function nodeChipSize(label: string, val: number) {
+  const fontSize = chipFontSize(val);
+  const padX = fontSize * 0.55 * 2;
+  const padY = fontSize * 0.5 * 2;
+  const width = (label.length + 2) * fontSize * CHAR_WIDTH_EM + padX;
+  const height = fontSize + padY;
+  return { width, height };
+}
+
+function roundRectPath(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number
+) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
 }
 
 export function drawConceptNode(
@@ -79,42 +117,62 @@ export function drawConceptNode(
 ) {
   const { hoveredId, selectedId, neighborIds, activeConceptIds, palette } =
     state;
-  const r = nodeRadius(node.val);
   const x = node.x ?? 0;
   const y = node.y ?? 0;
 
   const isSelected = selectedId === node.id;
   const isHovered = hoveredId === node.id;
+  const active = isSelected || isHovered;
   const inNeighborhood = hoveredId ? neighborIds.has(node.id) : true;
   const matchesSearch = activeConceptIds ? activeConceptIds.has(node.id) : true;
 
   // Nó "apagado": fora da vizinhança em hover, ou fora dos resultados da busca
   const dimmed = !inNeighborhood || !matchesSearch;
-  const alpha = dimmed ? 0.14 : 1;
+  ctx.globalAlpha = dimmed ? 0.14 : 1;
 
-  ctx.globalAlpha = alpha;
+  // tamanho de fonte screen-constant (não encolhe/cresce demais com zoom) —
+  // mesma técnica do rótulo original, agora aplicada ao chip inteiro
+  const fontSize = Math.max(chipFontSize(node.val) / globalScale, 3);
+  ctx.font = `${fontSize}px ${palette.nodeFont ?? "ui-monospace, monospace"}`;
+  ctx.textBaseline = "middle";
 
-  // círculo: contorno fino de tinta; preenchimento só no ativo
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, 2 * Math.PI);
-  if (isSelected || isHovered) {
+  const text = `[${node.label}]`;
+  const textWidth = ctx.measureText(text).width;
+  const padX = fontSize * 0.55;
+  const padY = fontSize * 0.5;
+  const boxW = textWidth + padX * 2;
+  const boxH = fontSize + padY * 2;
+  const radius = Math.min(4 / globalScale, boxH / 2);
+
+  roundRectPath(ctx, x - boxW / 2, y - boxH / 2, boxW, boxH, radius);
+  if (active) {
     ctx.fillStyle = palette.accent;
     ctx.fill();
   } else {
     ctx.fillStyle = palette.paper;
     ctx.fill();
     ctx.lineWidth = 1 / globalScale;
-    ctx.strokeStyle = palette.ink;
+    ctx.strokeStyle = palette.line;
     ctx.stroke();
   }
 
-  // rótulo sempre visível — o grafo é navegação primária, não decoração
-  const fontSize = Math.max(11 / globalScale, 2.5);
-  ctx.font = `${fontSize}px ${palette.nodeFont ?? "Inter, system-ui, sans-serif"}`;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "top";
-  ctx.fillStyle = isSelected || isHovered ? palette.accent : palette.ink;
-  ctx.fillText(node.label, x, y + r + 3 / globalScale);
+  // brackets em tom apagado, rótulo em destaque — mesmo padrão visual do
+  // resto do site (ex. "formação: [...]" nas páginas sobre/home)
+  ctx.textAlign = "left";
+  const bracketColor = active ? palette.paper : palette.muted;
+  const labelColor = active ? palette.paper : palette.ink;
+  let cursorX = x - textWidth / 2;
+
+  ctx.fillStyle = bracketColor;
+  ctx.fillText("[", cursorX, y);
+  cursorX += ctx.measureText("[").width;
+
+  ctx.fillStyle = labelColor;
+  ctx.fillText(node.label, cursorX, y);
+  cursorX += ctx.measureText(node.label).width;
+
+  ctx.fillStyle = bracketColor;
+  ctx.fillText("]", cursorX, y);
 
   ctx.globalAlpha = 1;
 }

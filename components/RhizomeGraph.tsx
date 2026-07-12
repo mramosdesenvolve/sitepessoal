@@ -8,7 +8,7 @@ import type { ConceptLink } from "@/lib/data";
 import { useAppStore } from "@/store/useAppStore";
 import {
   drawConceptNode,
-  nodeRadius,
+  nodeChipSize,
   GRAPH_PALETTES,
   type GraphNodeDatum,
   type GraphPalette,
@@ -167,10 +167,13 @@ export function RhizomeGraph({
       if (!fg) return;
       fg.d3Force("charge")?.strength(chargeStrength);
       fg.d3Force("link")?.distance(linkDistance);
-      // colisão evita que círculos cubram os rótulos dos vizinhos
+      // colisão evita que os chips cubram os rótulos dos vizinhos
       fg.d3Force(
         "collide",
-        forceCollide((node: any) => nodeRadius(node.val) + 14)
+        forceCollide((node: any) => {
+          const { width, height } = nodeChipSize(node.label, node.val);
+          return Math.max(width, height) / 2 + 10;
+        })
       );
     },
     [chargeStrength, linkDistance]
@@ -238,7 +241,13 @@ export function RhizomeGraph({
     >
       <div
         className="absolute inset-0 transition-opacity duration-500 ease-out"
-        style={{ opacity: settled ? 1 : 0 }}
+        style={{
+          opacity: settled ? 1 : 0,
+          // grade pontilhada, tipo minimapa de editor — reforça a
+          // identidade "terminal" atrás do grafo em vez de vazio liso
+          backgroundImage: `radial-gradient(${palette.lineDim} 1px, transparent 1px)`,
+          backgroundSize: "20px 20px",
+        }}
       >
       {size.width > 0 && (
         <ForceGraph2D
@@ -256,10 +265,9 @@ export function RhizomeGraph({
             color: string,
             ctx: CanvasRenderingContext2D
           ) => {
+            const { width, height } = nodeChipSize(node.label, node.val);
             ctx.fillStyle = color;
-            ctx.beginPath();
-            ctx.arc(node.x, node.y, nodeRadius(node.val) + 4, 0, 2 * Math.PI);
-            ctx.fill();
+            ctx.fillRect(node.x - width / 2, node.y - height / 2, width, height);
           }}
           linkColor={(link: any) => {
             const s =
@@ -273,6 +281,7 @@ export function RhizomeGraph({
               (activeConceptIds.has(s) && activeConceptIds.has(t));
             return inHover && inSearch ? palette.line : palette.lineDim;
           }}
+          linkLineDash={[3, 2]}
           linkWidth={(link: any) => Math.min(link.weight, 3)}
           onNodeHover={(node: any) => setHoveredId(node ? node.id : null)}
           onNodeClick={(node: any) =>

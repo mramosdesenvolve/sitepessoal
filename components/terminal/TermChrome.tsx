@@ -38,11 +38,11 @@ export function TermTitlebar({
   );
 }
 
-export type TermTabKey = "sobre" | "acervo" | "grafo" | "contato";
+export type TermTabKey = "sobre" | "database" | "grafo" | "contato";
 
 const TABS: { key: TermTabKey; label: string; ext: string; href: string }[] = [
   { key: "sobre", label: "sobre", ext: ".md", href: "/sobre" },
-  { key: "acervo", label: "acervo", ext: ".ts", href: "/acervo" },
+  { key: "database", label: "database", ext: ".ts", href: "/database" },
   { key: "grafo", label: "grafo", ext: ".ts", href: "/grafo" },
   { key: "contato", label: "contato", ext: ".sh", href: "/contato" },
 ];

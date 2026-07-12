@@ -63,7 +63,7 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="grep -i 'termo, autor, conceito...'"
-          aria-label="Buscar no acervo"
+          aria-label="Buscar no database"
           className="w-full border border-term-line bg-term-bg pl-7 pr-3 py-2 text-sm text-term-ink placeholder:text-term-muted focus:border-term-accent2 focus:outline-none"
         />
       </label>

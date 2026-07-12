@@ -5,7 +5,7 @@ import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/Ter
 
 export const metadata: Metadata = {
   title: "Grafo — Marcos Ramos",
-  description: "Grafo de conceitos do acervo — relações entre temas, textos e projetos.",
+  description: "Grafo de conceitos do database — relações entre temas, textos e projetos.",
 };
 
 // objetos vêm do banco e podem ser criados a qualquer momento via /admin
@@ -31,7 +31,7 @@ export default async function GrafoPage() {
         <span className="hidden sm:inline">hover para destacar</span>
         <span className="ml-auto">
           <a
-            href="/acervo"
+            href="/database"
             className="text-term-accent2 hover:text-term-accent no-underline border-b border-term-accent2-dim"
           >
             ← ver como lista
@@ -42,16 +42,16 @@ export default async function GrafoPage() {
       {/* mobile: o grafo de força não funciona bem ao toque (rótulos
           sobrepostos, nós pequenos demais para tocar) — em vez de
           renderizar o canvas quebrado, mostramos só o convite para a
-          lista, que é a experiência real do /acervo em telas pequenas. */}
+          lista, que é a experiência real do /database em telas pequenas. */}
       <div className="sm:hidden flex-1 flex flex-col items-center justify-center gap-4 px-8 text-center">
         <p className="text-term-muted text-[13px] max-w-[38ch]">
           // grafo funciona melhor com mouse — use a lista no celular
         </p>
         <a
-          href="/acervo"
+          href="/database"
           className="border border-term-accent2-dim bg-term-accent2/10 text-term-accent2 px-5 py-2 text-sm no-underline hover:bg-term-accent2/20 transition-colors"
         >
-          ver acervo como lista →
+          ver database como lista →
         </a>
       </div>
 

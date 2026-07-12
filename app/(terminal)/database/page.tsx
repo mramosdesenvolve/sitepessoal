@@ -4,20 +4,20 @@ import { AcervoClient } from "@/components/AcervoClient";
 import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/TermChrome";
 
 export const metadata: Metadata = {
-  title: "Acervo — Marcos Ramos",
+  title: "Database — Marcos Ramos",
   description: "Lista completa dos objetos do site, com filtro por tipo.",
 };
 
 // objetos vêm do banco e podem ser criados a qualquer momento via /admin
 export const dynamic = "force-dynamic";
 
-export default async function AcervoPage() {
+export default async function DatabasePage() {
   const [objects, concepts] = await Promise.all([getObjects(), getConcepts()]);
 
   return (
     <div className="min-h-screen flex flex-col bg-term-bg text-term-ink font-term-mono text-sm">
-      <TermTitlebar path="acervo.ts" />
-      <TermTabs active="acervo" />
+      <TermTitlebar path="database.ts" />
+      <TermTabs active="database" />
 
       <div className="flex-1 bg-term-inset px-5 md:px-10 py-8 md:py-12">
         <div className="max-w-3xl mx-auto">

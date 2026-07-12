@@ -11,8 +11,8 @@ const BOOT_LINES = [
   "$ ssh marcos.dev",
   "Connecting to marcos.dev... ok",
   "Authenticating session... ok",
-  "Mounting /acervo /sobre /contato... ok",
-  "Loading acervo... ok",
+  "Mounting /database /sobre /contato... ok",
+  "Loading database... ok",
   "Welcome back.",
 ];
 
@@ -150,10 +150,10 @@ export default function Home() {
           </p>
           <p className="text-[13px] m-0 mt-2 flex flex-wrap gap-x-[22px] gap-y-1">
             <a
-              href="/acervo"
+              href="/database"
               className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
             >
-              <span className="text-term-muted-2">#</span>acervo
+              <span className="text-term-muted-2">#</span>database
             </a>
             <a
               href="/grafo"

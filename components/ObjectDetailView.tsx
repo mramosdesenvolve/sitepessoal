@@ -33,7 +33,7 @@ export function ObjectDetailView({
       <TermTabs active={null} />
       <TermBreadcrumb
         items={[
-          { label: "acervo", href: "/acervo" },
+          { label: "database", href: "/database" },
           { label: object.type },
           { label: `${object.id}.md` },
         ]}

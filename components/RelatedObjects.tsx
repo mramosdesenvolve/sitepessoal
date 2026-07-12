@@ -19,7 +19,7 @@ export function RelatedObjects({ objects }: RelatedObjectsProps) {
             &quot;{o.title}&quot;
           </Link>
           {" }"} <span className="text-term-accent2-dim">from</span>{" "}
-          <span className="text-term-accent">&quot;./acervo&quot;</span>
+          <span className="text-term-accent">&quot;./database&quot;</span>
         </p>
       ))}
     </div>

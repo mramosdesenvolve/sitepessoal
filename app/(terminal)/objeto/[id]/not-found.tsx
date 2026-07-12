@@ -13,14 +13,14 @@ export default function NotFound() {
             Este objeto ainda não existe.
           </h1>
           <p className="text-term-muted text-[13px] max-w-[46ch] mx-auto mb-6">
-            O item que você procura não está no acervo — ou ainda não foi
+            O item que você procura não está no database — ou ainda não foi
             publicado.
           </p>
           <a
-            href="/acervo"
+            href="/database"
             className="text-term-accent hover:text-term-accent2 border-b border-term-accent-dim hover:border-term-accent2 no-underline text-[13px]"
           >
-            ← voltar ao acervo
+            ← voltar ao database
           </a>
         </div>
       </div>

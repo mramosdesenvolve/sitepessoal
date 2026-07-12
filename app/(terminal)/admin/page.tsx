@@ -34,7 +34,7 @@ export default async function AdminPage({
                 Publicar objeto novo
               </h1>
               <p className="mt-1 text-xs text-term-muted">
-                artigo, projeto, software... aparece no acervo e no grafo na hora.
+                artigo, projeto, software... aparece no database e no grafo na hora.
               </p>
             </div>
             <form action={logout}>
