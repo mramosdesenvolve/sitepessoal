@@ -38,7 +38,13 @@ export function TermTitlebar({
   );
 }
 
-export type TermTabKey = "sobre" | "database" | "grafo" | "contato" | "substack";
+export type TermTabKey =
+  | "sobre"
+  | "database"
+  | "grafo"
+  | "contato"
+  | "substack"
+  | "curriculo";
 
 const TABS: {
   key: TermTabKey;
@@ -57,6 +63,12 @@ const TABS: {
     ext: ".rss",
     href: "https://marcosramos.substack.com/",
     external: true,
+  },
+  {
+    key: "curriculo",
+    label: "curriculo",
+    ext: ".pdf",
+    href: "/api/curriculo",
   },
 ];
 

@@ -241,6 +241,12 @@ export default async function Home() {
             >
               <span className="text-term-muted-2">#</span>substack↗
             </a>
+            <a
+              href="/api/curriculo"
+              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
+            >
+              <span className="text-term-muted-2">#</span>curriculo
+            </a>
           </p>
         </div>
 
