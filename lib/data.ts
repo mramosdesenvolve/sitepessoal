@@ -162,13 +162,18 @@ export interface SyncedObjectInput {
   links: { label: string; url: string }[];
   sourceUrl: string;
   sourceName: string;
+  /** curadoria manual (ver lib/substack.ts *_OVERRIDES) — quando ausente,
+   * a sincronização não mexe em conceitos/relacionados já gravados, pra
+   * nunca apagar uma curadoria feita por fora do fluxo de sync. */
+  concepts?: string[];
+  relatedObjectIds?: string[];
 }
 
 /** Cria ou atualiza um objeto vindo de uma sincronização externa (ex.
  * Substack) — usado pela rotina de sync, roda em loop e precisa ser
- * idempotente (rodar de novo não deve duplicar nem falhar). Não mexe em
- * `concepts`/`featured`/`status` de objetos já existentes — só o admin
- * decide isso pelo /admin, a sincronização não sobrescreve curadoria manual. */
+ * idempotente (rodar de novo não deve duplicar nem falhar). Só mexe em
+ * `concepts`/`relatedObjectIds` quando o input traz uma curadoria
+ * explícita — do contrário preserva o que já estava gravado. */
 export async function upsertSyncedObject(
   input: SyncedObjectInput
 ): Promise<void> {
@@ -181,8 +186,8 @@ export async function upsertSyncedObject(
       year: input.year,
       shortDescription: input.shortDescription,
       longDescription: input.longDescription,
-      concepts: [],
-      relatedObjectIds: [],
+      concepts: input.concepts ?? [],
+      relatedObjectIds: input.relatedObjectIds ?? [],
       links: input.links.length > 0 ? input.links : undefined,
       status: "publicado",
       featured: false,
@@ -196,6 +201,10 @@ export async function upsertSyncedObject(
       links: input.links.length > 0 ? input.links : undefined,
       sourceUrl: input.sourceUrl,
       sourceName: input.sourceName,
+      ...(input.concepts ? { concepts: input.concepts } : {}),
+      ...(input.relatedObjectIds
+        ? { relatedObjectIds: input.relatedObjectIds }
+        : {}),
     },
   });
 }

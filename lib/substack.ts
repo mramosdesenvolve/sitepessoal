@@ -23,6 +23,36 @@ const DESCRIPTION_OVERRIDES: Record<string, string> = {
     "Uma audição crítica do álbum Villa-Lobos (2026) da pianista Erika Ribeiro",
 };
 
+/** Resumos longos, escritos à mão — mesmo padrão editorial dos outros
+ * objetos do database (parágrafo curto em terceira pessoa, não o texto
+ * corrido do post). Sem entrada aqui, cai no trecho público gratuito do
+ * Substack (truncated_body_text). */
+const LONG_DESCRIPTION_OVERRIDES: Record<string, string> = {
+  "o-villa-lobos-de-erika-ribeira":
+    'Resenha crítica do álbum "Villa-Lobos" (2026), segundo disco solo da pianista Erika Ribeiro, com arranjos de Marcelo Galter e participação dos percussionistas Reinaldo Boaventura e Natália Mitre. Argumenta que o trabalho não é um tributo consagrador a Heitor Villa-Lobos, mas um deslocamento de sua escrita pianística em direção a camadas rítmicas e percussivas de matriz afro-diaspórica — como os toques de avamunha e congo-de-ouro dos terreiros de candomblé —, em diálogo com a pesquisa de doutorado de Ribeiro sobre o pianismo de Egberto Gismonti (UNIRIO, 2019). Discute como a tradição interpretativa consolidou, ao longo do século XX, um Villa-Lobos "domesticado" para conservatórios e salas de concerto, e como o álbum recoloca em circulação as dimensões rítmicas e sonoras amortecidas por esse processo de canonização.',
+};
+
+/** Conceitos (vocabulário fixo de data/concepts.json) atribuídos à mão —
+ * é isso que faz o post entrar de fato no rizoma/grafo, conectado a
+ * outros objetos que compartilham os mesmos temas. */
+const CONCEPT_OVERRIDES: Record<string, string[]> = {
+  "o-villa-lobos-de-erika-ribeira": [
+    "musica",
+    "afro-diasporas",
+    "religiosidade-afro-brasileira",
+    "critica-literaria",
+  ],
+};
+
+/** Objetos já existentes no database que este post referencia — vira a
+ * lista "objetos relacionados" no fim da página. */
+const RELATED_OVERRIDES: Record<string, string[]> = {
+  "o-villa-lobos-de-erika-ribeira": [
+    "livro-teorias-da-cancao",
+    "modernismos-pacto-social-estetica-irreconciliacao",
+  ],
+};
+
 interface SubstackArchiveItem {
   title: string;
   slug: string;
@@ -57,10 +87,15 @@ function toSyncedObject(item: SubstackArchiveItem): SyncedObjectInput {
     type: "artigo",
     year: new Date(item.post_date).getFullYear(),
     shortDescription,
-    longDescription: item.truncated_body_text ?? shortDescription,
+    longDescription:
+      LONG_DESCRIPTION_OVERRIDES[item.slug] ??
+      item.truncated_body_text ??
+      shortDescription,
     links: [{ label: "Ler no Substack", url: item.canonical_url }],
     sourceUrl: item.canonical_url,
     sourceName: SOURCE_NAME,
+    concepts: CONCEPT_OVERRIDES[item.slug],
+    relatedObjectIds: RELATED_OVERRIDES[item.slug],
   };
 }
 
