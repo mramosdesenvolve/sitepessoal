@@ -179,7 +179,7 @@ export default async function Home() {
               </div>
             )}
 
-            <p className="text-[clamp(12px,1.3vw,13.5px)] text-term-muted mt-[3vh]">
+            <p className="hidden md:block text-[clamp(12px,1.3vw,13.5px)] text-term-muted mt-[3vh]">
               // clique numa aba acima, ou use o terminal abaixo ↓
             </p>
           </div>
@@ -196,7 +196,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="border-t border-term-line bg-term-elevated px-[18px] py-3 shrink-0">
+        <div className="hidden md:block border-t border-term-line bg-term-elevated px-[18px] py-3 shrink-0">
           <p className="text-[13px] m-0">
             <span className="text-term-accent2">marcos@ramos</span>
             <span className="text-term-muted">:</span>
