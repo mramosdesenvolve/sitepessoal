@@ -55,6 +55,7 @@ export interface ContentObject {
   links?: { label: string; url: string }[];
   status: ObjectStatus;
   featured: boolean;
+  createdAt: Date;
 }
 
 export interface ConceptNode {

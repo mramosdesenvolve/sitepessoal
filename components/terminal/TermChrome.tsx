@@ -38,13 +38,26 @@ export function TermTitlebar({
   );
 }
 
-export type TermTabKey = "sobre" | "database" | "grafo" | "contato";
+export type TermTabKey = "sobre" | "database" | "grafo" | "contato" | "substack";
 
-const TABS: { key: TermTabKey; label: string; ext: string; href: string }[] = [
+const TABS: {
+  key: TermTabKey;
+  label: string;
+  ext: string;
+  href: string;
+  external?: boolean;
+}[] = [
   { key: "sobre", label: "sobre", ext: ".md", href: "/sobre" },
   { key: "database", label: "database", ext: ".ts", href: "/database" },
   { key: "grafo", label: "grafo", ext: ".ts", href: "/grafo" },
   { key: "contato", label: "contato", ext: ".sh", href: "/contato" },
+  {
+    key: "substack",
+    label: "substack",
+    ext: ".rss",
+    href: "https://marcosramos.substack.com/",
+    external: true,
+  },
 ];
 
 export function TermTabs({ active }: { active: TermTabKey | null }) {
@@ -58,8 +71,14 @@ export function TermTabs({ active }: { active: TermTabKey | null }) {
             : "text-term-muted hover:text-term-ink"
         }`;
         return (
-          <Link key={tab.key} href={tab.href} className={className}>
+          <Link
+            key={tab.key}
+            href={tab.href}
+            className={className}
+            {...(tab.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
             {tab.label}
+            {tab.external && "↗"}
             <span className="text-term-muted-2">{tab.ext}</span>
           </Link>
         );

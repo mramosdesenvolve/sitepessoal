@@ -25,6 +25,7 @@ function toContentObject(row: {
   links: unknown;
   status: string;
   featured: boolean;
+  createdAt: Date;
 }): ContentObject {
   return {
     id: row.id,
@@ -38,6 +39,7 @@ function toContentObject(row: {
     links: (row.links as ContentObject["links"]) ?? undefined,
     status: row.status as ContentObject["status"],
     featured: row.featured,
+    createdAt: row.createdAt,
   };
 }
 
@@ -46,6 +48,18 @@ export async function getObjects(): Promise<ContentObject[]> {
     orderBy: { year: "desc" },
   });
   return rows.map(toContentObject);
+}
+
+/** Objeto publicado mais recente — usado na home. Ordena por `year` primeiro
+ * (dado real de cada texto) e `createdAt` só como desempate — os 49 artigos
+ * da migração em lote têm todos o mesmo createdAt (hora da migração), então
+ * usar só createdAt escolheria um item essencialmente aleatório do lote. */
+export async function getMostRecentObject(): Promise<ContentObject | undefined> {
+  const row = await prisma.contentObject.findFirst({
+    where: { status: "publicado" },
+    orderBy: [{ year: "desc" }, { createdAt: "desc" }],
+  });
+  return row ? toContentObject(row) : undefined;
 }
 
 export async function getConcepts(): Promise<ConceptNode[]> {

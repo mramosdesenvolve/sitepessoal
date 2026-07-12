@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/TermChrome";
+import { getMostRecentObject } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Marcos Ramos",
   description:
     "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
 };
+
+// publicação_recente puxa do banco — pode mudar a qualquer momento via /admin
+export const dynamic = "force-dynamic";
 
 const BOOT_LINES = [
   "$ ssh marcos.dev",
@@ -22,7 +26,9 @@ const BOOT_LINES = [
  * assenta na tela final, um editor de código de tela cheia com a bio como
  * "arquivo" sobre.md. Sem header/footer do site — só a moldura terminal.
  */
-export default function Home() {
+export default async function Home() {
+  const recent = await getMostRecentObject();
+
   return (
     <div className="fixed inset-0 overflow-hidden bg-term-bg text-term-ink font-term-mono text-sm">
       <div
@@ -120,8 +126,45 @@ export default function Home() {
                     &quot;Pesquisa e orientação de projetos na UNAL (Bogotá)&quot;
                   </span>
                 </li>
+                <li>
+                  <span className="text-term-muted-2">- </span>
+                  <span className="text-term-accent">
+                    &quot;Mixagem e masterização do álbum Agô&quot;
+                  </span>
+                </li>
+                <li>
+                  <span className="text-term-muted-2">- </span>
+                  <span className="text-term-accent">
+                    &quot;Revisão e finalização do livro El Brasil no existe -
+                    Clases en la Universidad Nacional de Colômbia
+                    (2022-2025)&quot;
+                  </span>
+                </li>
               </ul>
             </div>
+
+            {recent && (
+              <div className="mt-[2.4vh] mb-[1.1vh]">
+                <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 text-term-ink">
+                  <span className="text-term-accent2-dim">
+                    publicação_recente
+                  </span>
+                  <span className="text-term-muted-2">:</span>{" "}
+                  <a
+                    href={`/objeto/${recent.id}`}
+                    className="text-term-accent hover:text-term-accent2 no-underline border-b border-term-accent-dim hover:border-term-accent2 transition-colors"
+                  >
+                    &quot;{recent.title}&quot;
+                  </a>{" "}
+                  <span className="text-term-muted">
+                    // {recent.type} · {recent.year}
+                  </span>
+                </p>
+                <p className="text-[clamp(11.5px,1.3vw,13px)] m-0 mt-0.5 text-term-muted max-w-[58ch]">
+                  {recent.shortDescription}
+                </p>
+              </div>
+            )}
 
             <p className="text-[clamp(12px,1.3vw,13.5px)] text-term-muted mt-[3vh]">
               // clique numa aba acima, ou use o terminal abaixo ↓
@@ -172,6 +215,14 @@ export default function Home() {
               className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
             >
               <span className="text-term-muted-2">#</span>contato
+            </a>
+            <a
+              href="https://marcosramos.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
+            >
+              <span className="text-term-muted-2">#</span>substack↗
             </a>
           </p>
         </div>
