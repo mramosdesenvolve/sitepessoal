@@ -1,0 +1,55 @@
+O Painel PMO é uma plataforma de gestão de projetos e portfólio construída sob medida para uma organização do terceiro setor que precisava sair de planilhas soltas e grupos de WhatsApp para um sistema único — com login de verdade, controle de acesso granular e uma visão compartilhada de tudo que está em andamento. Não é um protótipo: é um sistema real, em uso diário por uma equipe de cerca de 25 pessoas, gerindo dezenas de projetos simultâneos.
+
+Antes do sistema, a gestão vivia espalhada em planilhas desatualizadas, conversas de WhatsApp e reuniões semanais só para alinhar quem estava fazendo o quê — sem visibilidade de sobrecarga de equipe, sem histórico auditável e sem controle real de acesso.
+
+## Funcionalidades principais
+
+- Login com quatro níveis de permissão (Administrador, Gestor de Projeto, Colaborador, Visualização), cada um enxergando só o que faz sentido para o seu papel
+- Dashboard executivo com KPIs — total de projetos, em andamento, atrasados, progresso médio — em duas visualizações: grade de cards e Gantt de portfólio
+- Kanban por projeto, com arrastar-e-soltar de etapas entre colunas, ordenado automaticamente por proximidade de prazo
+- Gantt por projeto, com destaque visual (laranja) específico para etapas concluídas com atraso, separando "terminou tarde" de "está tudo bem"
+- Comentários e histórico de auditoria em cada etapa — quem fez o quê, quando
+- Visão de carga de trabalho por pessoa, para apoiar decisões de realocação de equipe
+
+## Capturas de tela
+
+<div className="my-8">
+  <img src="/sistemas/painel-pmo/01-dashboard.png" alt="Dashboard executivo do Painel PMO, com KPIs no topo e projetos em visão de grade" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Dashboard executivo — KPIs, busca e filtros por status e área</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/painel-pmo/02-gantt-portfolio.png" alt="Visão Gantt de portfólio, com todos os projetos lado a lado na linha do tempo" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Gantt de portfólio — todos os projetos, um do lado do outro, na linha do tempo</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/painel-pmo/03-kanban.png" alt="Kanban de um projeto, com etapas organizadas em colunas por status" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Kanban do projeto — etapas com arrastar-e-soltar, ordenadas por proximidade de prazo</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/painel-pmo/04-gantt-projeto.png" alt="Gantt de um projeto específico, com barra em laranja indicando etapa concluída com atraso" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Gantt do projeto — barra laranja marca etapa concluída depois do prazo, verde é no prazo</p>
+</div>
+
+## Stack técnica
+
+- **Next.js 16** — App Router, Server Components, Server Actions, Turbopack
+- **TypeScript** de ponta a ponta
+- **PostgreSQL via Supabase**, com Row Level Security (RLS) — a regra de permissão vive no banco, não só na interface
+- **Supabase Auth** para autenticação, sessão via cookies no servidor
+- **Vercel**, deploy contínuo em produção
+
+## Decisões técnicas
+
+- **Permissão em duas camadas.** Toda regra de "quem pode fazer o quê" existe tanto na interface quanto em políticas de RLS no Postgres — mesmo que alguém contorne o front-end e chame a API diretamente, o banco recusa a operação.
+- **Onboarding sem depender de e-mail transacional.** A primeira versão convidava colaboradores por link mágico por e-mail; o fluxo se mostrou frágil na prática e foi substituído por criação direta de conta com senha temporária, repassada uma única vez pelo administrador.
+- **Gantt construído do zero.** O gráfico de Gantt — por projeto e de portfólio — foi feito em React puro, sem biblioteca de terceiros, dando controle total sobre a lógica de "concluído com atraso" (compara a data real de conclusão com o prazo).
+
+## Números
+
+- 4 perfis de acesso, com regras aplicadas em duas camadas (interface e banco de dados)
+- ~25 pessoas usando o sistema no dia a dia
+- Dezenas de projetos ativos geridos simultaneamente, com centenas de etapas
+- 2 visualizações de Gantt construídas do zero (por projeto e de portfólio)

@@ -1779,5 +1779,98 @@
     ],
     "status": "publicado",
     "featured": true
+  },
+  {
+    "id": "painel-pmo",
+    "title": "Painel PMO — Plataforma de Gestão de Projetos",
+    "type": "sistema",
+    "year": 2026,
+    "shortDescription": "Plataforma de gestão de projetos e portfólio (PMO), com dashboard executivo, kanban, Gantt e permissões por perfil — em uso diário por uma equipe de ~25 pessoas.",
+    "longDescription": "Sistema de gestão de projetos e portfólio (PMO) desenvolvido sob medida para uma organização do terceiro setor, substituindo planilhas e WhatsApp por uma plataforma única: login real, quatro níveis de permissão, dashboard executivo, kanban com drag-and-drop, Gantt por projeto e de portfólio (com destaque visual para etapas concluídas com atraso) e visão de carga de trabalho por pessoa. Em produção, usado diariamente por uma equipe de ~25 pessoas gerindo dezenas de projetos simultâneos.",
+    "concepts": [
+      "tecnologia-e-imaginacao",
+      "infraestruturas-culturais"
+    ],
+    "relatedObjectIds": [
+      "matriz-curricular",
+      "rede-cruzada-evidenciacao"
+    ],
+    "links": [
+      {
+        "label": "ver sistema ao vivo",
+        "url": "https://pmo-rede-cruzada.vercel.app/dashboard"
+      }
+    ],
+    "status": "publicado",
+    "featured": true
+  },
+  {
+    "id": "matriz-curricular",
+    "title": "Matriz Curricular — Sistema de Inteligência Curricular",
+    "type": "sistema",
+    "year": 2026,
+    "shortDescription": "Plataforma de planejamento curricular para a Rede Cruzada: competências, saberes, mapa por fases e grade semanal, com exportação em PDF em 6 granularidades.",
+    "longDescription": "Sistema web de planejamento e gestão curricular para o Projeto de Inclusão Produtiva da Rede Cruzada, que modela o currículo em camadas — competências, saberes curriculares com pré-requisitos e integrações entre componentes, mapa por fases formativas e grade semanal — substituindo documentos de texto soltos por uma estrutura de dados única, multiusuário, com exportação em PDF sob demanda.",
+    "concepts": [
+      "pedagogias-experimentais",
+      "formacao-docente"
+    ],
+    "relatedObjectIds": [
+      "painel-pmo",
+      "rede-cruzada-evidenciacao"
+    ],
+    "links": [
+      {
+        "label": "ver sistema ao vivo",
+        "url": "https://matriz-curricular-rc-iota.vercel.app/matriz"
+      }
+    ],
+    "status": "publicado",
+    "featured": true
+  },
+  {
+    "id": "rede-cruzada-evidenciacao",
+    "title": "Sistema de Evidenciação da Aprendizagem",
+    "type": "sistema",
+    "year": 2026,
+    "shortDescription": "Plataforma de avaliação formativa contínua da Rede Cruzada: acompanha leitura, escrita e raciocínio matemático de ~215 estudantes ao longo de 4 ciclos avaliativos por ano.",
+    "longDescription": "Plataforma web de avaliação formativa contínua construída para a Rede Cruzada, que acompanha o desenvolvimento de leitura, escrita e raciocínio matemático de cada estudante ao longo do ano letivo, comparando o desempenho do mesmo grupo em quatro etapas avaliativas sucessivas. Agrega resultados por habilidade pedagógica específica, gera alertas automáticos de habilidades abaixo do esperado e organiza planos de ação por coletivo — em uso em 3 unidades, ~215 estudantes reais.",
+    "concepts": [
+      "pedagogias-experimentais",
+      "aprendizagem-expandida"
+    ],
+    "relatedObjectIds": [
+      "painel-pmo",
+      "matriz-curricular"
+    ],
+    "links": [
+      {
+        "label": "ver sistema ao vivo",
+        "url": "https://rede-cruzada-evidenciacao.vercel.app/"
+      }
+    ],
+    "status": "publicado",
+    "featured": true
+  },
+  {
+    "id": "elo-nucleo-pulsante",
+    "title": "Elo — Sistema de Solicitações Pedagógicas",
+    "type": "sistema",
+    "year": 2026,
+    "shortDescription": "Sistema que substitui e-mail e WhatsApp na coordenação entre o Núcleo Pulsante e as 4 unidades do Programa Etim (Senac RJ), com rastreabilidade e histórico completo.",
+    "longDescription": "Sistema web que substitui a troca de solicitações pedagógicas por e-mail e WhatsApp entre o Núcleo Pulsante — coordenação central do programa Etim (Senac RJ) — e suas quatro unidades, com criação de solicitações, acompanhamento de status em tempo real (pendente, respondido, atrasado), histórico completo e exportação em PDF. Em produção desde julho de 2026, uso ativo pelas cinco contas do programa.",
+    "concepts": [
+      "tecnologia-e-imaginacao",
+      "infraestruturas-culturais"
+    ],
+    "relatedObjectIds": [],
+    "links": [
+      {
+        "label": "ver sistema ao vivo",
+        "url": "https://elo.vercel.app/"
+      }
+    ],
+    "status": "publicado",
+    "featured": true
   }
 ]

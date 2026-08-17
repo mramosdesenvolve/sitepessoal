@@ -5,6 +5,7 @@ export type ObjectType =
   | "palestra"
   | "podcast"
   | "projeto"
+  | "sistema"
   | "curriculo"
   | "ferramenta"
   | "software"
@@ -27,6 +28,7 @@ export const OBJECT_TYPES: ObjectType[] = [
   "palestra",
   "podcast",
   "projeto",
+  "sistema",
   "curriculo",
   "ferramenta",
   "software",

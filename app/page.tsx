@@ -216,6 +216,12 @@ export default async function Home() {
               <span className="text-term-muted-2">#</span>database
             </a>
             <a
+              href="/sistemas"
+              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
+            >
+              <span className="text-term-muted-2">#</span>sistemas
+            </a>
+            <a
               href="/grafo"
               className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
             >

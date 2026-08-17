@@ -1,0 +1,58 @@
+Plataforma web de avaliação formativa contínua, construída para a Rede Cruzada — rede de organizações educacionais que atende crianças e adolescentes em comunidades no Rio de Janeiro, dentro do Projeto DesKobrir. O sistema acompanha o desenvolvimento de leitura, escrita e raciocínio matemático de cada estudante ao longo do ano letivo, comparando o desempenho do mesmo grupo em quatro etapas avaliativas sucessivas: Linha de Base, Monitoramento 1, Monitoramento 2 e Linha Final.
+
+Antes do sistema, a avaliação acontecia por planilhas e formulários de correção em PDF preenchidos manualmente por unidade, sem um lugar único que comparasse o desempenho do mesmo estudante ao longo do ano, agregasse resultados por habilidade pedagógica específica ou gerasse alertas automáticos para orientar o plano de ação. Em produção: 3 unidades físicas, 5 coletivos pedagógicos por unidade e cerca de 215 estudantes reais cadastrados.
+
+## Funcionalidades principais
+
+- Login por usuário, sem e-mail, com quatro perfis — admin, gestor (leitura), professor (plano de ação do próprio coletivo) e corretor (registro de correções)
+- Formulário de correção em 4 passos — disciplina, cabeçalho do aluno, questão a questão, confirmação — com prevenção de duplo registro
+- Dashboard com filtro por ciclo e unidade: médias gerais, desempenho por coletivo, alertas pedagógicos automáticos e evolução desde a Linha de Base
+- Tela de Habilidades, com o detalhamento de todas as habilidades avaliadas — não só as críticas — por coletivo, disciplina, ciclo e unidade
+- Plano de ação pedagógica, com foco automático nas habilidades mais frágeis de cada coletivo e agrupamento de estudantes por nível de desempenho
+- Exportação de relatórios em PDF — geral do ciclo, correção individual, lote de provas por coletivo
+- Modo escuro com persistência de preferência
+- Página de Metodologia, com a documentação viva de todo o processo avaliativo
+
+## Capturas de tela
+
+<div className="my-8">
+  <img src="/sistemas/rede-cruzada-evidenciacao/01-dashboard.png" alt="Dashboard do ciclo selecionado, com médias gerais e alertas pedagógicos automáticos" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Dashboard — médias gerais, desempenho por coletivo, alertas e evolução desde a Linha de Base</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/rede-cruzada-evidenciacao/02-habilidades.png" alt="Tela de Habilidades, com o detalhamento de todas as habilidades avaliadas por coletivo e disciplina" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Habilidades — o que compõe a média geral, habilidade a habilidade</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/rede-cruzada-evidenciacao/03-metodologia.png" alt="Página de Metodologia, documentação viva do processo avaliativo dentro do próprio sistema" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Metodologia — ciclos, estrutura da prova e critérios de classificação, documentados dentro do sistema</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/rede-cruzada-evidenciacao/04-corretor.png" alt="Fluxo de correção em 4 passos usado pelas corretoras em campo" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Registro de correções — fluxo em 4 passos, usado em campo pelas corretoras</p>
+</div>
+
+## Stack técnica
+
+- **React 19 + Vite + React Router**
+- **Tailwind CSS v4**, com variáveis CSS para dark mode nativo
+- **Supabase** (Postgres gerenciado + Auth + Row Level Security) — sem servidor Node próprio
+- **jsPDF**, geração de PDF direto no navegador
+- **Python + PyMuPDF**, para migração de dados: extração de cerca de 500 formulários de correção em PDF
+
+## Decisões técnicas
+
+- **Segurança por linha (RLS).** Cada perfil tem políticas de acesso a nível de linha no próprio Postgres — a proteção de dados não depende de checagens no frontend.
+- **Migração de ~500 PDFs de correção para dados estruturados.** Um bug inicial de extração lia só a primeira página de formulários com múltiplas páginas, perdendo as últimas questões; identificado, corrigido e todos os dados foram re-extraídos e revalidados.
+- **Deduplicação de cadastros via fuzzy matching.** Alunos apareciam com pequenas variações de nome entre diferentes provas e unidades; um pipeline de correspondência aproximada de nomes identifica e mescla duplicatas, pedindo confirmação humana nos casos ambíguos.
+- **Auditoria completa de corretude dos números.** Todos os cálculos agregados foram re-implementados de forma independente e comparados número a número contra o valor exibido na tela, confirmando 100% de aderência.
+
+## Números
+
+- 3 unidades físicas, 5 coletivos pedagógicos por unidade
+- ~215 estudantes reais cadastrados
+- 4 ciclos avaliativos por ano
+- Milhares de resultados de questão individuais já registrados e migrados de correções em PDF

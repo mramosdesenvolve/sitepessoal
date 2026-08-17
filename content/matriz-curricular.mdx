@@ -1,0 +1,59 @@
+Plataforma web para planejamento e gestão curricular, desenvolvida sob medida para a Rede Cruzada, organização social de educação, para o Projeto de Inclusão Produtiva — um programa formativo baseado em metodologias ativas, com projetos e "cases" conduzidos pelos próprios estudantes a partir de problemas reais do território.
+
+Antes do sistema, o planejamento vivia espalhado em documentos de texto soltos, sem um lugar único onde educadores de diferentes componentes curriculares pudessem ver o que os colegas estavam ensinando na mesma semana, consultar quais competências já haviam sido cobertas ou exportar o material para reuniões de coordenação. O desafio era construir isso rapidamente, com orçamento zero de infraestrutura, mantendo a lógica pedagógica real do projeto — fases formativas, competências, saberes curriculares e suas inter-relações — como estrutura de dados, não como texto solto.
+
+## Funcionalidades principais
+
+- Login por componente curricular, sem e-mail, com permissão de edição restrita ao próprio componente e um perfil de coordenação com acesso total
+- Mapa por Fases — quadro visual com os saberes de cada componente distribuídos nas quatro fases formativas do programa
+- Catálogo de saberes, com busca de relações de pré-requisito e integração entre saberes de componentes diferentes
+- Grade Semanal — visão semana a semana com todos os componentes lado a lado, onde cada educador registra os saberes trabalhados e a síntese metodológica da aula
+- Matriz de Integração — tabela cruzada de quantas conexões existem entre cada par de componentes, tornando visível a interdisciplinaridade do programa
+- Exportação em PDF em seis granularidades — por semana, fase, componente ou material completo
+- Controle de versões e histórico de auditoria dentro do próprio produto
+
+## Capturas de tela
+
+<div className="my-8">
+  <img src="/sistemas/matriz-curricular/01-mapa-fases.png" alt="Mapa por Fases, com os saberes de cada componente distribuídos nas quatro fases formativas" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Mapa por Fases — saberes posicionados nas 4 fases do programa, com competências e pré-requisitos</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/matriz-curricular/02-catalogo-saberes.png" alt="Catálogo central de saberes curriculares, mantido pela coordenação pedagógica" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Catálogo de saberes — cadastro central dos conteúdos, com relações entre componentes</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/matriz-curricular/03-grade-semanal.png" alt="Grade Semanal com todos os componentes curriculares lado a lado" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Grade Semanal — plano de aula por componente, semana a semana, ao longo do percurso</p>
+</div>
+
+<div className="my-8">
+  <img src="/sistemas/matriz-curricular/04-matriz-integracao.png" alt="Matriz de Integração em tabela cruzada entre componentes curriculares" className="w-full border border-term-line" loading="lazy" />
+  <p className="mt-2 text-xs text-term-muted font-term-mono">// Matriz de Integração — conexões entre cada par de componentes, tornando visível a interdisciplinaridade</p>
+</div>
+
+## Stack técnica
+
+- **Next.js 16** (App Router, Turbopack) + **React 19** + **TypeScript**
+- **Tailwind CSS v4**, com suporte a tema claro/escuro
+- **Prisma ORM** sobre **PostgreSQL** (Neon, plano gratuito)
+- **NextAuth** (Credentials provider, sessão JWT) para autenticação por componente
+- **Playwright** para geração de PDF a partir de HTML, com variante usando `@sparticuz/chromium` para rodar em produção na Vercel
+- Deploy 100% gratuito: GitHub → Vercel → Neon Postgres
+
+## Decisões técnicas
+
+- **PDF em ambiente serverless.** A geração de PDF funcionava em desenvolvimento local mas quebrava em produção, porque o Chromium usado pelo Playwright não é empacotado pela função serverless da Vercel. Resolvido detectando o ambiente e trocando, em produção, para `playwright-core` combinado com uma build de Chromium própria para esse cenário.
+- **Modelagem de permissões pela própria estrutura pedagógica.** Em vez de um sistema genérico de papéis, cada usuário carrega a lista de componentes que pode editar, e cada ação do servidor reverifica essa permissão — nunca confiando só na interface.
+- **Divisão de um componente em duas visões sem duplicar o modelo de dados.** Um dos componentes mistura duas disciplinas; em vez de modelar dois componentes separados no banco, a divisão foi implementada só na camada de apresentação da Grade Semanal.
+- **De documentos institucionais para dados estruturados.** Boa parte do conteúdo — competências, saberes, pré-requisitos, planejamento semana a semana — foi extraída de documentos pedagógicos já existentes da instituição, lidos e convertidos em dados relacionais com scripts de importação reaproveitáveis.
+
+## Números
+
+- 20 competências e 40 saberes curriculares, distribuídos em 4 componentes curriculares
+- 4 fases formativas, com um percurso de 18 semanas totalmente planejado
+- Mais de 100 relações de integração e pré-requisito mapeadas entre saberes de componentes diferentes
+- 5 perfis de acesso distintos
+- Exportação em PDF em 6 granularidades diferentes
