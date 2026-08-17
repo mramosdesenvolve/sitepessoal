@@ -5,7 +5,7 @@ import { getConcepts, getObjects } from "@/lib/data";
 import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/TermChrome";
 
 export const metadata: Metadata = {
-  title: "Sistemas — Marcos Ramos",
+  title: "Portfólio de Desenvolvimento — Marcos Ramos",
   description:
     "Plataformas e aplicações web desenvolvidas do zero, em produção real.",
 };
@@ -30,11 +30,14 @@ export default async function SistemasPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-term-bg text-term-ink font-term-mono text-sm">
-      <TermTitlebar path="sistemas.sys" />
+      <TermTitlebar path="portfolio.sys" />
       <TermTabs active="sistemas" />
 
       <div className="flex-1 bg-term-inset px-5 md:px-10 py-8 md:py-12">
         <div className="max-w-4xl mx-auto">
+          <h1 className="text-term-ink text-lg font-medium mb-2">
+            Portfólio de Desenvolvimento
+          </h1>
           <p className="text-term-muted text-xs mb-1">
             // {sistemas.length} sistemas em produção
           </p>
@@ -49,7 +52,6 @@ export default async function SistemasPage() {
               const objectConcepts = sistema.concepts
                 .map((cid) => conceptLabel.get(cid) ?? cid)
                 .slice(0, 3);
-              const liveLink = sistema.links?.[0];
               const thumbnail = THUMBNAILS[sistema.id];
 
               return (
@@ -96,23 +98,13 @@ export default async function SistemasPage() {
                       </p>
                     )}
 
-                    <div className="mt-4 pt-3 border-t border-dashed border-term-line flex items-center justify-between text-[12px]">
+                    <div className="mt-4 pt-3 border-t border-dashed border-term-line text-[12px]">
                       <Link
                         href={`/objeto/${sistema.id}`}
                         className="text-term-ink hover:text-term-accent2 no-underline border-b border-term-muted-2 hover:border-term-accent2 transition-colors"
                       >
                         ver detalhes →
                       </Link>
-                      {liveLink && (
-                        <a
-                          href={liveLink.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-term-accent2 hover:text-term-accent no-underline"
-                        >
-                          {liveLink.label}↗
-                        </a>
-                      )}
                     </div>
                   </div>
                 </div>

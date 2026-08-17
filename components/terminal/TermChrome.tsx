@@ -56,7 +56,7 @@ const TABS: {
 }[] = [
   { key: "sobre", label: "sobre", ext: ".md", href: "/sobre" },
   { key: "database", label: "database", ext: ".ts", href: "/database" },
-  { key: "sistemas", label: "sistemas", ext: ".sys", href: "/sistemas" },
+  { key: "sistemas", label: "portfólio", ext: ".sys", href: "/sistemas" },
   { key: "grafo", label: "grafo", ext: ".ts", href: "/grafo" },
   { key: "contato", label: "contato", ext: ".sh", href: "/contato" },
   {

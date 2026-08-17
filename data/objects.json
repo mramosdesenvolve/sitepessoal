@@ -1795,12 +1795,6 @@
       "matriz-curricular",
       "rede-cruzada-evidenciacao"
     ],
-    "links": [
-      {
-        "label": "ver sistema ao vivo",
-        "url": "https://pmo-rede-cruzada.vercel.app/dashboard"
-      }
-    ],
     "status": "publicado",
     "featured": true
   },
@@ -1818,12 +1812,6 @@
     "relatedObjectIds": [
       "painel-pmo",
       "rede-cruzada-evidenciacao"
-    ],
-    "links": [
-      {
-        "label": "ver sistema ao vivo",
-        "url": "https://matriz-curricular-rc-iota.vercel.app/matriz"
-      }
     ],
     "status": "publicado",
     "featured": true
@@ -1843,12 +1831,6 @@
       "painel-pmo",
       "matriz-curricular"
     ],
-    "links": [
-      {
-        "label": "ver sistema ao vivo",
-        "url": "https://rede-cruzada-evidenciacao.vercel.app/"
-      }
-    ],
     "status": "publicado",
     "featured": true
   },
@@ -1864,12 +1846,6 @@
       "infraestruturas-culturais"
     ],
     "relatedObjectIds": [],
-    "links": [
-      {
-        "label": "ver sistema ao vivo",
-        "url": "https://elo.vercel.app/"
-      }
-    ],
     "status": "publicado",
     "featured": true
   }
