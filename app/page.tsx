@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/TermChrome";
+import { AmbientGraph } from "@/components/AmbientGraph";
 import { getMostRecentObject } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -69,133 +70,106 @@ export default async function Home() {
               ))}
             </div>
 
-            <div className="flex-1 min-w-0 pt-[6vh] px-[5vw] pb-[6vh]">
-            <h1 className="text-[clamp(20px,2.6vw,32px)] font-bold leading-tight tracking-tight m-0 mb-1 text-balance">
-              <span className="text-term-accent2"># </span>Marcos Ramos
+            <div className="flex-1 min-w-0 lg:flex-[1.35] pt-[6vh] px-[5vw] pb-[6vh]">
+            <p className="flex items-center gap-2 text-[clamp(11px,1.2vw,12px)] text-term-muted mb-[3vh]">
+              <span className="w-4 h-px bg-term-accent2-dim shrink-0" aria-hidden="true" />
+              professor · pesquisador · desenvolvedor
+            </p>
+
+            <h1 className="font-term-serif italic font-normal text-[clamp(32px,5vw,58px)] leading-[1.05] tracking-[-0.01em] m-0 mb-[2.2vh] text-balance">
+              Marcos <span className="text-term-accent2">Ramos</span>
             </h1>
 
-            <p className="text-term-muted text-[clamp(13px,1.6vw,16px)] mt-0 mb-[3.4vh] max-w-[62ch]">
-              <span className="text-term-muted-2">&gt;</span> Investigo como
-              a educação e a tecnologia podem produzir{" "}
-              <b className="text-term-ink font-medium">
+            <p className="font-term-serif text-[clamp(15px,1.6vw,18px)] leading-[1.6] text-term-muted max-w-[46ch] mt-0 mb-[4.6vh]">
+              Investigo como a educação e a tecnologia podem produzir{" "}
+              <span className="text-term-ink italic font-normal">
                 novas formas de imaginar o mundo
-              </b>
+              </span>
               .
             </p>
 
-            <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 mb-[1.1vh] text-term-ink">
-              <span className="text-term-accent2-dim">formação</span>
-              <span className="text-term-muted-2">:</span>{" "}
-              <span className="text-term-accent">
-                &quot;Dr. em Letras (UFES)&quot;
-              </span>{" "}
-              <span className="text-term-muted-2">|</span>{" "}
-              <span className="text-term-accent">
-                &quot;Estudos Afro-Latino-Americanos (Harvard)&quot;
-              </span>
-            </p>
-            <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 mb-[1.1vh] text-term-ink">
-              <span className="text-term-accent2-dim">papel</span>
-              <span className="text-term-muted-2">:</span>{" "}
-              <span className="text-term-accent">
-                &quot;Professor, pesquisador&quot;
-              </span>{" "}
-              <span className="text-term-muted-2">|</span>{" "}
-              <span className="text-term-accent">
-                &quot;Consultor em Educação e Tecnologia&quot;
-              </span>{" "}
-              <span className="text-term-muted-2">|</span>{" "}
-              <span className="text-term-accent">&quot;Desenvolvedor&quot;</span>
-            </p>
-            <div className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 mb-[1.1vh] text-term-ink">
-              <span className="text-term-accent2-dim">projetos_atuais</span>
-              <span className="text-term-muted-2">:</span>
-              <ul className="mt-0.5 pl-4 space-y-0.5">
-                <li>
-                  <span className="text-term-muted-2">- </span>
-                  <span className="text-term-accent">
-                    &quot;Implementação do ETIM - Senac RJ&quot;
-                  </span>
-                </li>
-                <li>
-                  <span className="text-term-muted-2">- </span>
-                  <span className="text-term-accent">
-                    &quot;Consultoria e Desenvolvimento na Rede Cruzada&quot;
-                  </span>
-                </li>
-                <li>
-                  <span className="text-term-muted-2">- </span>
-                  <span className="text-term-accent">
-                    &quot;Pesquisa e orientação de projetos na UNAL (Bogotá)&quot;
-                  </span>
-                </li>
-                <li>
-                  <span className="text-term-muted-2">- </span>
-                  <span className="text-term-accent">
-                    &quot;Mixagem e masterização do álbum Agô&quot;
-                  </span>
-                </li>
-                <li>
-                  <span className="text-term-muted-2">- </span>
-                  <span className="text-term-accent">
-                    &quot;Revisão e finalização do livro El Brasil no existe -
-                    Clases en la Universidad Nacional de Colômbia
-                    (2022-2025)&quot;
-                  </span>
-                </li>
-              </ul>
+            <div className="flex flex-col gap-[13px] text-[clamp(12px,1.3vw,13px)]">
+              <div className="grid grid-cols-[86px_1fr] gap-[18px] items-baseline border-t border-term-line pt-[13px]">
+                <span className="text-term-accent2-dim tracking-wide lowercase">formação</span>
+                <span className="text-term-ink">
+                  Dr. em Letras <span className="text-term-muted-2">·</span> UFES{" "}
+                  <span className="text-term-muted-2">/</span> Estudos Afro-Latino-Americanos{" "}
+                  <span className="text-term-muted-2">·</span> Harvard
+                </span>
+              </div>
+
+              <div className="grid grid-cols-[86px_1fr] gap-[18px] items-baseline border-t border-term-line pt-[13px]">
+                <span className="text-term-accent2-dim tracking-wide lowercase">projetos</span>
+                <ul className="flex flex-col gap-[6px] list-none m-0 p-0">
+                  <li className="text-term-accent text-[12.5px]">
+                    <span className="text-term-muted-2 mr-2">—</span>Implementação do ETIM · Senac RJ
+                  </li>
+                  <li className="text-term-accent text-[12.5px]">
+                    <span className="text-term-muted-2 mr-2">—</span>Consultoria e Desenvolvimento · Rede Cruzada
+                  </li>
+                  <li className="text-term-accent text-[12.5px]">
+                    <span className="text-term-muted-2 mr-2">—</span>Pesquisa e orientação · UNAL, Bogotá
+                  </li>
+                  <li className="text-term-accent text-[12.5px]">
+                    <span className="text-term-muted-2 mr-2">—</span>Mixagem e masterização do álbum Agô
+                  </li>
+                  <li className="text-term-accent text-[12.5px]">
+                    <span className="text-term-muted-2 mr-2">—</span>Revisão do livro El Brasil no existe (Universidad Nacional de Colombia, 2022–2025)
+                  </li>
+                </ul>
+              </div>
+
+              {recent && (
+                <div className="grid grid-cols-[86px_1fr] gap-[18px] items-start border-t border-term-line pt-[13px]">
+                  <span className="text-term-accent2-dim tracking-wide lowercase pt-[2px]">última_pub.</span>
+                  <div className="border border-term-line bg-gradient-to-b from-term-accent2/5 to-transparent px-4 py-3.5">
+                    <div className="text-[10px] uppercase tracking-[0.08em] text-term-muted mb-1.5">
+                      {recent.type} · {recent.year}
+                    </div>
+                    <a
+                      href={`/objeto/${recent.id}`}
+                      className="text-term-ink no-underline border-b border-term-accent-dim hover:text-term-accent2 hover:border-term-accent2 transition-colors"
+                    >
+                      &quot;{recent.title}&quot;
+                    </a>
+                    <p className="text-term-muted text-[11.5px] leading-relaxed mt-1 mb-0">
+                      {recent.shortDescription}
+                      {recent.sourceUrl && recent.sourceName && (
+                        <>
+                          {" — publicado no "}
+                          <a
+                            href={recent.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-term-muted hover:text-term-accent2 underline decoration-term-line"
+                          >
+                            {recent.sourceName}↗
+                          </a>
+                        </>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
-            {recent && (
-              <div className="mt-[2.4vh] mb-[1.1vh]">
-                <p className="text-[clamp(12.5px,1.4vw,14.5px)] m-0 text-term-ink">
-                  <span className="text-term-accent2-dim">
-                    última_publicação
-                  </span>
-                  <span className="text-term-muted-2">:</span>{" "}
-                  <a
-                    href={`/objeto/${recent.id}`}
-                    className="text-term-accent hover:text-term-accent2 no-underline border-b border-term-accent-dim hover:border-term-accent2 transition-colors"
-                  >
-                    &quot;{recent.title}&quot;
-                  </a>{" "}
-                  <span className="text-term-muted">
-                    // {recent.type} · {recent.year}
-                  </span>
-                </p>
-                <p className="text-[clamp(11.5px,1.3vw,13px)] m-0 mt-0.5 text-term-muted max-w-[58ch]">
-                  {recent.shortDescription}
-                  {recent.sourceUrl && recent.sourceName && (
-                    <>
-                      {" — publicado no "}
-                      <a
-                        href={recent.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-term-muted hover:text-term-accent2 underline decoration-term-line"
-                      >
-                        {recent.sourceName}↗
-                      </a>
-                    </>
-                  )}
-                </p>
-              </div>
-            )}
-
-            <p className="hidden md:block text-[clamp(12px,1.3vw,13.5px)] text-term-muted mt-[3vh]">
+            <p className="hidden md:block text-[clamp(12px,1.3vw,13.5px)] text-term-muted mt-[3.6vh]">
               // clique numa aba acima, ou use o terminal abaixo ↓
             </p>
           </div>
 
-          <div className="hidden lg:block shrink-0 w-14 border-l border-term-line pt-[6vh] px-[10px] opacity-45">
-            {Array.from({ length: 10 }, (_, i) => (
-              <div
-                key={i}
-                className={`h-[3px] mb-2 rounded-sm bg-term-muted-2 ${
-                  i % 4 === 3 ? "w-4/5 bg-term-accent-dim opacity-70" : i % 3 === 2 ? "w-3/5" : "w-full"
-                }`}
-              />
-            ))}
+          <div className="hidden lg:block lg:flex-1 relative border-l border-term-line overflow-hidden">
+            <AmbientGraph />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background:
+                  "radial-gradient(ellipse at 50% 40%, transparent 0%, rgb(var(--term-inset)) 92%)",
+              }}
+            />
+            <p className="absolute left-6 bottom-6 text-[10.5px] tracking-wide text-term-muted-2">
+              // 22 conceitos · rede em repouso
+            </p>
           </div>
         </div>
         </div>

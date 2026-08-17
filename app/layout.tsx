@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono, Lora } from "next/font/google";
 import "./globals.css";
 
 // "Neue Augenblick" é uma fonte paga/licenciada, sem alternativa gratuita
@@ -19,6 +19,24 @@ const body = Space_Grotesk({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-body",
+});
+
+// Identidade "terminal": fontes reais em vez de depender só da pilha de
+// fontes do sistema (que varia entre SO/navegador) — self-hosted pelo
+// próprio next/font, sem custo de CDN externo nem flash de fonte errada.
+const termMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-term-mono",
+  display: "swap",
+});
+
+const termSerif = Lora({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-term-serif",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${display.variable} ${body.variable}`}
+      className={`${display.variable} ${body.variable} ${termMono.variable} ${termSerif.variable}`}
       suppressHydrationWarning
     >
       <head>

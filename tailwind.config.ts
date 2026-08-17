@@ -43,12 +43,14 @@ const config: Config = {
         // app/layout.tsx), variando só o peso: serif = 700, sans = 400.
         serif: ["var(--font-display)", "system-ui", "sans-serif"],
         sans: ["var(--font-body)", "system-ui", "sans-serif"],
-        // pilhas de fontes do sistema — sem next/font, igual ao mockup
+        // JetBrains Mono / Lora carregadas de verdade via next/font (ver
+        // app/layout.tsx) — a pilha de fontes do sistema continua depois,
+        // como fallback caso a variável CSS não esteja disponível.
         "term-mono": [
+          "var(--font-term-mono)",
           "ui-monospace",
           "SF Mono",
           "Cascadia Code",
-          "JetBrains Mono",
           "Fira Code",
           "Menlo",
           "Consolas",
@@ -56,6 +58,7 @@ const config: Config = {
           "monospace",
         ],
         "term-serif": [
+          "var(--font-term-serif)",
           "Charter",
           "Iowan Old Style",
           "Palatino Linotype",
