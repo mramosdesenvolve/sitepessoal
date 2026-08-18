@@ -9,7 +9,7 @@ import { useAppStore } from "@/store/useAppStore";
 import {
   drawConceptNode,
   nodeChipSize,
-  GRAPH_PALETTES,
+  GRAPH_PALETTE,
   type GraphNodeDatum,
   type GraphPalette,
 } from "./ConceptNode";
@@ -41,8 +41,8 @@ interface RhizomeGraphProps {
   links: ConceptLink[];
   /** null = sem busca ativa; Set = ids de objetos que casam com a busca */
   matchedObjectIds: Set<string> | null;
-  /** sobrepõe a paleta claro/escuro do tema do site — usada na home nova,
-   * que tem identidade visual própria e não segue o ThemeToggle */
+  /** sobrepõe a paleta padrão do grafo (GRAPH_PALETTE), se algum
+   * contexto precisar de cores diferentes das do site */
   palette?: GraphPalette;
   /** padding (px) do zoomToFit — quanto maior, mais "aberto"/afastado o
    * grafo aparece. Default 96 (valor histórico da home antiga). */
@@ -64,7 +64,7 @@ interface RhizomeGraphProps {
  * Grafo de força dos conceitos (modo Explorar).
  * — tamanho do nó ∝ nº de objetos conectados
  * — hover destaca a vizinhança imediata
- * — clique seleciona o conceito e abre o ObjectPreviewPanel
+ * — clique seleciona o conceito e abre o painel lateral (ConceptPanel)
  * — busca ativa reduz a opacidade dos nós não relacionados aos resultados
  *
  * Caso o layout de força padrão fique genérico, é aqui que entraria um
@@ -117,11 +117,10 @@ export function RhizomeGraph({
     // sem contar a largura do rótulo de texto ao lado — com pouco padding,
     // rótulos de nós na borda (ex. "tecnologia e imaginação") cortam.
     fgRef.current.zoomToFit(500, zoomPadding);
-    // zoomToFit centraliza o conjunto de nós no contêiner inteiro — na home
-    // antiga, o retrato (PortraitPhoto) ficava atrás, ancorado à esquerda,
-    // e o grafo precisava se afastar dele (centerOffsetX). Se
-    // centerOffsetX for 0 (layout novo, sem retrato por baixo), este passo
-    // é essencialmente um no-op.
+    // zoomToFit centraliza o conjunto de nós no contêiner inteiro; um
+    // centerOffsetX diferente de 0 desloca esse centro (histórico de um
+    // layout antigo com conteúdo sobreposto) — no layout atual é 0, então
+    // este passo é essencialmente um no-op.
     if (centerOffsetX === 0) return;
     window.setTimeout(() => {
       if (userInteractedRef.current || !fgRef.current) return;
@@ -133,8 +132,7 @@ export function RhizomeGraph({
 
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
   const setSelectedConceptId = useAppStore((s) => s.setSelectedConceptId);
-  const theme = useAppStore((s) => s.theme);
-  const palette = paletteOverride ?? GRAPH_PALETTES[theme];
+  const palette = paletteOverride ?? GRAPH_PALETTE;
 
   // o canvas precisa de dimensões explícitas — medimos o contêiner
   useEffect(() => {
@@ -243,8 +241,7 @@ export function RhizomeGraph({
         className="absolute inset-0 transition-opacity duration-500 ease-out"
         style={{
           opacity: settled ? 1 : 0,
-          // grade pontilhada, tipo minimapa de editor — reforça a
-          // identidade "terminal" atrás do grafo em vez de vazio liso
+          // grade pontilhada sutil atrás do grafo em vez de vazio liso
           backgroundImage: `radial-gradient(${palette.lineDim} 1px, transparent 1px)`,
           backgroundSize: "20px 20px",
         }}
@@ -255,9 +252,8 @@ export function RhizomeGraph({
           width={size.width}
           height={size.height}
           graphData={graphData}
-          // transparente: o retrato (PortraitPhoto) fica atrás, no mesmo
-          // contêiner — se o canvas pintasse um fundo sólido aqui, cobriria
-          // a foto inteira em vez de deixá-la aparecer por trás do grafo.
+          // transparente: a grade pontilhada de fundo (ver acima) precisa
+          // aparecer por trás do canvas
           backgroundColor="rgba(0,0,0,0)"
           nodeCanvasObject={paintNode}
           nodePointerAreaPaint={(

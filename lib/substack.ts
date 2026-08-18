@@ -101,7 +101,7 @@ function toSyncedObject(item: SubstackArchiveItem): SyncedObjectInput {
 
 /** Busca a seção "Artigos" do Substack e devolve os objetos prontos pra
  * upsert — quem chama decide o que fazer (ver syncSubstackArtigos em
- * app/(terminal)/admin/actions.ts). */
+ * app/(site)/admin/actions.ts). */
 export async function fetchSubstackArtigos(): Promise<SyncedObjectInput[]> {
   const items = await fetchSubstackArchive();
   return items.map(toSyncedObject);

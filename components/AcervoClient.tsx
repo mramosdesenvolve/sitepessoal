@@ -10,10 +10,10 @@ interface AcervoClientProps {
 }
 
 /**
- * Índice/lista de todo o acervo, com filtro por tipo — fallback de
- * `/acervo` para telas pequenas, onde o grafo de força não funciona bem
- * ao toque (ver page.tsx). Estilizado como uma listagem de diretório
- * (`ls -la`). Ordenado por ano, igual à ordem de getObjects().
+ * Índice/lista de todo o acervo, com busca e filtro por tipo — fallback
+ * de `/database` para telas pequenas, onde o grafo de força não funciona
+ * bem ao toque (ver page.tsx). Ordenado por ano, igual à ordem de
+ * getObjects().
  */
 export function AcervoClient({ objects, concepts }: AcervoClientProps) {
   const [activeType, setActiveType] = useState<ObjectType | "todos">("todos");
@@ -53,81 +53,68 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
         });
 
   return (
-    <div className="font-term-mono">
-      <label className="relative block mb-5">
-        <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-term-muted-2 text-xs">
-          $
-        </span>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="grep -i 'termo, autor, conceito...'"
-          aria-label="Buscar no database"
-          className="w-full border border-term-line bg-term-bg pl-7 pr-3 py-2 text-sm text-term-ink placeholder:text-term-muted focus:border-term-accent2 focus:outline-none"
-        />
-      </label>
+    <div>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Buscar por termo, autor, conceito..."
+        aria-label="Buscar no database"
+        className="w-full border-b border-line bg-transparent py-2.5 text-[15px] text-ink placeholder:text-muted-2 focus:outline-none focus:border-ink mb-5"
+      />
 
       <div
-        className="flex flex-wrap gap-2"
+        className="flex flex-wrap gap-x-5 gap-y-2 pb-6 mb-2 border-b border-line"
         role="group"
         aria-label="Filtrar por tipo de objeto"
       >
         <button
           type="button"
           onClick={() => setActiveType("todos")}
-          className={`px-3 py-1 text-xs uppercase tracking-wide border transition-colors ${
-            activeType === "todos"
-              ? "border-term-accent bg-term-accent/10 text-term-accent"
-              : "border-term-line text-term-muted hover:text-term-ink"
+          className={`text-[13px] transition-colors ${
+            activeType === "todos" ? "text-ink font-medium" : "text-muted hover:text-ink"
           }`}
         >
-          todos <span className="opacity-60">({objects.length})</span>
+          Todos <span className="text-muted-2">({objects.length})</span>
         </button>
         {typesPresent.map((type) => (
           <button
             key={type}
             type="button"
             onClick={() => setActiveType(type)}
-            className={`px-3 py-1 text-xs uppercase tracking-wide border transition-colors ${
-              activeType === type
-                ? "border-term-accent bg-term-accent/10 text-term-accent"
-                : "border-term-line text-term-muted hover:text-term-ink"
+            className={`text-[13px] transition-colors ${
+              activeType === type ? "text-ink font-medium" : "text-muted hover:text-ink"
             }`}
           >
-            {type} <span className="opacity-60">({countByType.get(type)})</span>
+            {type} <span className="text-muted-2">({countByType.get(type)})</span>
           </button>
         ))}
       </div>
 
-      <p className="mt-4 text-xs text-term-muted">
+      <p className="text-[12.5px] text-muted-2 mb-2">
         {filtered.length} item{filtered.length === 1 ? "" : "s"}
       </p>
 
-      <ul className="mt-4 divide-y divide-term-line border-t border-term-line">
+      <ul className="divide-y divide-line">
         {filtered.map((o) => (
-          <li key={o.id} className="py-5">
+          <li key={o.id} className="py-6">
             <Link href={`/objeto/${o.id}`} className="group block">
-              <div className="flex flex-wrap items-center gap-2 mb-1.5 text-[11px] uppercase tracking-wide text-term-muted">
-                <span className="border border-term-line px-2 py-0.5">
-                  {o.type}
-                </span>
+              <div className="flex flex-wrap items-center gap-3 mb-2 text-[12px] text-muted">
+                <span>{o.type}</span>
+                <span className="text-muted-2">·</span>
                 <span>{o.year}</span>
               </div>
-              <h2 className="text-base leading-snug text-term-ink group-hover:text-term-accent2 transition-colors">
+              <h2 className="text-[19px] font-semibold leading-snug text-ink group-hover:text-accent transition-colors mb-1.5">
                 {o.title}
               </h2>
-              <p className="mt-1 text-sm text-term-muted leading-relaxed max-w-prose">
+              <p className="text-[14px] text-muted leading-relaxed max-w-[640px]">
                 {o.shortDescription}
                 {o.sourceName && (
-                  <span className="text-term-muted-2">
-                    {" "}
-                    — publicado no {o.sourceName}↗
-                  </span>
+                  <span className="text-muted-2"> — publicado no {o.sourceName}</span>
                 )}
               </p>
               {o.concepts.length > 0 && (
-                <p className="mt-1.5 text-[11px] text-term-accent/80">
+                <p className="mt-2 text-[12px] text-accent">
                   {o.concepts.map((cid) => conceptLabel.get(cid) ?? cid).join(" · ")}
                 </p>
               )}
@@ -135,7 +122,7 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
           </li>
         ))}
         {filtered.length === 0 && (
-          <li className="py-5 text-sm text-term-muted">
+          <li className="py-6 text-sm text-muted">
             Nenhum objeto encontrado para este filtro.
           </li>
         )}

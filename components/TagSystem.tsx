@@ -13,13 +13,12 @@ export function MetaChip({ children }: { children: React.ReactNode }) {
 interface TagSystemProps {
   object: ContentObject;
   concepts: ConceptNode[];
-  /** quando true, tags de conceito viram links para a home filtrada */
+  /** quando true, tags de conceito viram links para o grafo */
   linkConcepts?: boolean;
 }
 
 /**
  * Sistema de tags de um objeto: tipo, ano, status e conceitos relacionados.
- * As tags de conceito levam de volta ao grafo com o conceito pré-selecionado.
  */
 export function TagSystem({ object, concepts, linkConcepts = true }: TagSystemProps) {
   const objectConcepts = concepts.filter((c) => object.concepts.includes(c.id));
@@ -33,7 +32,7 @@ export function TagSystem({ object, concepts, linkConcepts = true }: TagSystemPr
         linkConcepts ? (
           <Link
             key={c.id}
-            href={`/?conceito=${c.id}`}
+            href="/grafo"
             title={c.description}
             className="inline-block rounded-full px-2.5 py-0.5 text-[11px] tracking-wide border border-accent/40 text-accent hover:bg-accent-soft transition-colors"
           >

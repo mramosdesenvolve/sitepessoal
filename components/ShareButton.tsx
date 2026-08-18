@@ -43,7 +43,7 @@ export function ShareButton({ title, summary, author = "Marcos Ramos" }: ShareBu
     <button
       type="button"
       onClick={handleShare}
-      className="group inline-flex items-center gap-1.5 border border-term-line px-3 py-1.5 text-[11.5px] text-term-muted hover:border-term-accent2 hover:text-term-accent2 transition-colors"
+      className="group inline-flex items-center gap-1.5 border border-line px-3 py-1.5 text-[11.5px] text-muted hover:border-accent hover:text-accent transition-colors"
     >
       <svg
         width="12"

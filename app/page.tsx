@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { TermTitlebar, TermTabs, TermStatusbar } from "@/components/terminal/TermChrome";
-import { AmbientGraph } from "@/components/AmbientGraph";
-import { getMostRecentObject } from "@/lib/data";
+import Link from "next/link";
+import { SiteNav } from "@/components/site/SiteNav";
+import { SiteFooter } from "@/components/site/SiteFooter";
+import { LiveClock } from "@/components/site/LiveClock";
+import { getMostRecentObject, getObjects, getConcepts } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Marcos Ramos",
@@ -9,229 +11,145 @@ export const metadata: Metadata = {
     "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
 };
 
-// última_publicação puxa do banco — pode mudar a qualquer momento via /admin
+// última_publicação e as contagens vêm do banco — mudam a qualquer
+// momento via /admin
 export const dynamic = "force-dynamic";
 
-const BOOT_LINES = [
-  "$ ssh marcos.dev",
-  "Connecting to marcos.dev... ok",
-  "Authenticating session... ok",
-  "Mounting /database /sobre /contato... ok",
-  "Loading database... ok",
-  "Welcome back.",
-];
+interface LogItemProps {
+  href: string;
+  title: string;
+  description: React.ReactNode;
+  tag: string;
+  detail: string;
+}
 
-/**
- * Home — identidade "terminal" (editor de código): sequência de boot em
- * CSS puro (sem JS, respeita prefers-reduced-motion via globals.css) que
- * assenta na tela final, um editor de código de tela cheia com a bio como
- * "arquivo" sobre.md. Sem header/footer do site — só a moldura terminal.
- */
+function LogItem({ href, title, description, tag, detail }: LogItemProps) {
+  return (
+    <div className="py-[6vh] border-t border-line last:border-b">
+      <Link href={href} className="inline-block text-[clamp(26px,3.4vw,40px)] font-semibold tracking-[-0.015em] text-ink no-underline hover:text-accent transition-colors mb-[18px]">
+        {title}
+      </Link>
+      <p className="text-[14.5px] leading-[1.7] text-muted max-w-[640px] mb-[22px]">
+        {description}
+      </p>
+      <div className="flex items-center gap-4 text-[12.5px]">
+        <span className="px-[11px] py-[5px] border border-line rounded-full text-ink font-medium">
+          {tag}
+        </span>
+        <span className="text-muted">{detail}</span>
+        <span className="ml-auto text-muted-2">→</span>
+      </div>
+    </div>
+  );
+}
+
 export default async function Home() {
-  const recent = await getMostRecentObject();
+  const [recent, objects, concepts] = await Promise.all([
+    getMostRecentObject(),
+    getObjects(),
+    getConcepts(),
+  ]);
+
+  const sistemas = objects.filter((o) => o.type === "sistema");
+  const artigos = objects.filter((o) => o.type === "artigo");
+  const palestras = objects.filter((o) => o.type === "palestra");
 
   return (
-    <div className="relative h-screen flex flex-col bg-term-bg text-term-ink font-term-mono text-sm">
-      <div
-        className="term-boot-hide absolute inset-0 z-50 bg-term-bg px-[8vw] py-[10vh] text-[13px] text-term-muted"
-        aria-hidden="true"
-      >
-        {BOOT_LINES.map((line, i) => (
-          <div
-            key={i}
-            className="term-boot-line whitespace-pre"
-            style={{ animationDelay: `${0.05 + i * 0.15}s` }}
+    <div className="min-h-screen flex flex-col">
+      <SiteNav active={null} />
+
+      <div className="flex-1">
+        <div className="max-w-[1180px] mx-auto px-[6vw] pt-[9vh] pb-[4vh]">
+          <p className="text-[clamp(24px,2.7vw,31px)] font-semibold leading-[1.32] tracking-[-0.012em] max-w-[560px] mb-5">
+            Sou Marcos Ramos, professor, pesquisador e desenvolvedor.
+            Investigo como a educação e a tecnologia podem produzir{" "}
+            <span className="text-accent">
+              novas formas de imaginar o mundo
+            </span>
+            .
+          </p>
+
+          <LiveClock />
+
+          <Link
+            href="/sobre"
+            className="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted hover:text-ink no-underline pb-3.5 border-b border-line w-full max-w-[490px] mb-4 transition-colors"
           >
-            {line.endsWith("ok") ? (
-              <>
-                {line.slice(0, -2)}
-                <span className="text-term-accent2">ok</span>
-              </>
-            ) : (
-              line
-            )}
+            Ler biografia completa
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
+
+          <div className="flex flex-wrap justify-between gap-x-8 gap-y-2 text-[13px] text-muted py-4 border-b border-line mb-[8vh]">
+            <span>
+              <b className="text-ink font-semibold">Formação:</b> Dr. em Letras (UFES) · Estudos Afro-Latino-Americanos (Harvard)
+            </span>
+            <span>
+              <b className="text-ink font-semibold">Papel:</b> também Consultor em Educação e Tecnologia
+            </span>
           </div>
-        ))}
-      </div>
 
-      <div className="term-fade-in h-full flex flex-col">
-        <TermTitlebar path="sobre.md" />
-        <TermTabs active="sobre" />
+          <LogItem
+            href="/database"
+            title="Database"
+            description="Artigos, papers, ensaios, palestras, podcasts e livros sobre literatura, cultura afro-brasileira, educação e tecnologia — publicados ao longo de mais de uma década, agora reunidos num só lugar."
+            tag={`${objects.length} objetos`}
+            detail={`${artigos.length} artigos · ${palestras.length} palestras · ${concepts.length} conceitos`}
+          />
 
-        {/* única região com scroll — mesmo padrão de /sobre, /grafo etc.:
-            cabeçalho/abas/status bar ficam fixos, só o conteúdo rola */}
-        <div className="flex-1 overflow-y-auto bg-term-inset">
-          <div className="flex min-h-full">
-            <div className="hidden md:block shrink-0 pt-[6vh] pl-[22px] pr-[14px] text-right text-[12.5px] text-term-muted-2 border-r border-term-line select-none">
-              {Array.from({ length: 8 }, (_, i) => (
-                <div key={i} className="h-[3.4vh] min-h-[24px]">
-                  {i + 1}
-                </div>
-              ))}
-            </div>
+          <LogItem
+            href="/sistemas"
+            title="Portfólio de Desenvolvimento"
+            description="Plataformas web que desenvolvi do zero — arquitetura, banco de dados, deploy e operação contínua — para organizações educacionais reais. Não são protótipos: estão em uso diário."
+            tag={`${sistemas.length} sistemas`}
+            detail="em produção real"
+          />
 
-            <div className="flex-1 min-w-0 lg:flex-[1.35] pt-[6vh] px-[5vw] pb-[6vh]">
-            <p className="flex items-center gap-2 text-[clamp(11px,1.2vw,12px)] text-term-muted mb-[3vh]">
-              <span className="w-4 h-px bg-term-accent2-dim shrink-0" aria-hidden="true" />
-              professor · pesquisador · desenvolvedor
+          <LogItem
+            href="/grafo"
+            title="Grafo de Conceitos"
+            description="Os conceitos centrais da pesquisa, e como cada objeto do database se conecta a eles — uma forma de navegar pelas ideias em vez de por datas."
+            tag={`${concepts.length} conceitos`}
+            detail="rede em repouso"
+          />
+
+          <div className="py-[6vh] border-t border-line">
+            <h2 className="text-[clamp(26px,3.4vw,40px)] font-semibold tracking-[-0.015em] text-ink mb-[18px]">
+              Projetos atuais
+            </h2>
+            <p className="text-[14.5px] leading-[1.7] text-muted max-w-[640px] mb-[22px]">
+              Implementação do ETIM (Senac RJ) · Consultoria e desenvolvimento na Rede Cruzada · Pesquisa e orientação na UNAL, Bogotá · Mixagem e masterização do álbum Agô · Revisão do livro <i>El Brasil no existe</i>.
             </p>
-
-            <h1 className="font-term-serif italic font-normal text-[clamp(32px,5vw,58px)] leading-[1.05] tracking-[-0.01em] m-0 mb-[2.2vh] text-balance">
-              Marcos <span className="text-term-accent2">Ramos</span>
-            </h1>
-
-            <p className="font-term-serif text-[clamp(15px,1.6vw,18px)] leading-[1.6] text-term-muted max-w-[46ch] mt-0 mb-[4.6vh]">
-              Investigo como a educação e a tecnologia podem produzir{" "}
-              <span className="text-term-ink italic font-normal">
-                novas formas de imaginar o mundo
+            <div className="flex items-center gap-4 text-[12.5px]">
+              <span className="px-[11px] py-[5px] border border-line rounded-full text-ink font-medium">
+                5 frentes
               </span>
-              .
-            </p>
-
-            <div className="flex flex-col gap-[13px] text-[clamp(12px,1.3vw,13px)]">
-              <div className="grid grid-cols-[86px_1fr] gap-[18px] items-baseline border-t border-term-line pt-[13px]">
-                <span className="text-term-accent2-dim tracking-wide lowercase">formação</span>
-                <span className="text-term-ink">
-                  Dr. em Letras <span className="text-term-muted-2">·</span> UFES{" "}
-                  <span className="text-term-muted-2">/</span> Estudos Afro-Latino-Americanos{" "}
-                  <span className="text-term-muted-2">·</span> Harvard
-                </span>
-              </div>
-
-              <div className="grid grid-cols-[86px_1fr] gap-[18px] items-baseline border-t border-term-line pt-[13px]">
-                <span className="text-term-accent2-dim tracking-wide lowercase">projetos</span>
-                <ul className="flex flex-col gap-[6px] list-none m-0 p-0">
-                  <li className="text-term-accent text-[12.5px]">
-                    <span className="text-term-muted-2 mr-2">—</span>Implementação do ETIM · Senac RJ
-                  </li>
-                  <li className="text-term-accent text-[12.5px]">
-                    <span className="text-term-muted-2 mr-2">—</span>Consultoria e Desenvolvimento · Rede Cruzada
-                  </li>
-                  <li className="text-term-accent text-[12.5px]">
-                    <span className="text-term-muted-2 mr-2">—</span>Pesquisa e orientação · UNAL, Bogotá
-                  </li>
-                  <li className="text-term-accent text-[12.5px]">
-                    <span className="text-term-muted-2 mr-2">—</span>Mixagem e masterização do álbum Agô
-                  </li>
-                  <li className="text-term-accent text-[12.5px]">
-                    <span className="text-term-muted-2 mr-2">—</span>Revisão do livro El Brasil no existe (Universidad Nacional de Colombia, 2022–2025)
-                  </li>
-                </ul>
-              </div>
-
-              {recent && (
-                <div className="grid grid-cols-[86px_1fr] gap-[18px] items-start border-t border-term-line pt-[13px]">
-                  <span className="text-term-accent2-dim tracking-wide lowercase pt-[2px]">última_pub.</span>
-                  <div className="border border-term-line bg-gradient-to-b from-term-accent2/5 to-transparent px-4 py-3.5">
-                    <div className="text-[10px] uppercase tracking-[0.08em] text-term-muted mb-1.5">
-                      {recent.type} · {recent.year}
-                    </div>
-                    <a
-                      href={`/objeto/${recent.id}`}
-                      className="text-term-ink no-underline border-b border-term-accent-dim hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-                    >
-                      &quot;{recent.title}&quot;
-                    </a>
-                    <p className="text-term-muted text-[11.5px] leading-relaxed mt-1 mb-0">
-                      {recent.shortDescription}
-                      {recent.sourceUrl && recent.sourceName && (
-                        <>
-                          {" — publicado no "}
-                          <a
-                            href={recent.sourceUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-term-muted hover:text-term-accent2 underline decoration-term-line"
-                          >
-                            {recent.sourceName}↗
-                          </a>
-                        </>
-                      )}
-                    </p>
-                  </div>
-                </div>
-              )}
+              <span className="text-muted">em andamento</span>
             </div>
-
-            <p className="hidden md:block text-[clamp(12px,1.3vw,13.5px)] text-term-muted mt-[3.6vh]">
-              // clique numa aba acima, ou use o terminal abaixo ↓
-            </p>
           </div>
 
-          <div className="hidden lg:block lg:flex-1 relative border-l border-term-line overflow-hidden">
-            <AmbientGraph />
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background:
-                  "radial-gradient(ellipse at 50% 40%, transparent 0%, rgb(var(--term-inset)) 92%)",
-              }}
+          {recent && (
+            <LogItem
+              href={`/objeto/${recent.id}`}
+              title="Última publicação"
+              description={
+                <>
+                  &quot;{recent.title}&quot; — {recent.shortDescription}
+                </>
+              }
+              tag={`${recent.type} · ${recent.year}`}
+              detail={
+                recent.sourceName
+                  ? `publicado no ${recent.sourceName}`
+                  : "publicado"
+              }
             />
-            <p className="absolute left-6 bottom-6 text-[10.5px] tracking-wide text-term-muted-2">
-              // 22 conceitos · rede em repouso
-            </p>
-          </div>
+          )}
         </div>
-        </div>
-
-        <div className="hidden md:block border-t border-term-line bg-term-elevated px-[18px] py-3 shrink-0">
-          <p className="text-[13px] m-0">
-            <span className="text-term-accent2">marcos@ramos</span>
-            <span className="text-term-muted">:</span>
-            <span className="text-term-accent">~</span>
-            <span className="text-term-muted">$</span> open
-            <span className="term-cursor inline-block w-[7px] h-[15px] bg-term-accent2 align-[-3px] ml-1" />
-          </p>
-          <p className="text-[13px] m-0 mt-2 flex flex-wrap gap-x-[22px] gap-y-1">
-            <a
-              href="/database"
-              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-            >
-              <span className="text-term-muted-2">#</span>database
-            </a>
-            <a
-              href="/sistemas"
-              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-            >
-              <span className="text-term-muted-2">#</span>portfólio
-            </a>
-            <a
-              href="/grafo"
-              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-            >
-              <span className="text-term-muted-2">#</span>grafo
-            </a>
-            <a
-              href="/sobre"
-              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-            >
-              <span className="text-term-muted-2">#</span>sobre
-            </a>
-            <a
-              href="/contato"
-              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-            >
-              <span className="text-term-muted-2">#</span>contato
-            </a>
-            <a
-              href="https://marcosramos.substack.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-            >
-              <span className="text-term-muted-2">#</span>substack↗
-            </a>
-            <a
-              href="/api/curriculo"
-              className="text-term-ink no-underline border-b border-term-muted-2 hover:text-term-accent2 hover:border-term-accent2 transition-colors"
-            >
-              <span className="text-term-muted-2">#</span>curriculo
-            </a>
-          </p>
-        </div>
-
-        <TermStatusbar left="⎇ main" right="UTF-8 · LF · Markdown" />
       </div>
+
+      <SiteFooter />
     </div>
   );
 }
