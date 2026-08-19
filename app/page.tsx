@@ -60,7 +60,7 @@ export default async function Home() {
 
       <div className="flex-1">
         <div className="max-w-[1180px] mx-auto px-[6vw] pt-[9vh] pb-[4vh]">
-          <p className="text-[clamp(34px,5.4vw,86px)] font-semibold leading-[1.12] tracking-[-0.02em] max-w-[1000px] mb-8 text-balance">
+          <p className="text-[clamp(28px,4vw,60px)] font-semibold leading-[1.18] tracking-[-0.018em] max-w-[820px] mb-8 text-balance">
             Sou Marcos Ramos, professor, pesquisador e desenvolvedor.
             Investigo como a educação e a tecnologia podem produzir{" "}
             <span className="text-accent">

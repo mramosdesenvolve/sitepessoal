@@ -19,7 +19,7 @@ export function LiveClock() {
     <p className="flex items-center gap-2 text-[13px] text-muted mb-[34px]">
       <span className="w-1.5 h-1.5 rounded-full bg-[#2e9e5b] shrink-0" aria-hidden="true" />
       <span>{time ?? "—:—"}</span>
-      <span>· São Paulo, Brasil</span>
+      <span>· Rio de Janeiro, Brasil</span>
     </p>
   );
 }
