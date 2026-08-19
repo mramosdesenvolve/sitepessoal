@@ -35,3 +35,4 @@ next-env.d.ts
 /marcos-foto-bio.png
 /marcos-foto-bio-night.png
 /marcos-foto-bio-trans.png
+.env*
