@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
-import { forceCollide } from "d3-force";
+import { forceCollide, forceX, forceY } from "d3-force";
 import type { ConceptNode as ConceptNodeType } from "@/types";
 import type { ConceptLink } from "@/lib/data";
 import { useAppStore } from "@/store/useAppStore";
@@ -168,11 +168,25 @@ export function RhizomeGraph({
     return () => observer.disconnect();
   }, []);
 
+  // Espalha o grafo mais na horizontal do que na vertical — forceY
+  // contém bem mais forte que forceX, então a repulsão da carga
+  // (chargeStrength) tem muito mais liberdade para abrir os nós pros
+  // lados do que pra cima/baixo. Resultado: uma elipse larga e achatada
+  // em vez de uma bola redonda. Reaplica sempre que o contêiner muda de
+  // tamanho, porque o centro (size.width/2, size.height/2) depende dele.
+  useEffect(() => {
+    if (!fgRef.current || size.width === 0 || size.height === 0) return;
+    fgRef.current.d3Force("x", forceX(size.width / 2).strength(0.01));
+    fgRef.current.d3Force("y", forceY(size.height / 2).strength(0.11));
+  }, [size.width, size.height]);
+
   // Rede de segurança: onEngineStop pode disparar antes de a força de
   // colisão (aplicada de forma assíncrona em handleFgRef) convergir de
   // verdade, deixando um zoomToFit prematuro — nós ficam sobrepostos até
-  // um reload. cooldownTicks=120 a ~60fps roda por ~2s; reenquadramos
-  // mais uma vez depois disso, quando a física já assentou de verdade.
+  // um reload. A simulação não esfria mais sozinha (cooldownTicks
+  // infinito, ver mais abaixo), então essa rede de segurança é o único
+  // reenquadramento automático: dispara uma vez, 2,2s após medir o
+  // contêiner, quando a física já assentou de verdade.
   useEffect(() => {
     if (size.width === 0) return;
     const timer = window.setTimeout(fitGraph, 2200);
