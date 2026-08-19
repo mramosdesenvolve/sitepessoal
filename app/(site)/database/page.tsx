@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getConcepts, getObjects } from "@/lib/data";
 import { AcervoClient } from "@/components/AcervoClient";
 import { SiteNav } from "@/components/site/SiteNav";
@@ -26,10 +25,7 @@ export default async function DatabasePage() {
             Database
           </h1>
           <p className="text-[13.5px] text-muted mb-8">
-            {objects.length} objetos · {concepts.length} conceitos —{" "}
-            <Link href="/grafo" className="text-ink hover:text-accent no-underline border-b border-line">
-              ver como grafo →
-            </Link>
+            {objects.length} objetos · {concepts.length} conceitos
           </p>
           <AcervoClient objects={objects} concepts={concepts} />
         </div>

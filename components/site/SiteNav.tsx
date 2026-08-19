@@ -8,10 +8,11 @@ export type SiteSection =
   | "contato"
   | null;
 
+// "grafo" fica de fora da navegação por ora (guardado para uso futuro —
+// ver app/(site)/grafo/, ainda funcional, só não linkado daqui).
 const LINKS: { key: SiteSection; label: string; href: string }[] = [
   { key: "database", label: "Database", href: "/database" },
   { key: "sistemas", label: "Portfólio", href: "/sistemas" },
-  { key: "grafo", label: "Grafo", href: "/grafo" },
   { key: "sobre", label: "Sobre", href: "/sobre" },
   { key: "contato", label: "Contato", href: "/contato" },
 ];

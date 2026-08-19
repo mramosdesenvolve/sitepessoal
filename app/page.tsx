@@ -106,14 +106,6 @@ export default async function Home() {
             detail="em produção real"
           />
 
-          <LogItem
-            href="/grafo"
-            title="Grafo de Conceitos"
-            description="Os conceitos centrais da pesquisa, e como cada objeto do database se conecta a eles — uma forma de navegar pelas ideias em vez de por datas."
-            tag={`${concepts.length} conceitos`}
-            detail="rede em repouso"
-          />
-
           <div className="py-[6vh] border-t border-line">
             <h2 className="text-[clamp(26px,3.4vw,40px)] font-semibold tracking-[-0.015em] text-ink mb-[18px]">
               Projetos atuais
