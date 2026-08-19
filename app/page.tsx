@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { LiveClock } from "@/components/site/LiveClock";
-import { getMostRecentObject, getObjects, getConcepts } from "@/lib/data";
+import { getObjects, getConcepts } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Marcos Ramos",
@@ -11,8 +11,7 @@ export const metadata: Metadata = {
     "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
 };
 
-// última_publicação e as contagens vêm do banco — mudam a qualquer
-// momento via /admin
+// as contagens vêm do banco — mudam a qualquer momento via /admin
 export const dynamic = "force-dynamic";
 
 interface LogItemProps {
@@ -44,11 +43,7 @@ function LogItem({ href, title, description, tag, detail }: LogItemProps) {
 }
 
 export default async function Home() {
-  const [recent, objects, concepts] = await Promise.all([
-    getMostRecentObject(),
-    getObjects(),
-    getConcepts(),
-  ]);
+  const [objects, concepts] = await Promise.all([getObjects(), getConcepts()]);
 
   const sistemas = objects.filter((o) => o.type === "sistema");
   const artigos = objects.filter((o) => o.type === "artigo");
@@ -105,39 +100,6 @@ export default async function Home() {
             tag={`${sistemas.length} sistemas`}
             detail="em produção real"
           />
-
-          <div className="py-[6vh] border-t border-line">
-            <h2 className="text-[clamp(26px,3.4vw,40px)] font-semibold tracking-[-0.015em] text-ink mb-[18px]">
-              Projetos atuais
-            </h2>
-            <p className="text-[14.5px] leading-[1.7] text-muted max-w-[640px] mb-[22px]">
-              Implementação do ETIM (Senac RJ) · Consultoria e desenvolvimento na Rede Cruzada · Pesquisa e orientação na UNAL, Bogotá · Mixagem e masterização do álbum Agô · Revisão do livro <i>El Brasil no existe</i>.
-            </p>
-            <div className="flex items-center gap-4 text-[12.5px]">
-              <span className="px-[11px] py-[5px] border border-line rounded-full text-ink font-medium">
-                5 frentes
-              </span>
-              <span className="text-muted">em andamento</span>
-            </div>
-          </div>
-
-          {recent && (
-            <LogItem
-              href={`/objeto/${recent.id}`}
-              title="Última publicação"
-              description={
-                <>
-                  &quot;{recent.title}&quot; — {recent.shortDescription}
-                </>
-              }
-              tag={`${recent.type} · ${recent.year}`}
-              detail={
-                recent.sourceName
-                  ? `publicado no ${recent.sourceName}`
-                  : "publicado"
-              }
-            />
-          )}
         </div>
       </div>
 
