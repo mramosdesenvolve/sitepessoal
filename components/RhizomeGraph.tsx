@@ -36,6 +36,28 @@ const ForceGraph2D = dynamic(
   }
 );
 
+/**
+ * Força custom do d3-force: dá um empurrãozinho aleatório em cada nó a
+ * cada tick, sem nunca deixar a simulação assentar de vez — é isso que
+ * mantém o grafo à deriva lentamente em vez de congelar depois do
+ * enquadramento inicial. `strength` pequeno de propósito (a física de
+ * carga/colisão continua dominando o layout geral).
+ */
+function driftForce(strength: number) {
+  let nodes: { vx?: number; vy?: number; fx?: number; fy?: number }[] = [];
+  function force() {
+    for (const n of nodes) {
+      if (n.fx != null || n.fy != null) continue; // nó fixado — não perturbar
+      n.vx = (n.vx ?? 0) + (Math.random() - 0.5) * strength;
+      n.vy = (n.vy ?? 0) + (Math.random() - 0.5) * strength;
+    }
+  }
+  force.initialize = (ns: typeof nodes) => {
+    nodes = ns;
+  };
+  return force;
+}
+
 interface RhizomeGraphProps {
   concepts: ConceptNodeType[];
   links: ConceptLink[];
@@ -173,6 +195,8 @@ export function RhizomeGraph({
           return Math.max(width, height) / 2 + 10;
         })
       );
+      // deriva lenta e perpétua — ver driftForce acima
+      fg.d3Force("drift", driftForce(0.012));
     },
     [chargeStrength, linkDistance]
   );
@@ -306,8 +330,13 @@ export function RhizomeGraph({
           onNodeDrag={() => {
             userInteractedRef.current = true;
           }}
-          cooldownTicks={120}
-          d3VelocityDecay={0.3}
+          // nunca esfria de vez — é isso que sustenta a deriva lenta
+          // (driftForce) para sempre, em vez de o grafo congelar depois
+          // do enquadramento inicial
+          cooldownTicks={Infinity}
+          d3AlphaDecay={0}
+          d3AlphaMin={0}
+          d3VelocityDecay={0.45}
           enableNodeDrag
         />
       )}

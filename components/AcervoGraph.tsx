@@ -29,9 +29,9 @@ export function AcervoGraph({
           links={links}
           matchedObjectIds={null}
           centerOffsetX={0}
-          zoomPadding={48}
-          chargeStrength={-260}
-          linkDistance={90}
+          zoomPadding={16}
+          chargeStrength={-420}
+          linkDistance={130}
         />
       </div>
       {selectedConceptId && (
