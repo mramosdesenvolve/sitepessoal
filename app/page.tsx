@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Arrow } from "@/components/brand/Arrow";
 import { Panorama } from "@/components/Panorama";
+import { RetratoColagem } from "@/components/RetratoColagem";
 import { RetratoLinhas } from "@/components/RetratoLinhas";
 import { LiveClock } from "@/components/site/LiveClock";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -66,6 +67,8 @@ const HERO_KEY = "imaginar o mundo";
 
 // mapas de tom das poses (cinza + recorte), gerados das fotos originais
 const RETRATO_POSES = [1, 2, 3, 4, 5, 6].map((n) => `/retrato/pose-${n}.png`);
+// as mesmas poses como fotografia (cinza, com o fundo), para as tiras da colagem
+const RETRATO_FOTOS = [1, 2, 3, 4, 5, 6].map((n) => `/retrato/foto-${n}.webp`);
 
 /** Palavras da frase da capa, cada uma atrás da sua máscara (ver .hero-w). */
 function HeroWords({ text, offset = 0 }: { text: string; offset?: number }) {
@@ -102,7 +105,7 @@ export default async function Home() {
             <div className="col-span-12 pb-4 md:col-span-7 md:pb-20">
               <h1 className="poster text-balance leading-[0.98] [font-size:clamp(2.5rem,5.4vw,var(--text-7))]">
                 <HeroWords text={HERO_LEAD} />{" "}
-                <span className="text-signal">
+                <span className="fita">
                   <HeroWords text={HERO_KEY} offset={HERO_LEAD.split(" ").length} />
                 </span>
               </h1>
@@ -113,11 +116,19 @@ export default async function Home() {
             </div>
 
             <div className="col-span-11 col-start-2 sm:col-span-7 sm:col-start-6 md:col-span-5 md:col-start-8">
-              <RetratoLinhas
-                poses={RETRATO_POSES}
-                alt="Retrato de Marcos Ramos desenhado em linhas horizontais; uma sequência de poses que se alternam"
-                className="ml-auto block aspect-[4/5] w-full cursor-crosshair md:w-[95%]"
-              />
+              {/* duas camadas: o desenho em linhas por baixo, a colagem de
+                  tiras de foto e papel rasgado por cima */}
+              <div className="relative ml-auto aspect-[4/5] w-full cursor-crosshair md:w-[95%]">
+                <RetratoLinhas
+                  poses={RETRATO_POSES}
+                  alt="Retrato de Marcos Ramos em colagem animada: desenho em linhas horizontais, tiras de fotografia e papel vermelho rasgado, que se rearranjam quadro a quadro"
+                  className="block h-full w-full"
+                />
+                <RetratoColagem
+                  fotos={RETRATO_FOTOS}
+                  className="pointer-events-none absolute right-0 top-0 h-full w-[112%]"
+                />
+              </div>
             </div>
           </div>
         </section>

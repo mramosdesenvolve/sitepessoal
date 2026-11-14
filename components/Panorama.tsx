@@ -168,7 +168,14 @@ export function Panorama({ items, concepts }: PanoramaProps) {
                     className={`panorama-mark block h-[14px] transition-colors duration-quick ease-out ${
                       hot ? "bg-signal" : dimmed ? "bg-hair" : "bg-ink"
                     }`}
-                    style={{ "--d": `${yi * 40 + i * 22}ms` } as React.CSSProperties}
+                    style={
+                      {
+                        "--d": `${yi * 40 + i * 22}ms`,
+                        // corte à mão: cada marca sai um pouco fora do esquadro
+                        marginLeft: `${((yi * 7 + i * 13) % 5) * 0.7}px`,
+                        marginRight: `${((yi * 11 + i * 5) % 5) * 0.7}px`,
+                      } as React.CSSProperties
+                    }
                   />
                 );
               })}
