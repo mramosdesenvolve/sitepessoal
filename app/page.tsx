@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Arrow } from "@/components/brand/Arrow";
+import { Panorama } from "@/components/Panorama";
+import { RetratoLinhas } from "@/components/RetratoLinhas";
 import { LiveClock } from "@/components/site/LiveClock";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteNav } from "@/components/site/SiteNav";
@@ -9,7 +11,7 @@ import { getConcepts, getObjects } from "@/lib/data";
 export const metadata: Metadata = {
   title: "Marcos Ramos",
   description:
-    "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
+    "Estudo como a literatura pode produzir novas formas de imaginar o mundo.",
 };
 
 // as contagens vêm do banco — mudam a qualquer momento via /admin
@@ -26,7 +28,7 @@ interface RowProps {
 /** Linha de seção: fio preto em cima, hover inverte (preto ↔ papel). */
 function SectionRow({ href, title, description, tag, detail }: RowProps) {
   return (
-    <li className="border-t border-rule last:border-b">
+    <li className="reveal border-t border-rule last:border-b">
       <Link
         href={href}
         className="group block text-ink no-underline transition-colors duration-quick ease-out hover:bg-inverse hover:text-on-inverse"
@@ -47,7 +49,10 @@ function SectionRow({ href, title, description, tag, detail }: RowProps) {
             </p>
           </div>
           <div className="hidden md:col-span-1 md:col-start-12 md:flex justify-end pt-3">
-            <Arrow dir="right" className="h-8 w-8" />
+            <Arrow
+              dir="right"
+              className="h-8 w-8 transition-transform duration-base ease-out group-hover:translate-x-2"
+            />
           </div>
         </div>
       </Link>
@@ -55,10 +60,33 @@ function SectionRow({ href, title, description, tag, detail }: RowProps) {
   );
 }
 
+const HERO_LEAD =
+  "estudo como a literatura pode produzir novas formas de";
+const HERO_KEY = "imaginar o mundo";
+
+// mapas de tom das poses (cinza + recorte), gerados das fotos originais
+const RETRATO_POSES = [1, 2, 3, 4, 5, 6].map((n) => `/retrato/pose-${n}.png`);
+
+/** Palavras da frase da capa, cada uma atrás da sua máscara (ver .hero-w). */
+function HeroWords({ text, offset = 0 }: { text: string; offset?: number }) {
+  const words = text.split(" ");
+  return (
+    <>
+      {words.map((word, i) => (
+        <span key={i}>
+          <span className="hero-w" style={{ "--i": offset + i } as React.CSSProperties}>
+            <span>{word}</span>
+          </span>
+          {i < words.length - 1 ? " " : ""}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default async function Home() {
   const [objects, concepts] = await Promise.all([getObjects(), getConcepts()]);
 
-  const sistemas = objects.filter((o) => o.type === "sistema");
   const artigos = objects.filter((o) => o.type === "artigo");
   const palestras = objects.filter((o) => o.type === "palestra");
 
@@ -67,18 +95,57 @@ export default async function Home() {
       <SiteNav active={null} />
 
       <main className="flex-1">
-        <section className="wrap pt-12 pb-16 md:pt-16 md:pb-20">
-          <h1 className="poster max-w-[1100px] text-balance leading-[0.98] [font-size:clamp(2.5rem,6vw,var(--text-7))]">
-            investigo como a educação e a tecnologia podem produzir novas
-            formas de <span className="text-signal">imaginar o mundo</span>
-          </h1>
+        {/* frase à esquerda; à direita o retrato em traço, em pé sobre o fio
+            que abre o panorama */}
+        <section className="wrap pt-12 md:pt-16">
+          <div className="grid-12 items-end gap-y-10">
+            <div className="col-span-12 pb-4 md:col-span-7 md:pb-20">
+              <h1 className="poster text-balance leading-[0.98] [font-size:clamp(2.5rem,5.4vw,var(--text-7))]">
+                <HeroWords text={HERO_LEAD} />{" "}
+                <span className="text-signal">
+                  <HeroWords text={HERO_KEY} offset={HERO_LEAD.split(" ").length} />
+                </span>
+              </h1>
 
-          <div className="mt-12 md:mt-16">
-            <LiveClock />
+              <div className="mt-12 md:mt-16">
+                <LiveClock />
+              </div>
+            </div>
+
+            <div className="col-span-11 col-start-2 sm:col-span-7 sm:col-start-6 md:col-span-5 md:col-start-8">
+              <RetratoLinhas
+                poses={RETRATO_POSES}
+                alt="Retrato de Marcos Ramos desenhado em linhas horizontais; uma sequência de poses que se alternam"
+                className="ml-auto block aspect-[4/5] w-full cursor-crosshair md:w-[95%]"
+              />
+            </div>
           </div>
         </section>
 
-        <section className="wrap pb-20">
+        <section className="wrap pb-20 md:pb-28" aria-label="Panorama do acervo">
+          <div className="border-t border-rule pt-8">
+          <Panorama
+            items={objects.map((o) => ({
+              id: o.id,
+              title: o.title,
+              type: o.type,
+              year: o.year,
+              concepts: o.concepts,
+            }))}
+            concepts={concepts
+              .filter((c) => c.objectIds.length > 0)
+              .map((c) => ({
+                id: c.id,
+                label: c.label,
+                description: c.description,
+                count: c.objectIds.length,
+              }))
+              .sort((a, b) => a.label.localeCompare(b.label, "pt-BR"))}
+          />
+          </div>
+        </section>
+
+        <section className="reveal wrap pb-20">
           <dl className="m-0">
             <div className="grid-12 gap-y-2 border-t border-rule py-6">
               <dt className="strong col-span-12 md:col-span-3">formação</dt>
@@ -89,8 +156,7 @@ export default async function Home() {
             <div className="grid-12 gap-y-2 border-t border-rule py-6">
               <dt className="strong col-span-12 md:col-span-3">papel</dt>
               <dd className="m-0 col-span-12 md:col-span-9 max-w-[62ch]">
-                Professor, pesquisador, consultor em educação e tecnologia e
-                desenvolvedor
+                Professor, pesquisador e consultor em educação e tecnologia
               </dd>
             </div>
           </dl>
@@ -102,21 +168,13 @@ export default async function Home() {
           </div>
         </section>
 
-
         <ul className="m-0 list-none p-0">
           <SectionRow
             href="/database"
             title="database"
             description="Artigos, papers, ensaios, palestras, podcasts e livros sobre literatura, cultura afro-brasileira, educação e tecnologia — publicados ao longo de mais de uma década, agora reunidos num só lugar."
             tag={`${objects.length} objetos`}
-            detail={`${artigos.length} artigos · ${palestras.length} palestras · ${concepts.length} conceitos`}
-          />
-          <SectionRow
-            href="/sistemas"
-            title="portfólio de desenvolvimento"
-            description="Plataformas web que desenvolvi do zero — arquitetura, banco de dados, deploy e operação contínua — para organizações educacionais reais. Não são protótipos: estão em uso diário."
-            tag={`${sistemas.length} sistemas`}
-            detail="em produção real"
+            detail={`${artigos.length} artigos · ${palestras.length} palestras · ${concepts.filter((c) => c.objectIds.length > 0).length} conceitos`}
           />
         </ul>
       </main>

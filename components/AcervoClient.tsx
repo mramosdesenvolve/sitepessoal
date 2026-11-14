@@ -1,23 +1,64 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { ConceptNode, ContentObject, ObjectType } from "@/types";
 
 interface AcervoClientProps {
   objects: ContentObject[];
   concepts: ConceptNode[];
+  /** recorte inicial, lido da URL pela página (?conceito=&ano=&tipo=&q=) */
+  initialConcept?: string;
+  initialYear?: number;
+  initialType?: string;
+  initialQuery?: string;
 }
 
 /**
- * Índice de todo o acervo, com busca e filtro por tipo. Linhas separadas por
- * fio cinza, sem cartões; tipo e ano em IBM Plex Mono (são dados). Ordenado
- * por ano, igual à ordem de getObjects().
+ * Índice de todo o acervo, com busca e filtros por tipo, conceito e ano.
+ * Linhas separadas por fio cinza, sem cartões; tipo e ano em IBM Plex Mono
+ * (são dados). Ordenado por ano, igual à ordem de getObjects(). O recorte
+ * ativo fica espelhado na URL, então dá para compartilhar o link.
  */
-export function AcervoClient({ objects, concepts }: AcervoClientProps) {
-  const [activeType, setActiveType] = useState<ObjectType | "todos">("todos");
-  const [query, setQuery] = useState("");
+export function AcervoClient({
+  objects,
+  concepts,
+  initialConcept,
+  initialYear,
+  initialType,
+  initialQuery,
+}: AcervoClientProps) {
+  const [activeType, setActiveType] = useState<ObjectType | "todos">(
+    objects.some((o) => o.type === initialType) ? (initialType as ObjectType) : "todos"
+  );
+  const [activeConcept, setActiveConcept] = useState(
+    concepts.some((c) => c.id === initialConcept) ? (initialConcept as string) : ""
+  );
+  const [activeYear, setActiveYear] = useState<number | null>(initialYear ?? null);
+  const [query, setQuery] = useState(initialQuery ?? "");
   const conceptLabel = new Map(concepts.map((c) => [c.id, c.label]));
+
+  const conceptOptions = useMemo(
+    () =>
+      concepts
+        .filter((c) => c.objectIds.length > 0)
+        .sort((a, b) => a.label.localeCompare(b.label, "pt-BR")),
+    [concepts]
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (activeConcept) params.set("conceito", activeConcept);
+    if (activeYear !== null) params.set("ano", String(activeYear));
+    if (activeType !== "todos") params.set("tipo", activeType);
+    if (query.trim()) params.set("q", query.trim());
+    const search = params.toString();
+    window.history.replaceState(
+      null,
+      "",
+      search ? `${window.location.pathname}?${search}` : window.location.pathname
+    );
+  }, [activeConcept, activeYear, activeType, query]);
 
   const countByType = useMemo(() => {
     const counts = new Map<ObjectType, number>();
@@ -33,8 +74,12 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
     [countByType]
   );
 
-  const byType =
-    activeType === "todos" ? objects : objects.filter((o) => o.type === activeType);
+  const byType = objects.filter(
+    (o) =>
+      (activeType === "todos" || o.type === activeType) &&
+      (activeConcept === "" || o.concepts.includes(activeConcept)) &&
+      (activeYear === null || o.year === activeYear)
+  );
 
   const normalizedQuery = query.trim().toLowerCase();
   const filtered =
@@ -66,6 +111,22 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
             placeholder="termo, autor, conceito"
             className="field"
           />
+          <label htmlFor="conceito" className="strong mb-2 mt-5 block">
+            conceito
+          </label>
+          <select
+            id="conceito"
+            value={activeConcept}
+            onChange={(e) => setActiveConcept(e.target.value)}
+            className="field"
+          >
+            <option value="">todos os conceitos</option>
+            {conceptOptions.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.label} ({c.objectIds.length})
+              </option>
+            ))}
+          </select>
         </div>
 
         <div
@@ -93,6 +154,17 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
               <span className="font-mono font-normal">{countByType.get(type)}</span>
             </button>
           ))}
+          {activeYear !== null && (
+            <button
+              type="button"
+              onClick={() => setActiveYear(null)}
+              aria-pressed="true"
+              aria-label={`Remover o filtro do ano ${activeYear}`}
+              className="pill"
+            >
+              ano <span className="font-mono font-normal">{activeYear}</span> ✕
+            </button>
+          )}
         </div>
       </div>
 
@@ -102,7 +174,7 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
 
       <ul className="m-0 list-none p-0">
         {filtered.map((o) => (
-          <li key={o.id} className="border-t border-hair">
+          <li key={o.id} className="reveal border-t border-hair">
             <Link
               href={`/objeto/${o.id}`}
               className="group grid-12 gap-y-2 py-8 text-ink no-underline hover:text-ink"

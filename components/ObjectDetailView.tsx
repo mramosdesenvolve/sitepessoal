@@ -1,4 +1,6 @@
 import type { ConceptNode, ContentObject } from "@/types";
+import { CitarButton } from "./CitarButton";
+import { LeituraFio } from "./LeituraFio";
 import { RelatedObjects } from "./RelatedObjects";
 import { ShareButton } from "./ShareButton";
 import { TagSystem } from "./TagSystem";
@@ -23,15 +25,25 @@ export function ObjectDetailView({
   concepts,
   relatedObjects,
   body,
+  wordCount,
 }: ObjectDetailViewProps) {
+  // textos longos ganham fio de leitura e tempo estimado (200 palavras/min)
+  const longRead = wordCount >= 300;
+  const minutes = Math.max(1, Math.round(wordCount / 200));
+
   return (
     <div className="min-h-screen flex flex-col">
-      <SiteNav active={object.type === "sistema" ? "sistemas" : "database"} />
+      {longRead && <LeituraFio />}
+      <SiteNav active="database" />
 
       <main className="flex-1 wrap pt-16 md:pt-24">
         <header className="grid-12 gap-y-6 pb-12">
           <div className="col-span-12">
-            <TagSystem object={object} concepts={concepts} />
+            <TagSystem
+              object={object}
+              concepts={concepts}
+              readingMinutes={longRead ? minutes : undefined}
+            />
           </div>
           <h1 className="title col-span-12 md:col-span-10 text-step-5 md:text-step-6">
             {object.title}
@@ -47,8 +59,9 @@ export function ObjectDetailView({
               </>
             )}
           </p>
-          <div className="col-span-12">
+          <div className="col-span-12 flex flex-wrap items-center gap-2">
             <ShareButton title={object.title} summary={object.shortDescription} />
+            <CitarButton id={object.id} title={object.title} year={object.year} />
           </div>
         </header>
 

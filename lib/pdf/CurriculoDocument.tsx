@@ -1,5 +1,7 @@
+import path from "path";
 import {
   Document,
+  Font,
   Page,
   Text,
   View,
@@ -9,121 +11,229 @@ import {
 import type { ContentObject, ConceptNode, ObjectType } from "@/types";
 
 /**
- * Currículo em PDF — deriva o cabeçalho/bio do mesmo texto usado em
- * /sobre (duplicado aqui por ora; se o texto mudar lá, atualizar aqui
- * também — candidato a virar uma fonte única depois que o formato do
- * PDF estiver validado). A lista de publicações vem direto do banco
+ * Currículo em PDF, no mesmo sistema visual do site (ID Pessoal): Jost em
+ * voz de cartaz para o nome, Archivo para títulos e texto, IBM Plex Mono
+ * para dados; preto, branco e um vermelho; fio de 1px em vez de caixa ou
+ * sombra. O fundo é branco (e não o papel do site) porque é um documento
+ * para imprimir e anexar.
+ *
+ * O cabeçalho/bio repete o texto de /sobre (duplicado aqui — se mudar lá,
+ * atualizar aqui também). A lista de publicações vem direto do banco
  * (getObjects/getConcepts), sem duplicação.
  *
- * Fontes: só as 4 embutidas no PDF (Helvetica/Times/Courier) — sem
- * precisar registrar arquivo de fonte nenhum. Courier faz o papel do
- * monoespaçado "terminal" do site (labels, tags, cabeçalhos de seção);
- * Times-Roman faz o papel do serifado usado na prosa do /sobre. Fundo
- * branco de propósito — é um documento pra imprimir/anexar, não uma
- * réplica do terminal escuro.
+ * Fontes: arquivos estáticos em lib/pdf/fonts (ver LEIA-ME.md de lá). O
+ * next.config.mjs inclui essa pasta no pacote da rota /api/curriculo.
  */
 
-const ACCENT = "#1f6f5c";
-const INK = "#18181b";
-const MUTED = "#6b6b6b";
-const LINE = "#d8d5cc";
+const FONTS_DIR = path.join(process.cwd(), "lib", "pdf", "fonts");
+const font = (file: string) => path.join(FONTS_DIR, file);
+
+Font.register({ family: "Jost", src: font("jost-latin-700-normal.ttf"), fontWeight: 700 });
+Font.register({
+  family: "Archivo",
+  fonts: [
+    { src: font("archivo-latin-400-normal.ttf"), fontWeight: 400 },
+    { src: font("archivo-latin-400-italic.ttf"), fontWeight: 400, fontStyle: "italic" },
+    { src: font("archivo-latin-600-normal.ttf"), fontWeight: 600 },
+  ],
+});
+Font.register({ family: "Plex Mono", src: font("ibm-plex-mono-latin-400-normal.ttf") });
+// sem hifenização automática (as regras embutidas são do inglês)
+Font.registerHyphenationCallback((word) => [word]);
+
+const INK = "#0b0b0b";
+const RED = "#e2231a"; // sinal: tipo grande
+const GRAY = "#6b6a66";
+const HAIR = "#d6d5d1";
+
+const MARGIN = 48;
+const LABEL_COL = 96;
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 54,
-    paddingBottom: 54,
-    paddingHorizontal: 56,
-    fontFamily: "Times-Roman",
-    fontSize: 10.5,
+    paddingTop: 44,
+    paddingBottom: 60,
+    paddingHorizontal: MARGIN,
+    fontFamily: "Archivo",
+    fontSize: 10,
+    lineHeight: 1.45,
     color: INK,
+  },
+  data: {
+    fontFamily: "Plex Mono",
+    fontSize: 8,
+    lineHeight: 1.4,
+    color: GRAY,
+  },
+  topRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 26,
   },
   name: {
-    fontFamily: "Helvetica-Bold",
-    fontSize: 22,
-    marginBottom: 4,
+    fontFamily: "Jost",
+    fontWeight: 700,
+    fontSize: 58,
+    lineHeight: 0.92,
+    letterSpacing: -1.2,
+    marginBottom: 22,
   },
-  tagline: {
-    fontFamily: "Times-Italic",
-    fontSize: 11,
-    color: MUTED,
-    marginBottom: 10,
-    maxWidth: 420,
+  phrase: {
+    fontSize: 15,
+    lineHeight: 1.25,
+    letterSpacing: -0.2,
+    maxWidth: 380,
+    marginBottom: 26,
   },
-  metaLine: {
-    fontFamily: "Courier",
-    fontSize: 8.5,
+  phraseKey: {
+    color: RED,
+  },
+  row: {
+    flexDirection: "row",
+    borderTopWidth: 1,
+    borderTopColor: INK,
+    paddingVertical: 9,
+  },
+  rowLabel: {
+    width: LABEL_COL,
+    fontWeight: 600,
+  },
+  rowValue: {
+    flex: 1,
+  },
+  link: {
     color: INK,
-    marginBottom: 3,
+    textDecoration: "none",
   },
-  metaLabel: {
-    color: ACCENT,
+  intro: {
+    borderTopWidth: 1,
+    borderTopColor: INK,
+    paddingTop: 16,
+    fontSize: 12.5,
+    lineHeight: 1.4,
+    letterSpacing: -0.1,
   },
-  metaValue: {
-    color: INK,
-  },
-  divider: {
-    borderBottomWidth: 1,
-    borderBottomColor: LINE,
-    marginTop: 14,
-    marginBottom: 14,
-  },
-  sectionHeader: {
-    fontFamily: "Courier-Bold",
-    fontSize: 10,
-    letterSpacing: 1,
-    color: ACCENT,
-    textTransform: "uppercase",
-    marginTop: 18,
-    marginBottom: 10,
+  sectionLabel: {
+    marginTop: 24,
+    paddingTop: 9,
+    borderTopWidth: 1,
+    borderTopColor: HAIR,
+    fontWeight: 600,
+    fontSize: 12,
+    marginBottom: 8,
   },
   paragraph: {
-    fontFamily: "Times-Roman",
-    fontSize: 10.5,
-    lineHeight: 1.5,
+    maxWidth: 400,
     marginBottom: 9,
-    color: INK,
   },
-  subHeader: {
-    fontFamily: "Courier-Bold",
-    fontSize: 9,
-    color: INK,
-    marginTop: 12,
+  title: {
+    fontSize: 34,
+    lineHeight: 1.04,
+    letterSpacing: -0.9,
+    color: RED,
+  },
+  titleRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    marginBottom: 22,
+  },
+  chart: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+    borderBottomWidth: 1,
+    borderBottomColor: INK,
+  },
+  chartCol: {
+    flex: 1,
+    flexDirection: "column-reverse",
+    paddingHorizontal: 1,
+    paddingBottom: 1,
+  },
+  chartMark: {
+    height: 3.4,
+    marginTop: 1,
+    backgroundColor: INK,
+  },
+  chartAxis: {
+    flexDirection: "row",
+    marginTop: 4,
     marginBottom: 6,
   },
+  chartYear: {
+    flex: 1,
+    textAlign: "center",
+    fontFamily: "Plex Mono",
+    fontSize: 6.5,
+    color: GRAY,
+  },
+  typeHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    marginTop: 22,
+    paddingTop: 8,
+    paddingBottom: 6,
+    borderTopWidth: 1,
+    borderTopColor: INK,
+  },
+  typeLabel: {
+    fontWeight: 600,
+    fontSize: 12,
+  },
   entry: {
-    marginBottom: 7,
+    flexDirection: "row",
+    borderTopWidth: 1,
+    borderTopColor: HAIR,
+    paddingVertical: 6,
+  },
+  entryYear: {
+    width: 44,
+    fontFamily: "Plex Mono",
+    fontSize: 8.5,
+    color: GRAY,
+    paddingTop: 1,
+  },
+  entryBody: {
+    flex: 1,
   },
   entryTitle: {
-    fontFamily: "Times-Bold",
     fontSize: 10.5,
-    color: INK,
+    lineHeight: 1.3,
   },
-  entryMeta: {
-    fontFamily: "Courier",
-    fontSize: 8,
-    color: MUTED,
-    marginTop: 1,
+  entryConcepts: {
+    fontSize: 8.5,
+    lineHeight: 1.35,
+    color: GRAY,
+    marginTop: 1.5,
   },
-  footer: {
+  footerRule: {
     position: "absolute",
-    bottom: 28,
-    left: 56,
-    right: 56,
-    fontFamily: "Courier",
-    fontSize: 7.5,
-    color: MUTED,
-    textAlign: "center",
+    bottom: 44,
+    left: MARGIN,
+    right: MARGIN,
     borderTopWidth: 1,
-    borderTopColor: LINE,
-    paddingTop: 8,
+    borderTopColor: HAIR,
+  },
+  footerSite: {
+    position: "absolute",
+    bottom: 26,
+    left: MARGIN,
+    right: MARGIN,
+    fontFamily: "Plex Mono",
+    fontSize: 8,
+    color: GRAY,
   },
 });
+
+const SITE = "marcosramos.base73.com.br";
+const PHRASE_LEAD = "Estudo como a literatura pode produzir novas formas de ";
+const PHRASE_KEY = "imaginar o mundo";
 
 const BIO = {
   papel: [
     "Professor, pesquisador",
     "Consultor em Educação e Tecnologia",
-    "Desenvolvedor",
   ],
   formacao: ["Dr. em Letras (UFES)", "Estudos Afro-Latino-Americanos (Harvard)"],
   email: "marcosramos.email@gmail.com",
@@ -133,7 +243,6 @@ const BIO = {
   trajetoria: [
     "Minha formação atravessa os estudos literários e as ciências humanas e sociais. Minha tese de doutorado, O Pacto na Mira do Ofá, investiga os temas como pensamento social brasileiro, tradição radical negra, imaginação radical, música e literatura.",
     "Fui professor visitante no Departamento de Literatura da Universidad Nacional de Colombia entre 2022 e 2025, e professor convidado em instituições como a Universidad de La Habana (Cuba), a Universidad Andina Simón Bolívar (Equador) e a Universidade Eduardo Mondlane (Moçambique). Organizo e curo o Ciclo Afro, iniciativa já em três edições — na Feira Internacional do Livro de Bogotá (FILBo), na Universidade Federal do Recôncavo da Bahia (UFRB) e em sua edição inicial —, articulando ministérios, prefeituras, universidades e instituições culturais em torno das artes e epistemologias das diásporas africanas.",
-    "Em paralelo a essa trajetória, atuo também na gestão, no desenho e no desenvolvimento de tecnologias para instituições de ensino e cultura: apoio processos de desenvolvimento institucional e o desenho de soluções — aplicações e softwares — voltadas a esse setor. São duas inscrições profundas e simultâneas: uma na pesquisa; outra na gestão e na tecnologia.",
   ],
 };
 
@@ -190,80 +299,117 @@ export function CurriculoDocument({ objects, concepts }: CurriculoDocumentProps)
     list.sort((a, b) => b.year - a.year);
   }
 
+  // cronologia: a mesma do panorama da capa do site, uma marca por objeto
+  const allYears = published.map((o) => o.year);
+  const firstYear = Math.min(...allYears);
+  const lastYear = Math.max(...allYears);
+  const years = Array.from({ length: lastYear - firstYear + 1 }, (_, i) => firstYear + i);
+  const countByYear = new Map<number, number>();
+  for (const y of allYears) countByYear.set(y, (countByYear.get(y) ?? 0) + 1);
+
+  const generatedAt = new Date().toLocaleDateString("pt-BR");
+
   return (
-    <Document title="Marcos Ramos — Currículo">
+    <Document title="Marcos Ramos — Currículo" author="Marcos Ramos" language="pt-BR">
       <Page size="A4" style={styles.page}>
-        <Text style={styles.name}>Marcos Ramos</Text>
-        <Text style={styles.tagline}>
-          Investigo como a educação e a tecnologia podem produzir novas
-          formas de imaginar o mundo.
+        <View style={styles.topRow}>
+          <Text style={styles.data}>currículo</Text>
+          <Text style={styles.data}>gerado em {generatedAt}</Text>
+        </View>
+
+        <Text style={styles.name}>marcos ramos</Text>
+        <Text style={styles.phrase}>
+          {PHRASE_LEAD}
+          <Text style={styles.phraseKey}>{PHRASE_KEY}</Text>.
         </Text>
 
-        <Text style={styles.metaLine}>
-          <Text style={styles.metaLabel}>papel: </Text>
-          <Text style={styles.metaValue}>{BIO.papel.join(" | ")}</Text>
-        </Text>
-        <Text style={styles.metaLine}>
-          <Text style={styles.metaLabel}>formação: </Text>
-          <Text style={styles.metaValue}>{BIO.formacao.join(" | ")}</Text>
-        </Text>
-        <Text style={styles.metaLine}>
-          <Text style={styles.metaLabel}>contato: </Text>
-          <Link src={`mailto:${BIO.email}`} style={styles.metaValue}>
-            {BIO.email}
-          </Link>
-          <Text style={styles.metaValue}> · </Text>
-          <Link src={BIO.orcid} style={styles.metaValue}>
-            ORCID
-          </Link>
-        </Text>
+        <View style={styles.row}>
+          <Text style={styles.rowLabel}>papel</Text>
+          <Text style={styles.rowValue}>{BIO.papel.join(" · ")}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowLabel}>formação</Text>
+          <Text style={styles.rowValue}>{BIO.formacao.join(" · ")}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowLabel}>contato</Text>
+          <Text style={styles.rowValue}>
+            <Link src={`mailto:${BIO.email}`} style={styles.link}>
+              {BIO.email}
+            </Link>
+            {" · "}
+            <Link src={BIO.orcid} style={styles.link}>
+              {BIO.orcid.replace("https://", "")}
+            </Link>
+            {" · "}
+            <Link src={`https://${SITE}`} style={styles.link}>
+              {SITE}
+            </Link>
+          </Text>
+        </View>
 
-        <View style={styles.divider} />
+        <Text style={styles.intro}>{BIO.intro}</Text>
 
-        <Text style={styles.paragraph}>{BIO.intro}</Text>
-
-        <Text style={styles.sectionHeader}># Trajetória</Text>
+        <Text style={styles.sectionLabel}>trajetória</Text>
         {BIO.trajetoria.map((p, i) => (
           <Text key={i} style={styles.paragraph}>
             {p}
           </Text>
         ))}
 
-        <Text style={styles.sectionHeader} break>
-          # Publicações
-        </Text>
+        <View style={styles.titleRow} break>
+          <Text style={styles.title}>publicações</Text>
+          <Text style={styles.data}>
+            {published.length} objetos · {firstYear}–{lastYear}
+          </Text>
+        </View>
+
+        <View style={styles.chart}>
+          {years.map((year) => (
+            <View key={year} style={styles.chartCol}>
+              {Array.from({ length: countByYear.get(year) ?? 0 }, (_, i) => (
+                <View key={i} style={styles.chartMark} />
+              ))}
+            </View>
+          ))}
+        </View>
+        <View style={styles.chartAxis}>
+          {years.map((year) => (
+            <Text key={year} style={styles.chartYear}>
+              {year}
+            </Text>
+          ))}
+        </View>
 
         {TYPE_ORDER.filter((t) => byType.has(t)).map((type) => (
           <View key={type}>
-            <Text style={styles.subHeader}>
-              {TYPE_LABELS[type]} ({byType.get(type)!.length})
-            </Text>
+            <View style={styles.typeHeader} minPresenceAhead={60} wrap={false}>
+              <Text style={styles.typeLabel}>{TYPE_LABELS[type].toLowerCase()}</Text>
+              <Text style={styles.data}>{byType.get(type)!.length}</Text>
+            </View>
             {byType.get(type)!.map((o) => {
               const keywords = o.concepts
                 .map((cid) => conceptLabel.get(cid) ?? cid)
-                .join(", ");
+                .join(" / ");
               return (
                 <View key={o.id} style={styles.entry} wrap={false}>
-                  <Text style={styles.entryTitle}>{o.title}</Text>
-                  <Text style={styles.entryMeta}>
-                    {o.year}
-                    {keywords ? `  ·  ${keywords}` : ""}
-                  </Text>
+                  <Text style={styles.entryYear}>{o.year}</Text>
+                  <View style={styles.entryBody}>
+                    <Text style={styles.entryTitle}>{o.title}</Text>
+                    {keywords !== "" && (
+                      <Text style={styles.entryConcepts}>{keywords}</Text>
+                    )}
+                  </View>
                 </View>
               );
             })}
           </View>
         ))}
 
-        <Text
-          style={styles.footer}
-          render={({ pageNumber, totalPages }) =>
-            `Marcos Ramos · marcosramos.base73.com.br · gerado em ${new Date().toLocaleDateString(
-              "pt-BR"
-            )} · página ${pageNumber}/${totalPages}`
-          }
-          fixed
-        />
+        <View style={styles.footerRule} fixed />
+        <Text style={styles.footerSite} fixed>
+          {SITE}
+        </Text>
       </Page>
     </Document>
   );

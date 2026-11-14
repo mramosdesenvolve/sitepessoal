@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { BuscaTrigger } from "@/components/site/Busca";
 
 export type SiteSection =
   | "database"
-  | "sistemas"
   | "grafo"
   | "sobre"
   | "contato"
@@ -12,7 +12,6 @@ export type SiteSection =
 // ver app/(site)/grafo/, ainda funcional, só não linkado daqui).
 const LINKS: { key: SiteSection; label: string; href: string }[] = [
   { key: "database", label: "database", href: "/database" },
-  { key: "sistemas", label: "portfólio", href: "/sistemas" },
   { key: "sobre", label: "sobre", href: "/sobre" },
   { key: "contato", label: "contato", href: "/contato" },
 ];
@@ -52,6 +51,7 @@ export function SiteNav({ active }: { active: SiteSection }) {
               </Link>
             );
           })}
+          <BuscaTrigger />
         </nav>
       </div>
     </header>

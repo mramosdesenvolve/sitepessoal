@@ -376,3 +376,130 @@
     font-weight: var(--strong-weight);
   }
 }
+
+/*
+ * Movimento. Mecânico e curto, sempre uma entrada só — nada fica em laço.
+ * Tudo aqui some com prefers-reduced-motion, e o estado inicial escondido
+ * só vale quando há script ([data-js], gravado em app/layout.tsx): sem JS a
+ * página aparece inteira, parada.
+ */
+@layer components {
+  /* Frase da capa: cada palavra sobe de trás de uma máscara */
+  .hero-w {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    /* folga para acentos e descendentes não serem cortados pela máscara */
+    padding: 0.12em 0 0.16em;
+    margin: -0.12em 0 -0.16em;
+  }
+  .hero-w > span {
+    display: inline-block;
+  }
+
+  /* Marcas do panorama */
+  .panorama-mark {
+    transform-origin: bottom;
+  }
+
+  /* Barra de leitura: fio de 4px, vermelho, cresce com a rolagem */
+  .leitura-fio {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--red);
+    transform-origin: left;
+    transform: scaleX(var(--progresso, 0));
+    z-index: 30;
+    pointer-events: none;
+  }
+
+  /* Busca em tela cheia */
+  .busca {
+    width: 100vw;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--bg);
+    color: var(--fg-1);
+  }
+  .busca::backdrop {
+    background: var(--bg);
+  }
+  .busca-campo {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--fg-1);
+    caret-color: var(--red);
+    font-size: clamp(2.25rem, 6.5vw, var(--text-7));
+    line-height: 1.05;
+    padding: 0 0 0.12em;
+  }
+  .busca-campo::placeholder {
+    color: var(--border);
+    opacity: 1;
+  }
+  .busca-campo:focus-visible {
+    box-shadow: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    main {
+      animation: entrar var(--dur-base) var(--ease-out) both;
+    }
+
+    [data-js] .hero-w > span {
+      transform: translateY(110%);
+      animation: subir var(--dur-slow) var(--ease-out) forwards;
+      animation-delay: calc(var(--i, 0) * 45ms + 120ms);
+    }
+
+    [data-js] .panorama .panorama-mark {
+      transform: scaleY(0);
+    }
+    [data-js] .panorama[data-in] .panorama-mark {
+      animation: erguer var(--dur-base) var(--ease-out) forwards;
+      animation-delay: var(--d, 0ms);
+    }
+
+    .busca[open] {
+      animation: entrar var(--dur-quick) var(--ease-out) both;
+    }
+
+    /* Revelação ligada à rolagem (onde o navegador suporta): o bloco entra
+       conforme atravessa a borda de baixo da tela */
+    @supports (animation-timeline: view()) {
+      .reveal {
+        animation: revelar linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+    }
+  }
+
+  @keyframes entrar {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes subir {
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes erguer {
+    to {
+      transform: scaleY(1);
+    }
+  }
+  @keyframes revelar {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+  }
+}

@@ -47,8 +47,13 @@ function toContentObject(row: {
   };
 }
 
+/** Tipos que seguem gravados no banco mas não aparecem no site. O portfólio
+ * de desenvolvimento saiu do ar: o site ficou só com a produção acadêmica. */
+const HIDDEN_TYPES = ["sistema"];
+
 export async function getObjects(): Promise<ContentObject[]> {
   const rows = await prisma.contentObject.findMany({
+    where: { type: { notIn: HIDDEN_TYPES } },
     orderBy: { year: "desc" },
   });
   return rows.map(toContentObject);
@@ -60,7 +65,7 @@ export async function getObjects(): Promise<ContentObject[]> {
  * usar só createdAt escolheria um item essencialmente aleatório do lote. */
 export async function getMostRecentObject(): Promise<ContentObject | undefined> {
   const row = await prisma.contentObject.findFirst({
-    where: { status: "publicado" },
+    where: { status: "publicado", type: { notIn: HIDDEN_TYPES } },
     orderBy: [{ year: "desc" }, { createdAt: "desc" }],
   });
   return row ? toContentObject(row) : undefined;
@@ -83,7 +88,8 @@ export async function getObjectById(
   id: string
 ): Promise<ContentObject | undefined> {
   const row = await prisma.contentObject.findUnique({ where: { id } });
-  return row ? toContentObject(row) : undefined;
+  if (!row || HIDDEN_TYPES.includes(row.type)) return undefined;
+  return toContentObject(row);
 }
 
 export interface ConceptLink {

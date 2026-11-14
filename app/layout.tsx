@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono, Jost } from "next/font/google";
+import { Busca } from "@/components/site/Busca";
 import "./globals.css";
 
 // ID Pessoal: uma família, duas vozes. Jost (cartaz, herdeira da Futura),
@@ -28,7 +29,7 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Marcos Ramos",
   description:
-    "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
+    "Estudo como a literatura pode produzir novas formas de imaginar o mundo.",
 };
 
 export const viewport: Viewport = {
@@ -37,7 +38,9 @@ export const viewport: Viewport = {
 
 // Aplica o tema salvo antes da primeira pintura (o padrão, claro, já vem
 // no HTML do servidor — este script só troca se o visitante escolheu escuro).
-const themeInitScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+// Também marca que há JS: as entradas animadas só escondem o estado inicial
+// quando existe script para revelá-lo (ver [data-js] em globals.css).
+const themeInitScript = `document.documentElement.dataset.js="1";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -56,6 +59,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen font-sans text-ink bg-paper">
         {children}
+        <Busca />
       </body>
     </html>
   );

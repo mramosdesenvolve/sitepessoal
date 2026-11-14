@@ -8,6 +8,8 @@ export function MetaChip({ children }: { children: React.ReactNode }) {
 interface TagSystemProps {
   object: ContentObject;
   concepts: ConceptNode[];
+  /** tempo estimado de leitura — só para textos longos */
+  readingMinutes?: number;
 }
 
 /**
@@ -16,7 +18,7 @@ interface TagSystemProps {
  * (a página /grafo segue existindo, guardada para uso futuro, mas fora da
  * navegação).
  */
-export function TagSystem({ object, concepts }: TagSystemProps) {
+export function TagSystem({ object, concepts, readingMinutes }: TagSystemProps) {
   const objectConcepts = concepts.filter((c) => object.concepts.includes(c.id));
 
   return (
@@ -24,6 +26,9 @@ export function TagSystem({ object, concepts }: TagSystemProps) {
       <MetaChip>{object.type}</MetaChip>
       <MetaChip>{object.year}</MetaChip>
       <MetaChip>{object.status}</MetaChip>
+      {readingMinutes !== undefined && (
+        <MetaChip>leitura de {readingMinutes} min</MetaChip>
+      )}
       {objectConcepts.length > 0 && (
         <span className="ml-2 text-ink-3">
           {objectConcepts.map((c) => c.label).join(" / ")}

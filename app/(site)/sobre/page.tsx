@@ -43,8 +43,7 @@ export default function SobrePage() {
               <div>
                 <dt className="strong mb-1">papel</dt>
                 <dd className="m-0 text-ink-2">
-                  Professor, pesquisador · Consultor em Educação e Tecnologia ·
-                  Desenvolvedor
+                  Professor, pesquisador · Consultor em Educação e Tecnologia
                 </dd>
               </div>
               <div>
@@ -112,15 +111,6 @@ export default function SobrePage() {
                 —, articulando ministérios, prefeituras, universidades e
                 instituições culturais em torno das artes e epistemologias
                 das diásporas africanas.
-              </p>
-              <p className="m-0 mb-[1.4em]">
-                Em paralelo a essa trajetória, atuo também na gestão, no
-                desenho e no desenvolvimento de tecnologias para instituições
-                de ensino e cultura: apoio processos de desenvolvimento
-                institucional e o desenho de soluções — aplicações e
-                softwares — voltadas a esse setor. São duas inscrições
-                profundas e simultâneas: uma na pesquisa; outra na gestão e
-                na tecnologia.
               </p>
             </div>
 

@@ -1,5 +1,5 @@
 /**
- * Grupo de rotas do site (database, sistemas, grafo, sobre, contato,
+ * Grupo de rotas do site (database, grafo, sobre, contato,
  * objeto, admin) — sem header/footer próprio; cada página monta sua
  * própria SiteNav/SiteFooter (ver components/site/).
  */
