@@ -258,7 +258,7 @@ export function CurriculoDocument({ objects, concepts }: CurriculoDocumentProps)
         <Text
           style={styles.footer}
           render={({ pageNumber, totalPages }) =>
-            `Marcos Ramos · marcosramos.xyz · gerado em ${new Date().toLocaleDateString(
+            `Marcos Ramos · marcosramos.base73.com.br · gerado em ${new Date().toLocaleDateString(
               "pt-BR"
             )} · página ${pageNumber}/${totalPages}`
           }
