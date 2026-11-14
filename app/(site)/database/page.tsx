@@ -19,17 +19,18 @@ export default async function DatabasePage() {
     <div className="min-h-screen flex flex-col">
       <SiteNav active="database" />
 
-      <div className="flex-1 px-[6vw] py-[7vh]">
-        <div className="max-w-[720px] mx-auto">
-          <h1 className="text-[clamp(28px,3.6vw,42px)] font-semibold tracking-[-0.015em] mb-3">
-            Database
+      <main className="flex-1 wrap pt-16 md:pt-24">
+        <header className="grid-12 items-end gap-y-4 pb-12">
+          <h1 className="title col-span-12 md:col-span-8 text-step-6 md:text-step-8">
+            database
           </h1>
-          <p className="text-[13.5px] text-muted mb-8">
+          <p className="data m-0 col-span-12 md:col-span-4 md:text-right">
             {objects.length} objetos · {concepts.length} conceitos
           </p>
-          <AcervoClient objects={objects} concepts={concepts} />
-        </div>
-      </div>
+        </header>
+
+        <AcervoClient objects={objects} concepts={concepts} />
+      </main>
 
       <SiteFooter />
     </div>

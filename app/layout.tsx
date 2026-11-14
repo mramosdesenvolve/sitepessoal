@@ -1,13 +1,27 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Archivo, IBM_Plex_Mono, Jost } from "next/font/google";
 import "./globals.css";
 
-// Uma família só, em pesos variados — ecoa a proposta de onur.design (uma
-// grotesca, sem serifado, peso fazendo o trabalho de hierarquia).
-const inter = Inter({
+// ID Pessoal: uma família, duas vozes. Jost (cartaz, herdeira da Futura),
+// Archivo (títulos e corpo) e IBM Plex Mono (dados). Archivo e Jost são
+// variáveis — o peso 650 do corpo existe de verdade.
+const poster = Jost({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  variable: "--font-jost",
+  display: "swap",
+});
+
+const sans = Archivo({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
   display: "swap",
 });
 
@@ -17,13 +31,29 @@ export const metadata: Metadata = {
     "Investigo como a educação e a tecnologia podem produzir novas formas de imaginar o mundo.",
 };
 
+export const viewport: Viewport = {
+  themeColor: "#F2F1EE",
+};
+
+// Aplica o tema salvo antes da primeira pintura (o padrão, claro, já vem
+// no HTML do servidor — este script só troca se o visitante escolheu escuro).
+const themeInitScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={inter.variable}>
+    <html
+      lang="pt-BR"
+      data-theme="light"
+      className={`${poster.variable} ${sans.variable} ${mono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-screen font-sans text-ink bg-paper">
         {children}
       </body>

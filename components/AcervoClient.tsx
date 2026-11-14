@@ -10,10 +10,9 @@ interface AcervoClientProps {
 }
 
 /**
- * Índice/lista de todo o acervo, com busca e filtro por tipo — fallback
- * de `/database` para telas pequenas, onde o grafo de força não funciona
- * bem ao toque (ver page.tsx). Ordenado por ano, igual à ordem de
- * getObjects().
+ * Índice de todo o acervo, com busca e filtro por tipo. Linhas separadas por
+ * fio cinza, sem cartões; tipo e ano em IBM Plex Mono (são dados). Ordenado
+ * por ano, igual à ordem de getObjects().
  */
 export function AcervoClient({ objects, concepts }: AcervoClientProps) {
   const [activeType, setActiveType] = useState<ObjectType | "todos">("todos");
@@ -28,8 +27,8 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
 
   const typesPresent = useMemo(
     () =>
-      Array.from(countByType.keys()).sort((a, b) =>
-        (countByType.get(b) ?? 0) - (countByType.get(a) ?? 0)
+      Array.from(countByType.keys()).sort(
+        (a, b) => (countByType.get(b) ?? 0) - (countByType.get(a) ?? 0)
       ),
     [countByType]
   );
@@ -54,75 +53,86 @@ export function AcervoClient({ objects, concepts }: AcervoClientProps) {
 
   return (
     <div>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Buscar por termo, autor, conceito..."
-        aria-label="Buscar no database"
-        className="w-full border-b border-line bg-transparent py-2.5 text-[15px] text-ink placeholder:text-muted-2 focus:outline-none focus:border-ink mb-5"
-      />
+      <div className="grid-12 gap-y-6 border-t border-rule pt-6 pb-6">
+        <div className="col-span-12 md:col-span-4">
+          <label htmlFor="busca" className="strong mb-2 block">
+            buscar
+          </label>
+          <input
+            id="busca"
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="termo, autor, conceito"
+            className="field"
+          />
+        </div>
 
-      <div
-        className="flex flex-wrap gap-x-5 gap-y-2 pb-6 mb-2 border-b border-line"
-        role="group"
-        aria-label="Filtrar por tipo de objeto"
-      >
-        <button
-          type="button"
-          onClick={() => setActiveType("todos")}
-          className={`text-[13px] transition-colors ${
-            activeType === "todos" ? "text-ink font-medium" : "text-muted hover:text-ink"
-          }`}
+        <div
+          className="col-span-12 md:col-span-8 flex flex-wrap content-end gap-2"
+          role="group"
+          aria-label="Filtrar por tipo de objeto"
         >
-          Todos <span className="text-muted-2">({objects.length})</span>
-        </button>
-        {typesPresent.map((type) => (
           <button
-            key={type}
             type="button"
-            onClick={() => setActiveType(type)}
-            className={`text-[13px] transition-colors ${
-              activeType === type ? "text-ink font-medium" : "text-muted hover:text-ink"
-            }`}
+            onClick={() => setActiveType("todos")}
+            aria-pressed={activeType === "todos"}
+            className="pill"
           >
-            {type} <span className="text-muted-2">({countByType.get(type)})</span>
+            todos <span className="font-mono font-normal">{objects.length}</span>
           </button>
-        ))}
+          {typesPresent.map((type) => (
+            <button
+              key={type}
+              type="button"
+              onClick={() => setActiveType(type)}
+              aria-pressed={activeType === type}
+              className="pill"
+            >
+              {type}{" "}
+              <span className="font-mono font-normal">{countByType.get(type)}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
-      <p className="text-[12.5px] text-muted-2 mb-2">
+      <p className="data m-0 border-t border-rule py-4" aria-live="polite">
         {filtered.length} item{filtered.length === 1 ? "" : "s"}
       </p>
 
-      <ul className="divide-y divide-line">
+      <ul className="m-0 list-none p-0">
         {filtered.map((o) => (
-          <li key={o.id} className="py-6">
-            <Link href={`/objeto/${o.id}`} className="group block">
-              <div className="flex flex-wrap items-center gap-3 mb-2 text-[12px] text-muted">
-                <span>{o.type}</span>
-                <span className="text-muted-2">·</span>
-                <span>{o.year}</span>
-              </div>
-              <h2 className="text-[19px] font-semibold leading-snug text-ink group-hover:text-accent transition-colors mb-1.5">
-                {o.title}
-              </h2>
-              <p className="text-[14px] text-muted leading-relaxed max-w-[640px]">
-                {o.shortDescription}
-                {o.sourceName && (
-                  <span className="text-muted-2"> — publicado no {o.sourceName}</span>
-                )}
+          <li key={o.id} className="border-t border-hair">
+            <Link
+              href={`/objeto/${o.id}`}
+              className="group grid-12 gap-y-2 py-8 text-ink no-underline hover:text-ink"
+            >
+              <p className="data m-0 col-span-12 md:col-span-2">
+                {o.type}
+                <br />
+                {o.year}
               </p>
+              <div className="col-span-12 md:col-span-7">
+                <h2 className="m-0 mb-2 text-step-2 font-normal leading-[1.15] tracking-[-0.02em] group-hover:text-action-text group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">
+                  {o.title}
+                </h2>
+                <p className="m-0 max-w-[62ch] text-ink-2">
+                  {o.shortDescription}
+                  {o.sourceName && (
+                    <span className="text-ink-3"> — publicado no {o.sourceName}</span>
+                  )}
+                </p>
+              </div>
               {o.concepts.length > 0 && (
-                <p className="mt-2 text-[12px] text-accent">
-                  {o.concepts.map((cid) => conceptLabel.get(cid) ?? cid).join(" · ")}
+                <p className="m-0 col-span-12 text-ink-3 md:col-span-3">
+                  {o.concepts.map((cid) => conceptLabel.get(cid) ?? cid).join(" / ")}
                 </p>
               )}
             </Link>
           </li>
         ))}
         {filtered.length === 0 && (
-          <li className="py-6 text-sm text-muted">
+          <li className="border-t border-hair py-8 text-ink-2">
             Nenhum objeto encontrado para este filtro.
           </li>
         )}

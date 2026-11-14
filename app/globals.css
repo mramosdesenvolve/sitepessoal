@@ -2,47 +2,377 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * ID Pessoal — Design System v0.3 (ver readme do pacote original).
+ * Preto, papel, vermelho. Sem sombras, só dois raios (0 e 999), nada abaixo
+ * de 16px. Tokens copiados de tokens/*.css do pacote, com um ajuste: no
+ * original, as cores de texto (--text-1..3) tinham o mesmo nome da escala
+ * de tamanhos (--text-0..12) — a escala vencia e as cores viravam inválidas.
+ * Aqui as cores de texto são --fg-1..3 e a escala de tamanho mantém --text-N.
+ */
 @layer base {
-  :root {
-    /* triplets RGB (sem "rgb()") para suportar o modificador de opacidade
-       do Tailwind — ver tailwind.config.ts. Identidade única, só clara —
-       ver README/histórico de conversa: direção tipográfica inspirada em
-       onur.design (grotesca única, títulos grandes, divisórias finas em
-       vez de cartões, paleta quase monocromática com um único acento). */
-    --color-paper: 255 255 255; /* #ffffff */
-    --color-ink: 10 10 10; /* #0a0a0a — quase-preto, não #000 puro */
-    --color-accent: 181 101 29; /* #B5651D — ocre/terracota, único acento de cor */
-    /* muted/muted-2/line são o próprio --color-ink em opacidades diferentes
-       — ver tailwind.config.ts, não precisam de variável própria */
-  }
+  :root,
+  [data-theme="light"] {
+    --black: #0b0b0b;
+    --white: #ffffff;
+    --paper: #f2f1ee;
+    --gray-300: #d6d5d1;
+    --gray-500: #6b6a66;
+    --gray-700: #474643;
+    --red: #e2231a; /* sinal: preenchimentos e tipo ≥ 24px */
+    --red-deep: #c4161c; /* vermelho para texto pequeno sobre papel */
+    --red-press: #a81218;
 
-  html {
-    background-color: rgb(var(--color-paper));
+    --bg: var(--paper);
+    --surface: var(--white);
+    --inverse-bg: var(--black);
+    --inverse-fg: var(--white);
+    --rule: var(--black); /* fios estruturais, 1px */
+    --border: var(--gray-300); /* divisões discretas */
+    --fg-1: var(--black); /* 17.4:1 */
+    --fg-2: var(--gray-700); /* 8.5:1 */
+    --fg-3: var(--gray-500); /* 4.9:1 — menor permitido */
+    --action: var(--red); /* branco sobre: 4.7:1 */
+    --action-hover: var(--red-deep);
+    --action-press: var(--red-press);
+    --action-text: var(--red-deep); /* 5.3:1 sobre papel */
+    --on-action: var(--white);
+    --focus-ring: var(--red);
+
+    --success: #1f6b3a;
+    --warning: #8a5300;
+    --error: #b0121a;
+    --info: #1f4e8a;
+
     color-scheme: light;
   }
 
-  body {
-    color: rgb(var(--color-ink));
-    background-color: rgb(var(--color-paper));
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+  /* Modo escuro: inversão, não outra paleta. O principal é o claro
+     (app/layout.tsx grava data-theme="light" no <html>); o escuro é opcional,
+     pelo alternador do rodapé. */
+  [data-theme="dark"] {
+    --bg: #0b0b0b;
+    --surface: #161616;
+    --inverse-bg: #f2f1ee;
+    --inverse-fg: #0b0b0b;
+    --rule: #f2f1ee;
+    --border: #333331;
+    --fg-1: #ffffff;
+    --fg-2: #b9b8b3;
+    --fg-3: #8e8d89;
+    --action: #e2231a;
+    --action-hover: #f23a2f;
+    --action-press: #c4161c;
+    --action-text: #ff5a4e;
+    --on-action: #ffffff;
+    --focus-ring: #ff5a4e;
+    --success: #5fc488;
+    --warning: #f0b04a;
+    --error: #ff6b63;
+    --info: #7fb0f0;
+    color-scheme: dark;
   }
 
-  /* Foco de teclado visível em todos os elementos interativos */
+  :root {
+    /* Fontes: as famílias vêm do next/font (ver app/layout.tsx) */
+    --font-poster: var(--font-jost), "Futura", "Century Gothic", sans-serif;
+    --font-sans: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+
+    /* Escala 16 × 1.25. Nada abaixo de 16px. */
+    --text-0: 1rem;
+    --text-1: 1.25rem;
+    --text-2: 1.5625rem;
+    --text-3: 1.9531rem;
+    --text-4: 2.4414rem;
+    --text-5: 3.0518rem;
+    --text-6: 3.8147rem;
+    --text-7: 4.7684rem;
+    --text-8: 5.9605rem;
+    --text-9: 7.4506rem;
+    --text-10: 9.3132rem;
+    --text-12: 14.5519rem;
+
+    --poster-weight: 700;
+    --poster-leading: 0.9;
+    --poster-tracking: -0.02em;
+    --title-weight: 400;
+    --title-leading: 1.04;
+    --title-tracking: -0.025em;
+    --body-weight: 400;
+    --body-leading: 1.5;
+    --strong-weight: 650;
+    --measure: 62ch;
+
+    /* Espaço: base 4, grade de 12 colunas, calha 24, margem 48 */
+    --radius-none: 0;
+    --radius-full: 999px;
+    --grid-gutter: 24px;
+    --grid-margin: clamp(24px, 4vw, 48px);
+    --container: 1280px;
+
+    /* Sem sombras. Profundidade = inversão (preto ↔ papel) e fio. */
+    --shadow-focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--focus-ring);
+
+    /* Movimento mecânico, preciso */
+    --dur-instant: 100ms;
+    --dur-quick: 180ms;
+    --dur-base: 300ms;
+    --dur-slow: 600ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --dur-instant: 0ms;
+      --dur-quick: 0ms;
+      --dur-base: 0ms;
+      --dur-slow: 0ms;
+    }
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--bg);
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg-1);
+    font-family: var(--font-sans);
+    font-size: var(--text-0);
+    line-height: var(--body-leading);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: var(--action-text);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  a:hover {
+    color: var(--action-hover);
+  }
+
   :focus-visible {
-    outline: 2px solid rgb(var(--color-accent));
-    outline-offset: 2px;
+    outline: none;
+    box-shadow: var(--shadow-focus);
   }
 
   ::selection {
-    background-color: rgb(var(--color-accent) / 0.25);
+    background: var(--red);
+    color: var(--white);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+@layer components {
+  /* Contêiner de 12 colunas: máx. 1280, margem 48, calha 24 */
+  .wrap {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--grid-margin);
+  }
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+  }
+
+  /* Voz 1 · cartaz (concreta): Jost 700, caixa-baixa, palavra como objeto.
+     A letra-chave vem em vermelho (.k). */
+  .poster {
+    font-family: var(--font-poster);
+    font-weight: var(--poster-weight);
+    text-transform: lowercase;
+    line-height: var(--poster-leading);
+    letter-spacing: var(--poster-tracking);
+    margin: 0;
+  }
+  .poster .k {
+    color: var(--red);
+  }
+
+  /* Voz 2 · título editorial: Archivo 400, vermelho */
+  .title {
+    font-family: var(--font-sans);
+    font-weight: var(--title-weight);
+    line-height: var(--title-leading);
+    letter-spacing: var(--title-tracking);
+    color: var(--red);
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  /* título que herda a cor do contexto (ex.: linhas invertidas no hover) */
+  .title-ink {
+    color: inherit;
+  }
+
+  .strong {
+    font-weight: var(--strong-weight);
+  }
+
+  /* Dados e fichas técnicas: IBM Plex Mono, 16px */
+  .data {
+    font-family: var(--font-mono);
+    font-size: var(--text-0);
+    line-height: 1.4;
+    color: var(--fg-3);
+  }
+
+  /* Fio estrutural (preto, 1px) e fio discreto (cinza) */
+  .rule-top {
+    border-top: 1px solid var(--rule);
+  }
+  .hair-top {
+    border-top: 1px solid var(--border);
+  }
+
+  /* Pílula: botões e rótulos de ação, caixa-baixa. Hover inverte. */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 22px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--fg-1);
+    font-family: var(--font-sans);
+    font-size: var(--text-0);
+    font-weight: var(--strong-weight);
+    line-height: 1.2;
+    text-transform: lowercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background var(--dur-quick) var(--ease-out),
+      color var(--dur-quick) var(--ease-out);
+  }
+  .pill:hover,
+  .pill[aria-pressed="true"] {
+    background: var(--inverse-bg);
+    color: var(--inverse-fg);
+  }
+  .pill-signal {
+    background: var(--action);
+    border-color: var(--action);
+    color: var(--on-action);
+  }
+  .pill-signal:hover {
+    background: var(--action-hover);
+    border-color: var(--action-hover);
+    color: var(--on-action);
+  }
+  .pill-signal:active {
+    background: var(--action-press);
+    border-color: var(--action-press);
+  }
+  /* Pílula pequena, só rótulo (tags de tipo, ano) — não é clicável */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 14px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: var(--text-0);
+    line-height: 1.5;
+    color: var(--fg-1);
+  }
+
+  /* Campo de formulário: retângulo reto, fio de 1px */
+  .field {
+    width: 100%;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-none);
+    background: var(--surface);
+    color: var(--fg-1);
+    padding: 10px 14px;
+    font-family: var(--font-sans);
+    font-size: var(--text-0);
+    line-height: 1.5;
+  }
+
+  /* Tratamento fotográfico: P&B de alto contraste; a cor volta no hover */
+  .img-bw {
+    filter: grayscale(1) contrast(1.08);
+    transition: filter var(--dur-base) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .img-bw:hover {
+      filter: none;
+    }
+  }
+  /* no escuro, capturas de interface (quase todas claras) baixam um pouco */
+  [data-theme="dark"] .img-bw {
+    filter: grayscale(1) contrast(1.05) brightness(0.85);
+  }
+  @media (hover: hover) {
+    [data-theme="dark"] .img-bw:hover {
+      filter: none;
+    }
+  }
+
+  /* Texto corrido (corpo dos objetos, MDX): 20px, coluna estreita.
+     :where() mantém a especificidade baixa — utilitários do Tailwind
+     dentro do MDX ainda vencem. */
+  .prose-id {
+    font-size: var(--text-1);
+    line-height: 1.55;
+    max-width: var(--measure);
+  }
+  .prose-id :where(p) {
+    margin: 0 0 1.4em;
+  }
+  .prose-id :where(h2) {
+    margin: 2.6em 0 0.8em;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: var(--text-2);
+    font-weight: var(--strong-weight);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+  .prose-id :where(h2:first-child) {
+    margin-top: 0;
+  }
+  .prose-id :where(h3) {
+    margin: 2em 0 0.6em;
+    font-size: var(--text-1);
+    font-weight: var(--strong-weight);
+  }
+  .prose-id :where(ul, ol) {
+    margin: 0 0 1.4em;
+    padding-left: 1.25em;
+  }
+  .prose-id :where(li) {
+    margin-bottom: 0.5em;
+  }
+  .prose-id :where(strong) {
+    font-weight: var(--strong-weight);
+  }
+  .prose-id :where(blockquote) {
+    margin: 1.8em 0;
+    padding-left: 1.1em;
+    border-left: 4px solid var(--rule); /* fio de 4px */
+  }
+  .prose-id :where(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+  .prose-id :where(img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Fio de 4px: marca estados (sucesso, erro...) sempre com texto */
+  .state {
+    border-top: 4px solid currentColor;
+    padding-top: 8px;
+    font-weight: var(--strong-weight);
   }
 }

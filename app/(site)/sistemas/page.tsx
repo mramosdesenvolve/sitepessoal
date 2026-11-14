@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Arrow } from "@/components/brand/Arrow";
 import { getConcepts, getObjects } from "@/lib/data";
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 // objetos vêm do banco e podem ser criados a qualquer momento via /admin
 export const dynamic = "force-dynamic";
 
-/** Primeira captura de tela de cada sistema, usada como thumbnail do card
+/** Primeira captura de tela de cada sistema, usada como imagem da linha
  * — os arquivos vivem em public/sistemas/<id>/ mas o nome de cada arquivo
  * é específico do conteúdo (ver content/<id>.mdx para a galeria completa). */
 const THUMBNAILS: Record<string, string> = {
@@ -33,89 +34,75 @@ export default async function SistemasPage() {
     <div className="min-h-screen flex flex-col">
       <SiteNav active="sistemas" />
 
-      <div className="flex-1 px-[6vw] py-[7vh]">
-        <div className="max-w-[900px] mx-auto">
-          <h1 className="text-[clamp(28px,3.6vw,42px)] font-semibold tracking-[-0.015em] mb-3">
-            Portfólio de Desenvolvimento
+      <main className="flex-1 wrap pt-16 md:pt-24">
+        <header className="grid-12 gap-y-8 pb-16">
+          <h1 className="title col-span-12 md:col-span-10 text-step-5 md:text-step-7">
+            portfólio de desenvolvimento
           </h1>
-          <p className="text-[14.5px] text-muted max-w-[64ch] mb-12">
+          <p className="m-0 col-span-12 md:col-span-5 text-step-1 leading-[1.35] text-ink-2">
             Plataformas e aplicações web que desenvolvi do zero — arquitetura,
             banco de dados, deploy e operação contínua — para organizações
             educacionais reais. Não são protótipos: estão em uso diário.
           </p>
+        </header>
 
-          {sistemas.map((sistema, i) => {
+        <ul className="m-0 list-none p-0">
+          {sistemas.map((sistema) => {
             const objectConcepts = sistema.concepts
               .map((cid) => conceptLabel.get(cid) ?? cid)
               .slice(0, 3);
             const thumbnail = THUMBNAILS[sistema.id];
 
             return (
-              <div
+              <li
                 key={sistema.id}
-                className={`grid md:grid-cols-2 gap-8 md:gap-12 items-center py-12 ${
-                  i > 0 ? "border-t border-line" : ""
-                }`}
+                className="grid-12 items-start gap-y-8 border-t border-rule py-12"
               >
+                <div className="col-span-12 md:col-span-4">
+                  <p className="data m-0 mb-4">
+                    {sistema.year} · em produção
+                  </p>
+                  <Link href={`/objeto/${sistema.id}`} className="text-ink no-underline hover:text-action-text">
+                    <h2 className="m-0 mb-4 text-step-3 font-normal leading-[1.1] tracking-[-0.025em]">
+                      {sistema.title}
+                    </h2>
+                  </Link>
+                  <p className="m-0 mb-4 text-ink-2">{sistema.shortDescription}</p>
+                  {objectConcepts.length > 0 && (
+                    <p className="m-0 mb-8 text-ink-3">
+                      {objectConcepts.join(" / ")}
+                    </p>
+                  )}
+                  <Link href={`/objeto/${sistema.id}`} className="pill">
+                    ver detalhes
+                    <Arrow dir="right" />
+                  </Link>
+                </div>
+
                 {thumbnail && (
                   <Link
                     href={`/objeto/${sistema.id}`}
-                    className={`block relative aspect-video overflow-hidden bg-paper border border-line ${
-                      i % 2 === 1 ? "md:order-2" : ""
-                    }`}
+                    aria-label={`Capturas de tela de ${sistema.title}`}
+                    className="relative col-span-12 md:col-span-7 md:col-start-6 block aspect-video overflow-hidden border border-hair bg-surface"
                   >
                     <Image
                       src={thumbnail}
                       alt=""
                       fill
-                      sizes="(min-width: 768px) 45vw, 100vw"
-                      className="object-cover object-top"
+                      sizes="(min-width: 768px) 58vw, 100vw"
+                      className="img-bw object-cover object-top"
                     />
                   </Link>
                 )}
-
-                <div>
-                  <div className="flex items-center gap-2 mb-3 text-[11px] uppercase tracking-wide text-muted">
-                    <span className="inline-flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#2e9e5b]" />
-                      em produção
-                    </span>
-                    <span className="text-muted-2">·</span>
-                    <span>{sistema.year}</span>
-                  </div>
-
-                  <Link href={`/objeto/${sistema.id}`} className="no-underline">
-                    <h2 className="text-[24px] font-semibold leading-snug text-ink hover:text-accent transition-colors mb-2">
-                      {sistema.title}
-                    </h2>
-                  </Link>
-
-                  <p className="text-[14px] text-muted leading-relaxed mb-3">
-                    {sistema.shortDescription}
-                  </p>
-
-                  {objectConcepts.length > 0 && (
-                    <p className="text-[12px] text-accent mb-4">
-                      {objectConcepts.join(" · ")}
-                    </p>
-                  )}
-
-                  <Link
-                    href={`/objeto/${sistema.id}`}
-                    className="text-[13px] text-ink hover:text-accent no-underline border-b border-line"
-                  >
-                    Ver detalhes →
-                  </Link>
-                </div>
-              </div>
+              </li>
             );
           })}
+        </ul>
 
-          {sistemas.length === 0 && (
-            <p className="text-sm text-muted">Nenhum sistema cadastrado ainda.</p>
-          )}
-        </div>
-      </div>
+        {sistemas.length === 0 && (
+          <p className="text-ink-2">Nenhum sistema cadastrado ainda.</p>
+        )}
+      </main>
 
       <SiteFooter />
     </div>

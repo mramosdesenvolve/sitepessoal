@@ -43,17 +43,17 @@ export function ShareButton({ title, summary, author = "Marcos Ramos" }: ShareBu
     <button
       type="button"
       onClick={handleShare}
-      className="group inline-flex items-center gap-1.5 border border-line px-3 py-1.5 text-[11.5px] text-muted hover:border-accent hover:text-accent transition-colors"
+      className="pill"
     >
       <svg
-        width="12"
-        height="12"
+        width="16"
+        height="16"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
         aria-hidden="true"
       >
         <path d="M12 3v12" />
@@ -61,7 +61,7 @@ export function ShareButton({ title, summary, author = "Marcos Ramos" }: ShareBu
         <path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" />
       </svg>
       {status === "copied"
-        ? "copiado ✓"
+        ? "link copiado"
         : status === "error"
           ? "não foi possível copiar"
           : "compartilhar"}

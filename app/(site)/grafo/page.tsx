@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 // objetos vêm do banco e podem ser criados a qualquer momento via /admin
 export const dynamic = "force-dynamic";
 
+// Página guardada para uso futuro — funcional, mas fora da navegação.
 export default async function GrafoPage() {
   const [objects, concepts, links] = await Promise.all([
     getObjects(),
@@ -23,15 +24,11 @@ export default async function GrafoPage() {
     <div className="h-screen flex flex-col">
       <SiteNav active="grafo" />
 
-      <div className="flex items-center gap-2.5 py-2.5 px-[6vw] border-b border-line text-[12px] text-muted shrink-0">
-        <span>{concepts.length} conceitos</span>
-        <span className="text-muted-2">·</span>
-        <span className="hidden sm:inline">hover para destacar</span>
-        <Link
-          href="/database"
-          className="ml-auto text-ink hover:text-accent no-underline border-b border-line"
-        >
-          ← ver como lista
+      <div className="wrap flex shrink-0 items-center gap-4 border-b border-hair py-3 text-ink-2">
+        <span className="data">{concepts.length} conceitos</span>
+        <span className="hidden sm:inline">passe o mouse para destacar</span>
+        <Link href="/database" className="ml-auto text-ink hover:text-action-text">
+          ver como lista
         </Link>
       </div>
 
@@ -39,19 +36,16 @@ export default async function GrafoPage() {
           sobrepostos, nós pequenos demais para tocar) — em vez de
           renderizar o canvas quebrado, mostramos só o convite para a
           lista, que é a experiência real do /database em telas pequenas. */}
-      <div className="sm:hidden flex-1 flex flex-col items-center justify-center gap-4 px-8 text-center">
-        <p className="text-muted text-[13px] max-w-[38ch]">
-          Grafo funciona melhor com mouse — use a lista no celular
+      <div className="flex flex-1 flex-col items-center justify-center gap-6 px-8 text-center sm:hidden">
+        <p className="m-0 max-w-[38ch] text-ink-2">
+          O grafo funciona melhor com mouse — use a lista no celular.
         </p>
-        <Link
-          href="/database"
-          className="border border-line px-5 py-2 text-sm no-underline text-ink hover:border-ink transition-colors"
-        >
-          Ver database como lista →
+        <Link href="/database" className="pill">
+          ver o database como lista
         </Link>
       </div>
 
-      <div className="hidden sm:flex flex-1 min-h-0">
+      <div className="hidden min-h-0 flex-1 sm:flex">
         <AcervoGraph concepts={concepts} links={links} objects={objects} />
       </div>
     </div>

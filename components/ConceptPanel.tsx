@@ -33,42 +33,38 @@ export function ConceptPanel({ concepts, objects }: ConceptPanelProps) {
   return (
     <aside
       onClick={(e) => e.stopPropagation()}
-      className="h-full overflow-y-auto border-l border-line bg-paper px-6 py-6"
+      className="h-full overflow-y-auto border-l border-rule bg-surface px-6 py-6"
       aria-label={`Referências do conceito ${concept.label}`}
     >
       <div className="flex items-start justify-between gap-3">
-        <h2 ref={headingRef} tabIndex={-1} className="text-lg font-semibold m-0">
+        <h2 ref={headingRef} tabIndex={-1} className="title m-0 text-step-3">
           {concept.label}
         </h2>
         <button
           type="button"
           onClick={() => setSelectedConceptId(null)}
-          aria-label="Fechar painel"
-          className="text-muted hover:text-ink text-lg leading-none shrink-0"
+          className="pill shrink-0"
         >
-          ×
+          fechar
         </button>
       </div>
       {concept.description && (
-        <p className="mt-2 text-[13px] text-muted leading-relaxed">{concept.description}</p>
+        <p className="mb-0 mt-3 text-ink-2">{concept.description}</p>
       )}
 
       <div className="mt-6">
-        {conceptObjects.map((o, i) => (
-          <div key={o.id} className={`py-3 ${i > 0 ? "border-t border-line" : ""}`}>
-            <p className="text-[11px] text-muted-2 m-0 mb-1">
+        {conceptObjects.map((o) => (
+          <div key={o.id} className="border-t border-hair py-3">
+            <p className="data m-0 mb-1">
               {o.type} · {o.year}
             </p>
-            <Link
-              href={`/objeto/${o.id}`}
-              className="text-[13.5px] text-ink hover:text-accent no-underline"
-            >
+            <Link href={`/objeto/${o.id}`} className="text-ink no-underline hover:text-action-text">
               {o.title}
             </Link>
           </div>
         ))}
         {conceptObjects.length === 0 && (
-          <p className="text-sm text-muted border-t border-line pt-3">
+          <p className="border-t border-hair pt-3 text-ink-2">
             Nenhum objeto deste conceito ainda.
           </p>
         )}

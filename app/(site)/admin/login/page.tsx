@@ -14,19 +14,17 @@ export default function AdminLoginPage({
     <div className="min-h-screen flex flex-col">
       <SiteNav active={null} />
 
-      <div className="flex-1 flex items-center justify-center px-6">
-        <div className="w-full max-w-sm">
-          <h1 className="text-xl font-semibold mb-1">
-            Acesso do administrador
-          </h1>
-          <p className="text-muted text-[13px] mb-6">
+      <main className="flex-1 wrap grid-12 items-center py-16">
+        <div className="col-span-12 md:col-span-5 md:col-start-4">
+          <h1 className="title mb-2 text-step-5">acesso</h1>
+          <p className="m-0 mb-8 text-ink-2">
             Entre com a senha para publicar conteúdo.
           </p>
 
-          <form action={login} className="space-y-4">
+          <form action={login} className="flex flex-col gap-6">
             <div>
-              <label htmlFor="password" className="block text-xs text-muted mb-1.5">
-                Senha
+              <label htmlFor="password" className="strong mb-2 block">
+                senha
               </label>
               <input
                 id="password"
@@ -34,25 +32,22 @@ export default function AdminLoginPage({
                 type="password"
                 required
                 autoFocus
-                className="w-full border border-line bg-paper px-3 py-2 text-sm text-ink focus:border-ink focus:outline-none"
+                className="field"
               />
             </div>
 
             {searchParams.error && (
-              <p role="alert" className="text-xs text-red-700">
+              <p role="alert" className="state m-0 text-error">
                 Senha incorreta.
               </p>
             )}
 
-            <button
-              type="submit"
-              className="w-full border border-ink bg-ink text-paper py-2 text-sm hover:bg-ink/85 transition-colors"
-            >
-              Entrar
+            <button type="submit" className="pill pill-signal self-start">
+              entrar
             </button>
           </form>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

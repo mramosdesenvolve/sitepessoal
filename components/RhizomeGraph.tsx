@@ -29,7 +29,7 @@ const ForceGraph2D = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-full items-center justify-center text-sm text-muted">
+      <div className="flex h-full items-center justify-center text-ink-3">
         tecendo o grafo…
       </div>
     ),
@@ -56,6 +56,36 @@ function driftForce(strength: number) {
     nodes = ns;
   };
   return force;
+}
+
+/** O canvas não lê variáveis CSS: resolve a paleta do tema atual e reage à
+ * troca de tema (data-theme em <html>). */
+function useThemePalette(): GraphPalette {
+  const [palette, setPalette] = useState<GraphPalette>(GRAPH_PALETTE);
+  useEffect(() => {
+    function read() {
+      const cs = getComputedStyle(document.documentElement);
+      const v = (name: string, fallback: string) =>
+        cs.getPropertyValue(name).trim() || fallback;
+      const ink = v("--fg-1", GRAPH_PALETTE.ink);
+      setPalette({
+        paper: v("--bg", GRAPH_PALETTE.paper),
+        ink,
+        accent: v("--red", GRAPH_PALETTE.accent),
+        muted: v("--fg-3", GRAPH_PALETTE.muted),
+        line: v("--fg-3", GRAPH_PALETTE.line),
+        lineDim: v("--border", GRAPH_PALETTE.lineDim),
+      });
+    }
+    read();
+    const obs = new MutationObserver(read);
+    obs.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+    return () => obs.disconnect();
+  }, []);
+  return palette;
 }
 
 interface RhizomeGraphProps {
@@ -154,7 +184,8 @@ export function RhizomeGraph({
 
   const selectedConceptId = useAppStore((s) => s.selectedConceptId);
   const setSelectedConceptId = useAppStore((s) => s.setSelectedConceptId);
-  const palette = paletteOverride ?? GRAPH_PALETTE;
+  const themePalette = useThemePalette();
+  const palette = paletteOverride ?? themePalette;
 
   // o canvas precisa de dimensões explícitas — medimos o contêiner
   useEffect(() => {
@@ -356,7 +387,7 @@ export function RhizomeGraph({
       )}
       {/* tooltip do conceito em hover */}
       {hoveredId && (
-        <div className="pointer-events-none absolute bottom-3 right-3 max-w-xs border border-line bg-paper px-3 py-2 text-xs text-muted">
+        <div className="pointer-events-none absolute bottom-3 right-3 max-w-xs border border-rule bg-surface px-3 py-2 text-ink-2">
           {concepts.find((c) => c.id === hoveredId)?.description}
         </div>
       )}
@@ -378,7 +409,7 @@ export function RhizomeGraph({
           onClick={() =>
             setSelectedConceptId(selectedConceptId === c.id ? null : c.id)
           }
-          className="absolute w-px h-px -m-px overflow-hidden whitespace-nowrap [clip:rect(0,0,0,0)] focus:w-auto focus:h-auto focus:m-0 focus:overflow-visible focus:whitespace-normal focus:[clip:auto] focus:fixed focus:z-50 focus:top-4 focus:left-4 focus:rounded-full focus:border focus:border-accent focus:bg-paper focus:px-3.5 focus:py-1.5 focus:text-sm focus:text-ink"
+          className="absolute w-px h-px -m-px overflow-hidden whitespace-nowrap [clip:rect(0,0,0,0)] focus:w-auto focus:h-auto focus:m-0 focus:overflow-visible focus:whitespace-normal focus:[clip:auto] focus:fixed focus:z-50 focus:top-4 focus:left-4 focus:rounded-full focus:border focus:border-rule focus:bg-surface focus:px-3.5 focus:py-1.5 focus:text-ink"
         >
           {c.label}
         </button>

@@ -12,7 +12,7 @@ export interface GraphPalette {
   line: string;
   /** linha entre nós fora da vizinhança/busca ativa — quase invisível */
   lineDim: string;
-  /** font-family dos rótulos no canvas; default Inter se omitido */
+  /** font-family dos rótulos no canvas; default Archivo se omitido */
   nodeFont?: string;
 }
 
@@ -22,12 +22,12 @@ export interface GraphPalette {
  * um lado, mude o outro também.
  */
 export const GRAPH_PALETTE: GraphPalette = {
-  paper: "#FFFFFF",
-  ink: "#0A0A0A",
-  accent: "#B5651D",
-  muted: "rgba(10, 10, 10, 0.4)",
-  line: "rgba(10, 10, 10, 0.18)",
-  lineDim: "rgba(10, 10, 10, 0.05)",
+  paper: "#F2F1EE",
+  ink: "#0B0B0B",
+  accent: "#E2231A",
+  muted: "#6B6A66",
+  line: "rgba(11, 11, 11, 0.35)",
+  lineDim: "rgba(11, 11, 11, 0.08)",
 };
 
 export interface GraphNodeDatum {
@@ -58,8 +58,8 @@ function nodeRadius(val: number) {
  * depender de zoom) — usado pela força de colisão e pela hit-area. */
 export function nodeChipSize(label: string, val: number) {
   const r = nodeRadius(val);
-  const fontSize = 11;
-  const labelWidth = label.length * fontSize * 0.58;
+  const fontSize = 16;
+  const labelWidth = label.length * fontSize * 0.55;
   const width = r * 2 + 8 + labelWidth;
   const height = Math.max(r * 2, fontSize) + 6;
   return { width, height };
@@ -102,8 +102,8 @@ export function drawConceptNode(
 
   // rótulo à direita do nó — tamanho screen-constant (não encolhe/cresce
   // demais com zoom)
-  const fontSize = Math.max(11 / globalScale, 3.2);
-  ctx.font = `${active ? "600" : "500"} ${fontSize}px ${palette.nodeFont ?? "Inter, ui-sans-serif, sans-serif"}`;
+  const fontSize = Math.max(16 / globalScale, 4.5);
+  ctx.font = `${active ? "650" : "400"} ${fontSize}px ${palette.nodeFont ?? "Archivo, Helvetica, Arial, sans-serif"}`;
   ctx.textBaseline = "middle";
   ctx.textAlign = "left";
   ctx.fillStyle = active ? palette.ink : palette.muted;
