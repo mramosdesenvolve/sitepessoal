@@ -1104,6 +1104,37 @@
     "featured": false
   },
   {
+    "id": "encruzilhadas-do-reencantamento-exu-poetica-roque-ferreira",
+    "title": "Encruzilhadas do reencantamento: Exu como operador teórico na leitura de Puçangas: uma história natural do amor enquanto pássaro, de Roque Ferreira",
+    "type": "paper",
+    "year": 2026,
+    "shortDescription": "Artigo que lê Puçangas, de Roque Ferreira, pela crítica exuística, tomando Exu como operador da indeterminação e da encruzilhada.",
+    "longDescription": "Artigo publicado na *Revista Terceira Margem* (PPG em Ciência da Literatura, UFRJ), v. 30, n. 61, que analisa *Puçangas: uma história natural do amor enquanto pássaro* (2018), de Roque Ferreira, a partir da crítica exuística, gesto interpretativo enraizado na filosofia nagô e nas cosmopercepções afro-indígenas. Inspirada em Muniz Sodré, Leda Maria Martins e Édouard Glissant, a abordagem toma Exu como operador da indeterminação e da encruzilhada. Em diálogo com Pedro Cesarino, Walter Benjamin e Max Weber, o texto mostra como a obra mobiliza oralidade, rezas e encantados como formas de reencantamento do mundo, e conclui que *Puçangas* desestabiliza categorias críticas ocidentais e propõe uma ontologia relacional que amplia os horizontes da teoria literária. O PDF original está disponível para download.",
+    "concepts": [
+      "critica-literaria",
+      "literatura",
+      "religiosidade-afro-brasileira",
+      "afro-diasporas",
+      "oralidade"
+    ],
+    "relatedObjectIds": [
+      "encruzilhada-indeterminacao-e-sentido",
+      "versos-e-versoes-de-exu"
+    ],
+    "links": [
+      {
+        "label": "PDF original",
+        "url": "/documentos/encruzilhadas-do-reencantamento-exu-poetica-roque-ferreira.pdf"
+      },
+      {
+        "label": "DOI",
+        "url": "https://doi.org/10.55702/3m.v30i61.69775"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
     "id": "del-que-al-como-lectura-critica-de-la-forma",
     "title": "Del qué al cómo: para una lectura crítica de la forma literaria",
     "type": "metodologia",
