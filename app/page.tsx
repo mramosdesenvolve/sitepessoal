@@ -61,35 +61,39 @@ export default async function Home() {
           <h1 className="sr-only">Marcos Ramos</h1>
 
           <IntroBio
-            primeiro="Doutor em Letras, certificado em Estudos Afro-Latino-Americanos pela Universidade de Harvard, sou professor e pesquisador"
+            primeiro="Marcos Ramos é Especialista em Educação da Cápsula de Inovação do Senac Rio de Janeiro e consultor"
             resto={
               <div className="texto-corpo">
                 <p>
-                  Meus temas principais são literatura, educação e tecnologia.
-                  Atuo na pós-graduação com pesquisa e orientação de teses, e
+                  Doutor em Letras pela Universidade Federal do Espírito Santo e
+                  certificado em Estudos Afro-Latino-Americanos pela
+                  Universidade de Harvard, é professor e pesquisador. Seus
+                  principais temas são literatura, educação e tecnologia. Atua
+                  na pós-graduação com pesquisa e orientação de teses e,
                   concomitantemente, no desenvolvimento de projetos e
                   consultorias para instituições públicas, privadas e do
                   terceiro setor.
                 </p>
                 <p>
-                  Minha formação atravessa os estudos literários e as ciências
-                  humanas e sociais. Minha tese de doutorado,{" "}
-                  <em>O Pacto na Mira do Ofá</em>, investiga os temas como
+                  Sua formação atravessa os estudos literários e as ciências
+                  humanas e sociais. Sua tese de doutorado,{" "}
+                  <em>O Pacto na Mira do Ofá</em>, investiga temas como
                   pensamento social brasileiro, tradição radical negra,
-                  imaginação radical, música e literatura.
-                </p>
-                <p>
-                  Fui professor visitante no Departamento de Literatura da
-                  Universidad Nacional de Colombia entre 2022 e 2025, e
+                  imaginação radical, música e literatura. Foi professor
+                  visitante no Departamento de Literatura da Universidad
+                  Nacional de Colombia entre 2022 e 2025, e esteve como
                   professor convidado em instituições como a Universidad de La
                   Habana (Cuba), a Universidad Andina Simón Bolívar (Equador) e
-                  a Universidade Eduardo Mondlane (Moçambique). Organizo e curo
-                  o Ciclo Afro, iniciativa já em três edições — na Feira
-                  Internacional do Livro de Bogotá (FILBo), na Universidade
-                  Federal do Recôncavo da Bahia (UFRB) e em sua edição inicial
-                  —, articulando ministérios, prefeituras, universidades e
-                  instituições culturais em torno das artes e epistemologias das
-                  diásporas africanas.
+                  a Universidade Eduardo Mondlane (Moçambique). Organiza e cura
+                  o{" "}
+                  <a
+                    href="https://cicloafro.com.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ciclo Afro
+                  </a>
+                  .
                 </p>
               </div>
             }
