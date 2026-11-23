@@ -3,83 +3,77 @@
 @tailwind utilities;
 
 /*
- * ID Pessoal — Design System v0.3 (ver readme do pacote original).
- * Preto, papel, vermelho. Sem sombras, só dois raios (0 e 999), nada abaixo
- * de 16px. Tokens copiados de tokens/*.css do pacote, com um ajuste: no
- * original, as cores de texto (--text-1..3) tinham o mesmo nome da escala
- * de tamanhos (--text-0..12) — a escala vencia e as cores viravam inválidas.
- * Aqui as cores de texto são --fg-1..3 e a escala de tamanho mantém --text-N.
+ * Modelo: darioamodei.com — uma coluna estreita (38,75rem), Newsreader em
+ * 20px/1,6, marfim e ardósia, links sublinhados, nada além de texto. As
+ * variáveis --theme-* e as escalas abaixo são as do site de referência.
+ *
+ * Os nomes antigos (--bg, --fg-1, --red…) ficam como apelidos, só para o
+ * painel /admin e a página /grafo (fora do ar, sem link) seguirem
+ * funcionando com as mesmas cores.
  */
 @layer base {
-  :root,
-  [data-theme="light"] {
-    --black: #0b0b0b;
+  :root {
+    --color-ivory-light: #faf9f5;
+    --color-ivory-medium: #f0eee6;
+    --color-ivory-dark: #e8e6dc;
+    --color-cloud-light: #d1cfc5;
+    --color-cloud-medium: #b0aea5;
+    --color-cloud-dark: #87867f;
+    --color-slate-light: #5e5d59;
+    --color-slate-medium: #3d3d3a;
+    --color-slate-dark: #1f1e1d;
+
+    --theme-background: var(--color-ivory-medium);
+    --theme-text: var(--color-slate-dark);
+    --theme-text-secondary: var(--color-slate-light);
+    --theme-text-link-hover: var(--color-slate-light);
+    --theme-border: var(--color-cloud-light);
+    --theme-input-border: var(--color-cloud-light);
+
+    --font-text: var(--font-newsreader), georgia, serif;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-size-body: 1.25rem;
+    --font-size-h1: 3.1em;
+    --font-size-h2: 1.6em;
+    --font-size-h3: 1.2em;
+    --font-size-paragraph-lg: 1.1em;
+    --font-size-paragraph-sm: 0.9em;
+    --line-height-h1: 1.1;
+    --line-height-heading: 1.2;
+    --line-height-body: 1.6;
+    --max-width-narrow: 38.75rem;
+    --gap-md: 1.25rem;
+    --margin-sm: 1.3em;
+    --margin-md: 2em;
+    --margin-lg: 3em;
+
+    /* apelidos para o admin e o grafo */
+    --bg: var(--theme-background);
+    --surface: var(--color-ivory-light);
+    --fg-1: var(--theme-text);
+    --fg-2: var(--theme-text-secondary);
+    --fg-3: var(--theme-text-secondary);
+    --rule: var(--theme-text);
+    --border: var(--theme-border);
+    --inverse-bg: var(--theme-text);
+    --inverse-fg: var(--theme-background);
+    --red: #b3261e;
     --white: #ffffff;
-    --paper: #f2f1ee;
-    --gray-300: #d6d5d1;
-    --gray-500: #6b6a66;
-    --gray-700: #474643;
-    --red: #e2231a; /* sinal: preenchimentos e tipo ≥ 24px */
-    --red-deep: #c4161c; /* vermelho para texto pequeno sobre papel */
-    --red-press: #a81218;
-
-    --bg: var(--paper);
-    --surface: var(--white);
-    --inverse-bg: var(--black);
-    --inverse-fg: var(--white);
-    --rule: var(--black); /* fios estruturais, 1px */
-    --border: var(--gray-300); /* divisões discretas */
-    --fg-1: var(--black); /* 17.4:1 */
-    --fg-2: var(--gray-700); /* 8.5:1 */
-    --fg-3: var(--gray-500); /* 4.9:1 — menor permitido */
-    --action: var(--red); /* branco sobre: 4.7:1 */
-    --action-hover: var(--red-deep);
-    --action-press: var(--red-press);
-    --action-text: var(--red-deep); /* 5.3:1 sobre papel */
-    --on-action: var(--white);
-    --focus-ring: var(--red);
-
+    --action: var(--theme-text);
+    --action-hover: var(--theme-text-secondary);
+    --action-press: var(--theme-text);
+    --action-text: var(--theme-text);
+    --on-action: var(--theme-background);
+    --focus-ring: var(--theme-text);
     --success: #1f6b3a;
     --warning: #8a5300;
     --error: #b0121a;
     --info: #1f4e8a;
 
-    color-scheme: light;
-  }
-
-  /* Modo escuro: inversão, não outra paleta. O principal é o claro
-     (app/layout.tsx grava data-theme="light" no <html>); o escuro é opcional,
-     pelo alternador do rodapé. */
-  [data-theme="dark"] {
-    --bg: #0b0b0b;
-    --surface: #161616;
-    --inverse-bg: #f2f1ee;
-    --inverse-fg: #0b0b0b;
-    --rule: #f2f1ee;
-    --border: #333331;
-    --fg-1: #ffffff;
-    --fg-2: #b9b8b3;
-    --fg-3: #8e8d89;
-    --action: #e2231a;
-    --action-hover: #f23a2f;
-    --action-press: #c4161c;
-    --action-text: #ff5a4e;
-    --on-action: #ffffff;
-    --focus-ring: #ff5a4e;
-    --success: #5fc488;
-    --warning: #f0b04a;
-    --error: #ff6b63;
-    --info: #7fb0f0;
-    color-scheme: dark;
-  }
-
-  :root {
-    /* Fontes: as famílias vêm do next/font (ver app/layout.tsx) */
-    --font-poster: var(--font-jost), "Futura", "Century Gothic", sans-serif;
-    --font-sans: var(--font-archivo), "Helvetica Neue", Helvetica, Arial, sans-serif;
-    --font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
-
-    /* Escala 16 × 1.25. Nada abaixo de 16px. */
+    /* escala de tipo usada pelo admin (text-step-N) */
     --text-0: 1rem;
     --text-1: 1.25rem;
     --text-2: 1.5625rem;
@@ -92,81 +86,388 @@
     --text-9: 7.4506rem;
     --text-10: 9.3132rem;
     --text-12: 14.5519rem;
-
+    --font-poster: var(--font-text);
+    --font-sans: var(--font-text);
+    --font-mono: ui-monospace, Menlo, monospace;
     --poster-weight: 700;
-    --poster-leading: 0.9;
-    --poster-tracking: -0.02em;
-    --title-weight: 400;
-    --title-leading: 1.04;
-    --title-tracking: -0.025em;
-    --body-weight: 400;
-    --body-leading: 1.5;
-    --strong-weight: 650;
+    --poster-leading: 1.1;
+    --poster-tracking: 0;
+    --title-weight: 600;
+    --title-leading: 1.2;
+    --title-tracking: 0;
+    --strong-weight: 600;
     --measure: 62ch;
-
-    /* Espaço: base 4, grade de 12 colunas, calha 24, margem 48 */
     --radius-none: 0;
     --radius-full: 999px;
     --grid-gutter: 24px;
     --grid-margin: clamp(24px, 4vw, 48px);
     --container: 1280px;
-
-    /* Sem sombras. Profundidade = inversão (preto ↔ papel) e fio. */
     --shadow-focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--focus-ring);
-
-    /* Movimento mecânico, preciso */
     --dur-instant: 100ms;
     --dur-quick: 180ms;
     --dur-base: 300ms;
     --dur-slow: 600ms;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+
+    color-scheme: light;
   }
 
-  @media (prefers-reduced-motion: reduce) {
+  /* sem escolha do leitor, vale o modo do sistema; o seletor escolhe por cima */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-color-mode="light"]) {
+      --theme-background: var(--color-slate-dark);
+      --theme-text: var(--color-ivory-medium);
+      --theme-text-secondary: var(--color-cloud-medium);
+      --theme-text-link-hover: var(--color-cloud-medium);
+      --theme-border: var(--color-slate-light);
+      --theme-input-border: var(--color-slate-medium);
+      --surface: var(--color-slate-medium);
+      --red: #ff8a80;
+      --success: #5fc488;
+      --warning: #f0b04a;
+      --error: #ff6b63;
+      --info: #7fb0f0;
+      color-scheme: dark;
+    }
+  }
+  :root[data-color-mode="dark"] {
+    --theme-background: var(--color-slate-dark);
+    --theme-text: var(--color-ivory-medium);
+    --theme-text-secondary: var(--color-cloud-medium);
+    --theme-text-link-hover: var(--color-cloud-medium);
+    --theme-border: var(--color-slate-light);
+    --theme-input-border: var(--color-slate-medium);
+    --surface: var(--color-slate-medium);
+    --red: #ff8a80;
+    --success: #5fc488;
+    --warning: #f0b04a;
+    --error: #ff6b63;
+    --info: #7fb0f0;
+    color-scheme: dark;
+  }
+
+  @media (max-width: 767px) {
     :root {
-      --dur-instant: 0ms;
-      --dur-quick: 0ms;
-      --dur-base: 0ms;
-      --dur-slow: 0ms;
+      --font-size-h1: 2.4em;
     }
   }
 
   html {
     -webkit-text-size-adjust: 100%;
-    background: var(--bg);
+    height: 100%;
   }
 
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--fg-1);
-    font-family: var(--font-sans);
-    font-size: var(--text-0);
-    line-height: var(--body-leading);
-    -webkit-font-smoothing: antialiased;
+    min-height: 100%;
+    background-color: var(--theme-background);
+    color: var(--theme-text);
+    font-family: var(--font-text);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+    transition:
+      color 0.2s linear,
+      background-color 0.2s linear;
+  }
+
+  p {
+    margin: 0 0 1em;
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-heading);
+    margin: 0 0 0.5em;
+  }
+  ul,
+  ol {
+    margin: 0 0 1em;
+    padding-left: 2.2em;
   }
 
   a {
-    color: var(--action-text);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.2em;
+    color: var(--theme-text);
+    text-underline-offset: 0.1em;
+    text-decoration: underline 0.08em;
+    transition: color 0.2s linear;
   }
   a:hover {
-    color: var(--action-hover);
-  }
-
-  :focus-visible {
-    outline: none;
-    box-shadow: var(--shadow-focus);
+    color: var(--theme-text-link-hover);
   }
 
   ::selection {
-    background: var(--red);
-    color: var(--white);
+    color: inherit;
+    background-color: rgba(0, 100, 255, 0.26);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--theme-text);
+    outline-offset: 2px;
   }
 }
 
+/* A casca do site: a coluna estreita, o cabeçalho e as listas de links */
+@layer components {
+  .page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .page > main {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+  }
+  .coluna {
+    width: 100%;
+    max-width: var(--max-width-narrow);
+    padding-inline: var(--gap-md);
+    margin-inline: auto;
+  }
+  @media (max-width: 991px) {
+    .coluna {
+      width: 80%;
+      max-width: none;
+      padding-inline: 10px;
+    }
+  }
+  @media (max-width: 479px) {
+    .coluna {
+      width: 95%;
+    }
+  }
+
+  .cabecalho {
+    z-index: 5;
+    background-color: var(--theme-background);
+    margin: 15px 0 25px;
+    padding: 15px 0 10px;
+    position: relative;
+    transition:
+      transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
+      background-color 0.2s;
+  }
+  @media (max-width: 991px) {
+    .cabecalho {
+      position: sticky;
+      top: 0;
+    }
+    .cabecalho[data-hidden] {
+      transform: translateY(-5rem);
+    }
+  }
+  .cabecalho-barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cabecalho-nome {
+    font-size: 1.44em;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: flex-end;
+  }
+  .cabecalho-nome:hover {
+    color: var(--theme-text);
+  }
+
+  /* o seletor de modo: 40 × 20, borda de 1px, bolinha de 14px */
+  .modo {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 20px;
+    transform: translateY(-2px);
+  }
+  .modo input {
+    opacity: 0;
+    appearance: none;
+    width: 0;
+    height: 0;
+    margin: 0;
+  }
+  .modo label {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    border: 1px solid var(--color-slate-dark);
+    background-color: var(--color-ivory-light);
+    border-radius: 2rem;
+  }
+  .modo label::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    bottom: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-slate-dark);
+    transition: transform 0.2s;
+  }
+  :root[data-color-mode="dark"] .modo label::before {
+    transform: translate(20px);
+  }
+  .modo input:focus-visible + label {
+    outline: 2px solid var(--theme-text);
+    outline-offset: 2px;
+  }
+
+  .secao {
+    margin-top: var(--margin-sm);
+  }
+  .secao:last-child {
+    margin-bottom: var(--margin-lg);
+  }
+  .secao h2 {
+    font-size: var(--font-size-h3);
+    margin: 0 0 0.7em;
+  }
+  .lista-links {
+    display: flex;
+    flex-flow: column;
+    gap: 0.8em;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lista-links li {
+    margin: 0;
+    padding-left: 1em;
+  }
+  .lista-links li::before {
+    content: "•";
+    display: inline-block;
+    margin-left: -0.7em;
+    margin-right: 0.3em;
+  }
+  .lista-links a {
+    margin-right: 0.25em;
+  }
+
+  .rodape {
+    margin: var(--margin-sm) 0;
+    text-align: center;
+    color: var(--theme-text-secondary);
+    font-size: var(--font-size-paragraph-sm);
+  }
+
+  /* a apresentação: no celular, só o primeiro parágrafo, com "… Mais" */
+  .intro-bio {
+    transition: opacity 0.3s;
+    overflow: hidden;
+  }
+  .intro-reticencias,
+  .intro-mais {
+    display: none;
+  }
+  @media (max-width: 767px) {
+    .intro:not([data-aberta]) .intro-ponto {
+      display: none;
+    }
+    .intro:not([data-aberta]) .intro-bio {
+      opacity: 0;
+      height: 0;
+    }
+    .intro:not([data-aberta]) .intro-reticencias,
+    .intro:not([data-aberta]) .intro-mais {
+      display: inline;
+    }
+  }
+
+  /* a página de texto: título, subtítulo em itálico, data e o corpo */
+  .texto-titulo {
+    font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-h1);
+    text-wrap: balance;
+    margin: 0.6em 0 0.1em;
+  }
+  .texto-subtitulo {
+    font-size: var(--font-size-paragraph-lg);
+    font-style: italic;
+    margin: 0;
+  }
+  .texto-data {
+    color: var(--theme-text-secondary);
+    font-size: var(--font-size-paragraph-sm);
+    margin: 2em 0 1em;
+  }
+  .texto-corpo {
+    text-wrap: pretty;
+  }
+  .texto-corpo > :first-child {
+    margin-top: 0;
+  }
+  .texto-corpo > :last-child {
+    margin-bottom: 0;
+  }
+  .texto-corpo p {
+    margin: 0 0 1em;
+  }
+  .texto-corpo h2,
+  .texto-corpo h3,
+  .texto-corpo h4 {
+    text-wrap: balance;
+    margin-top: 1em;
+  }
+  .texto-corpo ol,
+  .texto-corpo ul {
+    padding-left: 2em;
+  }
+  @media (max-width: 767px) {
+    .texto-corpo ol,
+    .texto-corpo ul {
+      padding-left: 1.5em;
+    }
+    .texto-corpo ul {
+      padding-left: 1.25em;
+    }
+  }
+  .texto-corpo blockquote {
+    border-left: 1px solid var(--theme-border);
+    font-size: 1em;
+    font-style: italic;
+    margin: 2em 0;
+    padding: 0.25em 0 0.1em 1.25em;
+    line-height: 1.5em;
+  }
+  .texto-corpo blockquote p:last-child {
+    margin-bottom: 0;
+  }
+  .texto-corpo img {
+    max-width: 100%;
+    height: auto;
+  }
+  .texto-corpo hr {
+    box-sizing: content-box;
+    border: 0;
+    height: auto;
+  }
+  .texto-corpo hr::after {
+    content: "⁂";
+    display: block;
+    margin: 1em auto;
+    text-align: center;
+    font-family: serif;
+    font-size: 1.5em;
+    font-weight: 200;
+  }
+  .voltar-ao-topo {
+    margin: var(--margin-sm) 0;
+  }
+  .voltar-ao-topo > div {
+    margin-bottom: var(--margin-lg);
+    text-align: center;
+  }
+}
+
+/* Classes do sistema anterior, mantidas só para o /admin e o /grafo */
 @layer components {
   /* Contêiner de 12 colunas: máx. 1280, margem 48, calha 24 */
   .wrap {
@@ -374,196 +675,5 @@
     border-top: 4px solid currentColor;
     padding-top: 8px;
     font-weight: var(--strong-weight);
-  }
-}
-
-/*
- * Movimento. Mecânico e curto, sempre uma entrada só — nada fica em laço.
- * Tudo aqui some com prefers-reduced-motion, e o estado inicial escondido
- * só vale quando há script ([data-js], gravado em app/layout.tsx): sem JS a
- * página aparece inteira, parada.
- */
-@layer components {
-  /* Frase da capa: cada palavra sobe de trás de uma máscara */
-  .hero-w {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: bottom;
-    /* folga para acentos e descendentes não serem cortados pela máscara */
-    padding: 0.12em 0 0.16em;
-    margin: -0.12em 0 -0.16em;
-  }
-  .hero-w > span {
-    display: inline-block;
-  }
-
-  /* Marcas do panorama */
-  .panorama-mark {
-    transform-origin: bottom;
-  }
-
-  /* Barra de leitura: fio de 4px, vermelho, cresce com a rolagem */
-  .leitura-fio {
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 4px;
-    background: var(--red);
-    transform-origin: left;
-    transform: scaleX(var(--progresso, 0));
-    z-index: 30;
-    pointer-events: none;
-  }
-
-  /* Busca em tela cheia */
-  .busca {
-    width: 100vw;
-    height: 100dvh;
-    max-width: none;
-    max-height: none;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: var(--bg);
-    color: var(--fg-1);
-  }
-  .busca::backdrop {
-    background: var(--bg);
-  }
-  .busca-campo {
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: var(--fg-1);
-    caret-color: var(--red);
-    font-size: clamp(2.25rem, 6.5vw, var(--text-7));
-    line-height: 1.05;
-    padding: 0 0 0.12em;
-  }
-  .busca-campo::placeholder {
-    color: var(--border);
-    opacity: 1;
-  }
-  .busca-campo:focus-visible {
-    box-shadow: none;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    main {
-      animation: entrar var(--dur-base) var(--ease-out) both;
-    }
-
-    [data-js] .hero-w > span {
-      transform: translateY(110%);
-      animation: subir var(--dur-slow) var(--ease-out) forwards;
-      animation-delay: calc(var(--i, 0) * 45ms + 120ms);
-    }
-
-    [data-js] .panorama .panorama-mark {
-      transform: scaleY(0);
-    }
-    [data-js] .panorama[data-in] .panorama-mark {
-      animation: erguer var(--dur-base) var(--ease-out) forwards;
-      animation-delay: var(--d, 0ms);
-    }
-
-    .busca[open] {
-      animation: entrar var(--dur-quick) var(--ease-out) both;
-    }
-
-    /* Revelação ligada à rolagem (onde o navegador suporta): o bloco entra
-       conforme atravessa a borda de baixo da tela */
-    @supports (animation-timeline: view()) {
-      .reveal {
-        animation: revelar linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 60%;
-      }
-    }
-  }
-
-  @keyframes entrar {
-    from {
-      opacity: 0;
-    }
-  }
-  @keyframes subir {
-    to {
-      transform: translateY(0);
-    }
-  }
-  @keyframes erguer {
-    to {
-      transform: scaleY(1);
-    }
-  }
-  @keyframes revelar {
-    from {
-      opacity: 0;
-      transform: translateY(28px);
-    }
-  }
-}
-
-/*
- * Papel. O site deixa de ser liso: um grão cobre tudo e "ferve" em saltos,
- * como papel fotografado quadro a quadro; a frase-chave da capa vira uma
- * fita de papel vermelho colada torta. Nada desliza — cada mudança é um
- * salto (steps), a cadência do stop-motion.
- */
-@layer components {
-  body::after {
-    content: "";
-    position: fixed;
-    inset: -120px;
-    z-index: 40;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='n' x='0' y='0' width='100%' height='100%'><feTurbulence type='fractalNoise' baseFrequency='1.35' numOctaves='1' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  2.4 0 0 0 -1.02'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
-    background-size: 420px 420px;
-    opacity: 0.3;
-    mix-blend-mode: multiply;
-  }
-  /* no escuro o grão é claro e mais contido */
-  [data-theme="dark"] body::after {
-    filter: invert(1);
-    mix-blend-mode: screen;
-    opacity: 0.16;
-  }
-
-  .fita {
-    display: inline-block;
-    padding: 0.04em 0.2em 0.1em;
-    margin-left: -0.08em;
-    background: var(--red);
-    color: var(--white);
-    transform: rotate(-1.6deg);
-    /* pontas rasgadas */
-    clip-path: polygon(
-      0.6% 6%, 99.2% 0%, 98.6% 22%, 100% 45%, 98.9% 70%, 99.6% 100%,
-      1.1% 96%, 0% 72%, 1.3% 48%, 0.2% 26%
-    );
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    body::after {
-      animation: grao 0.9s steps(1) infinite;
-    }
-    .fita {
-      animation: fita 1.2s steps(1) infinite;
-    }
-  }
-
-  @keyframes grao {
-    0% { transform: translate(0, 0); }
-    17% { transform: translate(-37px, 23px); }
-    34% { transform: translate(41px, -52px); }
-    51% { transform: translate(-64px, -18px); }
-    68% { transform: translate(22px, 61px); }
-    85% { transform: translate(-13px, -44px); }
-  }
-  @keyframes fita {
-    0% { transform: rotate(-1.6deg) translate(0, 0); }
-    25% { transform: rotate(-1.2deg) translate(1px, -1px); }
-    50% { transform: rotate(-1.9deg) translate(-1px, 0); }
-    75% { transform: rotate(-1.4deg) translate(0, 1px); }
   }
 }

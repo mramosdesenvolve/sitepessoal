@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getConcepts, getObjects } from "@/lib/data";
 import { OBJECT_STATUSES, OBJECT_TYPES } from "@/types";
 import { createObjectAction, logout, syncSubstackAction } from "./actions";
-import { SiteNav } from "@/components/site/SiteNav";
+import { Cabecalho } from "@/components/site/Cabecalho";
 
 export const metadata = {
   title: "Painel do administrador — Marcos Ramos",
@@ -21,7 +21,7 @@ export default async function AdminPage({
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SiteNav active={null} />
+      <Cabecalho />
 
       <main className="flex-1 wrap py-16">
         <div className="grid-12 gap-y-6 pb-12">

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getConcepts, getConceptLinks, getObjects } from "@/lib/data";
 import { AcervoGraph } from "@/components/AcervoGraph";
-import { SiteNav } from "@/components/site/SiteNav";
+import { Cabecalho } from "@/components/site/Cabecalho";
 
 export const metadata: Metadata = {
   title: "Grafo — Marcos Ramos",
@@ -22,7 +22,7 @@ export default async function GrafoPage() {
 
   return (
     <div className="h-screen flex flex-col">
-      <SiteNav active="grafo" />
+      <Cabecalho />
 
       <div className="wrap flex shrink-0 items-center gap-4 border-b border-hair py-3 text-ink-2">
         <span className="data">{concepts.length} conceitos</span>

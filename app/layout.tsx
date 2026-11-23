@@ -1,29 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, IBM_Plex_Mono, Jost } from "next/font/google";
-import { Busca } from "@/components/site/Busca";
+import { Newsreader } from "next/font/google";
 import "./globals.css";
 
-// ID Pessoal: uma família, duas vozes. Jost (cartaz, herdeira da Futura),
-// Archivo (títulos e corpo) e IBM Plex Mono (dados). Archivo e Jost são
-// variáveis — o peso 650 do corpo existe de verdade.
-const poster = Jost({
-  subsets: ["latin"],
-  variable: "--font-jost",
-  display: "swap",
-});
-
-const sans = Archivo({
+// Newsreader, a mesma família do site de referência: serifa de texto, 400 a
+// 700, com o itálico dos subtítulos e das citações.
+const newsreader = Newsreader({
   subsets: ["latin"],
   style: ["normal", "italic"],
-  variable: "--font-archivo",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-newsreader",
   display: "swap",
-});
-
-const mono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex-mono",
-  display: "swap",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
@@ -33,14 +20,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F2F1EE",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f0eee6" },
+    { media: "(prefers-color-scheme: dark)", color: "#1f1e1d" },
+  ],
 };
 
-// Aplica o tema salvo antes da primeira pintura (o padrão, claro, já vem
-// no HTML do servidor — este script só troca se o visitante escolheu escuro).
-// Também marca que há JS: as entradas animadas só escondem o estado inicial
-// quando existe script para revelá-lo (ver [data-js] em globals.css).
-const themeInitScript = `document.documentElement.dataset.js="1";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+// Aplica o modo escolhido antes da primeira pintura. Sem escolha, nada é
+// gravado e vale o modo do sistema (ver globals.css).
+const modeInitScript = `try{var m=localStorage.getItem("color-mode");if(m==="light"||m==="dark")document.documentElement.dataset.colorMode=m}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -48,19 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="pt-BR"
-      data-theme="light"
-      className={`${poster.variable} ${sans.variable} ${mono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="pt-BR" className={newsreader.variable} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script dangerouslySetInnerHTML={{ __html: modeInitScript }} />
       </head>
-      <body className="min-h-screen font-sans text-ink bg-paper">
-        {children}
-        <Busca />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

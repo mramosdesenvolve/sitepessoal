@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { getConcepts, getObjectById } from "@/lib/data";
+import { getObjectById } from "@/lib/data";
 import { ObjectDetailView } from "@/components/ObjectDetailView";
 
 interface PageProps {
@@ -56,28 +56,11 @@ function getBody(raw: string, isMdx: boolean): React.ReactNode {
   return raw.split("\n\n").map((paragraph, i) => <p key={i}>{paragraph}</p>);
 }
 
-function countWords(text: string): number {
-  return text.trim().split(/\s+/).filter(Boolean).length;
-}
-
 export default async function ObjectPage({ params }: PageProps) {
   const object = await getObjectById(params.id);
   if (!object) notFound();
 
-  const concepts = await getConcepts();
-  const relatedObjects = (
-    await Promise.all(object.relatedObjectIds.map((id) => getObjectById(id)))
-  ).filter((o): o is NonNullable<typeof o> => o !== undefined);
-
   const { raw, isMdx } = readRawBody(object.id, object.longDescription);
 
-  return (
-    <ObjectDetailView
-      object={object}
-      concepts={concepts}
-      relatedObjects={relatedObjects}
-      body={getBody(raw, isMdx)}
-      wordCount={countWords(raw)}
-    />
-  );
+  return <ObjectDetailView object={object} body={getBody(raw, isMdx)} />;
 }

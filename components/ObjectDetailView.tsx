@@ -1,78 +1,65 @@
-import type { ConceptNode, ContentObject } from "@/types";
-import { CitarButton } from "./CitarButton";
-import { LeituraFio } from "./LeituraFio";
-import { RelatedObjects } from "./RelatedObjects";
-import { ShareButton } from "./ShareButton";
-import { TagSystem } from "./TagSystem";
-import { SiteNav } from "./site/SiteNav";
-import { SiteFooter } from "./site/SiteFooter";
+import type { ContentObject } from "@/types";
+import { Cabecalho } from "./site/Cabecalho";
+import { Rodape } from "./site/Rodape";
 
 interface ObjectDetailViewProps {
   object: ContentObject;
-  concepts: ConceptNode[];
-  relatedObjects: ContentObject[];
   /** corpo longo já renderizado (MDX quando existe content/<id>.mdx) */
   body: React.ReactNode;
-  wordCount: number;
 }
 
 /**
- * Página de detalhe de um objeto: ficha em IBM Plex Mono, título editorial
- * em vermelho, texto em coluna estreita e objetos relacionados no fim.
+ * Página de um texto, no formato do site de referência: título grande em
+ * negrito, subtítulo em itálico, data em cinza e o corpo em coluna estreita.
+ * No fim, os links para a publicação original e o "voltar ao topo".
  */
-export function ObjectDetailView({
-  object,
-  concepts,
-  relatedObjects,
-  body,
-  wordCount,
-}: ObjectDetailViewProps) {
-  // textos longos ganham fio de leitura e tempo estimado (200 palavras/min)
-  const longRead = wordCount >= 300;
-  const minutes = Math.max(1, Math.round(wordCount / 200));
-
+export function ObjectDetailView({ object, body }: ObjectDetailViewProps) {
   return (
-    <div className="min-h-screen flex flex-col">
-      {longRead && <LeituraFio />}
-      <SiteNav active="database" />
+    <div className="page">
+      <Cabecalho />
 
-      <main className="flex-1 wrap pt-16 md:pt-24">
-        <header className="grid-12 gap-y-6 pb-12">
-          <div className="col-span-12">
-            <TagSystem
-              object={object}
-              concepts={concepts}
-              readingMinutes={longRead ? minutes : undefined}
-            />
-          </div>
-          <h1 className="title col-span-12 md:col-span-10 text-step-5 md:text-step-6">
-            {object.title}
-          </h1>
-          <p className="strong m-0 col-span-12 md:col-span-7 text-step-1 leading-[1.35]">
-            {object.shortDescription}
+      <main>
+        <article className="coluna">
+          <h1 className="texto-titulo">{object.title}</h1>
+          <p className="texto-subtitulo">{object.shortDescription}</p>
+          <p className="texto-data">
+            {object.year}
             {object.sourceUrl && object.sourceName && (
               <>
-                {" — publicado no "}
+                {" · "}
                 <a href={object.sourceUrl} target="_blank" rel="noopener noreferrer">
                   {object.sourceName}
                 </a>
               </>
             )}
           </p>
-          <div className="col-span-12 flex flex-wrap items-center gap-2">
-            <ShareButton title={object.title} summary={object.shortDescription} />
-            <CitarButton id={object.id} title={object.title} year={object.year} />
+
+          <div className="texto-corpo">{body}</div>
+
+          {object.links && object.links.length > 0 && (
+            <section className="secao">
+              <h2>Links</h2>
+              <ul className="lista-links">
+                {object.links.map((l) => (
+                  <li key={l.url}>
+                    <a href={l.url} target="_blank" rel="noopener noreferrer">
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <div className="voltar-ao-topo">
+            <div>
+              <a href="#">Voltar ao topo</a>
+            </div>
           </div>
-        </header>
-
-        <div className="grid-12 border-t border-rule pt-10">
-          <div className="prose-id col-span-12 md:col-span-9 md:col-start-3">{body}</div>
-        </div>
-
-        <RelatedObjects objects={relatedObjects} />
+        </article>
       </main>
 
-      <SiteFooter />
+      <Rodape />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { login } from "./actions";
-import { SiteNav } from "@/components/site/SiteNav";
+import { Cabecalho } from "@/components/site/Cabecalho";
 
 export const metadata = {
   title: "Acesso do administrador — Marcos Ramos",
@@ -12,7 +12,7 @@ export default function AdminLoginPage({
 }) {
   return (
     <div className="min-h-screen flex flex-col">
-      <SiteNav active={null} />
+      <Cabecalho />
 
       <main className="flex-1 wrap grid-12 items-center py-16">
         <div className="col-span-12 md:col-span-5 md:col-start-4">
