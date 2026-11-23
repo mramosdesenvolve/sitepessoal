@@ -1,6 +1,8 @@
 export type ObjectType =
   | "artigo"
   | "paper"
+  | "tese"
+  | "dissertacao"
   | "livro"
   | "palestra"
   | "podcast"
@@ -24,6 +26,8 @@ export type ObjectStatus =
 export const OBJECT_TYPES: ObjectType[] = [
   "artigo",
   "paper",
+  "tese",
+  "dissertacao",
   "livro",
   "palestra",
   "podcast",

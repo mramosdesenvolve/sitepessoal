@@ -230,7 +230,7 @@ const BIO = {
   intro:
     "Marcos Ramos é professor e pesquisador, doutor em Letras, com estudos sobre literatura e pensamento social brasileiro.",
   trajetoria: [
-    "Sua tese de doutorado, O Pacto na Mira do Ofá, investiga esse campo a partir da tradição radical negra, da imaginação radical, da música e da literatura. Certificado em Estudos Afro-Latino-Americanos pela Universidade de Harvard, foi bolsista do Instituto Guimarães Rosa, do Ministério das Relações Exteriores, e professor visitante no Departamento de Literatura da Universidad Nacional de Colombia entre 2022 e 2025. Deu cursos e conferências como professor convidado na Universidad de La Habana (Cuba), na Universidad Andina Simón Bolívar (Equador), na Universidade Eduardo Mondlane (Moçambique), entre outras. Organiza e cura o Ciclo Afro (cicloafro.com.br).",
+    "Certificado em Estudos Afro-Latino-Americanos pela Universidade de Harvard, foi bolsista do Instituto Guimarães Rosa, do Ministério das Relações Exteriores, e professor visitante no Departamento de Literatura da Universidad Nacional de Colombia entre 2022 e 2025. Deu cursos e conferências como professor convidado na Universidad de La Habana (Cuba), na Universidad Andina Simón Bolívar (Equador), na Universidade Eduardo Mondlane (Moçambique), entre outras.",
     "Atualmente é Especialista em Educação da Cápsula de Inovação do Senac Rio de Janeiro e consultor de instituições públicas, privadas e do terceiro setor em temas como gestão, tecnologia, cultura e educação.",
   ],
 };
@@ -241,6 +241,8 @@ const TYPE_LABELS: Record<ObjectType, string> = {
   livro: "Livros",
   artigo: "Artigos",
   paper: "Papers",
+  tese: "Tese",
+  dissertacao: "Dissertação",
   ensaio: "Ensaios",
   palestra: "Palestras",
   podcast: "Podcasts",
@@ -257,6 +259,8 @@ const TYPE_ORDER: ObjectType[] = [
   "livro",
   "artigo",
   "paper",
+  "tese",
+  "dissertacao",
   "ensaio",
   "palestra",
   "podcast",

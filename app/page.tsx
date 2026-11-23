@@ -19,6 +19,7 @@ export const dynamic = "force-dynamic";
  * pelo menos um objeto. */
 const SECOES: { tipos: ObjectType[]; titulo: string }[] = [
   { tipos: ["livro"], titulo: "Livros" },
+  { tipos: ["tese", "dissertacao"], titulo: "Tese e dissertação" },
   // ensaios também são artigos: uma seção só
   { tipos: ["artigo", "ensaio"], titulo: "Artigos" },
   { tipos: ["paper"], titulo: "Papers" },
@@ -27,6 +28,11 @@ const SECOES: { tipos: ObjectType[]; titulo: string }[] = [
   { tipos: ["podcast"], titulo: "Podcasts" },
   { tipos: ["projeto"], titulo: "Projetos" },
 ];
+
+/** Itens da lista que levam direto a um site próprio, em vez da página do objeto. */
+const LINK_EXTERNO: Record<string, string> = {
+  "ciclo-afro": "https://www.cicloafro.com.br",
+};
 
 const EMAIL = "marcosramos.email@gmail.com";
 
@@ -65,25 +71,14 @@ export default async function Home() {
             resto={
               <div className="texto-corpo">
                 <p>
-                  Sua tese de doutorado, <em>O Pacto na Mira do Ofá</em>,
-                  investiga esse campo a partir da tradição radical negra, da
-                  imaginação radical, da música e da literatura. Certificado em
-                  Estudos Afro-Latino-Americanos pela Universidade de Harvard,
-                  foi bolsista do Instituto Guimarães Rosa, do Ministério das
-                  Relações Exteriores, e professor visitante no Departamento de
-                  Literatura da Universidad Nacional de Colombia entre 2022 e
-                  2025. Deu cursos e conferências como professor convidado na
-                  Universidad de La Habana (Cuba), na Universidad Andina Simón
-                  Bolívar (Equador), na Universidade Eduardo Mondlane
-                  (Moçambique), entre outras. Organiza e cura o{" "}
-                  <a
-                    href="https://cicloafro.com.br/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Ciclo Afro
-                  </a>
-                  .
+                  Certificado em Estudos Afro-Latino-Americanos pela
+                  Universidade de Harvard, foi bolsista do Instituto Guimarães
+                  Rosa, do Ministério das Relações Exteriores, e professor
+                  visitante no Departamento de Literatura da Universidad
+                  Nacional de Colombia entre 2022 e 2025. Deu cursos e
+                  conferências como professor convidado na Universidad de La
+                  Habana (Cuba), na Universidad Andina Simón Bolívar (Equador),
+                  na Universidade Eduardo Mondlane (Moçambique), entre outras.
                 </p>
                 <p>
                   Atualmente é Especialista em Educação da Cápsula de Inovação
@@ -104,7 +99,17 @@ export default async function Home() {
                 <ul className="lista-links">
                   {itens.map((o) => (
                     <li key={o.id}>
-                      <Link href={`/objeto/${o.id}`}>{o.title}</Link>
+                      {LINK_EXTERNO[o.id] ? (
+                        <a
+                          href={LINK_EXTERNO[o.id]}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {o.title}
+                        </a>
+                      ) : (
+                        <Link href={`/objeto/${o.id}`}>{o.title}</Link>
+                      )}
                       <span>({o.year})</span>
                     </li>
                   ))}
