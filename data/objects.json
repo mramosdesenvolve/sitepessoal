@@ -1385,6 +1385,31 @@
     "featured": false
   },
   {
+    "id": "conferencia-riobaldo-narracion-grande-sertao-veredas",
+    "title": "Conferencia: Riobaldo – Narración en Grande Sertão: Veredas",
+    "type": "palestra",
+    "year": 2026,
+    "shortDescription": "Conferência online sobre a narração de Riobaldo em Grande Sertão: Veredas, no ciclo \"El Sertón y el Mundo\" do Instituto Guimarães Rosa Asunción.",
+    "longDescription": "Conferência sobre a narração de Riobaldo em *Grande Sertão: Veredas*, apresentada no ciclo online \"El Sertón y el Mundo\", que o Instituto Guimarães Rosa Asunción (IGR Asunción) realizou nos 70 anos da obra de João Guimarães Rosa, em colaboração com o Lectorado Guimarães Rosa e com o apoio do Instituto Superior de Lenguas (FIL/UNA) e do ILPOR Centro de Idiomas.",
+    "concepts": [
+      "literatura",
+      "critica-literaria",
+      "cultura-brasileira"
+    ],
+    "relatedObjectIds": [
+      "forca-de-rosa-grande-sertao-veredas",
+      "anatomia-da-elipse-freyre-guimaraes-rosa"
+    ],
+    "links": [
+      {
+        "label": "Assistir no YouTube",
+        "url": "https://youtu.be/Ciu73wonnhg"
+      }
+    ],
+    "status": "publicado",
+    "featured": false
+  },
+  {
     "id": "palestra-paradojas-antropofagia",
     "title": "Reflexiones sobre las paradojas de la Antropofagia",
     "type": "palestra",
@@ -1438,8 +1463,8 @@
     "title": "Ensino de Literatura como Ato Político e Reflexão Encarnada",
     "type": "palestra",
     "year": 2024,
-    "shortDescription": "Palestra sobre o ensino de literatura como ato político e como reflexão encarnada, não apenas técnica.",
-    "longDescription": "Palestra sobre o ensino de literatura entendido como ato político e como reflexão encarnada — isto é, corporificada na experiência do leitor —, e não apenas como transmissão técnica de conteúdos.",
+    "shortDescription": "Conferência no Simpósio de Leitores da América Latina, do Instituto Guimarães Rosa, sobre o ensino de literatura como ato político e como reflexão encarnada.",
+    "longDescription": "Conferência apresentada no Simpósio de Leitores da América Latina, realizado pelos professores do Instituto Guimarães Rosa, instituição vinculada ao Ministério das Relações Exteriores do Brasil. Trata do ensino de literatura entendido como ato político e como reflexão encarnada — isto é, corporificada na experiência do leitor —, e não apenas como transmissão técnica de conteúdos.",
     "concepts": [
       "critica-literaria",
       "literatura",

@@ -76,17 +76,7 @@ const styles = StyleSheet.create({
     fontSize: 58,
     lineHeight: 0.92,
     letterSpacing: -1.2,
-    marginBottom: 22,
-  },
-  phrase: {
-    fontSize: 15,
-    lineHeight: 1.25,
-    letterSpacing: -0.2,
-    maxWidth: 380,
-    marginBottom: 26,
-  },
-  phraseKey: {
-    color: RED,
+    marginBottom: 30,
   },
   row: {
     flexDirection: "row",
@@ -227,15 +217,14 @@ const styles = StyleSheet.create({
 });
 
 const SITE = "marcosramos.base73.com.br";
-const PHRASE_LEAD = "Estudo como a literatura pode produzir novas formas de ";
-const PHRASE_KEY = "imaginar o mundo";
 
 const BIO = {
   papel: [
-    "Professor, pesquisador",
-    "Consultor em Educação e Tecnologia",
+    "Professor e pesquisador",
+    "Especialista em Educação da Cápsula de Inovação do Senac Rio de Janeiro",
+    "Consultor",
   ],
-  formacao: ["Dr. em Letras (UFES)", "Estudos Afro-Latino-Americanos (Harvard)"],
+  formacao: ["Doutor em Letras", "Estudos Afro-Latino-Americanos (Harvard)"],
   email: "marcosramos.email@gmail.com",
   orcid: "https://orcid.org/0000-0003-3485-8462",
   intro:
@@ -318,11 +307,6 @@ export function CurriculoDocument({ objects, concepts }: CurriculoDocumentProps)
         </View>
 
         <Text style={styles.name}>marcos ramos</Text>
-        <Text style={styles.phrase}>
-          {PHRASE_LEAD}
-          <Text style={styles.phraseKey}>{PHRASE_KEY}</Text>.
-        </Text>
-
         <View style={styles.row}>
           <Text style={styles.rowLabel}>papel</Text>
           <Text style={styles.rowValue}>{BIO.papel.join(" · ")}</Text>

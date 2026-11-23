@@ -53,7 +53,22 @@ function readRawBody(id: string, longDescription: string): { raw: string; isMdx:
 
 function getBody(raw: string, isMdx: boolean): React.ReactNode {
   if (isMdx) return <MDXRemote source={raw} />;
-  return raw.split("\n\n").map((paragraph, i) => <p key={i}>{paragraph}</p>);
+  return raw.split("\n\n").map((paragraph, i) => (
+    <p key={i}>{withEmphasis(paragraph)}</p>
+  ));
+}
+
+/** O texto livre do banco marca títulos de obras com *asteriscos*: vira itálico. */
+function withEmphasis(text: string): React.ReactNode {
+  return text
+    .split(/(\*[^*]+\*)/g)
+    .map((part, i) =>
+      part.length > 2 && part.startsWith("*") && part.endsWith("*") ? (
+        <em key={i}>{part.slice(1, -1)}</em>
+      ) : (
+        part
+      )
+    );
 }
 
 export default async function ObjectPage({ params }: PageProps) {
