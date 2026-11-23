@@ -239,9 +239,10 @@ const BIO = {
   email: "marcosramos.email@gmail.com",
   orcid: "https://orcid.org/0000-0003-3485-8462",
   intro:
-    "Marcos Ramos é Especialista em Educação da Cápsula de Inovação do Senac Rio de Janeiro e consultor. Doutor em Letras pela Universidade Federal do Espírito Santo e certificado em Estudos Afro-Latino-Americanos pela Universidade de Harvard, é professor e pesquisador. Seus principais temas são literatura, educação e tecnologia. Atua na pós-graduação com pesquisa e orientação de teses e, concomitantemente, no desenvolvimento de projetos e consultorias para instituições públicas, privadas e do terceiro setor.",
+    "Marcos Ramos é professor e pesquisador, doutor em Letras, com estudos sobre literatura e pensamento social brasileiro.",
   trajetoria: [
-    "Sua formação atravessa os estudos literários e as ciências humanas e sociais. Sua tese de doutorado, O Pacto na Mira do Ofá, investiga temas como pensamento social brasileiro, tradição radical negra, imaginação radical, música e literatura. Foi professor visitante no Departamento de Literatura da Universidad Nacional de Colombia entre 2022 e 2025, e esteve como professor convidado em instituições como a Universidad de La Habana (Cuba), a Universidad Andina Simón Bolívar (Equador) e a Universidade Eduardo Mondlane (Moçambique). Organiza e cura o Ciclo Afro (cicloafro.com.br).",
+    "Sua tese de doutorado, O Pacto na Mira do Ofá, investiga esse campo a partir da tradição radical negra, da imaginação radical, da música e da literatura. Certificado em Estudos Afro-Latino-Americanos pela Universidade de Harvard, foi bolsista do Instituto Guimarães Rosa, do Ministério das Relações Exteriores, e professor visitante no Departamento de Literatura da Universidad Nacional de Colombia entre 2022 e 2025. Deu cursos e conferências como professor convidado na Universidad de La Habana (Cuba), na Universidad Andina Simón Bolívar (Equador), na Universidade Eduardo Mondlane (Moçambique), entre outras. Organiza e cura o Ciclo Afro (cicloafro.com.br).",
+    "Atualmente é Especialista em Educação da Cápsula de Inovação do Senac Rio de Janeiro e consultor de instituições públicas, privadas e do terceiro setor em temas como gestão, tecnologia, cultura e educação.",
   ],
 };
 
